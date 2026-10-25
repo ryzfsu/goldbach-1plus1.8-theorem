@@ -1,0 +1,824 @@
+\section{The S2 group: a joint three-piece estimate}
+\label{sec:s2}
+
+This section bounds the four S2 rows jointly from below. These rows are
+$\{\text{S2-0},\text{S2-1},\text{S2-2},\text{S2-3(K/PF)}\}.$
+Their signed lower functional is \texttt{S2-T8/4}.
+
+\subsection{Source partition and four rows}
+\label{sec:s2-1}\label{sec:s2-2}
+
+\begin{lemma}
+The plain S2 source satisfies (3.2), with the disjoint partition (3.4).
+The selected third row has level and cutoff (3.5).
+\end{lemma}
+\begin{proof}
+Fix
+\[
+ u=\frac1{500},\quad \beta=\frac{50}{309},\quad
+ \epsilon_A=\eta_L=\frac1{10000},\quad
+ 0<\sigma\le10^{-10},\quad \tau=\sigma^9,\quad \rho=1+\tau,
+\]
+where $\sigma$ is sufficiently small for the AA37 constant and is fixed before $N$.
+Then $N$ tends to infinity through even integers. Put
+\[
+ \mathcal A_D(v)=\mathbf1_{\{v\ {\rm prime}\}}
+ \mathbf1_{\{N/\log^{30}N<v<(1-\epsilon_A)N\}},
+ \qquad \mathcal A_0=\{N-v:\mathcal A_D(v)=1\}.
+\]
+Sections~3--5 use this endpoint, with the normalization
+\[
+ C(N)=\prod_{p>2}\left(1-\frac1{(p-1)^2}\right)
+       \prod_{\substack{p\mid N\\p>2}}\frac{p-1}{p-2},\quad
+ U_C=C(N)\frac{N}{\log^2N},\quad W_N=4(1-\epsilon_A)U_C.
+ \tag{3.1}\label{p2:eq:s2-normalization}
+\]
+The first product is positive, and the second is at least one.
+Thus $W_N\gg N/\log^2N$ uniformly in even $N$.
+
+The unsifted AA37 input is $\mathcal A^{\rm pl}_{2,1}=\mathcal A_0$.
+By (1.7),
+$S_{2,\rm raw}=S(\mathcal A_0,\mathcal P_N,N^\beta)+\Delta^{\rm src}_2$,
+where $\Delta^{\rm src}_2$ contains low-tested-prime and exceptional $v\mid N$ cells.
+Source-square restoration is empty at $b=1$.
+For a Buchstab prefix $b$ over $\mathcal P_N$, put
+\[
+ S_{\rm pl}(b,z)=S(\mathcal A^{\rm pl}_{2,b},\mathcal P_N,z),
+ \qquad \mathcal A^{\rm pl}_{2,b}=\{N-v:\mathcal A_D(v)=1,\ b\mid N-v\},
+\]
+where $N-v$ is sieved with the empty cofactor allowed. Then
+\[
+\begin{split}
+ T_0&=S_{\rm pl}(1,N^u),\\
+ T_1&=\sum_{N^u\le p_1<N^\beta}S_{\rm pl}(p_1,N^u),\\
+ T_2&=\sum_{N^u\le p_2<p_1<N^\beta}S_{\rm pl}(p_1p_2,N^u),\\
+ T_3&=\sum_{N^u\le p_3<p_2<p_1<N^\beta}S_{\rm pl}(p_1p_2p_3,p_3),\\
+ S_{\rm pl}(1,N^\beta)&=T_0-T_1+T_2-T_3.
+\end{split}\tag{3.2}
+\]
+This follows by applying $S_{\rm pl}(b,z_2)=S_{\rm pl}(b,z_1)-\sum_{z_1\le p<z_2}S_{\rm pl}(bp,p)$ twice,
+with repeated factors of $N-v$ still allowed.
+The final cutoff is $p_3$.
+Modulus-one coefficients give $(f,F,f,F)$, and the cutoff factors $(500,-500,500,-1)$
+come from $1/u$ and $p_3$.
+
+Let $r_i=\log_Np_i$. Put
+$\Delta=\{u\le r_3<r_2<r_1<\beta\},\quad
+ g(r)=r_1+2r_2+4r_3,\quad H=\frac{249}{250}.$
+Set $PF=\Delta\cap\{g\le H\}$ and $R1=\Delta\cap\{g>H\}$.
+The cells carry the inherited global half-open labels
+$t_i\le r_i<\rho t_i,\qquad
+ \mathcal P(t_i)=\{p\nmid2N:N^{\max(t_i,u)}\le p<N^{\min(\rho t_i,\beta)}\}.$
+Clipping at $u$ or $\beta$ preserves each label.
+A whole cell is selected when
+\[
+ h(t)=t_1+2t_2+(4+2\tau)t_3\le K,
+ \qquad K=H+2\tau\beta.
+ \tag{3.3}
+\]
+Let $\mathcal F$ be the selected union in $\Delta$.
+Its strict complement $\mathcal B$ has $h>K$.
+For $g\le H$, $h\le g+2\tau t_3\le K$,
+and on $\mathcal F$, $g<\rho(t_1+2t_2+4t_3)\le\rho K$. Hence
+\[
+ PF\subseteq\mathcal F,\quad\mathcal B\subseteq R1,\quad
+ \Delta=PF\ \dot\cup\ (\mathcal F\cap R1)\ \dot\cup\ \mathcal B,
+ \quad \mathcal F\cap R1\subseteq\{H<g<\rho K\}.
+ \tag{3.4}
+\]
+Equality belongs to PF or the selected label.
+All three pieces retain the negative sign of $T_3$.
+The coupled cut $g=H$ is compared with one whole-$K$ product-block estimate.
+
+On a selected prefix block, put
+\[
+ L_b=N^{\Theta_b-\eta_L-\sum t_i},\qquad
+ z=N^u\quad(r=0,1,2),\qquad z=E_3=N^{t_3}\quad(r=3),
+ \tag{3.5}
+\]
+where $\Theta_b$ is the actual analytic cell infimum.
+Since $E_3\le p_3$,
+$S_{\rm pl}(b,p_3)\le S_{\rm pl}(b,E_3)$, the required upper bound for the negative row.
+Its sieve argument exceeds $1.0117$.
+The whole-$K$ cells satisfy the admission envelope $h\le1-2\eta_L$.
+Here $K<1-2\eta_L,\qquad (1-2\eta_L)-H=19/5000.$
+The boundary estimate retains the sharper condition (3.3).
+\end{proof}
+
+\subsection{Coefficients and prepared hypotheses}
+\label{sec:s2-3}
+
+\begin{lemma}
+The four signed rows satisfy H1--H7 of Theorem~\ref{thm:distribution-input}.
+Their coefficients are (3.6)--(3.8), with both masks (3.11).
+\end{lemma}
+\begin{proof}
+Fix a complete symmetric prefix/tail block $k$ with its AA37 signs, and put
+$C_k(q)=\sum_{d_{AA},(p_j)}\lambda_{d_{AA}}
+                   \mathbf1_{\{q=d_{AA}\prod_jp_j\}}.$
+The smooth support is
+$d_{AA}<L_b^\sigma$, $d_{AA}\mid P_N(L_b^{\sigma^2})$.
+It is squarefree, with primes avoiding $2N$.
+The empty tail is included once.
+Before unequal-coordinate dissection, complete equal-bin prefixes are divided by $M_k=\prod_G|G|!$.
+Packing puts $d_{AA}$ wholly in slot 1, and the labelled convolution of slot $s$ is divided by $|J_s|!$. Thus
+\[
+ \frac{C_k}{M_k}=\frac{C_{\rm slot}}{M_k}
+                         (\gamma_1*\gamma_2*\gamma_3),\quad
+ C_{\rm slot}=\prod_{s=1}^3|J_s|!,\quad |\gamma_s|\le1.
+ \tag{3.6}
+\]
+The prefix and slot factorials have distinct roles.
+The signed remainder and its external scalar are
+\[
+ R_j=\sum_q(\gamma_1*\gamma_2*\gamma_3)(q)\Delta_j(q;N),
+ \qquad c_j=w_kc_{{HB},{\rm box}}\frac{C_{\rm slot}}{M_k}.
+ \tag{3.7}
+\]
+Prime realizations and smooth divisors stay inside the convolution.
+Absolute values are taken after the signed $q$-sum.
+
+The local density is $\omega_b(p^a)=p/(p-1)$ for every $a\ge1$, with higher-power constant 3.
+Put $U_k=C_k/M_k$.
+Let $\Xi_{\rm union}$ be the disjoint forbidden tail/prefix correction and
+$\Xi_{\rm allowed}$ the allowed-repeat correction.
+Let $W_k$ be the retained squarefree coefficient.
+Then $O_k=U_k-\Xi_{\rm union}=W_k+\Xi_{\rm allowed}.$
+With $m_A=\sum_v\mathcal A_D(v)$, define
+\[
+ \Delta_0(q)=\sum_{v\equiv N(q)}\mathcal A_D(v)-\frac{m_A}{\varphi(q)},
+ \quad
+ \Delta_P(q)=\sum_{v\equiv N(q)}\mathcal A_D(v)
+             -\frac{\sum_{(v,q)=1}\mathcal A_D(v)}{\varphi(q)}.
+\]
+Substitution before HB gives
+\[
+ R_{AA}=S_{\rm slot}+NC_{sf}
+ -\sum_{k,q}w_k\Xi_{\rm union}(q)\Delta_P(q)
+ +\sum_{k,q}w_k\Xi_{\rm allowed}(q)(\Delta_0-\Delta_P)(q).
+ \tag{3.8}
+\]
+Every source modulus is eventually below $N^{0.6}$.
+Tested primes exceed $N/\log^{30}N$,
+so $\Delta_0=\Delta_P$ on the original source.
+Its squarefree NC and grouped allowed-repeat difference vanish before HB.
+For $X_{Li}=\operatorname{Li}(Y_1)-\operatorname{Li}(Y_0)$, the term
+$(m_A-X_{Li})/\varphi(q)$ is kept as the mass-conversion error.
+The fixed logarithmic coefficient envelope and
+$\sum_{q\le Q}\varphi(q)^{-1}\ll\log Q$ reduce it to PNT.
+A sufficiently large fixed logarithmic saving gives $o(U_C)$.
+
+Choose a tested-prime shell $[X,2X)$, with
+$N/\log^{31}N\le X\le N$; on it HB has cap $2X^{1/3}$.
+In each interior rectangle we choose the largest eligible elementary rough factor,
+breaking ties by first index.
+Its coefficient is rough M\"obius, rough unit, or normalized rough logarithm, of modulus at most one.
+The complement has at most five factors and is bounded by $\tau_5(m)$.
+With $\nu=N_{II}$, the full doubled support satisfies
+\[
+ X^{60\sigma}\le\nu\le X^{1/3+15\sigma},\quad M\nu\asymp X,
+ \quad N\le X^{1+\sigma/20},\quad
+ |mn-N|\ge\epsilon_A N/2
+ \tag{3.9}
+\]
+This uses the original window $[N^{60\sigma},N^{1/3+14\sigma}]$ and
+$\log_N(N/X)\le\sigma/1000$ eventually.
+The shift stays $N$.
+
+Lemma~\ref{lem:s2-preparation} supplies the equal-ratio mesh and integer endpoints.
+For all four rows, including whole-$K$, it gives
+$N_I\ge(2\nu)^{1-2^{-126}}$, $N_I\ge QX^{\sigma/3}$ and $M_I\ge X^{1/2}$.
+It also gives H6, H7 and Class I.
+The internal packing Lemma~\ref{thm:packing-input} applies at the literal $\Theta_b$,
+and since $t_1<\beta<t_{\rm dd}$,
+\eqref{p2:eq:row-level-floor} gives $\Theta_b\ge(1+t_1)/2$.
+Put $T=t_1+2t_2\le3\beta$.
+By (3.3), $t_3\le(K-T)/(4+2\tau)$, so
+{\small
+\[
+\begin{aligned}
+\ell_c=\Theta_b-\eta_L-t_1-t_2-t_3
+&\ge\frac12-\eta_L-\frac T2-\frac{K-T}{4+2\tau}\\
+&\ge\frac12-\eta_L-\frac{3\beta}{2}
+              -\frac{K-3\beta}{4+2\tau}
+>0.12953>\ell_0=\frac{53}{412}-\frac{\eta_L}{2}.
+\end{aligned}
+\]
+}
+Here $1/2-1/(4+2\tau)>0$ and $0<\tau=\sigma^9\le10^{-90}$.
+Every selected S2-3 cell therefore has
+$L_b^{\sigma^2}\ge N^{\ell_0\sigma^2}$.
+Including slot-1 smooth inflation gives
+\[
+\begin{split}
+ Q_1&<\nu X^{-\sigma},\\
+ \nu^2Q_2Q_3^2&<X^{1-8\sigma},\\
+ A_{\max}^{\theta}\nu Q_1Q_2^5Q_3^2&<X^{2-15\sigma},\\
+ (\nu Q_3/Q_2)^{2\theta}\nu Q_1Q_2^5Q_3^2&<X^{2-15\sigma},
+ \qquad \theta=7/32,\quad A_{\max}=X^{1+\sigma/20}.
+\end{split}\tag{3.10}
+\]
+The ambient margins are
+$(7271/256,52,95221/1280,22407/256)\sigma$.
+After scale transfer, dyadic constants and endpoint localization, they exceed
+$(28,51,74,87)\sigma$ eventually.
+PF and the boundary region retain these margins and $\Theta_b$.
+
+The dispersion argument is the one in
+\hyperref[p2:dispersion-proof]{the distribution-input subsection}, with
+\cite[Theorem~2.8, (3.17)--(3.20), (3.25)--(3.27), (3.57)--(3.60), (3.70)--(3.73)]{Z1}.
+Its S2 parameters are as follows.
+\begin{longtable}{@{}p{0.28\textwidth}p{0.67\textwidth}@{}}
+\toprule
+Step & Data \\
+\midrule
+First dispersion & $\sum_{m\in I_M}|\beta_m|^2\ll M_I\log^cX$.
+For $\alpha^{(r)}=\alpha\mathbf1_{(n,r)=1}$, split at
+$\|\alpha^{(r)}\|_2^2=\nu_I\log^{-A_3-1}X$. \\
+SW precision & Below: trivial BDH.
+Above: $\|\alpha^{(r)}\|_2(2\nu)^{1/2}\gg\nu\log^{-(334+A_3+1)/2}X$.
+Request this extra saving before norm-normalized BFI. \\
+Frequencies & $\eta_0=\sigma/1000$,
+$H_2=QR^2S^2X^{\eta_0}/M_I$, $H_*=40H_2$;
+$H_0<|h|\le\min(2H_0,H_*)$. \\
+Mellin weight & In \eqref{p2:eq:dispersion-mellin}, set $a=N$.
+Take $w=1$ on $[1/2,2]$, supported in $(1/4,4)$.
+For $U(t)=m(t)$ and $L_{\rm osc}=(\log X)^{365}X^{\eta_0}$,
+$U(t)\ll\min\{1,L_{\rm osc}^2/(1+|t|)^2\}$ and
+$\int_{\mathbb R}U(t)\,dt\ll L_{\rm osc}\ll_\sigma X^{3\sigma/40}$.
+Here $N/X\le(\log N)^{31}$. \\
+Coloring & $d_{\rm disp}=1$, $\ell_0=53/412-1/20000$,
+$u_0=N^{\ell_0\sigma^2}$, $\mathcal P_X=[u_0,X^3]\cap\mathbb P$.
+Normalized cost: $2^{K_s+K_J}=O_\sigma(1)$. \\
+Derivatives & $\epsilon_0=\sigma/2000>0$. \\
+\bottomrule
+\end{longtable}
+Both norm cases give $\ll\nu_I\nu\log^{-A_3}X$.
+The second dispersion retains
+\[
+ (s_1,Nc)=1,\qquad(s_1,q_{\rm disp}n_2)=1.
+ \tag{3.11}
+\]
+Representations are normalized by $U(t)>0$, which is then restored.
+At $U(t)=0$ the integrand vanishes.
+Both nonmodular Mellin phases of \eqref{p2:eq:dispersion-mellin} are kept,
+and coloring precedes aggregation.
+Fiber multiplicity is at most $\tau(b)\tau_3(c)$. Hence
+\[
+ |A_\omega(t)|\ll_\sigma\frac{U(t)}{QR^2S^2},\qquad
+ \sum_{b,c,f}|A^\chi_{b,c,f}(t)|^2
+ \ll_\sigma U(t)^2X^{o(1)}\frac{\nu^2}{Q^2R^2S^3}.
+ \tag{3.12}
+\]
+The spectral coefficient has the weighted norm
+\[
+ \sum_{n''\mid N^\infty}(n'')^\theta
+ \|\beta^\flat(n'')\|_2^2
+ \ll X^{o(1)}(H_2S)^2F,\qquad F\ll\nu/Q.
+ \tag{3.13}
+\]
+For $y=f(h_1s'_1-h_2s_1)\ne0$, specialize to
+\[
+\begin{gathered}
+ (r,s,d,c,n)=(z,p_0,b,c,p_0|y|),\quad
+ a_T=\operatorname{sgn}(y)N,\quad(zb,p_0c)=1,\\
+ (R_{sp},S_{sp},D_{sp},C_{sp},N_{sp})
+ =(Z,\max(p_0,3)/2,B,C,8p_0Y),\\
+ Z\in\{S^2,2S^2\},\quad B\ll\nu R,\quad
+ C\ll\nu RS,\quad Y\ll H_2SF.
+\end{gathered}
+\]
+with the least prime $p_0\nmid N$.
+Then $p_0\ll\log N<z_0(X)$ and $p_0\nmid a_T$, and (3.13) gives the required weighted norm.
+Here $p_0\mid c$ remains allowed.
+
+For unit slot 2, its atom $s=1$ has $S=1/2$.
+By (3.10), $H_2\ll X^{-9\sigma+\eta_0+o(1)}$,
+so $H_*<1$ eventually and the frequency sum is empty.
+Every other nonempty spectral scale is at least one.
+For general $S$, $H_2/S\le X^{-9\sigma+\eta_0+o(1)}<1$,
+hence $1\le H_*\le S$ eventually on nonempty frequency blocks.
+Also $F\ge1/2$, as required at the weighted-norm endpoints.
+Finally,
+$A_{\max}C_{sp}D_{sp}N_{sp}R_{sp}S_{sp}
+ \ll X^{\sigma/20+\eta_0+o(1)}\nu^4R^4S^6<X^{10.01}.$
+By \cite[(3.89)]{Z1}, the positive-epsilon prefactor is eventually at most $X^{0.19019\sigma}$.
+Equations (3.10)--(3.13) give the signed spectral bound.
+
+Put $C_{\rm box}=C_b=334$ and $K_{\rm scale}=31$.
+Lemma~\ref{lem:s2-preparation} gives the complete support
+\[
+ q<N^{e_D},\qquad e_D=153/256-\eta_L/2<0.6,
+ \qquad q\le X^{0.6}\quad(N/\log^{31}N\le X\le N).
+\]
+This support includes repeated-prime moduli and every smooth divisor.
+The full hypothesis check is as follows.
+\begin{longtable}{@{}p{0.28\textwidth}p{0.67\textwidth}@{}}
+\toprule
+Condition & S2 data \\
+\midrule
+H1 & Coefficient (3.6), with primes avoiding $2N$; corrections exactly (3.8). \\
+H2 & $d_{AA}$ lies in slot 1; slots 2 and 3 are $u_0$-rough.
+Keep repeated primes and empty slots. \\
+H3 and LEN & (3.9)--(3.13), the full support above and
+Lemma~\ref{lem:s2-preparation}.
+Majorant: $m_0=M(1+r_X^r)/2$, $1\le r\le5$,
+$|m_0|\le2M\ll X/\nu$.
+Ambient length: $N_I\ge(2\nu)^{1-2^{-126}}$. \\
+H4 & $a=N$, $(q,N)=1$;
+$0<N\le X\log^{31}N\le X^{1+\sigma/20}$. \\
+H5 & $N^{60\sigma}\le\nu\le N^{1/3+14\sigma}$ and (3.9),
+with Lemma~\ref{lem:s2-preparation}'s endpoints. \\
+H6 & $E_{\log}\ll_\sigma N(\log N)^{18-C_b}$;
+$E_{\rm bdry}\ll_\sigma N(\log N)^{16-C_b/2}$. \\
+H7 & (3.16), using external coefficients only. \\
+\bottomrule
+\end{longtable}
+Theorem~\ref{thm:distribution-input}, or
+\cite[Theorem~3.2, (3.13)]{Z1}, therefore applies.
+The complete-weight prime-source theorem has a different coefficient family.
+\end{proof}
+
+\subsection{Shiu's estimate and the three dispersion terms}
+\label{sec:s2-4}
+
+\begin{lemma}
+\label{lem:external-classii-sum}
+Let $\mathscr F$ be a prepared family of interior Class-II boxes satisfying
+the local scale, roughness, support and coprimality hypotheses of
+Theorem~\ref{thm:distribution-input} and (3.9)--(3.11), with uniform fixed
+source constants. Assume the coefficient and scale bounds (3.16), with
+$\mathcal J$ replaced by $\mathscr F$ and $K_0=8042$. Then (3.15) holds
+with a fixed exponent $C_{\mathscr F}$ in place of $C_{S2}$, and the
+normalized sum satisfies (3.17).
+\end{lemma}
+\begin{proof}
+We first bound the deletion of $f_{\rm gcd}=(m,r_2)>z_0$.
+The restoration formula in \cite[\S3.5, (3.45)]{Z1} retains $(m,r_2)=1$
+by the exact M\"obius expansion.
+
+Let $MN\asymp x$ and $L=\log x$, with local shift $a$.
+Assume fixed $0<\delta<1$, $0<\varepsilon<1/2$, and
+\[
+ x^{2\delta}\le N\le x^{1/3+\delta/2},\quad
+ |I_N|=N_I\asymp NL^{-C_b},\quad
+ |\widetilde I_M|=2M_I\asymp ML^{-C_b},
+\]
+with $I_N\subset[N,2N]$ and $\widetilde I_M\subset[M/4,3M]$.
+On the doubled box assume $|mn-a|\ge xL^{-C_b}\ge1$, and finally assume $0<|a|\le x^{1+\varepsilon}$ and $1\le f_{\rm gcd}\le Mx^{-\delta}$.
+For fixed nonnegative $B_i$,
+\[
+ \sum_{n\in I_N}\tau(n)^{B_1}
+ \sum_{\substack{m\in\widetilde I_M\\f_{\rm gcd}\mid m}}
+ \tau(m)^{B_2}\tau(|mn-a|)^{B_3}
+ \ll\frac{M_IN_I}{f_{\rm gcd}}(\tau(f_{\rm gcd})L)^{O_{B_i}(1)}.
+ \tag{3.14}
+\]
+To prove this, write $m=f_{\rm gcd}m'$, so the interval length is $H'=2M_I/f_{\rm gcd}\gg x^{\delta/2}$.
+For fixed $n$, put $g=(f_{\rm gcd}n,|a|)$,
+$v=f_{\rm gcd}n/g$ and $a'=a/g$.
+Then $(v,a')=1$, $|mn-a|=g|vm'-a'|$.
+Put $\ell(m')=f_{\rm gcd}nm'-a$; consecutive values differ by
+$f_{\rm gcd}n\le(Mx^{-\delta})(2N)\ll x^{1-\delta}$.
+Opposite signs would imply
+$|\ell(m')|+|\ell(m'+1)|=f_{\rm gcd}n\ge2xL^{-C_b}$, a contradiction, so the sign stays constant.
+The values $|vm'-a'|$ lie in one reduced class modulo $v$.
+Their interval has length $Y=vH'$ and endpoint $Z\ll x^{1+\varepsilon}$.
+Choose fixed $0<b<\min(1/4,\delta/[8(1+\varepsilon)],\delta/8)$.
+Since $v\ll x^{1+o(1)}$ and $H'\gg x^{\delta/2}$,
+$Y\ge Z^b$ and $v\le Y^{1-b}$ eventually.
+Shiu's reduced-progression bound \cite{Shiu1980} gives
+$\sum_{m'}\tau(|vm'-a'|)^C
+ \ll\frac{Y}{\varphi(v)}L^{2^C-1}\ll H'L^{O_C(1)}.$
+For modulus one,
+$\sum_{m'}\tau(f_{\rm gcd}m')^C\ll\tau(f_{\rm gcd})^CH'L^{O_C(1)}.$
+We use Cauchy--Schwarz and $\tau(g)\le\tau(f_{\rm gcd})\tau(n)$, then the localized divisor moment.
+This proves (3.14), including signed shifts.
+The modulus condition uses $Y=vH'$ and $Y/v=H'$.
+
+Take $x=X$, $N_{\rm local}=\nu$, $\delta=30\sigma$,
+$\varepsilon=\sigma/20$ and $a=N_{\rm ambient}$.
+By \cite[(3.6)]{Z1} and (3.9)--(3.10),
+$f_{\rm gcd}=(m,r_2)\le r_2\ll M_I X^{-89\sigma}\ll M X^{-30\sigma},$
+where $M_I\ll M(\log X)^{-334}$ and $\sigma>0$ is fixed.
+Thus (3.14) applies.
+
+In the following divisor sum, $r_2$ is the second two-rough-slot product
+of \cite[(3.28)--(3.31)]{Z1}.
+Its primes are at least $u_0=N^{\ell_0\sigma^2}$ and $r_2\le X^{0.6}$.
+Counting repeats gives
+$\Omega(r_2)\le\frac{0.6}{\ell_0\sigma^2},\qquad
+ \tau(r_2)\le2^{\Omega(r_2)}\ll_\sigma 1.$
+This includes $r_2=1$.
+Every nontrivial $f_{\rm gcd}\mid r_2$ satisfies
+$f_{\rm gcd}\ge u_0>z_0(X)$ eventually.
+For fixed $B\ge0$,
+$\sum_{\substack{f_{\rm gcd}\mid r_2\\f_{\rm gcd}>z_0(X)}}\frac{\tau(f_{\rm gcd})^B}{f_{\rm gcd}}
+ \le\frac{\tau(r_2)^{B+1}}{u_0}\ll_{\sigma,B}\frac1{u_0}.$
+We partition by the exact value $f_{\rm gcd}=(m,r_2)$.
+Dropping the remaining gcd condition and summing (3.14) gives
+\[
+ \sum_{n\in I_\nu}\tau(n)^{B_1}
+ \sum_{\substack{m\in\widetilde I_M\\(m,r_2)>1}}
+ \tau(m)^{B_2}\tau(|mn-a|)^{B_3}
+ \ll_\sigma\frac{M_I\nu_I}{u_0}(\log X)^C,\qquad |I_\nu|=\nu_I.
+\]
+The divisor weights fix $C$ independently of $r_2$.
+
+The mixed term keeps $qr_1\mid mn_1-a$.
+For fixed $(m,n_1)$, the number of admissible pairs $(q,r_1)$ is at most
+$\tau(|mn_1-a|)^2$.
+Also $\varphi(qr_2)^{-1}\ll(\log X)^C/(Qr_2)$,
+$|\lambda_{r_i}|\ll_\sigma1$ and $\sum_{n_2}1\le\nu_I$.
+Increasing $B_3$ by two and using $\sum_{r_2\asymp RS}r_2^{-1}\ll1$, we find the positive deletion error
+$E_{\rm gcd}\ll_\sigma\frac{M_I\nu_I^2}{Q u_0}(\log X)^C.$
+For pure density,
+$\sum_{q\asymp Q}\varphi(q)^{-2}\sum_{r_1\asymp RS}\varphi(r_1)^{-1}
+\ll(\log X)^C/Q$.
+This gives the same bound.
+Copy symmetry gives the first-copy deletion bound.
+For two congruences, $qr_2\mid mn_2-a$ and $(qr_2,a)=1$
+imply $(m,r_2)=1$, so its deleted contribution is empty.
+These three bounds include unit rough slots, and both masks (3.11) remain in force.
+
+The first Cauchy--Schwarz inequality is
+$|S|^2\ll QM_I(\log X)^C S'$.
+Its full divisor-deletion contribution is at most
+\[
+ (QM_I(\log X)^CE_{\rm gcd})^{1/2}
+ \ll_\sigma M_I\nu_I(\log X)^C u_0^{-1/2}
+ \ll_\sigma X^{1-\ell_0\sigma^2/2}(\log X)^C.
+\]
+Since $\ell_0\sigma^2/2=2c_\sigma>c_\sigma$, this term is absorbed by
+the power-saving term established below in (3.15).
+The exact mixed term retains $(m,r_2)=1$ via \cite[\S3.5, (3.45)]{Z1},
+and the divisor sum above gives its full alternative bound.
+Restoration and near-diagonal/BDH recombination follow
+\cite[(3.34)--(3.47), (3.49)--(3.53)]{Z1}, with both masks and all three dispersion terms kept.
+
+Theorem~\ref{thm:distribution-input} is applied at $A_{\rm work}=A'+4$.
+Its local terms are $X_j\log^{-A_{\rm work}}X_j$ and
+$X_j^{1-c_\sigma}\log^{C_{Z1}}X_j$, where
+$c_\sigma=\frac14(\frac{53}{412}-\frac1{20000})\sigma^2>0$.
+The latter includes GR restoration and first-CS deletion.
+Here $\ell_0=53/412-1/20000$, $\ell_0\sigma^2/2=2c_\sigma$.
+Three internal modulus-slot shells cost at most $\log^3X_j$, so the first term is at most
+$X_j\log^{-A'-1}X_j\le X_j\log^{-A'}X_j$.
+With shell and source-specific GR logarithms absorbed into $C_{S2}$,
+\[
+ |R_j|\ll_\sigma X_j\log^{-A'}X_j
+       +X_j^{1-c_\sigma}\log^{C_{S2}}X_j.
+ \tag{3.15}
+\]
+
+For the external family $\mathcal J$, Lemma~\ref{lem:s2-preparation} gives
+\[
+ \sum_{j\in\mathcal J}|c_j|\le C_\sigma\log^{K_0}N,
+ \qquad N/\log^{31}N\le X_j\le N,
+ \tag{3.16}
+\]
+Here $K_0=K_0^{S2}$ is fixed before $A'$.
+Put $L=\log N$.
+Lemma~\ref{lem:direct-preparation} gives
+$K_*=6(C_b+1)+2=2012$.
+We use the larger envelope $K_0=24C_b+26$:
+$K_0^{S2}=24\cdot334+26=8042,\qquad
+ A'=8047,\qquad A_{\rm work}=8051.$
+PF and the selected boundary region form one whole-$K$ family.
+Their prime realizations and smooth divisors remain internal.
+
+For $\mathscr F$, we replace $\mathcal J$ and $C_{S2}$ in (3.15)--(3.16)
+by $\mathscr F$ and any fixed $C_{\mathscr F}$.
+With $K_0=8042$, $A'=8047$ and denominator (3.1), we get
+\[
+ \begin{aligned}
+ E_{II}(\mathscr F)&:=\frac1{W_N}\sum_{j\in\mathscr F}|c_j||R_j|\\
+ &\ll_\sigma L^{K_0+2-A'}\\
+ &\qquad+N^{-c_\sigma}L^{K_0+C_{\mathscr F}+2+31c_\sigma}\\
+ &\ll_\sigma L^{-3}+N^{-c_\sigma}L^{8044+C_{\mathscr F}+31c_\sigma}=o(1).
+ \end{aligned}
+ \tag{3.17}
+\]
+Here $8044=K_0+2$; the extra 2 comes from $W_N\gg N/L^2$.
+By (3.1), $W_N\gg N/L^2$ and
+$\tfrac12\log N\le\log X_j\le\log N$.
+The bound $X_j\ge N/L^{31}$ gives $31c_\sigma$.
+Also $K_0+2-A'=8042+2-8047=-3$,
+and for fixed $B$, $e^{-c_\sigma t}t^B\to0$ as $t=\log N\to\infty$.
+Here $\sigma>0$ and all source and box parameters are fixed before $N_0$.
+For S2 we take $\mathscr F=\mathcal J$, $C_{\mathscr F}=C_{S2}$ and
+$E_{II,S2}=E_{II}(\mathcal J)$.
+\end{proof}
+
+\subsection{The strict BV complement}
+\label{sec:s2-5}
+
+\begin{lemma}
+The source on $\mathcal B$ has upper main comparator (3.19)
+and remainder $o(U_C)$, at the actual cutoff $p_3$.
+\end{lemma}
+\begin{proof}
+For $r\in\mathcal B$, put
+$b=p_1p_2p_3,\quad Q_{BV}=N^{1/2-\kappa}\log^{-B}N,
+ \quad\kappa=10^{-6},\quad D_b=Q_{BV}/b,\quad z_b=\sqrt{D_b}.$
+On all of $R1$,
+\[
+ \log_ND_b\ge3/206-\kappa-o(1)>0,\qquad
+ 2r_3-\log_ND_b\ge63823/309000+\kappa+o(1)>0.
+ \tag{3.18}
+\]
+Write $L_N=\log N$. Since $\mathcal B\subseteq R1$,
+$g=r_1+2r_2+4r_3>H=249/250$. Ordering gives $g\le7r_1$, so
+$r_1>H/7$ and
+\[
+ r_1+r_2+2r_3=\frac{g+r_1}{2}>\frac{4H}{7}.
+\]
+The definition of $D_b$ now gives
+\[
+\begin{aligned}
+ r_3-\log_ND_b
+ &=r_1+r_2+2r_3-\frac12+\kappa
+       +B\frac{\log\log N}{\log N}\\
+ &>\frac{4H}{7}-\frac12+\kappa
+       +B\frac{\log\log N}{\log N}\\
+ &=\frac{121}{1750}+\kappa
+       +B\frac{\log\log N}{\log N}>0.
+\end{aligned}
+\]
+Hence $1<D_b<p_3$ for all sufficiently large $N$, and
+$z_b=\sqrt{D_b}<p_3$. Sifting is monotone in its cutoff, so
+\[
+ S_{\rm pl}(b,p_3)\le S_{\rm pl}(b,z_b).
+\]
+Apply the $s=2$ upper sieve to the right-hand side.
+Its squarefree weight has $|\lambda^+_{b,d}|\le1$,
+$d<D_b$ and $d\mid P_N(z_b)$. Thus every prime factor of $d$
+is below $p_3$; indeed $d<D_b<p_3$.
+For $k=bd$, the three largest distinct prime factors recover $b$ uniquely, also when $d=1$.
+The actual aggregate weight
+$a_k=\lambda^+_{b,d}\mathbf1_{\{b\text{ belongs to }\mathcal B\}}$
+has $\|a\|_\infty\le1$, $\|a\|_2^2\le Q_{BV}$, and the prefix/divisor multiplicity is one.
+Here $N\bmod k$ is reduced.
+The two-endpoint remainder is at most twice the classical BV maximal sum.
+It is $O_A(N\log^{-A}N)=o(U_C)$ for sufficiently large fixed $B$.
+The positive upper comparator is enlarged from $\mathcal B$ to $R1$:
+\[
+ I_{BV}=\int_{R1}\frac{4\,dr_1dr_2dr_3}
+ {r_1r_2r_3(1/2-\kappa-r_1-r_2-r_3)}.
+ \tag{3.19}
+\]
+The factor 4 includes Mertens and $F(2)$.
+Thus $I_{BV}$ enters directly, with its stated normalization.
+The comparator overlaps $\mathcal F\cap R1$.
+The source partition (3.4) stays disjoint, with its original boundary conventions.
+\end{proof}
+
+\subsection{The signed functional, tail and endpoint}
+\label{sec:s2-6}\label{sec:s2-7}
+
+\begin{lemma}
+The selected endpoint is (3.22).
+With its tail allowance included, the source satisfies (3.23).
+\end{lemma}
+\begin{proof}
+Put $a=2/e^\gamma$. Define
+\[
+ v(t)=\begin{cases}(1+t)/2,&0\le t\le25/128,\\
+ 57/64-3t/2,&25/128<t\le1/3,\\0,&\text{otherwise},\end{cases}
+ \quad\psi(x,y)=x\mathbf1_{\{x\ge y\}}.
+\]
+Let $\vartheta(r_1,r_2,r_3)$ be the maximum of
+\[
+\begin{gathered}
+ v(r_1),\ v(r_2),\ v(r_1+r_2),\ v(r_1+r_2+r_3),\\
+ \psi(\min(153/256-3r_3/8,1-2r_2),(1+r_1)/2),\\
+ \psi(\min(153/256-3r_2/8,1-2r_3),(1+r_1)/2),\\
+ \psi(v(r_1+r_3),r_1+2r_2+r_3),\quad
+ \psi(v(r_2+r_3),2r_1+r_2+r_3).
+\end{gathered}
+\]
+Put
+\[
+\begin{split}
+ s_0&=19037/64,\quad
+ a_1(r)=(\vartheta(r,u,u)-u-r)/u,\\
+ a_2(r_1,r_2)&=(\vartheta(r_1,r_2,u)-u-r_1-r_2)/u,\\
+ s_3(r)&=(\vartheta(r)-u-r_1-r_2-r_3)/r_3,\\
+ P&=\frac au\left[f(s_0)-\int_u^\beta F(a_1(r))\frac{dr}{r}
+ +\int_{u\le r_2<r_1<\beta}f(a_2(r_1,r_2))\frac{dr_1dr_2}{r_1r_2}\right],\\
+ d\mu&=\frac{dr_1dr_2dr_3}{r_1r_2r_3^2},\quad
+ V=\int_\Delta d\mu,\quad V_B=\int_{R1}d\mu,\\
+ J_{PF}&=\int_{PF}[F(\max(s_3(r),1))-1]d\mu.
+\end{split}
+\]
+The signed functional is
+\[
+ T8=P-aV-aJ_{PF}+(aV_B-I_{BV})
+   =P-a\int_{PF}F(\max(s_3,1))d\mu-I_{BV}.
+ \tag{3.20}
+\]
+It combines the prefix terms with the third-term comparison.
+On $PF$, $\vartheta(r)\ge(1+r_1)/2$ and $g(r)\le H=1-2u$. Thus
+$\vartheta(r)-u-r_1-r_2-2r_3\ge\frac{H-g(r)}2\ge0.$
+Hence $s_3(r)\ge1$ and $F(\max(s_3,1))=F(s_3)$ on PF, with equality possible on its boundary.
+The analytic whole-$K$ argument $1.0117$ uses level loss $\eta_L$.
+At depth one and $u\le r<\beta$, the $w$ guard is active and its
+branch gives $\vartheta(r,u,u)\ge19101/32000$ throughout the whole
+parent cell. Thus the numerator margin is at least
+$u-\eta_L=19/10000>0$.
+
+The source/profile numerator margins are
+$u-\eta_L-9\beta\tau>0$ on triples and
+$u/2-\eta_L-5\beta\tau>0$ on second prefixes.
+By continuity and the 2-Lipschitz S2 hull bound, and since $v(r_1)$ dominates at indicator switch-off,
+$\Theta_b\ge\vartheta(r)-6\beta\tau$.
+Inherited endpoints cost at most another $3\beta\tau$,
+and the numerical and analytic losses are $u$ and $\eta_L$.
+Missing-coordinate infima retain the floor $153/256-3u/8$
+and the relevant $v(r_1+r_2)$ candidate.
+Depth-two padding costs at most $u/2+5\beta\tau$.
+Increasing $f$ and decreasing $F$ give the signs in (3.20).
+PNT/Mertens, harmonic prime measures and equal-bin factorials give the ordered integrals.
+Here $\tau$ is fixed throughout.
+
+The boundary region has width
+$\delta_K=\rho K-H=\tau(H+2\beta)+2\beta\tau^2.$
+Its outer ordered area is at most $\beta^2/2$, and each fiber has width at most $\delta_K/4$.
+Also $aF(1)=4$.
+Including the dynamic cutoff,
+\[
+ E_{spill,D}\le\frac{(1+2\tau)\beta^2\delta_K}{8u^4}
+ <275000000\tau,\qquad E_{dyn,D}\le2\tau V<9680\tau.
+ \tag{3.21}
+\]
+Thus the cell-selection/dynamic allowance is $275009680\tau$,
+while the boundary arithmetic discrepancy is estimated separately.
+
+The directed 192-bit Arb inputs \cite{Johansson2017} are:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+Prefix & $n=600$ \\
+PF upper & $n=1536$ \\
+Corner lower & $n=2800$
+\end{tabular}
+\end{center}
+The true sieve functions $f,F$ are used beyond 12.
+Put $E(s)=\max(F(s)-1,1-f(s))$.
+The finite delay-integral enclosure gives $E(s)<6\cdot10^{-6}$ on $[11,12]$.
+The classical linear-sieve asymptotic gives
+$F(s)-1=O(e^{-s})$ and $1-f(s)=O(e^{-s})$.
+Thus $e^sE(s)$ is bounded for all sufficiently large $s$.
+Since $f,F$ are continuous, it is bounded on the remaining compact interval.
+Hence $B=\sup_{s\ge11}e^sE(s)<\infty$ before the contraction below.
+The same decay gives integrable tails and the vanishing limits used next.
+Integrating $(s(F(s)-1))'=f(s-1)-1$ and
+$(s(1-f(s)))'=1-F(s-1)$, with their vanishing limits at infinity,
+gives the exact identities
+\[
+ s(F(s)-1)=\int_{s-1}^\infty(1-f(t))dt,\qquad
+ s(1-f(s))=\int_{s-1}^\infty(F(t)-1)dt
+\]
+and hence, for $s\ge12$,
+\[
+ sE(s)\le\int_{s-1}^\infty E(t)dt\le Be^{1-s}.
+\]
+Separating $11\le s\le12$ from $s\ge12$ gives
+$B\le\max(6\cdot10^{-6}e^{12},eB/12)$.
+Since $e/12<1$, this implies
+$B\le6\cdot10^{-6}e^{12}<0.976529<1$.
+The preceding integral bound therefore gives
+$E(s)\le e^{1-s}/s$ for $s\ge12$.
+
+Fix $u\le r_2\le r_1\le\beta$ and write $R=r_1+r_2$, $x=r_3$,
+$C=153/256$, $L=57/64$ and $A=(1+r_1)/2$.
+The PF fiber has $u\le x<r_2$ and $r_1+2r_2+4x\le H$.
+On every affine branch $\phi(x)$ in the hull, its argument is
+$s_\phi(x)=c/x+k$, where
+$s_\phi=(\phi(x)-u-R-x)/x$.
+The following list covers every branch of $v(r_1)$, $v(r_2)$,
+$v(R)$, $v(R+x)$, the two unguarded parts of each of the first two
+$\psi$ terms, and both branches of each pair guard:
+\begingroup\scriptsize
+\setlength{\tabcolsep}{1.5pt}
+\begin{longtable}{@{}p{0.22\textwidth}p{0.43\textwidth}p{0.26\textwidth}c@{}}
+\toprule
+Branch $\phi$ & $c$ & Lower bound for $c$ & $k$ \\
+\midrule
+$v(r_1)$ & $1/2-u-r_1/2-r_2$ & $1/2-u-3\beta/2$ & $-1$ \\
+$v(r_2)$ & $1/2-u-r_1-r_2/2$ & $1/2-u-3\beta/2$ & $-1$ \\
+$v(R)$, increasing & $1/2-u-R/2$ & $1/2-u-\beta$ & $-1$ \\
+$v(R)$, decreasing & $L-u-5R/2$ & $L-u-5\beta$ & $-1$ \\
+$v(R+x)$, increasing & $1/2-u-R/2$ & $1/2-u-\beta$ & $-1/2$ \\
+$v(R+x)$, decreasing & $L-u-5R/2$ & $L-u-5\beta$ & $-5/2$ \\
+$q_1=C-3x/8$ & $C-u-R$ & $C-u-2\beta$ & $-11/8$ \\
+$q_1=1-2r_2$ & $1-u-r_1-3r_2$ & $1-u-4\beta$ & $-1$ \\
+$q_2=C-3r_2/8$ & $C-u-r_1-11r_2/8$ & $C-u-19\beta/8$ & $-1$ \\
+$q_2=1-2x$ & $1-u-R$ & $1-u-2\beta$ & $-3$ \\
+$v(r_1+x)$, increasing & $1/2-u-r_1/2-r_2$ & $1/2-u-3\beta/2$ & $-1/2$ \\
+$v(r_1+x)$, decreasing & $L-u-5r_1/2-r_2$ & $L-u-7\beta/2$ & $-5/2$ \\
+$v(r_2+x)$, increasing & $1/2-u-r_1-r_2/2$ & $1/2-u-3\beta/2$ & $-1/2$ \\
+$v(r_2+x)$, decreasing & $L-u-r_1-5r_2/2$ & $L-u-7\beta/2$ & $-5/2$ \\
+\bottomrule
+\end{longtable}
+\endgroup
+Here $q_1=\min(C-3x/8,1-2r_2)$ and
+$q_2=\min(C-3r_2/8,1-2x)$.
+Substitution of $u=1/500$ and $\beta=50/309$ shows that every lower
+bound in the table is at least
+$c_{\min}=L-u-5\beta=196681/2472000>0$.
+The permanent baseline $A=v(r_1)$ is always present.
+The guards $q_i\ge A$ switch off only, since each $q_i$ is continuous
+and nonincreasing in $x$; at switch-off its value equals $A$.
+For the pair guards put
+\[
+ D_1=v(r_1+x)-(r_1+2r_2+x),\qquad
+ D_2=v(r_2+x)-(2r_1+r_2+x).
+\]
+Since $r_i+x\le2\beta<1/3$, these functions are continuous,
+strictly decreasing, with slopes $-1/2$ and $-5/2$ on the two branches.
+On the increasing branch $D_i\ge1/2-3\beta=3/206>0$,
+so switch-off can occur only on the decreasing branch.
+At a switch-off, direct substitution gives
+\[
+\begin{aligned}
+ (r_1+2r_2+x)-A&=-r_1/2+6r_2/5-23/160
+                  \le-1507/49440<0,\\
+ (2r_1+r_2+x)-A&=7r_1/10-23/160
+                  \le-1507/49440<0.
+\end{aligned}
+\]
+Thus removing either guarded branch cannot raise the hull.
+All affine crossings and the kink of $v$ are continuous.
+The only other drop is $v(R+x)$ at $R+x=1/3$;
+its left value is $25/64<A$, so it is inactive there.
+Every active branch has $s_\phi'(x)=-c/x^2\le-c_{\min}/x^2$.
+The full argument hull $s_3$ is therefore continuous and strictly decreasing on the fiber.
+Its finitely many affine pieces have disjoint $s$-images.
+Consequently, with no branch-count factor,
+\[
+\begin{aligned}
+ \int_{\{x:s_3(x)>12\}}(F(s_3(x))-1)\frac{dx}{x^2}
+ &\le\frac1{c_{\min}}\int_{12}^{\infty}E(s)\,ds\\
+ &\le\frac{e^{-11}}{12c_{\min}}.
+\end{aligned}
+\]
+Integrating over the full ordered $(r_1,r_2)$ triangle gives
+\[
+ \int_{u\le r_2<r_1\le\beta}\frac{dr_1dr_2}{r_1r_2}
+ =\frac12\log^2(\beta/u).
+\]
+The true PF tail above 12 costs less than
+\[
+ \frac a4\frac{\log^2(\beta/u)}2\frac{e^{-11}}{12c_{min}}
+ <4.739184885736468\cdot10^{-5}\quad\text{D units}.
+\]
+Here $a=2e^{-\gamma}>0$.
+The lower endpoint uses $P_{lo}$, upper products $aV$ and
+$a(J_{PF})_{hi}$, and the lower corner endpoint.
+All prefix arguments exceed 128.
+Their repair costs less than $1.154\cdot10^{-54}$ D.
+Both repairs fit strictly inside $1/20000$.
+Adding the true tail to the finite PF upper bound gives
+\[
+ \begin{aligned}
+ d_{T8}&=\frac{P_{lo}-aV-a(J_{PF})_{hi}+(aV_B-I_{BV})_{lo}}4
+                 -\frac1{20000}\\
+ &>1.61958135698908352559133404332105729220076714081650.
+ \end{aligned}
+ \tag{3.22}
+\]
+This eight-branch bound is in D units.
+It includes that allowance.
+
+The source identities and preceding estimates yield
+\[
+ \frac{S_{2,\rm raw}}{W_N}
+ \ge d_{T8}-275009680\tau-E_{AA,S2}-E_{II,S2}-e_{rest,S2}(N),
+ \qquad e_{rest,S2}(N)\longrightarrow0.
+ \tag{3.23}
+\]
+The four rows and three third-row pieces form \texttt{S2-T8/4}.
+Equation (3.17) includes CRT, colors, zero mode, Poisson, Theorem 2.8
+and all three GR/dispersion terms.
+At $b=1$, the source-square restoration is empty.
+The weighted low-tested-prime and exceptional-source bounds are
+$O_u(\log^{-28}N)$ and $O_u(\log^3N/N)$.
+Direct proper prime powers have raw bound $X^{1/2+o(1)}$, and their actual scalar sums are retained.
+Theorem~\ref{thm:repeated-primes} bounds the forbidden square union by
+$O_\sigma(N^{-\ell_0\sigma^2}\log^4N)$.
+The NC and allowed-repeat terms vanish in the actual-mass convention of (3.8).
+The Li convention retains the weighted source mass conversion.
+
+For H6, the normalized LOG and boundary errors are
+$O_\sigma(L^{20-C_b})$ and $O_\sigma(L^{18-C_b/2})$.
+Class I is $O_\sigma(L^{-4})$, with $A_I=2018$, and at $C_b=334$ these enter $e_{rest,S2}$.
+The strict BV source is $\mathcal B$, with main term in (3.20).
+PNT, Mertens, endpoint and mass-conversion errors vanish.
+The fixed $275009680\tau$ lies outside $d_{T8}$, while the allowance $1/20000$ lies inside it, in D units.
+Finally, \texttt{E\_AA,S2} is the S2 share of the global AA37/G2 error.
+Its fixed $O(\sigma)$ part stays separate from $e_{rest,S2}$.
+Each contribution enters once.
+The joint functional includes the S2 $f$-to-$F$ comparison and R1 corner.
+The S1 $f$-to-$F$ and G1 PR-M terms remain separate.
+This proves (3.23), which Section~6.3.5 uses in the full error sum.
+\end{proof}

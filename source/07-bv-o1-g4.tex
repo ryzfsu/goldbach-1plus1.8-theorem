@@ -1,0 +1,1010 @@
+\section{Direct BV rows, the O1 switched term, and weak G4}
+
+This section treats the rows R1, S5-top and S6 by prime BV,
+and the switched term O1 and weak G4 by one convolution lemma.
+
+\subsection{Sources and classical inputs}
+
+Fix even $N$ and put $L=\log N$.
+Fix $\varepsilon=\varepsilon_A=10^{-4}$ before $N\to\infty$.
+Here $q$ denotes a modulus, $\lambda_d$ sieve weights
+and $\ell$ a sieve prime.
+Put $\rho=1+\tau$, and write $h$ for an interval width.
+The exponent $K_0$ measures the fixed logarithmic loss.
+We use
+\begingroup\small
+\[
+ X=(1-\varepsilon)N,\quad
+ \mathcal A_\varepsilon=\{N-p_0:p_0<X,\ p_0\text{ prime}\},\quad
+ \mathcal P_N=\{\ell>2:\ell\text{ prime},\ \ell\nmid N\},
+\]
+
+\[
+ P_N(z)=\prod_{\ell<z,\,\ell\in\mathcal P_N}\ell,\qquad
+ C(N)=\prod_{\ell>2}\left(1-\frac1{(\ell-1)^2}\right)
+       \prod_{\ell\mid N,\,\ell>2}\frac{\ell-1}{\ell-2},\qquad
+ U_C=\frac{C(N)N}{L^2}.
+\tag{5.1}
+\]
+
+\endgroup
+Here $C(N)\ge C_2>0$, and the raw coefficients satisfy $\Sigma=4D$.
+For finitely supported $f$, put
+\[
+ \Delta_f(q,a)=\sum_{e\equiv a\pmod q}f(e)
+       -\frac1{\varphi(q)}\sum_{(e,q)=1}f(e),\qquad (a,q)=1.
+\tag{5.2}
+\]
+
+Both sums run over the full support.
+Remove prime powers from the $\psi$-estimate \cite[(2.20)]{Z1}
+and apply partial summation. Increasing $B_0(A)$ absorbs the conversion
+losses. Thus, for each $A>0$, there is $B_0(A)$ such that
+\[
+ \sum_{q\le T^{1/2}(\log T)^{-B_0(A)}}
+ \max_{(a,q)=1}\left|\pi(T;q,a)-\frac{\operatorname{Li}(T)}{\varphi(q)}\right|
+ \ll_A T(\log T)^{-A}.
+\tag{5.3}
+\]
+
+It is applied with residue $N\bmod q$.
+The sieve input is \cite[Theorem~2.5, (2.25)]{Z1}, under these hypotheses:
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Sequence & Finite, with nonnegative multiplicities; $X_{\mathcal A}>0$ \\
+Density & $\omega$ multiplicative; $\omega(\ell)/\ell=1/(\ell-1)$ on $\mathcal P_N$ \\
+Outside $\mathcal P_N$ & $\omega(\ell)=0$ \\
+Parameters & $y\ge z\ge2$; (5.5) with fixed $K\ge2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Then
+\[
+ S(\mathcal A,z)\le X_{\mathcal A}V_N(z)
+ \{F(s)+e^{\sqrt K}Q_1(s)(\log y)^{-1/3}\}
+ +\sum_{d<y,\,d\mid P_N(z)}|r_d|,
+ \qquad s=\frac{\log y}{\log z}.
+\tag{5.4}
+\]
+
+The density obeys $0<\omega(\ell)<\ell$, since $\ell>2$.
+Also $F(s)=2e^\gamma/s$ on $[1,3]$, including $s=1$.
+Uniformly in $N$,
+\[
+ \prod_{w\le\ell<z,\,\ell\in\mathcal P_N}
+ (1-1/(\ell-1))^{-1}
+ \le\frac{\log z}{\log w}\left(1+\frac K{\log w}\right),\qquad 2\le w<z.
+\tag{5.5}
+\]
+
+By Mertens' theorem \cite{Mertens1874}, the logarithm of the product is
+$\log(\log z/\log w)+O(1/\log w)$;
+here one uses $1/(\ell-1)=1/\ell+O(\ell^{-2})$ and partial summation.
+Removing $\ell\mid N$ decreases the product,
+and a larger fixed $K$ covers bounded $w$.
+This proves (5.5).
+For $z>2$,
+\[
+ V_N(z)=2\prod_{\ell<z}(1-1/\ell)
+ \prod_{2<\ell<z}\left(1-\frac1{(\ell-1)^2}\right)
+ \prod_{2<\ell<z,\,\ell\mid N}\frac{\ell-1}{\ell-2}
+\tag{5.6}
+\]
+
+Hence, uniformly for $z\ge N^c$, fixed $c>0$,
+\[
+ V_N(z)=\frac{2e^{-\gamma}C(N)}{\log z}(1+o(1)).
+\tag{5.7}
+\]
+
+The tails are $1+O(1/z)$ and $\exp(O(\omega(N)/z))$,
+so $2e^{-\gamma}$ occurs once.
+The primitive-character large sieve \cite[(2.19)]{Z1} is
+\[
+ \sum_{q\le Q}\sum_{\chi\ (q)}^*
+ \left|\sum_{h\le H_{\rm LS}}c_h\chi(h)\right|^2
+ \ll (Q^2+H_{\rm LS})\|c\|_2^2.
+\tag{5.8}
+\]
+
+Here $m\sim M$ means $M<m\le2M$.
+We use the complete-support convention \cite[(2.15)--(2.17)]{Z1},
+power-log Siegel--Walfisz \cite[(2.21)]{Z1},
+and PNT with the de la Vallée Poussin error.
+Through Siegel--Walfisz, the threshold is ineffective.
+The convolution estimate is proved in \S{}5.4.
+% Sieve provenance: Iwaniec, Rosser's sieve, Acta Arith. 36 (1980),
+% Theorem 1, (1.4); the precise imported form is [Z1, Theorem 2.5].
+
+\subsection{One prime-BV calculation for three rows}
+
+One application of prime BV covers the three negative rows. Put
+\[
+ u=\frac1{500},\quad \alpha=\frac{100}{1149},\quad
+ \beta=\frac{50}{309},\quad t_* =\frac{7109}{28000},\quad
+ \tau_S=\frac{57}{224},\quad H=1-2u=\frac{249}{250}.
+\]
+
+For a permitted squarefree prefix $b$, define
+\begingroup\small
+\[
+ \mathcal A_b=\{m:bm=N-p_0,\ p_0<X\text{ prime}\},\qquad
+ S_b(z)=\#\{m\in\mathcal A_b:(m,P_N(z))=1\}.
+\tag{5.9}
+\]
+
+\endgroup
+Dropping the condition $(m,Nb)=1$ gives an upper bound.
+The three negative rows are
+\[
+ \begin{aligned}
+ R_{\rm BV}&=\sum_{b=p_1p_2p_3,\ (r_1,r_2,r_3)\in R_1}S_b(p_3),\\
+ T_5&=\sum_{b=p\in\mathcal P_N,\ N^{t_*}\le p<N^{\tau_S}}S_b(N^\alpha),\\
+ T_6&=\sum_{b=p\in\mathcal P_N,\ N^{\tau_S}\le p<N^{1/3}}S_b(N^\alpha),
+ \end{aligned}
+\tag{5.10}
+\]
+
+where $r_i=\log p_i/L$ and $r_3<r_2<r_1$.
+Put
+\[
+ \Delta_3=\{u\le r_3<r_2<r_1<\beta\},\qquad
+ R_1=\Delta_3\cap\{r_1+2r_2+4r_3>H\}.
+\tag{5.11}
+\]
+
+All prefix primes belong to $\mathcal P_N$.
+The radial condition is $\varepsilon N<bm<N$;
+the product $bd$ has no radial cutoff.
+For $\kappa\in\{0,10^{-6}\}$, put
+\[
+ Q=N^{1/2-\kappa}L^{-B},\quad D_b=Q/b,\quad
+ \delta_N=B\log L/L,\quad a_\kappa(r)=1/2-\kappa-\sum r_i.
+\tag{5.12}
+\]
+
+For R1 put $z_b=\sqrt{D_b}$; for T5 and T6 put $z_b=N^\alpha$.
+In all three rows, let $s_b=\log D_b/\log z_b$.
+The parameter checks are as follows.
+\begin{longtable}{@{}p{0.25\textwidth}p{0.70\textwidth}@{}}
+\toprule
+Row & Uniform positive margins before the vanishing $\delta_N$ loss \\
+\midrule
+R1 & $a_\kappa\ge3/206-\kappa$; $2r_3-a_\kappa\ge63823/309000+\kappa$; $r_3\ge13147/103000>u$ \\
+T5 & $a_\kappa\ge55/224-\kappa$; $t_* -\alpha=5368241/32172000>0$; $a_0/\alpha\in[12639/4480,7917759/2800000]\subset(2,3)$ \\
+T6 & $a_\kappa\ge1/6-\kappa$; $\tau_S>\alpha$; eventually $(a_\kappa-\delta_N)/\alpha\in(1,3)$ \\
+\bottomrule
+\end{longtable}
+
+\begingroup\sloppy
+For R1, the linear forms are evaluated at its closure vertices:
+$(\beta,\beta,\beta)$,
+$(H/7,H/7,H/7)$,
+$(\beta,64441/463500,64441/463500)$,
+$(\beta,\beta,13147/103000)$.
+Thus $z_b<p_3$ and $S_b(p_3)\le S_b(z_b)$, and we apply (5.4).
+For $d<D_b$, its primes lie below those of $b$.
+Hence $(b,d)=1$, $(bd,2N)=1$, and
+\par\endgroup
+\[
+ |(\mathcal A_b)_d|=\pi_{<}(X;bd,N),\quad
+ r_{b,d}=\pi_{<}(X;bd,N)-\frac{\operatorname{Li}(X)}{\varphi(bd)}.
+\tag{5.13}
+\]
+
+The source mass is $\operatorname{Li}(X)/\varphi(b)$.
+For R1, $b$ consists of the three largest primes of $q=bd$.
+For T5 or T6, $b$ is the largest prime.
+So each row counts each modulus at most once, including $d=1$,
+although different rows may share moduli.
+
+For a half-open source cell $C$, put
+$\gamma_C(q)=\sum_{b\in C,\,bd=q}\lambda_b^+(d)$.
+Then $|\gamma_C(q)|\le1$, $q<Q$, and
+$\|\gamma_C\|_1,\|\gamma_C\|_2^2\le Q$.
+The absolute remainder obeys the same multiplicity bound.
+Choose $A>2$, then $B$. By (5.3),
+\[
+ \sum_b\sum_{d<D_b}|r_{b,d}|
+ \ll_{A,\varepsilon}NL^{-A}+Q=o(U_C).
+\tag{5.14}
+\]
+
+The strict endpoint costs $Q$.
+For $\kappa>0$, one may eventually take $B=0$.
+By (5.7) and the formula for $F$ above,
+\[
+ V_N(z_b)F(s_b)=(1+o(1))\frac{4C(N)}{L(a_\kappa-\delta_N)}.
+\tag{5.15}
+\]
+
+For R1, $s_b=2$.
+PNT and partial summation give
+$\sum_{p\in\mathcal P_N}(p-1)^{-1}\delta_{\log p/L}\to dt/t$.
+The convergence is uniform away from zero.
+Removing $p\mid N$ costs $O(\omega(N)N^{-u})$,
+and replacing $1/\varphi(b)$ by $1/b$ costs a relative $O(N^{-u})$.
+The domains are bounded Jordan polytopes.
+Since $a_\kappa$ stays positive, the kernels converge uniformly.
+Thus
+\[
+ \begin{aligned}
+ R_{\rm BV}&\le4(1-\varepsilon)U_C J_{R1}(\kappa)+o(U_C),&
+ J_{R1}(\kappa)&=\iiint_{R_1}\frac{dr_1dr_2dr_3}{r_1r_2r_3a_\kappa(r)},\\
+ T_j&\le4(1-\varepsilon)U_C J_j(\kappa)+o(U_C),&
+ J_j(\kappa)&=\int_{C_j}\frac{dt}{t(1/2-\kappa-t)},
+ \end{aligned}
+\tag{5.16}
+\]
+
+where $C_5=[t_*,\tau_S)$ and $C_6=[\tau_S,1/3)$.
+The R1 contribution is $-J_{R1}$ in $D$,
+and its raw comparator is $4J_{R1}$.
+
+\subsection{Comparators, endpoints and finite losses}
+
+This subsection evaluates the comparators and collects the finite losses.
+Put $\mathrm{IBV}=4J_{R1}$,
+$A=1/2-\kappa-r_1-r_2$, and $\ell=(H-r_1-2r_2)/4$.
+Then
+\[
+ \int_\ell^{r_2}\frac{4\,dr_3}{r_1r_2r_3(A-r_3)}
+ =\frac4{r_1r_2A}\log\frac{r_2(A-\ell)}{\ell(A-r_2)},
+\tag{5.17}
+\]
+
+and the outer limits are $H/7\le r_1\le\beta$,
+$(H-r_1)/6\le r_2\le r_1$.
+For $c_\gamma=2e^{-\gamma}$, the S2 replacement is
+\[
+ S2_{\rm canonical}
+ =\mathrm{prefix}-c_\gamma V_{\rm full}-c_\gamma J_{PF}
+       +(c_\gamma V_B-\mathrm{IBV}),
+\tag{5.18}
+\]
+
+where $V_B$ integrates $1/(r_1r_2r_3^2)$ over R1.
+The cutoff in $J_{PF}$ is $g=r_1+2r_2+4r_3\le H$.
+Thus R1 is replaced once by $\mathrm{IBV}$,
+with coefficient $-1$ in (5.18).
+
+For lower labels $t_i$, put $q_g=1+\tau_g$ and
+\[
+ \ell_g=t_1+2t_2+(4+2\tau_g)t_3,\quad K=H+2\tau_g\beta,
+ \quad F_{\rm lab}=\{\ell_g\le K\},\quad B_{\rm lab}=\{\ell_g>K\}.
+\tag{5.19}
+\]
+
+The half-open cells partition the source, with
+$PF\subset F_{\rm lab}$ and $B_{\rm lab}\subset R1$.
+The region between them satisfies $H<g\le q_gK$.
+Here $\tau_g=\tau=\sigma^9$; the estimates hold for $\tau_g\le\tau$.
+The PF-side cost in $D$ is
+$(2.75\cdot10^8+9680)\tau_g=275009680\tau$ (Appendix~A.4).
+The PF estimate and the full S2 row are proved in \S{}3.
+At $g=H$, $(p_1p_2^2p_3^4)^{250}=N^{249}$ forces $p_1\mid N$,
+so such a point is absent from the permitted source.
+Parent-grid faces follow the half-open convention.
+For S5 and S6,
+\[
+ 4J_5(0)=8\left[\log\frac{t}{1/2-t}\right]_{t_*}^{\tau_S},\qquad
+ 4J_6(0)=8\log\frac{110}{57}.
+\tag{5.20}
+\]
+
+The disjoint domains are $[1/4,t_*)$, $[t_*,\tau_S)$,
+and $[\tau_S,1/3)$.
+The first is treated directly, the other two by BV.
+A prime equal to $N^{t_*}$, $N^{\tau_S}$ or $N^{1/3}$ divides $N$,
+so permitted primes avoid these rational endpoints.
+The S5-top raw value is $4J_5(0)=0.0365816642384326$.
+Its row coefficient is $-1$, so its $D$ entry is
+\[
+ -J_5(0)=-\frac{0.0365816642384326\ldots}{4}
+        =-0.00914541605960815\ldots,
+\tag{5.20a}
+\]
+
+before the level loss.
+It is obtained by dividing (5.15) times $\operatorname{Li}(X)/\varphi(p)$
+by $4(1-\varepsilon)U_C$; see Appendix~A.6.
+The sources are specified in Sections~2--4,
+and the errors are summed in Section~6.3.
+For finite $N$, the denominator is $a_\kappa-\delta_N$.
+If $\delta_N\le a_{\min}/2$, then
+\[
+ 0\le\frac1{a_\kappa-\delta_N}-\frac1{a_\kappa}
+ \le\frac1{a_\kappa}\frac{\delta_N}{a_{\min}-\delta_N}.
+\tag{5.21}
+\]
+
+Let $E_{N6}(N)\ge0$ collect the adverse vanishing errors:
+sieve $O(L^{-1/3})$, (5.14), endpoints $O(Q)$,
+and Euler/PNT conversion $o(1)$.
+By (5.21), it tends to zero uniformly.
+Its logarithmic part obeys $E_{\log}\le18.03\delta_N$ in $D$.
+By (5.21), (5.17), (A.13) and (A.14), the R1, S5-top and S6 contributions to $E_{\log}/\delta_N$ are respectively $<2.169459$, $<0.074494$ and $<15.778471$, using row minima $3/206-10^{-6}$, $55/224$ and $1/6-10^{-6}$; hence their sum is $18.022424<18.03$.
+We use $\kappa=10^{-6}$ for R1 and S6,
+and $\kappa=0$ for S5-top, whose positive-$\kappa$ increment is zero.
+For S6,
+\[
+ E_{S6}=J_6(10^{-6})-J_6(0)
+ \le 0.000006484294227956901
+\tag{5.22}
+\]
+
+in $D$ units.
+S5 keeps its vanishing logarithmic loss.
+Appendix~A.6 gives the outward enclosures.
+
+\subsection{A common complete-support convolution lemma}
+
+Both applications below need a mean-value estimate of
+Bombieri--Vinogradov type \cite{Bombieri1965,Vinogradov1965}
+for a convolution with complete supports. The form used here is stated
+and proved in this subsection.
+
+\begin{lemma}[Bilinear mean value for complete supports]
+\label{lem:complete-support-bv}
+Put $MN_{\rm box}=x$, $\mathcal L=\log x$.
+Fix $\eta,B_{\rm div}>0$ and assume
+$x^\eta\le M\le x^{1-\eta}$ and
+$x^\eta\le N_{\rm box}\le x^{1-\eta}$.
+The supports are $(M,2M]$ and $(N_{\rm box},2N_{\rm box}]$.
+For every $A_2>0$, assume
+\[
+ \left|\sum_{n\equiv l(k),(n,d)=1}b_n
+ -\frac1{\varphi(k)}\sum_{(n,dk)=1}b_n\right|
+ \ll_{A_2}\|b\|_2N_{\rm box}^{1/2}\tau(d)^{B_{\rm div}}
+       (\log(2N_{\rm box}))^{-A_2},
+\tag{5.23}
+\]
+
+uniformly in $x,d,k,l$ and the coefficient family,
+for $d,k\ge1$ and $(l,k)=1$.
+Then, for every $A>0$, there is $B_1$ such that
+\[
+ \sum_{q\le Q}\max_{(r,q)=1}|\Delta_{a*b}(q,r)|
+ \ll\|a\|_2\|b\|_2x^{1/2}\mathcal L^{-A},\qquad
+ Q\le x^{1/2}\mathcal L^{-B_1}.
+\tag{5.24}
+\]
+
+Here $\Delta$ is as in (5.2).
+The constant $B_1$ depends on $A,\eta,B_{\rm div}$
+and the hypothesis constants.
+\end{lemma}
+
+\begin{proof}
+Put $A(\chi)=\sum_m a_m\chi(m)$ and
+$B(\chi)=\sum_n b_n\chi(n)$.
+Orthogonality gives
+\[
+ \Delta_{a*b}(q,r)=\frac1{\varphi(q)}
+ \sum_{\chi\ne\chi_0}\overline{\chi(r)}A(\chi)B(\chi).
+\tag{5.25}
+\]
+
+Write $q=ef$, with primitive nonprincipal $\psi\pmod f$ inducing $\chi$.
+Since $\varphi(ef)\ge\varphi(e)\varphi(f)$, the left side of (5.24) is at most
+\[
+ \sum_{e\le Q}\frac1{\varphi(e)}
+ \sum_{1<f\le Q/e}\frac1{\varphi(f)}
+ \sum_{\psi\ (f)}^*|A_e(\psi)B_e(\psi)|,
+\tag{5.26}
+\]
+
+where $A_e(\psi)=\sum_{(m,e)=1}a_m\psi(m)$,
+and $B_e$ is defined likewise.
+Split the conductors at $F=\mathcal L^C$.
+For $f\le F$, subtract the principal average on each reduced class.
+By (5.23),
+\[
+ |B_e(\psi)|\ll\varphi(f)\|b\|_2N_{\rm box}^{1/2}
+ \tau(e)^{B_{\rm div}}(\log(2N_{\rm box}))^{-A_2}.
+\]
+
+Cauchy--Schwarz gives
+$\sum_\psi^*|A_e(\psi)|\ll\varphi(f)M^{1/2}\|a\|_2$.
+Thus small conductors cost at most
+$F^2\tau(e)^{B_{\rm div}}\|a\|_2\|b\|_2x^{1/2}(\log(2N_{\rm box}))^{-A_2}$.
+For $V<f\le2V$, use (5.8) and Cauchy--Schwarz:
+\begingroup\small
+\[
+ \sum_{V<f\le2V}\frac1{\varphi(f)}\sum_\psi^*|A_eB_e|
+ \ll (\log\log x)
+ \left(V+\sqrt M+\sqrt{N_{\rm box}}+\frac{\sqrt x}{V}\right)\|a\|_2\|b\|_2.
+\tag{5.27}
+\]
+
+\endgroup
+There are $O(\mathcal L)$ conductor blocks,
+and $\sum_{e\le Q}1/\varphi(e)\ll\mathcal L$.
+The divisor-weighted sum obeys
+$\sum_{e\le Q}\tau(e)^{B_{\rm div}}/\varphi(e)\allowbreak
+\ll\mathcal L^{2^{B_{\rm div}}+1}$.
+After division by $\|a\|_2\|b\|_2x^{1/2}$, the bound is
+\begingroup\small
+\[
+ \ll \eta^{-A_2}\mathcal L^{2C+2^{B_{\rm div}}+1-A_2}
+ +\mathcal L^{3-B_1}+\mathcal L^3x^{-\eta/2}+\mathcal L^{3-C}.
+\tag{5.28}
+\]
+
+\endgroup
+Take $C=A+3$, $B_1\ge A+3$,
+$A_2\ge A+2C+2^{B_{\rm div}}+1$.
+This proves (5.24) on the full supports.
+\end{proof}
+
+The next lemma verifies that hypothesis for primes in short intervals.
+
+\begin{lemma}[Prime interval coefficients]
+Fix $H_{\rm int},c,C>0$.
+Let $N^c\le Y\le N^C$ and $N_{\rm box}=Y/2$.
+If $J\subset[Y/2,Y]$ has length $|J|\asymp YL^{-H_{\rm int}}$,
+then $b=\mathbf1_{\mathbb P\cap J}$ satisfies (5.23)
+with $B_{\rm div}=1$, uniformly in $J$.
+\end{lemma}
+
+\begin{proof}
+Endpoint PNT gives
+\[
+\|b\|_2^2\asymp YL^{-H_{\rm int}-1}.
+\]
+
+Fix $A_2$.
+Put $s=A_2+(H_{\rm int}+1)/2$ and $R=YL^{-s}\to\infty$.
+The target bound is then comparable to $R\tau(d)$.
+For $k\le L^{C_0}$, use endpoint power-log Siegel--Walfisz.
+After removing the primes dividing $d$, it gives
+\[
+|\Delta|\ll_{B,C_0}YL^{-B}+\omega(k)+\tau(d).
+\]
+
+Take $B>s+3$; then the first term is $O(R)$.
+Also $\omega(k)\le\log k/\log2=O_{C_0}(\log L)=o(R)$.
+Since $\tau(d)\ge1$, the bound is $O(R\tau(d))$, uniformly in $d$.
+For $k>L^{C_0}$, positivity gives
+\[
+|\Delta|\le |J|/k+1+\pi(J)/\varphi(k).
+\]
+
+The function $\log\log(3t)/t$ eventually decreases.
+Since $1/\varphi(k)\ll\log\log(3k)/k$,
+\[
+\sup_{k>L^{C_0}}1/\varphi(k)\ll L^{-C_0}\log\log(3L^{C_0}).
+\]
+
+Using $|J|\ll YL^{-H_{\rm int}}$ and
+$\pi(J)\ll YL^{-H_{\rm int}-1}$ in the displayed bound above, we get
+\[
+\begin{aligned}
+ |J|/k+1+\pi(J)/\varphi(k)
+ &\ll YL^{-H_{\rm int}-C_0}+1\\
+ &\quad+YL^{-H_{\rm int}-1-C_0}\log\log(3L^{C_0})
+ \ll R.
+\end{aligned}
+\]
+Here $R=YL^{-s}\to\infty$, and $C_0>s+3$.
+Hence (5.23) holds with $B_{\rm div}=1$.
+\end{proof}
+
+In (5.26), one takes $d=e$, $k=f$, $ef\le Q$,
+using (5.23) for $f\le F$ and (5.8) otherwise.
+The two applications use these parameters:
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Source & $H_{\rm int}$ & $x_b$ & $\eta$ \\
+\midrule
+O1 & $2$ & $[\varepsilon N/8,2N]$ & $0.08$ \\
+G4 & $H_g=A+4$ & $\asymp_\varepsilon N$ & $1/4$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The G4 partition has equal widths, including its last interval.
+
+\subsection{O1: signs, full convolution and mass}
+
+This subsection proves the upper bound for the switched excess.
+We use the finite source and the thirteen-row weight of \S{}1.
+Put
+\[
+ S_{\rm sw}=\sum_{n\in\mathcal A_\varepsilon,\ \Omega(n)\ge3,\ P^-(n)\ge N^\alpha}
+                   \max(W_{13}(n),0).
+\tag{5.29}
+\]
+
+Let $N_j(n)$ count the permitted source pairs, $j=11,12,13$,
+with their exact indicators from \S{}4.
+Let $k_i$ denote the four bin counts defined below.
+Set $m_B(v)=\#\{u_i:u_i<B_{O1}(v)\}$.
+For squarefree $(n,N)=1$, the pointwise identity is
+\begingroup\small
+\[
+\begin{aligned}
+ W_{13}(n)&=R(n)-2N_{11}(n)-N_{12}(n)-N_{13}(n),\\
+ R(n)&=3+\mathbf1_{k_1=0}-2k_1-2k_2-k_3\\
+      &\quad+\binom{k_1}{2}+\sum_jm_B(v_j).
+\end{aligned}
+\tag{5.29a}
+\]
+
+\endgroup
+For $k\ge5$, all three negative source counts vanish:
+\begin{center}
+\begin{tabular}{@{}lp{0.70\textwidth}@{}}
+\toprule
+Row & Obstruction \\
+\midrule
+S11 & Five factors $\ge N^\lambda$; $5\lambda>1$. \\
+S12 & One factor $\ge N^\alpha$ and four $\ge N^{1/3}$. \\
+S13 & Three remaining factors would have product $\ge(N/p_ap_b)^{3/2}>N/p_ap_b$, contradicting $e<N$. \\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus $W_{13}=R$.
+For $k=3,4$, put $t_1<\cdots<t_k$, $s=\sum t_i$.
+Take $N$ such that $0<1-s<10^{-3}$.
+The following conditions guarantee pairs.
+\begin{longtable}{@{}p{0.25\textwidth}p{0.70\textwidth}@{}}
+\toprule
+Condition & Guaranteed count \\
+\midrule
+$G11:\ k_1=k_2=0,\ k_3\ge1$ & $N_{11}\ge1$ \\
+$G12:\ k_4=k-1,\ k_1+k_2+k_3=1$ & $N_{12}\ge1$ \\
+$G13:\ k=3,\ k_1=0,\ k_2=1$ & $N_{13}\ge1$ \\
+\bottomrule
+\end{longtable}
+
+In each case the pair consists of the two smallest prime factors.
+Its upper pair constraint follows from
+$1-t_1>s-t_1=t_2+\cdots+t_k>2t_2$.
+All remaining factors exceed the second prime.
+For G13, $t_3>1-s$ gives the square-root cutoff.
+Extra S13 pairs, including radial endpoints, carry a negative coefficient.
+Put
+\begingroup\small
+\[
+ U(k)=3+\mathbf1_{k_1=0}-2k_1-2k_2-k_3
+          +\binom{k_1}{2}+k_1k_2,\qquad
+ U^*(k)=U(k)-2\mathbf1_{G11}-\mathbf1_{G12}-\mathbf1_{G13}.
+\tag{5.29b}
+\]
+
+\endgroup
+Since $m_B(v)\le k_1$, $W_{13}(n)\le U^*(k)$.
+Apply (4.9)--(4.12) on $\varepsilon N<n<N$,
+and discard vectors with $\sum k_i\inf I_i\ge1$
+or $\sum k_i\sup I_i\le1-10^{-3}$.
+The remaining ten vectors for $k=3$ have $U^*\le0$,
+and so do the nineteen for $k=4$.
+Hence their positive weight vanishes.
+
+For the remaining cells put $\mu=25/128$, $\lambda=93/400$, and
+\[
+ C_0=\frac{57}{64}-u-\frac{11}{5}\alpha=\frac{6408241}{9192000},
+ \quad v_\beta=\frac{2(C_0-\beta)}5,
+\]
+
+\[
+ B_{O1}(v)=\begin{cases}\beta,&\beta\le v\le v_\beta,\\
+ C_0-5v/2,&v_\beta<v<\lambda.
+ \end{cases}
+\tag{5.30}
+\]
+
+Here $2(C_0-\alpha)/5>\lambda$, so the lower clamp is inactive.
+For $5\le k\le11$, the coordinate bins are
+$I_1=[\alpha,\beta)$, $I_2=[\beta,\lambda)$,
+$I_3=[\lambda,1/3)$, $I_4=[1/3,1]$.
+A cell is specified by the following data:
+\begin{center}
+\begin{tabular}{@{}lp{0.70\textwidth}@{}}
+\toprule
+Counts & $k_1+\cdots+k_4=k$ \\
+Order & $u_1<\cdots<u_{k_1}<v_1<\cdots<v_{k_2}<w_1<\cdots<w_{k_3}<z_1<\cdots<z_{k_4}$ \\
+Ranks & $k_1\ge m_1\ge\cdots\ge m_{k_2}\ge0$ \\
+Flat branch & $v_j\le v_\beta$, $m_j=k_1$ \\
+Slope branch & $v_j>v_\beta$, $u_{m_j}<C_0-5v_j/2\le u_{m_j+1}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The last line uses infinite outer sentinels.
+Each nonempty cell is convex,
+and each of its inequalities involves at most two coordinates.
+Its weight is
+\[
+ w_C=3+\mathbf1_{k_1=0}-2k_1-2k_2-k_3+\binom{k_1}{2}+\sum_jm_j.
+\tag{5.31}
+\]
+
+Let $\mathcal C$ be the set of cells with $w_C\ge1$;
+their weights are at most 36.
+They partition the ordered prime vectors, with the stated face conventions.
+Define
+\begingroup\small
+\[
+\begin{aligned}
+ C_N&=C\cap\{1-\log(1/\varepsilon)/L<\sum t_i<1\},\\
+ V_C(s)&=\int_{C\cap\{\sum t_i=s\}}\frac{dt_1\cdots dt_{k-1}}{t_1\cdots t_k},\\
+ I_{HL}&=\sum_Cw_CV_C(1).
+\end{aligned}
+\tag{5.32}
+\]
+
+\endgroup
+The radial interval is exactly $\varepsilon N<e<N$.
+Put $g(e)=\sum_Cw_Ca_C(e)$,
+where $a_C$ selects permitted squarefree factorizations in $C_N$.
+Squareful or non-coprime rough exceptions number $O(N^{1-\alpha}L)$.
+Each has at most eleven prime factors.
+So each one-prime row is at most 11,
+and each two-prime row is at most $\binom{11}{2}$.
+Thus $|W_{13}|\le455$, and
+\[
+ S_{\rm sw}\le\sum_e g(e)\mathbf1_{\mathbb P}(N-e)+O(N^{1-\alpha}L).
+\tag{5.33}
+\]
+
+\emph{Full-support majorant.}
+Put $\Delta_0=1+L^{-2}$, $h=\log\Delta_0/L\le L^{-3}$,
+and $J_j=[N^\alpha\Delta_0^{j-1},N^\alpha\Delta_0^j)$.
+Let $T_j$ be its exponent interval.
+A box $\mathbf j=(j_1,\ldots,j_k)$ is outer for $C$ if
+$\overline{T_{j_1}\times\cdots\times T_{j_k}}\cap\overline{C_N}\ne\varnothing$.
+Let $\mathbf1_{\mathbf j}(e)$ count labelled prime factorizations
+with factor $i$ in $J_{j_i}$.
+Put
+\[
+ c(\mathbf j)=\sum_{C:\,\mathbf j\text{ outer for }C}w_C,\qquad
+ f^+(e)=\sum_{k=5}^{11}\sum_{\mathbf j}c(\mathbf j)\mathbf1_{\mathbf j}(e).
+\tag{5.34}
+\]
+
+Then $g\le f^+$.
+For $J=J_j$, put
+\[
+ b_J=\mathbf1_{\mathbb P\cap J},\qquad
+ a_J(m)=\sum_{k=5}^{11}\sum_{\mathbf j:\,j_1=j}c(\mathbf j)
+  (\mathbf1_{\mathbb P\cap J_{j_2}}*\cdots*
+   \mathbf1_{\mathbb P\cap J_{j_k}})(m).
+\tag{5.35}
+\]
+
+Thus $f^+=\sum_Ja_J*b_J$.
+For fixed $m$, $k=\Omega(m)+1$,
+and each labelled factorization fixes one interval tuple.
+There are at most $(k-1)!$ such factorizations, so
+\[
+ 0\le a_J(m)\le K_{\rm box}:=\max_{5\le k\le11}(k-1)!\sum_{C\in\mathcal C_k}w_C,
+\tag{5.36}
+\]
+
+uniformly in $N,J$.
+Every original cell constraint remains, and outer boxes satisfy
+$\sum t_i\in[1-\log(1/\varepsilon)/L-kh,1+kh]$,
+$t_1\in[\alpha,1/5+h]$.
+For $J=[Y/\Delta_0,Y)$, split $a_J$ dyadically at $M$;
+then, eventually,
+\[
+ x_b=M(Y/2)\in[\varepsilon N/8,2N],\quad
+ \eta=0.08\le\frac{\log(Y/2)}{\log x_b}\le1-\eta,
+\tag{5.37}
+\]
+
+and there are $O_\varepsilon(L^3)$ blocks.
+Their norms satisfy
+$\|a_{J,M}\|_2\ll K_{\rm box}\sqrt M$,
+$\|b_J\|_2\ll\sqrt YL^{-3/2}$.
+The interval lemma gives (5.23) with $H_{\rm int}=2$.
+Use saving 6 and a single level $D=N^{1/2}L^{-B}$,
+$B\ge B_1(6)+1$.
+Each block then costs $O(NL^{-15/2})$, giving
+\[
+ \sum_{d\le D}\max_{(r,d)=1}|\Delta_{f^+}(d,r)|
+ \ll_\varepsilon NL^{-9/2}.
+\tag{5.38}
+\]
+
+Each cofactor has at least four rough prime factors,
+and the sieve divisors remain outside the convolution.
+All block scales are comparable to $N$.
+
+\emph{Sieve and mass.}
+Sieve $\{N-e\}$ with multiplicity $f^+(e)$ at $z=\sqrt D$,
+and put $X^+=\sum f^+$.
+For $d\mid P_N(z)$,
+\[
+ r_d=\Delta_{f^+}(d,N)-\frac1{\varphi(d)}\sum_{(e,d)>1}f^+(e).
+\tag{5.39}
+\]
+
+Every $e$ has at most eleven prime factors, all $\ge N^\alpha$.
+Put
+\[
+ R_{\rm nc}:=\sum_{\substack{d<D\\d\mid P_N(z)}}
+ \frac1{\varphi(d)}\sum_{(e,d)>1}f^+(e).
+\]
+
+For squarefree $d=\ell r$ with prime $\ell\mid(e,d)$,
+$(\ell,r)=1$ and $\varphi(d)=(\ell-1)\varphi(r)$.
+Hence
+\[
+ \begin{aligned}
+ R_{\rm nc}
+ &\le\sum_e f^+(e)\sum_{\ell\mid e}\frac1{\ell-1}
+       \sum_{r<D/\ell}\frac{\mu^2(r)}{\varphi(r)}\\
+ &\le22X^+N^{-\alpha}\sum_{r<D}\frac{\mu^2(r)}{\varphi(r)}
+ \ll X^+N^{-\alpha}L.
+ \end{aligned}
+\tag{5.40}
+\]
+
+Here $1/(\ell-1)\le2N^{-\alpha}$ eventually.
+By (5.42), the normalized cost is $O(N^{-\alpha}L^2)$;
+it is included in $E_{S_{\rm sw}}$.
+By (5.33), source exceptions cost $O(N^{1-\alpha}L)$ before normalization.
+Since $U_C\gg N/L^2$, their normalized cost is $O(N^{-\alpha}L^3)$.
+Primes $N-e<z$ in $g$ cost at most $36z$.
+Outer-box multiplicities remain nonnegative for nonpositive $N-e$.
+Apply (5.4) to the finite multiset.
+Each box has mass
+\[
+\prod_i\pi(J_{j_i}).
+\]
+
+Uniform PNT approximates it by
+\[
+\int_{T_{\mathbf j}}N^{\sum t_i}\prod_i dt_i/t_i
+\]
+
+with exponentially small relative error.
+The excess of the outer boxes lies within $\sqrt k h$ of the facets.
+Radial facets cost $O(hN)$.
+Every other facet has at most two nonzero normal coordinates,
+and its normal is not parallel to $(1,\ldots,1)$.
+Each radial slice has excess $O(h)$, costing $O(hN/L)$.
+Thus the total weighted excess is $O(NL^{-3})$.
+
+The slice mass $V_C(s)$ is Lipschitz near 1.
+All coordinates exceed $\alpha$, so denominators and derivatives are bounded.
+Changing $s$ shifts each two-coordinate inequality by $O(|1-s|)$.
+If a constraint uses the eliminated coordinate, its gradient has at least $k-2\ge3$ identical nonzero entries.
+Thus the slice change is $O(|1-s|)$.
+Radial integration gives
+\[
+ \int_{C_N}N^{\sum t_i}\prod_i\frac{dt_i}{t_i}
+ =\frac NL\left[(1-\varepsilon)V_C(1)
+ +\int_0^{\log(1/\varepsilon)}e^{-v}
+       \{V_C(1-v/L)-V_C(1)\}\,dv\right].
+\tag{5.41}
+\]
+
+Hence
+\[
+ X^+=\frac NL\{(1-\varepsilon)I_{HL}+O_\varepsilon(L^{-1})\}.
+\tag{5.42}
+\]
+
+Thus (5.40) is $O(N^{1-\alpha})=o(U_C)$.
+For $s=2$, $F(2)=e^\gamma$ and
+$\log z=L/4-(B/2)\log L$.
+By (5.7),
+\[
+ V_N(z)F(2)=\frac{8C(N)}L\{1+O(\log L/L)+o(1)\}.
+\]
+
+Equations (5.33), (5.38)--(5.42) and the sieve give
+\[
+ \boxed{\ S_{\rm sw}\le[8(1-\varepsilon)I_{HL}+o(1)]U_C\ }.
+\tag{5.43}
+\]
+
+The errors are $O(U_CL^{-1/3})$, $O(N^{1/4})$,
+$O_\varepsilon(NL^{-9/2})$ and $O(N^{1-\alpha}L)$,
+including the radial and box errors.
+Each is $o(U_C)$.
+Appendix~A.6 encloses (5.32).
+The low-$\Omega$ cells are handled by (4.9)--(4.12) and (5.29a)--(5.29b).
+
+\subsection{Weak G4: interval partition and injection}
+
+This subsection bounds the remaining balanced semiprimes.
+Fix $a$ with $3/2<a<2$ and
+$\frac{a-1}{a}-\varepsilon>\frac13$. Put
+\[
+ b_{G4}=\frac{a-1}{a}-\varepsilon>\frac13.
+\]
+
+For $a=9/5$, this is the cutoff in (1.3).
+Count ordered prime pairs by
+\[
+ g_N(e)=\#\{(m,p'):m,p'\text{ prime},\ N^{b_{G4}}\le m\le\sqrt N,
+                      \ \varepsilon N\le mp'<N,\ mp'=e\}.
+\tag{5.44}
+\]
+
+Unique factorization gives $g_N\le2$;
+both orders and all coprimality types are included.
+For $A>2$, put $H_g=A+4$ and
+\[
+ R=\left\lceil\frac{(1/2-b_{G4})L}{\log(1+L^{-H_g})}\right\rceil,
+ \quad \xi=N^{(1/2-b_{G4})/R},\quad u_j=N^{b_{G4}}\xi^j.
+\tag{5.45}
+\]
+
+Partition into the intervals $[u_{j-1},u_j)$, with the last upper endpoint closed.
+Each relative width is comparable to $L^{-H_g}$,
+and there are $O(L^{H_g+1})$ intervals.
+For an interval with upper endpoint $Y$, take $b_J=\mathbf1_{\mathbb P\cap J}$ and
+\[
+ a_J^+(p')=\mathbf1_{p'\text{ prime},\ \varepsilon N/Y\le p'<N\xi/Y},\qquad
+ a_J^-(p')=\mathbf1_{p'\text{ prime},\ \varepsilon N\xi/Y\le p'<N/Y}.
+\tag{5.46}
+\]
+
+Then $g^-\le g_N\le g^+$, with $g^\pm=\sum_Jb_J*a_J^\pm$.
+For $h=g^+-g_N$, $0\le h\le2$.
+Its support lies in
+$[\varepsilon N/\xi,\varepsilon N)\cup[N,N\xi)$,
+a set of length $W\ll NL^{-H_g}$.
+PNT or Brun--Titchmarsh gives $\sum h\ll NL^{-H_g-1}$.
+Thus
+\[
+ \sum_{q\le Q}\max_{(r,q)=1}|\Delta_h(q,r)|
+ \ll\sum_{q\le Q}\left(2(W/q+2)+(\sum h)/\varphi(q)\right)
+ \ll NL^{-H_g+1}+Q.
+\tag{5.47}
+\]
+
+Write $\Delta_{g_N}=\Delta_{g^+}-\Delta_h$, and split $a_J^+$ into $O_\varepsilon(1)$ dyadic pieces $(M_i,2M_i]$.
+Here $x_b=M_iY/2\asymp_\varepsilon N$ and
+$\log(Y/2)/\log x_b\in[b_{G4}-o(1),1/2+o(1)]$.
+Thus $\eta=1/4$ is admissible.
+The norms are $\|a_{J,i}\|_2\ll\sqrt{M_i}$ and
+$\|b_J\|_2\ll\sqrt YL^{-(H_g+1)/2}$.
+The interval lemma gives (5.23) for every exact interval.
+With $A_{\rm block}=A+H_g/2+2$ in (5.24),
+each block costs $O(NL^{-A_{\rm block}-(H_g+1)/2})$,
+and their sum is $O(NL^{-A-3/2})$.
+A single level $Q=N^{1/2}L^{-B}$ works throughout, with
+$B\ge B_1(A_{\rm block},1/4,1)+1$.
+Together with (5.47),
+\[
+ \sum_{q\le Q}\max_{(r,q)=1}|\Delta_{g_N}(q,r)|\ll_{A,a,\varepsilon}NL^{-A}.
+\tag{5.48}
+\]
+
+For example, one may take $A=4$, $H_g=8$, $A_{\rm block}=10$.
+Apply this to
+\[
+ G_3(b_{G4})=\sum_{m\in\mathcal P_N,\ N^{b_{G4}}\le m\le\sqrt N}
+            S(\mathcal A_m;\mathcal P_N,m),
+\tag{5.49}
+\]
+
+with the conditions $P^-(c)\ge m$, $(c,Nm)=1$.
+A counted term satisfies $N-p_0=mc$, $p_0<X$.
+Eventually,
+\[
+ 1<\varepsilon\sqrt N<c<N/m\le N^{1-b_{G4}}<N^{2b_{G4}}\le m^2.
+\]
+
+A composite $c$ would satisfy $c\ge m^2$, so $c$ is prime.
+The designated $m$ gives an injection into (5.44),
+with multiplicity one in all ordering and coprimality cases.
+The closed lower endpoint covers $e>\varepsilon N$,
+and the square and endpoint conventions cost $O(\sqrt N)$.
+
+Sieve with multiplicity $g_N(e)$ at $D_s=Q$, $z=\sqrt Q$, $s=2$.
+Primes $p_0<z$ cost at most $2z$. Put $X_g=\sum g_N$.
+For $d\mid P_N(z)$, $N$ is reduced and
+\[
+ |\mathcal B_d|=X_g/\varphi(d)+r_d,\qquad
+ r_d=\Delta_{g_N}(d,N)-\frac1{\varphi(d)}\sum_{(e,d)>1}g_N(e).
+\tag{5.50}
+\]
+
+Eventually both prime factors exceed
+$\min(N^{b_{G4}},\varepsilon\sqrt N)>N^{1/3}>z$,
+so the non-coprime term vanishes.
+For comparison, at $y=z=Q$ one has $s=1$, $F(1)=2e^\gamma$
+and $\log Q=L/2-B\log L$.
+Thus (5.7) gives
+\[
+ V_N(Q)F(1)=\frac{4C(N)}{\log Q}(1+o(1))
+ =\frac{8C(N)}L(1+o(1)).
+\]
+Since $Q_1(1)$ is bounded and $K$ is fixed, the correction in (5.4) is
+\[
+ V_N(Q)e^{\sqrt K}Q_1(1)(\log Q)^{-1/3}
+ =O_K(C(N)L^{-4/3})=o(C(N)/L).
+\]
+Hence the sieve factor has the same leading constant.
+The G4 bound below uses $z=\sqrt Q$ as above.
+By (5.48) and (5.4), the remainder is $o(U_C)$.
+Uniform PNT gives
+\[
+ X_g=\sum_m\{\pi(N/m)-\pi(\varepsilon N/m)\}+o(N/L)
+ =\frac{(1-\varepsilon)N}{L}
+     \int_{b_{G4}}^{1/2}\frac{dt}{t(1-t)}+o(N/L).
+\tag{5.51}
+\]
+
+Endpoints cost $O(\sqrt N)$.
+PNT is applied to the inner count, then partial summation to the outer sum.
+Since $\log(N/m)=(1-t)L$, the integral is
+$\log((1-b_{G4})/b_{G4})$.
+Also $V_N(\sqrt Q)F(2)=(8+o(1))C(N)/L$.
+Hence
+\[
+ \boxed{\ \sum_{p_0\text{ prime}}g_N(N-p_0)\le
+ \left[8(1-\varepsilon)\log\frac{1-b_{G4}}{b_{G4}}+o(1)\right]U_C\ }.
+\tag{5.52}
+\]
+
+The injection gives
+$G_3(b_{G4})\le\sum_{p_0\text{ prime}}g_N(N-p_0)+O(\sqrt N)$,
+which proves weak G4.
+Sections~2--4 give G1 and the nineteen OL estimates.
+
+\subsection{One signed allocation}
+
+Theorem~\ref{thm:signed-assembly} and \S{}6.3 give (1.21),
+with $\Sigma_W=\Sigma$ and $r_\Sigma(N)=o(1)$.
+
+For general $a$, the pointwise bound and (5.52) give
+\[
+ D_{(1,a)}(N)\ge
+ \left[(1-\varepsilon)\left\{D_{\rm cert}
+           -8\log\frac{1-b_{G4}}{b_{G4}}\right\}-o(1)\right]U_C.
+\tag{5.54}
+\]
+
+\begingroup\sloppy
+Cancel the common positive factor $1-\varepsilon$.
+For $a=9/5$, $\varepsilon=1/10000$, $b_{G4}=39991/90000$,
+the criterion is then (1.22):
+$D_{\rm cert}>8\log(50009/39991)=1.788388483459608\ldots$.
+The raw bad-count coefficient is
+$8(9999/10000)\log(50009/39991)$, that is, $1.788209644611262\ldots$.
+Its limit is $8\log(5/4)=1.785148410513678\ldots$.
+The fixed-$\varepsilon$ construction here uses (1.22).
+For fixed $a\in(3/2,2)$, put $\rho_0=(a-1)/a$ and
+$r_c=1/(1+\exp(D_{\rm cert}/8))$.
+The same source argument works if
+\par\endgroup
+\[
+ \varepsilon=10^{-4},\qquad
+ \rho_0-10^{-4}>\max\{1/3,r_c\}.
+\tag{5.56}
+\]
+
+Then $b_{G4}=\rho_0-10^{-4}>1/3$ and
+$D_{\rm cert}>8\log((1-b_{G4})/b_{G4})$.
+With $\varepsilon$ kept fixed, require $N>\varepsilon^{-(a-1)/(a\varepsilon)}$
+and the analytic threshold.
+The signed allocation is as follows.
+\begin{longtable}{@{}p{0.25\textwidth}p{0.70\textwidth}@{}}
+\toprule
+Term & Position and multiplicity \\
+\midrule
+Full R1 comparator $4J_{R1}$ & One replacement in (5.18). Appendix~A.4 includes the R1-$\kappa$ comparison in S2. The extra allowance in (6.6) is conservative. \\
+PF/BV selected cells & The PF-side loss of (5.19), once. \\
+S5 BV top & One replacement on $[t_*,\tau_S)$ in the split row. \\
+S6 level increment & $E_{S6}$ of (5.22), once. \\
+Finite BV errors & $E_{N6}(N)\ge0$, including the logarithmic loss; $E_{N6}(N)\to0$. \\
+AA37 perturbation & $C_E\sigma W_{\rm AA}/4\le g_{\rm AA}$ by (1.27), once in (6.6). Cutoff and selection costs are in (6.4). \\
+O1 main term & $-S_{\rm sw}/[4(1-\varepsilon)U_C]\ge-2I_{HL}-o(1)$, inside $D$. Its enclosure enters once. \\
+O1 errors & $E_{S_{\rm sw}}=o(1)$ from (5.43): box, radial, exceptional, small-prime, non-coprime and BV. The non-coprime cost is $O(N^{-\alpha}L^2)$; finite-source exceptions cost $O(N^{-\alpha}L^3)$. \\
+Weak G4 & $G_3(b_{G4})$ is subtracted once outside $D$ in (5.54). \\
+\bottomrule
+\end{longtable}
+
+Sections~2--4 and~6.3 prove the source and profile bounds.
+Each fixed cost enters once,
+and direct low-prime removal costs $O_u(L^{-28})$ after normalization.

@@ -1,0 +1,94 @@
+\section{Finite source checks}\label{app:finite-source-checks}
+
+Here we check source identities and cutoffs on selected instances.
+The main text proves these estimates uniformly in $N$.
+
+The script uses integer arithmetic and \texttt{fractions.Fraction},
+with a smallest-prime-factor sieve through $400000$.
+For each seed
+\[
+  1,\qquad 2,\qquad 20261022,
+\]
+the script runs with second argument $150$ and Python \texttt{random.Random(seed)}.
+It draws $150$ even integers
+$N=2\cdot\texttt{randrange}(5000,60000)$. Each draw selects
+$z\in\{5,7,11,13,17\}$ and $V_0\in\{200,500,1000,2000\}$.
+For each of the three prefix families below, it draws
+$D\in\{200,1000,5000\}$ separately.
+It tests the primes $v$ with
+$100v<99N$. The plain sample also requires $v>V_0$.
+There are three prefix families:
+$b=1$; the first at most six primes $p\in[z,4z)$, $p\nmid N$;
+and the first at most six ordered pairs $(p_1,p_2)$.
+The pairs satisfy $z\le p_2<p_1<6z$ and $p_i\nmid N$.
+Thus the tested prefix condition is $p_i\ge z$ and $(p_i,N)=1$.
+
+For the three-step Buchstab identity, each seed gives $30$ further even integers
+$N=2\cdot\texttt{randrange}(3000,15000)$. Here $z_0=5$,
+$z_1\in\{17,23,29\}$ and $V_0=300$.
+The plain primes satisfy $V_0<v$ and $100v<99N$.
+The switched checks use $30$ further even integers
+$N=2\cdot\texttt{randrange}(20000,100000)$.
+Set $y_1\in\{5,7,11\}$, $z_{\rm sw}\in\{7,11,13\}$,
+and interval endpoints $N/100,99N/100$.
+The ordered triples satisfy
+$y_1\le p_1<p_2\le p_3$, $p_1^3<N$, $p_1p_2^2<N$ and
+$N/100<p_1p_2p_3<N$, with the coordinate bounds $p_i^3<8N$.
+The tagged triples also have $p_i\nmid N$
+and $p_3\ne p_2$. In these three batches the rational cutoffs are compared
+by cross-multiplying integers.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}p{0.105\textwidth} p{0.465\textwidth} p{0.365\textwidth}@{}}
+\hline
+\textbf{Check} & \textbf{Finite assertion} & \textbf{Recorded result} \\
+\hline\endhead
+D1 & The literal cofactor row equals $S(\mathcal A_{r,b},\mathcal P_N,z)$ on each selected direct fibre. & 1,350 direct-case batches; all passed \\
+D2 & The first-true partition of the ambient/plain source differences is exhaustive. & 0 escapes among 3,988,123 ambient tuples; CUT-LOW 96,876, EXC 272, SRC-RESTORE 121,017 \\
+D3 & The sifted source identity is the signed sum of the plain source and its two set differences. & Exact on every tested fibre \\
+D4 & Escapes of the earlier source-difference predicate are removed by the sieve. & 1,295,622 escapes; each has a cofactor prime $<z$ not dividing $N$; 0 exceptions \\
+D5 & Legendre's identity uses the remainder of the plain tested sequence. & Exact in every tested fibre \\
+D6 & The Rosser $\beta=2$ lower and upper inequalities \cite{ref4} hold, with the stated signed-remainder decompositions. & Exact in every tested fibre \\
+D7 & For plain sampled primes $v>V_0$, $\Delta_0(q)=\Delta_P(q)$ whenever $q\le V_0$. & Exact for every such modulus and prime \\
+D8 & The three-step Buchstab identity and its cutoff monotonicity hold on the plain sequence. & 90/90 cases \\
+G1 & The tagged-ambient/plain-cut weight identity, tag partition, switching comparison, and plain-sequence Legendre identity hold. & 90/90 cases; 0 tag escapes; 12,337 coordinate-divides-$N$ tags and 9,701 repeated-prime tags; all switching discrepancies occur at $N-e\le\sqrt N$ or $N-e=1$ \\
+\hline
+\end{longtable}
+\endgroup
+
+Each direct-row run has 450 batches.
+Together they contain 3,988,123 ambient tuples,
+and D2 and D4 report the combined counts.
+In D4, an ``escape'' is a tuple missed by the earlier difference predicates.
+Its cofactor has a sieving prime below $z$, coprime to $N$.
+The Buchstab and G1 counts also combine the three seeds.
+G1 counts coordinate-divisibility tags and repeated-prime tags separately,
+using a first-true partition: a coordinate-divisibility tag takes precedence
+over a repeated-prime tag when both predicates hold.
+
+Each seed also gives five small examples.
+One further illustration has about 260 digits.
+The large examples use fixed-base Miller--Rabin screens.
+Their primality is uncertified.
+They illustrate the cutoffs only;
+neither the proof nor the numerical bounds use them.
+
+The SHA-256 identifiers are:
+\begin{itemize}[leftmargin=2em]
+\item Checker \texttt{lemma\_s\_ambient\_check.py}:
+  \texttt{81d74731\allowbreak{}cf82e911\allowbreak{}ea509e3d\allowbreak{}cead1fcf\allowbreak{}885e4d3c\allowbreak{}a06e3d66\allowbreak{}b53fc749\allowbreak{}717138fc}.
+\item Seed $1$ output:
+  \texttt{997cb3e3\allowbreak{}2195d3a3\allowbreak{}1e61557c\allowbreak{}a87474e8\allowbreak{}d0d785e3\allowbreak{}feb396cb\allowbreak{}d95164c9\allowbreak{}e3b35fe2}.
+\item Seed $2$ output:
+  \texttt{3139f095\allowbreak{}2534a707\allowbreak{}2f1a0938\allowbreak{}8305f426\allowbreak{}092cdfab\allowbreak{}07eab568\allowbreak{}92e8992c\allowbreak{}f14ff09a}.
+\item Seed $20261022$ output:
+  \texttt{a6f69703\allowbreak{}a169e18f\allowbreak{}a05cd697\allowbreak{}399a6713\allowbreak{}2b1fb3cd\allowbreak{}8383c5f4\allowbreak{}d10d24c8\allowbreak{}4d00d04d}.
+\item Environment record (Python 3.12.3, Linux x86\_64):
+  \texttt{7f0e02eb\allowbreak{}4aff3c83\allowbreak{}e7e8cacd\allowbreak{}9a831669\allowbreak{}782f676f\allowbreak{}fc5dfec0\allowbreak{}47ce26ca\allowbreak{}200e5271}.
+\end{itemize}
+These files are in the numerical-certificate archive;
+see the Data Availability statement.
+Its README gives the verification and reproduction commands.

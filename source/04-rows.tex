@@ -1,0 +1,1042 @@
+\section{The sieve rows S1--S10 on the actual source}
+\label{p2:sec:rows}
+This section treats the direct sieve rows on the actual source.
+Put $\rho=1+\tau$, $\mu=25/128$. The rows are grouped as
+\[
+\begin{array}{c|l}
+\mathrm{DIRECT}&\mathrm{S1\hbox{-}0\hbox{--}S1\hbox{-}3,S3\hbox{-}A,S4,S5\hbox{-}low,S7,S8\hbox{-}A,S9\hbox{-}A,S10\hbox{-}Ret}\\
+\mathrm{S2}&\mathrm{S2\hbox{-}0\hbox{--}S2\hbox{-}3}\quad\text{(whole-$K$ at depth three)}\\
+\mathrm{BV}&\mathrm{S5\hbox{-}top,S6}.
+\end{array}
+\]
+Sections~3 and~5 treat S2 and BV.
+Conditions C1--C5 are those of Theorem~\ref{thm:distribution-input}.
+The internal Lemma~\ref{thm:packing-input} gives the slots.
+
+\subsection{Source replacement and the exact signed coefficient}
+This subsection replaces the literal source by the plain one.
+\begin{lemma}[Source replacement and coefficients]
+\label{lem:source-replacement}
+Let $\mathcal P_N=\{p>2:p\nmid N\}$ and
+\[
+ A_D(v)=\mathbf1_{\mathbb P}(v)
+ \mathbf1_{N/\log^{30}N<v<(1-\epsilon_A)N}.
+\]
+For a squarefree prefix $b$ from $\mathcal P_N$, set
+\[
+\begin{aligned}
+\mathcal A_b&=\{v\in\mathbb P:v<(1-\epsilon_A)N,\ v\nmid N,\ b\mid N-v,
+                         \ p^2\nmid N-v\ (p\mid b)\},\\
+\mathcal A_b^{\rm pl}&=\{v:A_D(v)=1,\ b\mid N-v\}.
+\end{aligned}
+\]
+For $A\subseteq\mathcal A_b\cup\mathcal A_b^{\rm pl}$, the notation
+$S(A,\mathcal P_N,z)$ means
+\[
+ \#\left\{v\in A:\left(\frac{N-v}{b},P_N(z)\right)=1\right\}.
+\]
+Thus this sieve tests the cofactor, not the prime $v$ or the integer $N-v$.
+If every prefix prime is $\ge z$, the literal sieve is
+$S(\mathcal A_b,\mathcal P_N,z)$. Its source comparison is
+\[
+ S(\mathcal A_b,\mathcal P_N,z)-S(\mathcal A_b^{\rm pl},\mathcal P_N,z)
+ =S(\mathcal A_b\setminus\mathcal A_b^{\rm pl},\mathcal P_N,z)
+  -S(\mathcal A_b^{\rm pl}\setminus\mathcal A_b,\mathcal P_N,z).
+ \tag{2.17a}\label{p2:eq:direct-source-comparison}
+\]
+The normalized unsifted bounds, in Section~6 units, are
+\[
+\begin{array}{c|c}
+v\le N/\log^{30}N&O_u(L_N^{-28})\\
+v\mid N&O_u(L_N^3/N)\\
+p^2\mid N-v\text{ for a prefix prime}&O_u(N^{-u/(1+\tau)}L_N^3).
+\end{array}
+\]
+Fix an AA37 sign $\nu$, a row cell and tail labels.
+All literal clipped sets and the smooth divisor are kept. Put
+\[
+ C_c(q)=\sum_{d,(p_j)}\lambda_d\mathbf1_{q=d\prod_jp_j},\qquad |\lambda_d|\le1.
+\]
+Let $K_T$ be the equal-label tail mask,
+and let $K_P$ impose complete equal-label prefix distinctness.
+For a complete permutation-invariant block, let $M_c$ be its prefix orbit factorial.
+Then
+\[
+ O_c(q)=\frac{C_c(q)}{M_c}-\Xi_{U,c}(q),\qquad
+ \Xi_{U,c}=\frac1{M_c}\sum_{\rm full}\lambda_d(1-K_TK_P)
+                  \mathbf1_{q=d\prod_jp_j}.
+ \tag{2.17b}\label{p2:eq:direct-c1}
+\]
+With $\gamma_c=C_c/C_{\rm slot}$, the full remainder is
+\[
+ R_{{\rm AA},c}=\frac{C_{\rm slot}}{M_c}
+       \sum_q\gamma_c(q)\Delta_P(q)
+       -\sum_q\Xi_{U,c}(q)\Delta_P(q),
+ \qquad \gamma_c=C_c/C_{\rm slot}.
+ \tag{2.17c}\label{p2:eq:direct-remainder}
+\]
+The external multiplier $c\nu$ acts on both terms.
+This includes the four S2 children and the whole-$K$ last child.
+The same identity holds for nonnegative occurrence weights.
+On the common occurrence space, $a_r,b_r$ are the original and plain weights.
+The prefix and sifting data are fixed, and the weights are extended by zero. Put
+\[
+ h_r=\min(a_r,b_r),\qquad
+ e_r^+=(a_r-b_r)_+,\qquad e_r^-=(b_r-a_r)_+.
+\]
+Then $a_r=h_r+e_r^+$, $b_r=h_r+e_r^-$ and $e_r^+e_r^-=0$.
+Linearity gives $S_z(a_r)=S_z(b_r)+S_z(e_r^+)-S_z(e_r^-)$,
+including the G1 representation multiplicities.
+\end{lemma}
+\begin{proof}
+For $m=(N-v)/b$, reduction modulo a common prime gives
+\[
+ (m,N)=1\iff v\nmid N,\qquad
+ (m,b)=1\iff p^2\nmid N-v\quad(p\mid b).
+\]
+Here $v\nmid b$, since otherwise $v\mid N$.
+These conditions concern the ambient source; cofactor sieving is separate.
+Additivity proves \eqref{p2:eq:direct-source-comparison}.
+The two differences have the three stated exceptional conditions.
+Each point is assigned to the first true condition,
+and the resulting unsifted masses are bounded.
+These source terms are removed before HB.
+A common source point removed by sieving creates no source error.
+All later Buchstab and distribution calculations use $A_D$.
+
+For (2.17b) we use $1=K_TK_P+K_T(1-K_P)+(1-K_T)$.
+Overlapping repetitions are assigned to the first forbidden-tail condition.
+Each modulus of $\Xi_{U,c}$ repeats a prime $\ge L_c^{\sigma^2}$.
+Theorem~\ref{thm:repeated-primes} bounds the complete nineteen-row union,
+including prefix multiplicities, once.
+The smooth divisor lies wholly in slot 1.
+Then the finite slot convolution is $C_c/C_{\rm slot}$ on every modulus, repeats included.
+Empty rough slots are unit atoms, and each realization and factorial occurs once.
+
+Put $C_A(q)=\sum_{v\equiv N\,(q)}A_D(v)$,
+$X_A=\sum_vA_D(v)$, $Y_A(q)=\sum_{(v,q)=1}A_D(v)$ and
+\[
+ \Delta_0=C_A-X_A/\varphi(q),\qquad \Delta_P=C_A-Y_A/\varphi(q).
+\]
+Prefixes are $\ge z$ and tails are $<z$.
+Totient multiplicativity converts the relative AA37 comparator into $\Delta_0$.
+Theorem~\ref{thm:repeated-primes} gives $q<N^{3/5}$ on the full labelled support.
+Eventually $v>N/L_N^{30}>N^{3/5}$.
+Thus $Y_A=X_A$, so $\Delta_0=\Delta_P$ before HB.
+This proves \eqref{p2:eq:direct-remainder}.
+\end{proof}
+
+For the actual levels put
+\[
+\begin{aligned}
+v(t)&=\min\{(1+t)/2,(32-34t)/39,57/64-3t/2\},\\
+\psi(x,y)&=x\mathbf1_{x\ge y},\\
+w(a,b,c)&=\psi\!\left(\min\{(132-68c)/214,(153-96c)/256,1-2b\},(1+a)/2\right),\\
+H(a,b,c)&=\max\{v(a),v(b),v(a+b),v(a+b+c),\\
+ &w(a,b,c),w(a,c,b),\\
+ &\psi(v(a+c),a+2b+c),\\
+ &\psi(v(b+c),2a+b+c)\}.
+\end{aligned}
+ \tag{2.17d}\label{p2:eq:row-level-function}
+\]
+Let $\widetilde H=H$ when the largest coordinate is $\le\mu$,
+and above $\mu$ let $\widetilde H(a,b,c)=v(a)$.
+A parent label $t_i$ retains $[N^{t_i},N^{\rho t_i})$, clipped by its row.
+At depth $r<3$, complete the ordered triple in $[0,w_z]$, where $z=N^{w_z}$.
+Let $\Theta_c$ be the infimum on this closed ordered parent domain.
+At depth three the infimum is taken on the three parent intervals.
+This infimum is taken before any branch is selected, including crossings at $\mu$.
+At depth zero, with $z=N^u$, $\Theta_c=H(u,u,u)=19101/32000$.
+Then
+\[
+ L_c=N^{\ell_c},\qquad \ell_c=\Theta_c-\eta_L-\sum_{i\le r}t_i,
+ \qquad D_c=N^{\Theta_c-\eta_L}.
+ \tag{2.17e}\label{p2:eq:row-relative-level}
+\]
+For nonempty DIRECT rows, $t_1<t_*=7109/28000$ and
+$509/1000\le\Theta_c\le153/256$. Also
+\[
+ \Theta_c\ge m(t_1):=\min\{(1+t_1)/2,57/64-3\rho t_1/2\}.
+ \tag{2.17f}\label{p2:eq:row-level-floor}
+\]
+The first branch is active through $t_{\rm dd}=25/[32(1+3\rho)]$.
+The required prefix masks are
+\[
+ t_1+\cdots+t_{j-1}+2t_j<\Theta_c-\eta_L
+ \qquad(1\le j\le r).
+ \tag{2.17g}\label{p2:eq:direct-prefix-mask}
+\]
+Their row checks are
+\[
+\begin{array}{c|l}
+\text{rank one}&2t_1<2t_*=7109/14000<509/1000-\eta_L\\
+\mathrm{S1\hbox{-}2,S1\hbox{-}3}&t_i<\alpha,\quad4\alpha<509/1000-\eta_L\\
+\mathrm{S2\hbox{-}2,S2\hbox{-}3}\ (j=2),\ \mathrm{S8\hbox{-}A}
+ &3\beta<509/1000-\eta_L\\
+\mathrm{S2\hbox{-}3}\ (j=3)&t_1<\beta<t_{\rm dd}\\
+ &t_1+2t_2+(4+2\tau)t_3\le249/250+2\tau\beta<1-2\eta_L\\
+\mathrm{S9\hbox{-}A}&t_1<\mu,\ t_2<\beta:\quad t_1+2t_2<m(t_1)-\eta_L\\
+\mathrm{S10\hbox{-}Ret}&\Theta_c-u-t_1-t_2\ge(11/5)\alpha\\
+ &t_2<\beta<u+(11/5)\alpha-\eta_L.
+\end{array}
+\]
+S2 at rank three uses the first branch of \eqref{p2:eq:row-level-floor}.
+S9 substitutes in both branches.
+For S10 we use \S\ref{p2:sec:2.10}; its binding prefix-mask gap is
+\[
+ u+(11/5)\alpha-\eta_L-\beta
+ =\frac{12449531}{394490000}>0.03155.
+\]
+These checks include clipped cells and weak selection endpoints.
+AA37 tail labels $D_j=N^{s_j}$ satisfy $\sum_{i<j}s_i+2s_j<\ell_c$.
+Together with \eqref{p2:eq:direct-prefix-mask}, prefix/tail separation gives
+$\sum_{i<j}\lambda_i+2\lambda_j<\Theta_c-\eta_L$ for merged sorted labels.
+Sorted upper endpoints are at most $\rho$ times their labels,
+and their mask is strictly below $\rho(\Theta_c-\eta_L)$.
+This proves packing geometry, including empty prefixes.
+The tested-source and boundary hypotheses are proved below.
+
+For the Section~4.1 representation domains let $R_j$ count ordered representations.
+In $R_j^{\rm tag}$ the coordinates are prime to $N$
+and $e/(p_1p_2)$ is prime to $p_1p_2$. Put
+\[
+\begin{aligned}
+ A_G&=(2R_{11}+R_{12}+R_{13})\mathbf1_{\epsilon_AN<e<N},\\
+ w_{\rm tag}&=(2R_{11}^{\rm tag}+R_{12}^{\rm tag}+R_{13}^{\rm tag})
+                    \mathbf1_{\epsilon_AN<e<N},\\
+ w_{\rm pl}&=A_G^{\rm cut}=A_G\mathbf1_{e\le N_{\rm cut}},\quad
+ N_{\rm cut}=N(1-(\log N)^{1-C_b}),\quad C_b=334,\\
+ U_G&=w_{\rm tag}\mathbf1_{e>N_{\rm cut}},\quad
+ E_G=(A_G-w_{\rm tag})\mathbf1_{e\le N_{\rm cut}}.
+\end{aligned}
+\]
+Thus $U_G,E_G\ge0$ and $w_{\rm tag}-w_{\rm pl}=U_G-E_G$.
+For $\chi_{b,z}(e)=\mathbf1_{b\mid N-e}\mathbf1_{(N-e,P_N(z))=1}$,
+\[
+ \sum_e w_{\rm tag}\chi_{b,z}=\sum_e w_{\rm pl}\chi_{b,z}+\Delta_G(b,z),
+ \qquad |\Delta_G(b,z)|\le\sum_e(U_G+E_G).
+\]
+Here $U_G$ is the upper cut; $E_G$ counts coordinate divisibility and repetitions.
+Section~4 bounds their unsifted masses and local hypotheses.
+The source is replaced before Buchstab, and the signed parent correction is retained.
+C1--C5 test the untagged discrepancy $\Delta[A_G^{\rm cut}]$ on interior boxes.
+Fixing two coordinates at a prime $p$ leaves at most two positive coordinates.
+The elementary divisor bound, over all pairs and four source forms, gives
+\[
+ O\!\left(\sum_{p\ge N^\alpha}\frac N{p^2}(1+\log N)^2\right)
+ =O(N^{1-\alpha}(1+\log N)^2).
+\]
+Division by $\mathcal W\gg N/(\log N)^2$ gives $O(N^{-\alpha}(\log N)^4)$.
+This is within the Section~6 source-restoration allowance.
+
+We use the classical BFI hypothesis (A2), \cite{ref2}.
+We fix $\mathscr G$ and $B_\gamma>0$.
+For every $A>0$ it asks for a uniform $C_A$ such that
+\[
+ \left|\sum_{\substack{n\equiv\ell\ (k)\\(n,d)=1}}\gamma_n
+ -\frac1{\varphi(k)}\sum_{(n,dk)=1}\gamma_n\right|
+ \le C_A\|\gamma\|_2T^{1/2}\tau(d)^{B_\gamma}(\log(2T))^{-A}.
+\]
+Here $\gamma\in\mathscr G$, $\operatorname{supp}\gamma\subseteq[1,T]$, $T\ge2$,
+$d,k\ge1$, $\ell\ne0$, $(\ell,k)=1$.
+The constant is uniform in the sequence, subinterval and auxiliary coprimality divisor.
+For Class II we use the selected elementary factor
+and exchange factor names as in the classical theorem.
+Theorem~\ref{thm:distribution-input} requires this $\ell^2$ normalization.
+The complementary convolution has its separate norm bound.
+
+
+\subsection{Common direct preparation}
+This subsection verifies the local and global hypotheses for the direct families.
+\begin{lemma}[Common preparation]
+\label{lem:s2-preparation}\label{lem:direct-preparation}
+Let $0<\sigma\le10^{-10}$, $\tau=\sigma^9$, $C_b=334$.
+Then $C_b\ge\lceil2A+32\rceil$ for $0<A\le(334-32)/2$.
+The per-box precision $A'$ is arbitrary; it is distinct from the
+prime-source target $A$ in the condition $C_b\ge\lceil2A+32\rceil$.
+Each DIRECT and S2 family satisfies H1--H5 and LEN of
+\cite[Theorem~3.2]{Z1} on retained Class-II boxes.
+For each family $\mathscr F$, separately, H6 and H7 hold with
+\[
+\begin{gathered}
+ E_{\rm log,\mathscr F}\ll_\sigma NL_N^{18-C_b},\quad
+ E_{\rm bdry,\mathscr F}\ll_\sigma NL_N^{16-C_b/2},\quad L_N=\log N,\\
+ \sum_{j\in\mathcal J_{\mathscr F}}|c_j|\ll_{\sigma,C_b}L_N^{K_*},\qquad
+ K_*=6(C_b+1)+2=2012<24C_b+26=8042.
+\end{gathered}
+\]
+Every other nonboundary box is Class I-1 or I-2.
+For fixed $A_I>0$, its signed discrepancy before external coefficients is
+$O_{\sigma,A_I}(X(\log X)^{-A_I})$.
+The entire S2 Class-I error is $o(W_N)$, with
+\eqref{p2:eq:s2-normalization} defining $W_N$.
+Section~3 treats the strict BV complement separately.
+DIRECT and S2 are each counted once.
+\end{lemma}
+\begin{proof}
+Put $L=\log N$, $H=N/L^{30}$, $\Gamma_k=C_k/M_k$,
+$P=\sum_{i\le r}t_i$, $\ell=\Theta_c-\eta_L-P\ge\ell_0$.
+The source is $A_D(v)=\mathbf1_{\mathbb P}(v)\mathbf1_{H<v<(1-\epsilon_A)N}$.
+Source exceptions have been removed.
+All prefix, sieve and whole-cell conditions are modulus-side.
+The row masks and AA37 bound $\sum s_j<\ell$ give
+\[
+\begin{gathered}
+ q<N^{\rho P+(\rho+\sigma)\ell}
+ \le N^{(1+\tau+\sigma)(153/256-\eta_L)}<N^{e_D},\\
+ e_D=153/256-\eta_L/2<153/256.
+\end{gathered}
+\]
+For the dyadic $X$-shell covering $v>H$, one has $X>H/2$;
+eventually $q\le X^{3/5}$ and $q<H$.
+All factors avoid $2N$.
+The tested prime exceeds $q$, so its comparators agree before HB.
+Let $u_c=L_c^{\sigma^2}\ge N^{\ell_0\sigma^2}$.
+Primes below $u_c$ determine the smooth divisor uniquely.
+Labelled primes are $\ge u_c$, since $u_c<N^u$.
+Thus $u_c^m\le q<N^{3/5}$ gives
+\[
+ |\Gamma_k(q)|\le m!/M_k\le C_\sigma,\qquad
+ m\le\left\lceil\frac3{5\ell_0\sigma^2}\right\rceil.
+\]
+This includes repeated primes and each numerical realization once.
+Three prefixes, $k<\sigma^{-2}$ tails and two signs give $O_\sigma(1)$ blocks.
+Whole-cell conditions remove blocks, and smooth divisors remain inside coefficients.
+
+We apply \cite[(B.7)--(B.13)]{Z1} with
+$B=30$, $\varepsilon=\epsilon_A$, $a=N\ne v$.
+For $j\le3$ we take $s=2j\le6$, $n\in[X,2X)$, $m_i\le2X^{1/3}$.
+Factors are $z_0(X)$-rough, including the unit atom.
+Put
+\[
+\begin{gathered}
+ \delta_X=(\log X)^{-C_b},\quad J_X=\lceil\log2/\log(1+\delta_X)\rceil,
+ \quad r_X=2^{1/J_X},\quad\Delta_X=r_X-1,\\
+ \delta_X/3\le\delta_X(1-2\delta_X)\le\Delta_X\le\delta_X.
+\end{gathered}
+\]
+The complete tested-side faces are
+\[
+ n=H,\quad n=(1-\epsilon_A)N,\quad n=X,2X;\qquad
+ m_i=2X^{1/3}\quad(1\le i\le j).
+\]
+Crossing boxes are removed.
+Roughness stays in the coefficients, and whole-$K$ stays modulus-side.
+The bound $2X(1+\delta_X)^6<3X$ makes $n\le8X$ redundant.
+The cited construction uses these data and the proved coefficient bound,
+so it permits prefixed moduli.
+Proper powers contribute $O_\sigma(N^{1/2+o(1)})$:
+$O(N^{1/2}\log N)$ terms, each $N^{o(1)}$.
+The signed HB coefficient is
+\[
+ c_j(\mathbf v)=(-1)^{j-1}\binom3j
+       \prod_{i\le j}\mu_{z_0}(m_i)\log n_1,\qquad |c_j(\mathbf v)|\le3L.
+\]
+
+For H6 put $F(n)=d(N-n)+2(1+L)$.
+Divisor counting and $\sum_{q\le N^{3/5}}1/\varphi(q)\ll1+L$ give
+$|\sum_q\Gamma_k(q)\mathcal S_n(q;N)|\ll_\sigma F(n)$.
+Each product fixes its shell by \cite[(B.11)]{Z1}.
+We use $\sum_{n\le y}\tau_h(n)\le y(1+\log y)^{h-1}$,
+$\tau_6^2\le\tau_{36}$ and $d^4\le\tau_{16}$.
+Cauchy--Schwarz gives $(35+15)/2=25$, $(5+25)/2=15$, and
+\[
+ \sum_{n<N}\tau_6(n)\ll NL^5,\quad
+ \sum_{n<N}\tau_6(n)F(n)^2\ll NL^{25},\quad
+ \sum_{n<N}\tau_6(n)F(n)\ll NL^{15}.
+\]
+For $\lambda_B=\sum_i\log V_i$, we have
+$\log n,\lambda_B\asymp L$, $0\le\log n-\lambda_B\le6\delta_X$,
+$\log X=L+O(\log L)$.
+Hence
+\[
+ |E_{\rm log,\mathscr F}|\ll_\sigma
+ L^{-C_b-1}\sum_{n<N}\tau_6(n)F(n)\ll_\sigma NL^{14-C_b}.
+\]
+This is stronger than stated.
+Each tuple has one shell and one box.
+For faces we use \cite[Lemma~B.2, (B.14)--(B.16)]{Z1}, with
+$2\le s\le6$, $Y_0=N^{1/7}$, $\eta_{\rm dist}\ll L^{-C_b}$.
+Source faces are singletons, and the lattices are
+$(\log2)\mathbb Z$ and $\log2+(\log2/3)\mathbb Z$.
+Active product coordinates exceed $(H/2)^{1/6}$.
+At caps, $m_i\asymp X^{1/3}$ and $X>H/2$.
+Both exceed $Y_0$ eventually. Thus
+\[
+\begin{gathered}
+ \#\mathcal U\ll NL^{5-C_b}+N^{6/7}L^5\ll NL^{5-C_b},\\
+ |E_{\rm bdry,\mathscr F}|\ll_\sigma
+ L(\#\mathcal U)^{1/2}(NL^{25})^{1/2}\ll_\sigma NL^{16-C_b/2}.
+\end{gathered}
+\]
+Here $|c_j|/\lambda_B\ll L$.
+Finite faces and unique shells introduce no box count.
+Three patterns and $O_\sigma(1)$ blocks alter only constants.
+This proves H6 separately for both families.
+
+The classification uses \cite[(B.20)--(B.24), (B.27)--(B.28), (B.30)]{Z1}.
+We choose $N_0(\sigma)$ so that
+\[
+ \begin{gathered}
+ \omega=\log_N(N/X),\quad\kappa=(\log2+6\log r_X)/L,\\
+ \omega,\kappa\le\sigma/202,\quad
+ \sigma L\ge2^{130}(C_b+1)(\log L+1).
+\end{gathered}
+\]
+The product and M\"obius caps are exactly (B.21).
+The selected variable has the largest eligible lower exponent in $[60\sigma,1/3+14\sigma]$,
+with ties broken by index.
+The exclusions are $14\sigma>\kappa$, $360\sigma<1-\omega-\kappa$,
+$1+42\sigma>1-\omega+\kappa$.
+Every other box has one or two large smooth variables.
+For the selected Class-II cell $[T,r_XT)$ put
+\[
+ I_T=(T,r_XT],\quad N_I=\lfloor r_XT\rfloor-\lfloor T\rfloor,\quad
+ M_I=M(r_X^r-1),\quad m_0=M(1+r_X^r)/2.
+\]
+Here $M$ is the complementary lower product, $TM\asymp X$.
+Its nonunit-cell count satisfies $1\le r\le5$,
+since eventually $n>H>N^{1/3+15\sigma}$.
+By \cite[Lemma~B.3, (B.22)--(B.24)]{Z1}, internal endpoints are irrational.
+Rough coefficients vanish at powers of two.
+Both integer counts differ from $T\Delta_X$ by less than one.
+The threshold gives $T\Delta_X>2$ and $T^{2^{-126}}\ge12(\log X)^{C_b}$.
+Consequently
+\[
+\begin{gathered}
+ \frac{T}{6(\log X)^{C_b}}\le N_I\le2T(\log X)^{-C_b},\qquad
+ M_I\asymp(X/T)(\log X)^{-C_b},\\
+ N_I\ge(2T)^{1-2^{-126}},\quad X^{60\sigma}\le T\le X^{1/3+15\sigma},\\
+ \log_NM_I\ge2/3-(14+1/202)\sigma-o(1)\ge2/3-14.02\sigma,\\
+ M_I\gg X^{2/3-15\sigma}(\log X)^{-C_b}\ge X^{1/2}.
+\end{gathered}
+\]
+The majorant in \cite[Appendix~B, immediately before (B.27)]{Z1}
+equals one on $[M,Mr_X^r]$,
+with support $[M-M_I/2,Mr_X^r+M_I/2]$.
+For a source point $n_0$, enlarged products satisfy
+\[
+ n_0r_X[1+\tfrac32(r_X^r-1)]\le n_0(1+11\delta_X)<(1-\epsilon_A/2)N.
+\]
+Thus $N-mn\ge\epsilon_A N/2$, $|mn-N|\le X^3$, $|m_0|\ll X/T$.
+Eventually $N\le XL^{31}\le X^{1+\sigma/20}$.
+The row masks and Lemma~\ref{thm:packing-input} give exact repeated-prime slots,
+including S1-0 and S2-0, and all spectral inequalities.
+In particular,
+\[
+ Q<TX^{-29\sigma},\quad QRS<M_IX^{-89\sigma},\qquad
+ \frac{N_I}{QX^{\sigma/3}}\ge
+ \frac{X^{(29-1/3)\sigma}}{6(\log X)^{C_b}}\longrightarrow\infty.
+\]
+For rough M\"obius, unit and normalized-log factors
+we use \cite[(3.25), (3.47)--(3.48)]{Z1}.
+The complement is bounded by $\tau_5$.
+This proves H1--H5 and LEN separately from H6/H7.
+
+For Class I we apply \cite[Lemmas~3.3 and~3.5, \S3.11, (B.30)]{Z1}.
+Here $k<\sigma^{-2}$, $|\Gamma_k|\le C_\sigma$, complement $\le\tau_5$.
+The nonnegative weights $1,\log v/L$ have bounded variation and supremum.
+Predicates are constant and factors are $z_0(X)$-rough.
+The discrepancy remains $\mathcal S_{\prod v_i}(q;N)$.
+Assign proper powers, LOG, boundary, II, I-1, I-2 in order.
+The classification gives
+\[
+ e_*-e_D-(1-\omega)/10\ge0.9-e_D-0.9\omega-\kappa-300\sigma>0.3023,
+\]
+so $V\ge qX^{1/10}$.
+For I-2 we order $N_1\ge N_2$. Then
+\[
+ \begin{gathered}
+ M\le X^{(240\sigma+\kappa)/(1-\omega)}\le X^{2.401\cdot10^{-8}},\\
+ N_2\ge X^{1/3},\quad N_1N_2M\le2^{30}X,\quad q<X^{0.5977}.
+\end{gathered}
+\]
+Larger $N_0$ absorbs fixed dyadic factors into $\kappa$.
+Thus \cite[(3.100)--(3.101)]{Z1} hold, and (3.105) and (3.111) apply.
+For H7, at most six coordinates and three patterns have
+$O(\log\log N)\le O(L)$ shells.
+Each coordinate has $O(L)$ dyadic intervals and $J_X=O(L^{C_b})$ cells.
+Labels, signs, binomial factors and slot factorials cost $O_\sigma(1)$.
+The sole logarithmic scalar is $L/\lambda_B=O(1)$.
+Hence
+\[
+ \sum_{j\in\mathcal J_{\mathscr F}}|c_j|
+ \ll_{\sigma,C_b}L^{6(C_b+1)+1}\le C_{\sigma,C_b}L^{K_*}.
+\]
+The extra unit covers the I-2 small-product split.
+Realizations and smooth divisors remain inside coefficients.
+PF and the selected boundary region form one family.
+With $A_I=K_*+6$, the Class-I total is $O_\sigma(NL^{-6})$.
+Since $W_N\gg NL^{-2}$, its normalized bound is $O_\sigma(L^{-4})$.
+Normalized LOG and boundary errors are
+$O_\sigma(L^{20-C_b}+L^{18-C_b/2})=o(1)$.
+\end{proof}
+
+
+\subsection{Four-term Buchstab and the S1 comparison}
+\label{p2:sec:2.1}\label{p2:sec:2.2}
+This subsection proves the Buchstab chains and bounds the cutoff comparison.
+\begin{lemma}[Four-term chains]
+Set $S_{\rm pl}(b,z)=S(\mathcal A_b^{\rm pl},\mathcal P_N,z)$.
+The plain-source identity is
+\[
+\begin{aligned}
+3S_{\rm pl}(1,N^\alpha)
+={}&3S_{\rm pl}(1,N^u)
+ -3\sum_{u\le r_1<\alpha}S_{\rm pl}(p_1,N^u)\\
+&+3\sum_{u\le r_2<r_1<\alpha}S_{\rm pl}(p_1p_2,N^u)
+ -3\sum_{u\le r_3<r_2<r_1<\alpha}S_{\rm pl}(p_1p_2p_3,p_3).
+\end{aligned}\tag{2.19}\label{p2:eq:2.19}
+\]
+Here $r_i=\log p_i/\log N$ and all $p_i\in\mathcal P_N$.
+The S2 identity (3.2) replaces $\alpha$ by $\beta$ and divides by $3$.
+Both use $L_c=N^{\Theta_c-\eta_L-P}$, $P=\sum_{i\le r}t_i$, $A_R=c/2$.
+Their parameters are
+\begin{center}
+\begin{tabular}{@{}cllll@{}}\toprule
+Row & $c$; direction & Cutoff & Floor for $\ell_c$ & $M_c$\\\midrule
+S1-0 & $3$; lower $f$ & $N^u$ & $19101/32000-\eta_L$ & $1$\\
+S1-1 & $-3$; upper $F$ & $N^u$ & $5243851/11490000$ & $1$\\
+S1-2 & $3$; lower $f$ & $N^u$ & $1414617/3830000$ & $1,2$\\
+S1-3 & $-3$; upper $F$ & $E_3=N^{t_3}$ & $3743851/11490000$ & $1,2,6$\\
+S2-0 & $1$; lower $f$ & $N^u$ & $95489/160000$ & $1$\\
+S2-1 & $-1$; upper $F$ & $N^u$ & $1294691/3090000$ & $1$\\
+S2-2 & $1$; lower $f$ & $N^u$ & $264897/1030000$ & $1,2$\\
+S2-3 & $-1$; upper $F$ & $E_3=N^{t_3}$ & whole-$K$: \S\ref{sec:s2-3} & $1,2,6$\\\bottomrule
+\end{tabular}
+\end{center}
+The S1 functional has signs $+,-,+,-$ and densities
+$f/u,-F/u,+f/u,-\Phi$. Appendix~A.2 gives
+\[
+ 12.9020516<\mathcal S_1<12.9023390,\qquad\tfrac34\mathcal S_1>9.6765387.
+\]
+Its cutoff allowance is $62500\tau D$.
+The directed prefix comparison costs zero and has multiplicity one.
+The true one-prefix conversion error is zero.
+The alternative $-f$ repair costs less than $10^{-390}D$.
+\end{lemma}
+\begin{proof}
+For S1, \eqref{p2:eq:direct-source-comparison} gives
+$3S_1=3S(\mathcal A_1^{\rm pl},\mathcal P_N,N^\alpha)+3\Delta_1^{\rm src}$.
+For S2 we use Section~\ref{sec:s2-1}:
+$S_{2,\rm raw}=S(\mathcal A_{2,1},\mathcal P_N,N^\beta)$.
+Both parents have prefix $1$, $v<(1-\epsilon_A)N$, $v\nmid N$.
+The corrections are low-prime mass minus exceptional $v\mid N$ mass.
+Prefix-square restoration is empty, and its nonnegative allowance $O_u(N^{-u/(1+\tau)}L_N^3)$ is retained.
+These unsifted bounds are included once.
+Descendants use only $A_D(v)$, $b\mid N-v$ and cofactor sieving.
+Buchstab's identity holds for every sequence, without squarefree or coprime
+restrictions \cite{Buchstab1937}.
+Three iterations give (2.19).
+The coefficients are $(3,-3,3,-3)$ and $(1,-1,1,-1)$.
+In subsequent sieve calculations we write $S=S_{\rm pl}$.
+We apply \cite[Theorem~4]{ref5} in the order lower, upper, lower, upper.
+For S1-0, $\ell-2u=94849/160000>0$.
+For S1-1 and S1-2, respectively, $s>228.19$ and $s>184.67$.
+Equal-label pairs retain $[N^u,N^\alpha)$ or $[N^u,N^\beta)$.
+The full summand, including $L_c$, depends on unordered products and labels.
+Thus \eqref{p2:eq:direct-c1} gives $M_c=2$ there, and $1$ otherwise.
+Its diagonal is assigned to prefix squares.
+
+We fix $E_3$ before the structured sieve.
+Since $p_3\ge E_3$,
+\[
+ -3S(p_1p_2p_3,p_3)\ge-3S(p_1p_2p_3,E_3).
+ \tag{2.20}\label{p2:eq:2.20}
+\]
+For S1-3, $\ell-t_3\ge2743851/11490000>0$; the upper sieve is legal.
+Fixing $E_3$ makes the complete tail domain permutation-invariant.
+The factorials are $1,2,6$.
+Formula \eqref{p2:eq:direct-remainder} has scalar $-3\nu C_{\rm slot}/M_c$.
+Using actual $p_3$ before this comparison would lose invariance.
+All four terms have fixed modulus-side labels.
+Lemma~\ref{lem:s2-preparation} supplies their boxes.
+The equal-prefix terms have disjoint prefix diagonals.
+Theorem~\ref{thm:repeated-primes} bounds their union;
+Theorem~\ref{thm:sieve-mass} bounds the AA37 main error.
+
+For the S1-3 comparison put
+\[
+\begin{aligned}
+\Theta_3^{\rm saved}(a,b,c)=\max\{&v(a)-u,v(b)-u,v(a+b)-u,v(a+b+c)-u,\\
+ &\psi(v(a+c)-u,a+2b+c),\psi(v(b+c)-u,2a+b+c)\}.
+\end{aligned}
+\]
+\hypertarget{p2:def:six-branch-saved}{}
+Here both $w$ branches are deleted.
+Every retained $v$ is reduced by $u$, including the guarded first inputs.
+Let $\Theta_3^{\rm saved}[\tau\text{-bin}(r)]$ be its infimum
+on the full ordered comparison box $[r,\rho r]$.
+This box differs from the inherited source cell. Put
+\[
+\begin{gathered}
+ G_\ell(w)=F(\ell/w)/w,\quad
+ \ell_p(r)=\Theta_3^{\rm saved}(r)-r_1-r_2-r_3,\\
+ \Phi(r)=F\!\left(\frac{\Theta_3^{\rm saved}[\tau\text{-bin}(r)]-\sum r_i}
+ {\rho r_3}\right)/r_3.
+\end{gathered}
+\]
+On the full parent, $u\le a,b,c\le\rho\alpha$ and $2\rho\alpha<25/128$.
+Thus $v(a+c),v(b+c)\ge1/2$.
+Both thresholds are $\le4\rho\alpha<1/2-u$.
+The original and saved guards are active throughout.
+Adding $u$ restores six corresponding $H$ branches,
+each with slopes of absolute value $\le3/2$.
+Their maximum is $3/2$-Lipschitz in coordinate $\ell^1$ distance.
+For $x\in[r,\rho r]$, $\sum_i|x_i-r_i|\le\tau\sum_i r_i\le3\alpha\tau$.
+Therefore
+\[
+ \Theta_3^{\rm saved}+u\le H,\qquad
+ \Theta_c\ge\Theta_3^{\rm saved}(r)+u-(9/2)\alpha\tau
+              >\Theta_3^{\rm saved}(r)+\eta_L.
+\]
+Branchwise, $(v-u)(\sum_{i\in A}r_i)-\sum_i r_i$ is coordinatewise nonincreasing.
+The inherited lower labels give the same residual comparison $\ell_p(r)\le\ell_c$.
+The comparison-bin infimum is at most its point value.
+Decreasing $F$ gives $F(\ell_p(r)/(\rho r_3))/r_3\le\Phi(r)$.
+For $H_F(s)=sF(s)$, the delay equations give
+$H_F'=0$ on $[1,3]$ and $H_F'=f(s-1)\in[0,1]$ above $3$.
+Hence
+\[
+ G_{\ell_c}(t_3)\le G_{\ell_c}(r_3)+\tau/r_3
+ \le(1+\tau)G_{\ell_c}(r_3)\le(1+\tau)\Phi(r).
+ \tag{2.21}\label{p2:eq:2.21}
+\]
+For S1-3, $t_i<\alpha$.
+On the full parent, $a+c\le2\rho\alpha<t_{\rm dd}<25/128$,
+so $v(a+c)=(1+a+c)/2$.
+Also $a+2b+c\le4\rho\alpha<1/2$, so its $\psi$ branch is active.
+Since $a\ge t_1$ and $c\ge t_3$,
+\[
+ \Theta_c\ge\frac12+\frac{t_1+t_3}{2},\qquad
+ \ell_c\ge\frac12-t_2-\frac{t_1+t_3}{2}-\eta_L
+             \ge\frac12-2\alpha-\eta_L.
+\]
+Since $\eta_L<u$ and $r_3\le\rho\alpha$,
+differentiation is legal:
+$\ell_c/r_3>(1/2-u-2\alpha)/(\rho\alpha)=186101/(50000\rho)>1$.
+The comparison-box guards also remain active.
+Its numerator loses at most $(9/2)\alpha\tau$, and the argument stays $>3.7$.
+Thus both monotonicities apply, using the actual bin infimum.
+Integration over the same literal clipped partition gives
+\[
+ E_{\rm cut}\le\tfrac34(2/e^\gamma)\tau I^*<1821.2\tau\,D
+ \le62500\tau\,D.
+ \tag{2.22}\label{p2:eq:2.22}
+\]
+Here Appendix~A.2 proves $I^*\le I_0+B_J<2161.074150710003$,
+uniformly for $0\le\tau\le10^{-90}$.
+Reproduction requires the interval-arithmetic source, dependencies and directed output;
+see Appendix~A's data-availability statement.
+The allowance $62500\tau D$ includes (2.22),
+and Section~6.3.5(c) includes the prefix comparison once.
+
+The one-prefix profile is $-F$, already used by the comparison functional.
+For the alternative $-f$ we write $-F=-f-(F-f)$.
+The delay equations give $s(F-f)=2e^\gamma\varrho(s-1)$,
+where $\varrho$ is Dickman's function.
+Here $s\ge s_*=64441/309$, $v_*=s_*-1$.
+We iterate $\varrho(v)\le\varrho(v-1)/v$ exactly $207$ times;
+the factor is $4/u=2000$.
+Since $\log(\alpha/u)\le4$, $\log(\beta/u)\le5$,
+\[
+ E_{f\to F}\le
+ \frac{2000(\tfrac34\cdot4+\tfrac14\cdot5)}
+ {s_*\prod_{j=0}^{206}(v_*-j)}<10^{-390.77}<10^{-390}.
+ \tag{2.23}\label{p2:eq:2.23}
+\]
+The S2 part belongs to its atomic endpoint.
+Section~6 subtracts the residual $10^{-390}D$ once.
+These are the true functions $f,F$.
+Equations (2.19)--(2.23) prove the source/profile comparison.
+Section~6.3.5(b) uses the single joint S1 bound.
+
+The S2 last child retains the invariant condition (3.3), $h\le K$.
+This includes PF and all remaining selected blocks.
+Here $E_3$ is fixed before C1, and the scalar is $-\nu C_{\rm slot}/M_c$.
+The actual-$p_3$ comparison is kept separate.
+The strict complement uses actual $p_3$ and BV.
+A PF-only coefficient would omit selected source blocks.
+Since $1-2\eta_L-249/250=19/5000$, $K<1-2\eta_L$.
+Lemma~\ref{thm:packing-input} uses the literal whole-$K$ infimum.
+Section~\ref{sec:s2} checks the local source hypotheses and Class I.
+The $X^{1-c_\sigma}$ term of Theorem~\ref{thm:distribution-input} is kept.
+The strict BV complement has no prepared Class-II family.
+Sections~\ref{sec:s2-3}--\ref{sec:s2-7} prove $d_{T8}$.
+They retain whole-$K$ norms, spectral parameters, BV coefficients and the eight-branch functional.
+Retain $275009680\tau D$, one structured-sieve error share and tail allowance $D/20000$.
+Its true one-prefix profile is $-F$.
+Section~6.3.5(b) subtracts these errors once.
+\end{proof}
+
+
+\subsection{Signed fixed-cutoff profiles}
+\label{p2:sec:2.3}\label{p2:sec:2.4}\label{p2:sec:2.5}\label{p2:sec:2.6}\label{p2:sec:2.7}\label{p2:sec:2.8}\label{p2:sec:2.9}
+This subsection treats the fixed-cutoff rows.
+\begin{lemma}[Fixed-cutoff rows]
+The six fixed-cutoff rows and S10-Ret have the following data.
+In all tables $P=\sum_{i\le r}t_i$, $L_c=N^{\Theta_c-\eta_L-P}$.
+The source is $A_D$, with shift $N$.
+Write $\mathcal E$ for the common errors listed below.
+Let $U_j,L_j$ be the selected raw-profile upper and lower endpoints
+of Appendix~A.3, respectively.
+Their directed $D$ contributions appear in the last table.
+The relative AA37 parameter is $A_R=c/2$.
+Each full remainder is \eqref{p2:eq:direct-remainder}, with scalar $c\nu C_{\rm slot}/M_c$.
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}lXX@{}}\toprule
+Row & Exact exponent domain & Parent/anatomy/selection; depth\\\midrule
+S3-A & $\alpha\le r_1<\mu$ & Inherited A/B at $t_{\rm dd}$; $1$\\
+S4 & $\mu\le r_1<1/4$ & Inherited A/B at $t_{\rm dd}$; $1$\\
+S5-low & $1/4\le r_1<t_*$ & B, clipped at $N^{t_*}$; $1$\\
+S7 & $\mu\le r_1<\lambda$ & Inherited A/B at $t_{\rm dd}$; $1$\\
+S8-A & $\alpha\le r_2<r_1<\beta$ & Small-coordinate anatomy; $2$\\
+S9-A & $\beta\le r_1<\mu$, $\alpha\le r_2<\beta$ & Inherited A/B; $2$\\
+S10-Ret & $\mu\le r_1<\lambda$,\newline
+$\alpha\le r_2<\beta$,\newline $r_2<B_0(r_1)$
+ & Whole parent cells, $t_2\le\operatorname{sel}(t_1)$; $2$\\\bottomrule
+\end{tabularx}
+\end{center}
+\begin{center}
+\small
+\begin{tabular}{@{}lccll@{}}\toprule
+Row & $c$; $D$ multiplier & Direction & Cutoff & Relative level\\\midrule
+S3-A & $-2$; $-1/2$ & upper $F$ & $N^\alpha$ & $L_c$\\
+S4 & $-1$; $-1/4$ & upper $F$ & $N^\alpha$ & $L_c$\\
+S5-low & $-1$; $-1/4$ & upper $F$ & $N^\alpha$ & $L_c$\\
+S7 & $-1$; $-1/4$ & upper $F$ & $N^\alpha$ & $L_c$\\
+S8-A & $1$; $1/4$ & lower $f$ & $N^\alpha$ & $L_c$\\
+S9-A & $1$; $1/4$ & lower $f$ & $N^\alpha$ & $L_c$\\
+S10-Ret & $1$; $1/4$ & lower $f$ & $N^\alpha$ & $L_c$\\\bottomrule
+\end{tabular}
+\end{center}
+\begin{table}[htbp]
+\caption{Direct floors, cutoff gaps and prefix orbits.}\label{tab:direct-parameters}
+\small
+\begin{tabularx}{\textwidth}{@{}lXXc@{}}\toprule
+Row & Lower floor for $\ell_c$ & Cutoff gap; ratio $s$ & $M_c$\\\midrule
+S3-A & $64359/160000$ (A), $>0.402243$ (B)
+ & $\ell-\alpha>0.315211$; $s>4.6217$ & $1$\\
+S4 & $64359/160000$ (A), $\ge0.265524$ (B)
+ & $\ell-\alpha>0.178492$; $s>3.0508$ & $1$\\
+S5-low & $>0.255792$
+ & $\ell-\alpha>0.168760$; $s>2.9390$ & $1$\\
+S7 & $64359/160000$ (A), $>0.309274$ (B)
+ & $\ell-\alpha>0.222242$; $s>3.5535$ & $1$\\
+S8-A & $264897/1030000$
+ & $\ell-2\alpha\ge98366653/1183470000$; $s>2.9550$ & $1,2$\\
+S9-A & $11886931/49440000$ (A), $>0.240430$ (B)
+ & $\ell-2\alpha>0.066366$; $s>2.7625$ & $1$\\
+S10-Ret & $11886931/49440000$ (A), $2221831/11490000$ (B)
+ & $\ell-2\alpha\ge221831/11490000$; $s>2.2218$ & $1$\\\bottomrule
+\end{tabularx}
+\end{table}
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}\toprule
+Row & Saved profile; directed comparison cost & Selected output; estimates outside that endpoint\\\midrule
+S3-A & $-\mathcal I_{3,A}/2$; zero & $-U_{3,A}/2$; $\mathcal E$\\
+S4 & $-\mathcal I_4/4$; zero & $-U_4/4$; $\mathcal E$\\
+S5-low & $-\mathcal I_{5,\rm low}/4$; zero & $-U_{5,\rm low}/4$; $\mathcal E$\\
+S7 & $-\mathcal I_7/4$; zero & $-U_7/4$; $\mathcal E$\\
+S8-A & $\mathcal I_{8,A}/4$; zero & $L_{8,A}/4$; $\mathcal E$, prefix and tail squares\\
+S9-A & $\mathcal I_{9,A}/4$; zero & $L_{9,A}/4$; $\mathcal E$, tail squares only\\
+S10-Ret & $\mathcal I_{10}/4$; $7.160\tau$
+ & $L_{10}/4$; $\mathcal E$, tail squares only.
+ Selected raw interval:
+ $\left[\begin{gathered}0.858847455777940,\\0.867486588163666\end{gathered}\right]$\\\bottomrule
+\end{tabularx}
+\end{center}
+S8-A and S9-A have zero cell-selection cost.
+S10 has zero profile and S2-tail error.
+\end{lemma}
+\begin{proof}
+The proof applies \cite[Theorem~4]{ref5} and \cite[Theorem~2.6, (2.30)--(2.33b)]{Z1}.
+Table~\ref{tab:direct-parameters} gives $\ell_c\ge\ell_0$,
+$z\le L_c$ for negative rows and $z^2\le L_c$ for positive rows.
+Prefixes are $\ge z$ and tails are $<z$.
+Every predicate is modulus-label dependent.
+Lemma~\ref{thm:packing-input} and Lemma~\ref{lem:s2-preparation}
+give the slots and local/complementary bounds.
+Section~6 includes each of the following errors once:
+\[
+\begin{array}{c}
+\text{source restoration, low cut, repeated primes, logarithm freezing, boundary,}\\
+\text{Class I, Class II, roughness, structured sieve, prime mass}.
+\end{array}
+\]
+These form $\mathcal E$; its squareful terms have the stated row restrictions.
+
+For one uniform comparison put
+\[
+\begin{gathered}
+ g_3(r)=v(r)-u,\quad
+ g_8(r_1,r_2)=\max\{v(r_1),v(r_2),v(r_1+r_2)\},\quad g_9(r)=v(r_1),\\
+ g(r)=57/64-u-(5/2)r,\qquad u=1/500.
+\end{gathered}
+\]
+We call the absolute S3-A/S8-A/S9-A profiles Option-A.
+Every missing completion contains the corresponding unthresholded branches.
+Lipschitz control gives
+\[
+ \ell_c\ge g_3(r)-r+19/10000-3\tau,\qquad
+ \ell_c-[g_8(r)-u-r_1-r_2]\ge19/10000-3\tau>0.
+\]
+The S4/S7 A/B levels give the same buffer.
+For S5-low we use $\Theta_c\ge57/64-3\rho t_1/2$ in B.
+On S9-A, $4\beta+3\alpha>25/32$ gives $g_8=g_9$.
+Decreasing $F$ and increasing $f$ give all six signed lower comparisons.
+Inherited labels are kept through clipping and before branch selection.
+For S3, S4, S7 we split at $t_{\rm dd}$.
+For S9 we split the inherited anatomy.
+Retain both literal two-prefix infima.
+S4's clipping at $\mu$ retains both A/B bounds.
+Section~6.3 sums its two remainder children once.
+S4 and S7 overlap in the initial signed inequality;
+their HB partitions remain separate and disjoint for each term.
+
+Put $\mathcal W=4(1-\varepsilon_A)U_C$.
+In the displays below, $D_j$ is the signed source contribution divided by
+$\mathcal W$, and $\mathcal E_j$ is that row's allocated share of the
+common error $\mathcal E$. Section~6 charges these shares once.
+The signed sources and their normalized bounds are
+\begin{gather}
+ \mathcal W D_{3,A}:=-2\sum_{\alpha\le r_1<\mu}S(p_1,N^\alpha).
+ \tag{2.24}\label{p2:eq:2.24}\\
+ D_{3,A}\ge-\frac12\mathcal I_{3,A}-\mathcal E_{3,A}-o_\sigma(1),\qquad
+ \mathcal I_{3,A}=\frac{2}{e^\gamma\alpha}
+ \int_\alpha^\mu F\!\left(\frac{v(r)-u-r}{\alpha}\right)\frac{dr}{r}.
+ \tag{2.25}\label{p2:eq:2.25}
+\end{gather}
+\begin{gather}
+ \mathcal W D_4:=-\sum_{\mu\le r_1<1/4}S(p_1,N^\alpha).
+ \tag{2.26}\label{p2:eq:2.26}\\
+ D_4\ge-\tfrac14\mathcal I_4-\mathcal E_4-o_\sigma(1),\qquad
+ \mathcal I_4=\frac{2}{e^\gamma\alpha}
+ \int_\mu^{1/4}F\!\left(\frac{57/64-u-(5/2)r}{\alpha}\right)\frac{dr}{r}.
+ \tag{2.27}\label{p2:eq:2.27}
+\end{gather}
+For S5 set $t_*=7109/28000$, $\tau_S=57/224$.
+Before the structured sieve or HB we split
+\[
+ -\sum_{1/4\le r_1<\tau_S}S(p_1,N^\alpha)
+ =-\sum_{1/4\le r_1<t_*}S(p_1,N^\alpha)
+  -\sum_{t_*\le r_1<\tau_S}S(p_1,N^\alpha).
+ \tag{2.28}\label{p2:eq:2.28}
+\]
+The first term is S5-low and the second is S5-top.
+The endpoint $t_*$ belongs to BV.
+Clipping at $N^{t_*}$ retains parent labels.
+S5-low uses B and
+\begin{gather}
+ \mathcal W D_{5,\rm low}:=-\sum_{1/4\le r_1<t_*}S(p_1,N^\alpha),\notag\\
+ D_{5,\rm low}\ge-\tfrac14\mathcal I_{5,\rm low}
+                 -\mathcal E_{5,\rm low}-o_\sigma(1),\notag\\
+ \mathcal I_{5,\rm low}=\frac{2}{e^\gamma\alpha}
+ \int_{1/4}^{t_*}F\!\left(\frac{57/64-u-(5/2)r}{\alpha}\right)\frac{dr}{r}.
+ \tag{2.29}\label{p2:eq:2.29}
+\end{gather}
+For S7,
+\begin{gather}
+ \mathcal W D_7:=-\sum_{\mu\le r_1<\lambda}S(p_1,N^\alpha).
+ \tag{2.30}\label{p2:eq:2.30}\\
+ D_7\ge-\tfrac14\mathcal I_7-\mathcal E_7-o_\sigma(1),\qquad
+ \mathcal I_7=\frac{2}{e^\gamma\alpha}\int_\mu^\lambda
+ F\!\left(\frac{57/64-u-(5/2)r}{\alpha}\right)\frac{dr}{r}.
+ \tag{2.31}\label{p2:eq:2.31}
+\end{gather}
+Its profile loss is zero.
+Appendix~A.3 proves its outward upper endpoint,
+which Section~6.4 uses at the fixed positive parameter.
+Equation (6.5b) uses the S3 comparison.
+
+For the two-prefix rows,
+\begin{gather}
+ \mathcal W D_{8,A}:=+\sum_{\alpha\le r_2<r_1<\beta}S(p_1p_2,N^\alpha).
+ \tag{2.32}\label{p2:eq:2.32}\\
+ D_{8,A}\ge\tfrac14\mathcal I_{8,A}-\mathcal E_{8,A}-o_\sigma(1),\notag\\
+ \begin{aligned}
+ \mathcal I_{8,A}
+   &=\frac{2}{e^\gamma\alpha}
+     \iint_{\alpha\le r_2<r_1<\beta}
+     f\!\left(\frac{g_8(r)-u-r_1-r_2}{\alpha}\right)\\
+   &\qquad\qquad\times\frac{dr_1dr_2}{r_1r_2}.
+ \end{aligned}
+ \tag{2.33}\label{p2:eq:2.33}
+\end{gather}
+\begin{gather}
+ \mathcal W D_9:=+\sum_{\beta\le r_1<\mu\atop\alpha\le r_2<\beta}
+ S(p_1p_2,N^\alpha).
+ \tag{2.34}\label{p2:eq:2.34}\\
+ D_9\ge\tfrac14\mathcal I_{9,A}-\mathcal E_9-o_\sigma(1),\qquad
+ \mathcal I_{9,A}=\frac{2}{e^\gamma\alpha}
+ \int_\beta^\mu\int_\alpha^\beta
+ f\!\left(\frac{v(r_1)-u-r_1-r_2}{\alpha}\right)
+ \frac{dr_2dr_1}{r_1r_2}.
+ \tag{2.35}\label{p2:eq:2.35}
+\end{gather}
+Only S8-A has equal-set prefix orbits.
+Its equal-label sets are identically clipped to $[N^\alpha,N^\beta)$.
+The full summand and level are symmetric before slotting.
+Thus $M_c=2$ there and $1$ elsewhere.
+Formula \eqref{p2:eq:direct-c1} removes strict triangular ordering.
+Its prefix-square part is disjoint from the forbidden-tail union.
+The range lies in the small-coordinate anatomy, and both squareful errors are included.
+Its outward lower endpoint enters (6.4) once, with coefficient $+1/4$.
+S9's literal prefix sets are disjoint, including $N^\beta$.
+Hence $M_c=1$, the prefix diagonal is empty,
+and both normalization differences vanish by \eqref{p2:eq:direct-remainder}.
+Only its tail-squareful error occurs.
+Its lower endpoint has coefficient $+1/4$ and multiplicity one;
+see Sections~6.3.3 and~6.4.
+
+S5-top and S6 use BV separately.
+For S5-top the total level is $N^{1/2}L_N^{-B}$,
+with relative level obtained by dividing by the actual prefix.
+Here $\kappa=\kappa_{\rm BV}=0$, cutoff $N^\alpha$, profile $-F$.
+Section~5 proves its full coefficient and error estimate.
+Its prepared Class-II, packing and Class-I contributions are zero,
+and its main term enters separately.
+Section~6.3 includes S5-low errors once.
+
+\end{proof}
+\subsection*{The separate BV row S6}
+This subsection bounds the separate BV row.
+Its exact source is
+\[
+ \mathcal W D_6:=-\sum_{\tau_S\le r_1<1/3}S(p_1,N^\alpha),\qquad
+ \tau_S=57/224,\quad c=-1,\quad A_R=-1/2.
+ \tag{2.36}\label{p2:eq:2.36}
+\]
+Section~5.3 takes $\kappa_{\rm BV}=10^{-6}<61/766=1/6-\alpha$.
+The margin $(1/6-10^{-6}-\alpha)/\alpha$ absorbs the logarithmic loss uniformly.
+Put $Q_{\rm BV}=N^{1/2-\kappa_{\rm BV}}L_N^{-B}$,
+$D_p=Q_{\rm BV}/p$, with cutoff $N^\alpha$.
+Then
+\[
+ \frac{\log D_p}{\alpha\log N}
+ =\frac{1/2-\kappa_{\rm BV}-r_1}{\alpha}
+  -\frac{B\log\log N}{\alpha\log N}>1
+\]
+eventually, uniformly for $r_1<1/3$.
+Thus the upper sieve $F$ is legal, and
+\[
+ \mathcal I_6(\kappa_{\rm BV})=
+ \frac{2}{e^\gamma\alpha}\int_{\tau_S}^{1/3}
+ F\!\left(\frac{1/2-\kappa_{\rm BV}-r}{\alpha}\right)\frac{dr}{r},
+ \qquad D_6\ge-\mathcal I_6(\kappa_{\rm BV})/4-o(1).
+ \tag{2.37}\label{p2:eq:2.37}
+\]
+The BV error includes comparison with the $1/2$-level profile.
+Section~5 gives the full weighted BV remainder, prefix multiplicities and endpoint direction.
+This row uses the classical proof, without structured slot normalization or C1--C5.
+Its BV error is subtracted once, together with its main term.
+
+
+\subsection{The retained curved S10 row}
+\label{p2:sec:2.10}
+This subsection bounds the retained curved row.
+\begin{lemma}[Retained curved profile]
+Put
+\[
+\begin{aligned}
+ C_0&=57/64-u-(11/5)\alpha,\quad
+ B_0(r)=\min\{\beta,\max\{\alpha,C_0-5r/2\}\},\\
+ B_\tau(t)&=\min\{\beta,\max\{\alpha,C_0-(5/2+3\tau/2)t\}\},\\
+ R(t)&=\min\{\rho t,\lambda\},\qquad
+ \operatorname{sel}(t)=\min\{B_\tau(t),B_0(R(t))/\rho\}.
+\end{aligned}
+\]
+The actual source is
+\[
+ \mathcal W D_{10}:=+\sum_{\mu\le r_1<\lambda\atop\alpha\le r_2<\beta,\ r_2<B_0(r_1)}
+ S(p_1p_2,N^\alpha).
+ \tag{2.38}\label{p2:eq:2.38}
+\]
+Ret consists of whole parent-label cells with $t_2\le\operatorname{sel}(t_1)$.
+For the curved source-trimmed target
+\[
+ \mathcal I_{10}=\frac{2}{e^\gamma\alpha}
+ \int_\mu^\lambda\int_\alpha^{B_0(r_1)}
+ f\!\left(\frac{57/64-u-(5/2)r_1-r_2}{\alpha}\right)
+ \frac{dr_2dr_1}{r_1r_2}.
+ \tag{2.39}\label{p2:eq:2.39}
+\]
+we have
+\[
+ D_{10}\ge\mathcal I_{10}/4-7.160\tau-\mathcal E_{10}-o_\sigma(1).
+ \tag{2.40}\label{p2:eq:2.40}
+\]
+The profile and S2-tail errors are zero.
+\end{lemma}
+\begin{proof}
+On clipped support,
+$r_2<\rho t_2\le B_0(R(t_1))\le B_0(r_1)$.
+Thus $\mathrm{Src}=\mathrm{Ret}\sqcup\mathrm{Drop}$ at finite $N$.
+The coefficient $+1$ permits discarding Drop before estimating Ret.
+The literal prefixes $[N^\mu,N^\lambda)$, $[N^\alpha,N^\beta)$ are disjoint.
+Hence $M_c=1$ and the prefix diagonal is empty.
+Selection is constant on whole labels.
+For anatomy A, $t_2\le\beta$ gives residual $13475869/473388000>0$.
+Table~\ref{tab:direct-parameters} verifies the lower cutoff, including the crossing band.
+The tested source stays $A_D$, with shift $N$.
+On Ret,
+\[
+ \alpha(s_{\rm live}-s_{\rm saved})\ge
+ (u-\eta_L)-\tau((5/2)\lambda+\beta)>0.
+\]
+Increasing $f$ gives the favorable direction.
+For every discarded actual point,
+\[
+ t_2>\operatorname{sel}(t_1),\quad r_2\ge t_2,\quad
+ r_2<B_0(r_1)\le B_0(t_1).
+\]
+The larger of the two selection deficits bounds the strip.
+The projection $P$ onto $[\alpha,\beta]$ is $1$-Lipschitz, so $B_0$ is $5/2$-Lipschitz.
+The two deficits satisfy
+\[
+\begin{aligned}
+ B_0(t)-B_\tau(t)&\le(3/2)t\tau,\\
+ B_0(t)-B_0(R(t))/\rho
+ &\le(5/2)(R(t)-t)+\beta(1-1/\rho)\\
+ &\le(5\lambda/2+\beta)\tau.
+\end{aligned}
+\]
+The projection estimate covers the $\beta$ cap, affine middle and $\alpha$ floor.
+The two displayed inequalities cover both branches of the minimum.
+Also $R(t)-t\le\tau\lambda$, including the clipped case $R(t)=\lambda$,
+and $1-1/(1+\tau)\le\tau$.
+Therefore
+\[
+ \operatorname{width}\le(5\lambda/2+\beta)\tau=\frac{36737}{49440}\tau.
+\]
+This includes endpoint cells: $t_1\le r_1<\lambda$, $t_2\le r_2$.
+The inherited labels at $\mu,\lambda$ are retained.
+On the whole canonical source, $11/5\le s<11519839/3200000<4$.
+Here $f(s)=2e^\gamma\log(s-1)/s$ increases on $[2,4]$.
+The $D$-density is at most $\log(3)/(4\alpha r_1r_2)$.
+Hence
+\[
+ \Delta D\le\frac{\log3}{4\alpha^2}(5\lambda/2+\beta)
+                    \frac{\lambda-\mu}{\mu}\tau<5.137\tau.
+\]
+For an exact rational check, use $\log3<10987/10000$.
+\[
+\sum_{k=0}^{8}\frac{(10987/10000)^k}{k!}>3.
+\]
+Substitution of $\alpha,\beta,\mu,\lambda$ gives the strict $5.137\tau$ bound.
+The independent Appendix~A.3 bound uses $f\le1$ on this same strip:
+\[
+ \Delta D\le\frac{e^{-\gamma}}{2\alpha^2}
+ \left(\frac52\lambda+\beta\right)
+ \log\frac{\lambda}{\mu}\,\tau
+ <4.82\tau<5.137\tau.
+\]
+These are two bounds for the same loss. The error account retains and subtracts
+only the single conservative allowance $7.160\tau$; the allocated common
+error $\mathcal E_{10}$ is charged once in Section~6.
+Section~6.3 assembles the endpoint and common errors.
+Lemma~\ref{lem:direct-preparation} supplies preparation, with
+$K_D=K_*=6(C_b+1)+2=2012\le24C_b+26$.
+The coefficient identities and masks apply with the stated signed row coefficient.
+\end{proof}

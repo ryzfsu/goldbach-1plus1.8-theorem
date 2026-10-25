@@ -1,0 +1,255 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amssymb,mathtools,array,longtable,tabularx,booktabs}
+\usepackage{mathrsfs}
+\usepackage{enumitem,graphicx}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\GoldbachTitlePhrase}{1 + 1.8}
+\hypersetup{pdftitle={Theorem (\GoldbachTitlePhrase) on the Goldbach conjecture},pdfauthor={Ruiyi Zhang}}
+\allowdisplaybreaks
+\emergencystretch=2em
+\setlength{\LTpre}{1em}
+\setlength{\LTpost}{1em}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\UC}{U_C}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{2264}{\ensuremath{\le}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\ge}}
+\DeclareUnicodeCharacter{2260}{\ensuremath{\ne}}
+\DeclareUnicodeCharacter{221E}{\ensuremath{\infty}}
+\DeclareUnicodeCharacter{2208}{\ensuremath{\in}}
+\DeclareUnicodeCharacter{2286}{\ensuremath{\subseteq}}
+\DeclareUnicodeCharacter{00D7}{\ensuremath{\times}}
+\DeclareUnicodeCharacter{2211}{\ensuremath{\sum}}
+\DeclareUnicodeCharacter{220F}{\ensuremath{\prod}}
+\DeclareUnicodeCharacter{220E}{\ensuremath{\square}}
+\DeclareUnicodeCharacter{2032}{\ensuremath{\prime}}
+\DeclareUnicodeCharacter{2011}{-}
+\DeclareUnicodeCharacter{2013}{--}
+\DeclareUnicodeCharacter{2014}{---}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{corollary}[lemma]{Corollary}
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+\theoremstyle{definition}
+\newtheorem{definition}[lemma]{Definition}
+\title{Theorem (\GoldbachTitlePhrase) on the Goldbach conjecture}
+\author{Ruiyi Zhang}
+\address{Independent Researcher, Columbia, Maryland, USA}
+\email{ryzfsu@gmail.com}
+\subjclass[2020]{Primary 11P32; Secondary 11N36, 11N13}
+\keywords{Goldbach problem, almost-primes, sieve methods, well-factorable weights, shifted primes}
+\begin{document}
+\begin{abstract}
+Every sufficiently large even
+integer $N$ has a representation $N=p+rq$.
+Here $p,q$ are primes and $r$ is $1$ or a prime,
+with $r\le q^{a-1}=q^{4/5}=q^{0.8}$. This is Proposition $(1+a)$ of Li--Liu with
+$a=1.8=9/5$. We use a weighted sieve on shifted primes.
+Its level of distribution exceeds one half. The proof combines
+thirteen row estimates with a switched upper bound. For a fixed source
+cutoff, the certified D-unit endpoint is
+$D_{\rm lower}=1.83399665352036682372$. Since the source mass is
+$4(1-\varepsilon_A)U_C$, division by four gives
+$(1-\varepsilon_A)D_{\rm lower}=1.833813253855014787037628-o(1)$.
+The balanced-semiprime cost is at most
+$1.788209644611262112809348242339+o(1)$ in those units. The remaining
+coefficient is
+$0.04560360924375267422827-o(1)$.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Chen announced his theorem in 1966 \cite{Chen1966}.
+His proof appeared in 1973 \cite{Chen1973}.
+By this theorem, every sufficiently large even integer is a prime plus an integer
+with at most two prime factors.
+Li and Liu \cite{LiLiu2026} formulate Proposition $(1+a)$:
+\[
+ N=p+rq,\qquad p,q\in\mathbb P,\quad r\in\{1\}\cup\mathbb P,
+ \quad r\le q^{a-1}.
+\]
+Li and Liu take $a=1.9$. Here $a=1.8=9/5$, so
+$r\le q^{a-1}=q^{4/5}=q^{0.8}$.
+Theorem~\ref{thm:goldbach} follows from the strict comparison
+\[
+ \begin{aligned}
+ D_{\rm lower}&\ge1.83399665352036682372,\\
+ T&=8\log\frac{50009}{39991}<1.78838848345960807362<D_{\rm lower}.
+ \end{aligned}
+\]
+It holds at the fixed source cutoff below.
+We use the Chen-constant normalization
+\[
+ C(N)=\prod_{\ell>2}\left(1-\frac1{(\ell-1)^2}\right)
+       \prod_{\substack{\ell\mid N\\\ell>2}}\frac{\ell-1}{\ell-2},
+ \qquad U_C=\frac{C(N)N}{(\log N)^2};
+\]
+There is no leading factor of two. With $\varepsilon_A=10^{-4}$,
+our selected endpoint and the pointwise division by four give
+\[
+ P_{2,\varepsilon_A}(N)\ge
+ [1.833813253855014787037628-o(1)]C(N)N/(\log N)^2,
+\]
+where $P_{2,\varepsilon_A}(N)=\#\{p<(1-\varepsilon_A)N:
+p\in\mathbb P,\ \Omega(N-p)\le2\}$.
+Our normalization uses $C(N)$ without a leading factor $2$, as do Wu's lower
+bounds $D_{1,2}(N)\ge0.836C(N)N/(\log N)^2$
+\cite[Theorem~2]{Wu2004} and
+$D_{1,2}(N)\ge0.899C(N)N/(\log N)^2$ \cite{Wu2008}.
+Here $D_{\rm lower}$ is in D units. The source mass is
+$4(1-\varepsilon_A)U_C$, so pointwise division by four contributes the
+factor $1-\varepsilon_A$ to $D_{\rm lower}$.
+This calculation uses the specified direct and switched distribution inputs,
+with domain-dependent levels up to $153/256$.
+The separate balanced-semiprime subtraction costs
+$8(1-10^{-4})\log(50009/39991)$, leaving coefficient
+$0.0456036092437526742\ldots-o(1)$ for the restricted $(1+1.8)$
+representations.
+Li--Liu's $(1+1.9)$ argument uses the same singular-series convention and
+the corresponding limiting exclusion threshold
+$8\log(10/9)=0.8428841252626104\ldots\approx0.84288$
+\cite[(5.42)--(5.43)]{LiLiu2026}.
+
+Lichtman \cite{Lichtman} develops distribution estimates beyond one half.
+We use the signed estimates of \cite[Theorems~1.1--1.2]{Z1}
+and the local estimate \cite[Theorem~3.2, (3.13)]{Z1}.
+In outline, the proof runs
+\[
+ \text{thirteen signed rows}\ \Longrightarrow\ \text{switching}
+ \ \Longrightarrow\ D_{\rm lower}>T
+ \ \Longrightarrow\ N=p+rq.
+\]
+
+\subsection*{Input from \textup{[Z1]}}
+\phantomsection\label{sec:z1-input}
+We apply \cite[Theorem~1.2]{Z1} to the complete coefficient family below.
+Fix $A,B>0$, $0<\varepsilon\le10^{-4}$, and
+\[
+ \begin{gathered}
+ 0<u\le1/500,\quad 1/2<\theta<\Theta(u)=(5-7/32-3u)/8,\\
+ \eta_\Theta=\Theta(u)-\theta,\quad
+ 0<\sigma\le\min\{10^{-10},\eta_\Theta/200,\sqrt{u/(2\theta)}\},\\
+ \tau=\sigma^9,\quad D=N^\theta,\quad z=N^u,\quad
+ Y=D^{\sigma^2},\quad K_{\rm scale}=B+1,\\
+ C_{\rm box}\in\mathbb Z,\qquad C_{\rm box}\ge\lceil2A+32\rceil.
+ \end{gathered}
+\]
+Thus $C_{\rm box}\ge2(A+16)$ and $C_{\rm box}\ge A+18$,
+as required in \cite[(3.24), (B.18)--(B.19)]{Z1}.
+For large even $N$ and $\nu\in\{+,-\}$, put
+\begin{equation*}\tag*{(W)}
+\begin{split}
+ w_N^\nu(q)={}&
+ \sum_{\substack{d<D^\sigma\\d\mid P_N(Y)}}
+       \phi_d^\nu\mathbf1_{q=d}\\
+ &+\sum_{\mathbf D\in\mathcal D^\nu(D)}
+ \sum_{\substack{d<D^\sigma\\d\mid P_N(Y)}}
+       \lambda_d^\nu(\mathbf D)
+ \sum_{\substack{p_i\in\mathcal P_N\\
+       D_i\le p_i<\min(D_i^{1+\tau},z)}}
+       K_{\mathbf D}(\mathbf p)\mathbf1_{q=dp_1\cdots p_k}.
+\end{split}
+\end{equation*}
+Here $\mathcal P_N=\{p\text{ prime}:p\nmid2N\}$ and
+$P_N(t)=\prod_{p<t,\ p\in\mathcal P_N}p$.
+We use Iwaniec's grid, vectors and coefficients \cite[Theorem~4]{ref5},
+with depth $R=1$, mesh $\sigma,\tau$, and $D_i\ge Y$.
+All smooth divisors and the smooth-only term are kept.
+The coefficient bounds and distinctness mask are
+\[
+ |\phi_d^\nu|,|\lambda_d^\nu(\mathbf D)|\le1,\qquad
+ K_{\mathbf D}(\mathbf p)=
+ \prod_{\substack{i<j\\D_i=D_j}}(1-\mathbf1_{p_i=p_j}).
+\]
+An integer shift $a$ is admissible if
+\[
+ N\le a\le N\log N/3,\qquad
+ (a,q)=1\quad(q\in\operatorname{supp}w_N^\nu).
+\]
+The shift $a$ is distinct from the Li--Liu parameter $a=1.8=9/5$ below.
+Put $I_N=(N/(\log N)^B,(1-\varepsilon)N)$.
+Let $\pi_{I_N}$ count the primes in this interval.
+Let $\pi_{I_N}(q,a)$ count those in the residue class $a$.
+For fixed admissible $\sigma$,
+\[
+ \begin{gathered}
+ \operatorname{supp}w_N^\nu\subseteq
+ \{q<D^{1+\sigma+\tau}:(q,2N)=1\},\quad
+ D^{1+\sigma+\tau}<N^{\Theta(u)},\\
+ |w_N^\nu(q)|\ll_{\sigma,u,\theta}1,\qquad
+ Y\le N^{u/2}<z,\quad \log D/\log z=\theta/u,
+ \end{gathered}
+\]
+\[
+ \left|\sum_q w_N^\nu(q)
+ \left\{\pi_{I_N}(q,a)-\frac{\pi_{I_N}}{\varphi(q)}\right\}\right|
+ \ll_{\sigma,A,u,\theta,B,\varepsilon,C_{\rm box}} N(\log N)^{-A}.
+\]
+The sum runs over the full support, uniformly in admissible shifts.
+The implied constant and the threshold depend on the displayed fixed parameters.
+Through Siegel--Walfisz they may be ineffective.
+For $u=1/500$, this is \cite[Theorem~1.1]{Z1}, with
+\[
+ \Theta(1/500)=19101/32000,\qquad
+ \sqrt{u/(2\theta)}=\sqrt{1/(1000\theta)}.
+\]
+By \cite[Corollary~1.3]{Z1}, the same estimate holds with the comparator
+$\operatorname{Li}((1-\varepsilon)N)-\operatorname{Li}(N/(\log N)^B)$.
+
+For the row S1-0 we take
+\[
+ \begin{gathered}
+ u=1/500,\quad\theta=19101/32000-10^{-4},\quad
+ B=30,\quad\varepsilon=10^{-4},\quad K_{\rm scale}=31,\\
+ a=N,\quad\eta_\Theta=10^{-4},\quad \theta/u=298.403125.
+ \end{gathered}
+\]
+Since $(q,2N)=1$, this shift is admissible.
+The choice $0<\sigma\le10^{-10}$ made later meets the remaining restrictions.
+We keep $C_{\rm box}\ge\lceil2A+32\rceil$.
+Each prefixed or product row is checked separately below.
+The Heath--Brown decomposition \cite{ref6} and packing produce the boxes.
+BFI and Siegel--Walfisz give the first dispersion.
+The spectral estimate gives the second square.
+Type-I estimates and the full-family sum finish the bound.
+Details are in \hyperref[p2:dispersion-proof]{the local proof below} and
+\cite[\S\S3--5 and Appendix~B]{Z1}.
+
+\input{01-statement-o1.tex}
+\setcounter{equation}{30}
+\input{02-distribution-input.tex}
+\input{04-rows.tex}
+\input{05-s2.tex}
+\input{06-switched-rows.tex}
+\input{07-bv-o1-g4.tex}
+\input{09-ledger-conclusion.tex}
+\appendix
+\input{08-numerical-certificates.tex}
+\input{10-auxiliary-estimates.tex}
+\input{11-finite-source-checks.tex}
+\section*{Use of AI tools}
+The author devised the method of proof.
+Codex (OpenAI) and Claude Code (Anthropic) are the AI tools used.
+They assisted with derivation checks, code, typesetting, and review.
+The author checked every step of the proof, every table and every reference.
+The author takes full responsibility for the content of the paper.
+
+\section*{Statements and declarations}
+\textbf{Competing interests.} The author declares no competing interests.
+
+\textbf{Funding.} No external funding was received.
+
+\textbf{Data availability.} The numerical-certificate supplement is provided as
+\path{paper-ii-public-certificates-v11.tar.gz}. It contains the source
+scripts, full-precision outputs, finite-check run records, verification
+logs, and environment records. The archive SHA-256 is
+\texttt{cb9d7b96\allowbreak{}ce1323c9\allowbreak{}118d845f\allowbreak{}4dd701a0\allowbreak{}d830e8c6\allowbreak{}10090dee\allowbreak{}c88bd879\allowbreak{}2648e100}.
+After extraction, the root \path{SHA256SUMS} has SHA-256
+\texttt{18eb23d9\allowbreak{}6be1c096\allowbreak{}bd2d32a3\allowbreak{}6a34d7e5\allowbreak{}d9da978e\allowbreak{}5494e7ae\allowbreak{}02851a7b\allowbreak{}74adb182}.
+The archive README gives verification and reproduction commands.
+No DOI has been assigned.
+\IfFileExists{references.tex}{\input{references.tex}}{}
+\end{document}

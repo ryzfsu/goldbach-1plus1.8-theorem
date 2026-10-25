@@ -1,0 +1,988 @@
+{
+\def\UrlBreaks{\do a\do b\do c\do d\do e\do f\do g\do h\do i\do j\do k\do l\do m\do n\do o\do p\do q\do r\do s\do t\do u\do v\do w\do x\do y\do z\do A\do B\do C\do D\do E\do F\do G\do H\do I\do J\do K\do L\do M\do N\do O\do P\do Q\do R\do S\do T\do U\do V\do W\do X\do Y\do Z\do 0\do 1\do 2\do 3\do 4\do 5\do 6\do 7\do 8\do 9\do /\do _\do .\do -}
+\newcommand{\CertificateInterval}[2]{\left[\begin{gathered}{}#1,\\{}#2\end{gathered}\right]}
+\section{Numerical certificates}
+
+The source comparisons hold by Sections~2--5.
+Section~6 uses each selected inequality once,
+with the signs of (6.1).
+The tables give full rational certificates and independent checks.
+Their directed interval calculations use Arb's midpoint-radius arithmetic
+\cite{Johansson2017}; rational endpoint checks are given explicitly.
+
+\subsection{Exact interval and normalization conventions}
+
+Each terminating decimal is an exact rational,
+and each endpoint includes its displayed radius.
+The extra digits fix the direction of each bound.
+Set
+\[
+ B(c,r)=[c-r,c+r].                                      \tag{A.1}
+\]
+Shorter intervals are rounded outward.
+The numerical-certificate supplement archive \path{paper-ii-public-certificates-v11.tar.gz} has SHA-256
+\path{cb9d7b96ce1323c9118d845f4dd701a0d830e8c610090deec88bd8792648e100}.
+Each printed file SHA-256 is the digest of that file in the archive.
+An endpoint certificate bounds its endpoint,
+and a functional enclosure bounds the integral.
+Paths are relative to the extracted numerical-certificate supplement.
+
+The common parameters are
+\[
+\begin{aligned}
+ u&=\frac1{500},\quad \alpha=\frac{100}{1149},\quad
+ \beta=\frac{50}{309},\\
+ \mu&=\frac{25}{128},\quad \lambda=\frac{93}{400},\quad
+ \tau_S=\frac{57}{224},\\
+ t_*&=\frac{7109}{28000}.
+\end{aligned}\tag{A.2}
+\]
+The parameter-family certificates require
+$0<\sigma\le10^{-10}$ and $\tau=\sigma^9\le10^{-90}$.
+They apply to the same source and scalar profile.
+In Section~4 the G1 source width is $C_b=334$.
+
+The two numerical outputs and their component manifests are:
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\textbf{\path{endpoint-recert/out/compare_hp.json}, S1, row and G1} \\
+\emph{SHA-256}: \path{cff4d6dc0168e66a29a915473c3391c383c168fb81ac71ecec87e90016331bf8} \\
+\emph{Manifest SHA-256}: \path{8760a5a78fff44ca739cd12660d3a86765dd2f3d6872eae111d933f354f54730} \\
+\midrule
+\textbf{\path{s2-joint/outputs/ASSEMBLY.json}, S2} \\
+\emph{SHA-256}: \path{21083883403f3903fff3ce781e086a26f931dd809e445578cfcba546295e9e5d} \\
+\emph{Manifest SHA-256}: \path{d26488e736e5798544e758338acb299d417b74a309568f5ce20f738e399cf96d} \\
+\bottomrule
+\end{longtable}
+}
+
+Certificate paths are relative to the supplement root.
+The root \path{SHA256SUMS} lists each retained filename and digest,
+including the selected S2 components.
+The true $F/f$ profiles are computed by \path{endpoint-recert/code/tm.py}, with SHA-256
+\path{d34b11f02353473f714d00dbb02d73f9a91be5275d9589fc0db1de3aa851ec16}.
+The exact comparisons are in \path{endpoint-recert/out/compare_hp.json}, with SHA-256
+\path{cff4d6dc0168e66a29a915473c3391c383c168fb81ac71ecec87e90016331bf8}.
+The bounds come from Taylor models and directed quadrature.
+
+Throughout, $U_C=C(N)N/\log^2N$, with $C(N)$ as in \S~1.
+The signed master coefficients, in the order
+$S_1,\ldots,S_{13},S_{\rm sw}$, are
+\[
+ (3,1,-2,-1,-1,-1,-1,1,1,1,-2,-1,-1,-1).               \tag{A.3}
+\]
+Thus S1 contributes $3S_1/4$ and S3 contributes $-S_3/2$.
+The multiplier is $-1/4$ for S4/S5/S6/S7
+and $1/4$ for S8/S9/S10.
+The joint S2 and G1 values are already in D units.
+The G1 source multiplicities $(2,1,1)$ sit inside its source weight,
+so they add no DIRECT-row coefficients.
+The switched term contributes $-S_{\rm sw}/\mathcal W$.
+Up to its stated vanishing error, this is bounded below by $-2H_L$.
+
+Each selected endpoint has an independent check,
+and each row and joint contribution enters once.
+
+\subsection{S1: joint enclosure}
+
+For the joint profile in Section~2,
+\[
+ 12.9020516<S_1<12.9023390,\qquad
+ \frac34S_1>9.6765387.                                 \tag{A.4}
+\]
+It covers S1-0 through S1-3 and includes the first $-F$ subtraction.
+The subtraction uses $u$ and $s_0=19037/64$.
+The integral of Section~2.3 satisfies
+\[ I_*<2161.074150710003. \]
+Both bounds refer to the joint profile of Section~2.3.
+
+The selected enclosure is computed by
+\path{s1-tail/certify_s1_corrected_tail.py},
+with SHA-256
+\path{da9f572cbb28ca06a00e050785eefd9cd4f499269a627deaaa9a593c4ab210a3};
+its output
+\path{s1-tail/corrected-certificate.json}
+has SHA-256
+\path{ebf20d49c73cbf7ae11314e3a1e7e82005a75c42a6c2fe91547698f877011f4f}.
+The infinite factorial tail is
+\[
+ \sum_{m\ge40}\frac{(m+2)^2}{(m+1)m!}
+ \le\frac{42^2}{41\,40!}\frac{39}{38},                 \tag{A.5}
+\]
+since the ratio of consecutive summands is at most $1/39$.
+The endpoint (A.4) is used.
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\emph{Exact outer intervals containing the computed bounds} \\
+\midrule
+\textbf{S1 lower bound} \\
+$B(12.9020516652549921721098499909159212126626402875924361285,4.64\cdot10^{-56})$ \\
+\midrule
+\textbf{S1 upper bound} \\
+$B(12.9023389323670212025588110758944404798760246915400198042,3.39\cdot10^{-56})$ \\
+\midrule
+\textbf{D lower bound from S1} \\
+$B(9.6765387489412441290823874931869409094969802156943270964,6.00\cdot10^{-56})$ \\
+\midrule
+\textbf{Infinite-tail majorant $J_{\rm upper}$} \\
+$B(0.000255821764915303175726784912190615770902363950678941419476,3.34\cdot10^{-61})$ \\
+\midrule
+\textbf{Prefix deficit} \\
+$[0,7.792\cdot10^{-383}]$ \\
+\bottomrule
+\end{longtable}
+}
+
+The prefix deficit is subtracted before computing the lower endpoints in (A.4).
+Thus (A.4) includes the deficit once.
+The source-to-profile comparison is in \S~2.3.
+
+The independent calculation is \path{endpoint-recert/code/s1_cert.py}, with SHA-256
+\path{718e495fb18ea71ef0538c73ac03f96a0cac77f2274ffbe5c1a093b76605a508}.
+It re-derives the cancellation and tail bound from the delay equations.
+Its output is \path{endpoint-recert/out/s1_cert.json}, with SHA-256
+\path{f16972e2b73258532182357454193b5002b553dc465b829f9af9b2c0680d4137}.
+It gives the sharper bounds
+\[
+ S_1\in[12.9020760,12.9023390],\qquad
+ \frac34S_1>9.6765570.                                 \tag{A.5a}
+\]
+The computed lower-bound ball is
+{\normalsize
+\[
+B(12.9020760472276414637285015429505331626940241680712780695,
+4.38\cdot10^{-56})\mathpunct{,}
+\]
+and its $3/4$ multiple is
+\[
+B(9.67655703542073109779637615721289987202051812605345855210,
+5.80\cdot10^{-56})\mathpunct{.}
+\]
+}
+These bounds imply (A.4) and its tail estimate.
+They also give $I_*<2161.074150710003$.
+The selected endpoint is (A.4).
+
+\subsection{The seven separate profile endpoints}
+
+The seven directed endpoints below come from three certificate groups.
+Option-A gives the absolute S3-A/S8-A/S9-A values.
+Direct-row gives S4, S5-low and S7,
+and Retained-row gives S10-Ret.
+Each endpoint has an independent comparison.
+For S4, S5-low, S7 and S10 the final sum uses the adverse endpoint of the
+first printed interval; the following ball is an independent check.
+For the three Option-A rows it uses the displayed ball endpoint in the
+adverse direction.
+S7 is taken at $\lambda=93/400$.
+S10 uses the source-trimmed upper inner boundary.
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\emph{Row; coefficient giving its D contribution; certificate group.} \\
+\emph{Raw-profile outer interval; next line: independent endpoint comparison.} \\
+\midrule
+\textbf{S3-A (Option A)}\quad $-1/2$\quad Option-A \\
+$B(10.45234847108890216860085651838875393044983358511004,5.69\cdot10^{-51})$ \\
+Upper endpoint verified in the archived comparison record \\
+\midrule
+\textbf{S4}\quad $-1/4$\quad Direct-row \\
+$[3.336569865049636,3.336975348289866]$ \\
+$B(3.33672680275562584206999257242,4.25\cdot10^{-30})$ \\
+\midrule
+\textbf{S5-low}\quad $-1/4$\quad Direct-row, direct cells $[1/4,t_*)$ \\
+$[0.238854512468062,0.238888433191047]$ \\
+$B(0.238875420270830663069285634601,4.07\cdot10^{-31})$ \\
+\midrule
+\textbf{S7}\quad $-1/4$\quad Direct-row, $\lambda=93/400$ \\
+$[2.299209653294856,2.299402520476652]$ \\
+$B(2.29926042756192568371844970138,1.46\cdot10^{-30})$ \\
+\midrule
+\textbf{S8-A (Option A)}\quad $+1/4$\quad Option-A \\
+$B(2.36595898835331722398869549955202092760264561327680,6.59\cdot10^{-51})$ \\
+Lower endpoint verified in the archived comparison record \\
+\midrule
+\textbf{S9-A (Option A)}\quad $+1/4$\quad Option-A \\
+$B(1.341531658234294936348198541015408702983637197761145323037489950,4.21\cdot10^{-64})$ \\
+Lower endpoint verified in the archived comparison record \\
+\midrule
+\textbf{S10-Ret}\quad $+1/4$\quad Retained-row \\
+$[0.858847455777940,0.867486588163666]$ \\
+$B(0.862377086132397387439154957615,6.98\cdot10^{-32})$ \\
+\bottomrule
+\end{longtable}
+}
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\textbf{Direct-row} \\
+\emph{Source code and SHA-256}: \path{row-enclosures/cert_s4_s7.py}: \path{d98866b45f1ddb8f3f93411bfe09cb11c62569cc80fa775a77a3eab1ad4384aa} \\
+\emph{Output and SHA-256}: \path{row-enclosures/result.json}: \path{0eb5fa52ed180a071633e50f0d099f5c4e1f9bb001add71765fe1c2f033b8f7a}; S4, S5 direct cells, S7 \\
+\midrule
+\textbf{Option-A} \\
+\emph{Source code and SHA-256}: \path{option-a/arb_enclose_optionA_independent.py}: \path{9c1880609692d30be9f282a218280c291dbb782a7d7cfab35732e9203687c36b} \\
+\emph{Output and SHA-256}: \path{option-a/arb_enclose_optionA_out.json}: \path{5a8786a27da1a52550eb0c077ae11c48072aff6d1765cebbad25b24e2a556b27} \\
+\midrule
+\textbf{Retained-row} \\
+\emph{Source code and SHA-256}: \path{s10/arb_s10_exact.py}: \path{74a130143e5c9e40ac530dd688526e63acde93a95f5e8271b0f07984afc5a98f} \\
+\emph{Output and SHA-256}: \path{s10/s10-s10.json}: \path{f6fba094d222f362341bc63ba0388cbf6a7556accdd14d5b28b882d7e0626cf6} \\
+\bottomrule
+\end{longtable}
+}
+
+Direct-row uses 192-bit Arb with $\tau\in[0,10^{-90}]$.
+S5-low sums two direct cells on $[1/4,t_*)$, with outward rounding.
+The BV-top cell is disjoint from them. The independent
+calculation
+\path{endpoint-recert/code/rows_cert.py} has SHA-256
+\path{8b2ef756bbdd5530f614a66b8c5eb5dddd17922555d979515b1ca85876064bc5}.
+It produces all seven results in \path{endpoint-recert/out/rows_cert_hp.json}, with SHA-256
+\path{456d03d3ea9954bb71fedc8e20ea35cd463454bb9a0919b3ace9f64e09f54464}.
+The exact rational comparisons are in \path{endpoint-recert/out/compare_hp.json} of Appendix A.1.
+They include the selected S8/S9 directions.
+S3/S4/S5/S7 include the adverse $\tau=10^{-90}$ effects,
+and S8/S9/S10 use the actual-coordinate profiles.
+Their fixed-$\tau$ comparisons are proved in Sections~2.4--2.5,
+especially (2.40).
+
+The independent S10 retained-strip bound is $4.82\tau$ in D units.
+It lies within the single separate $7.160\tau$ bound.
+
+The absolute Option-A rows use one source,
+with the subtraction at $u=1/500$.
+These rows give the three selected absolute endpoints.
+
+The independent comparison gives
+{\normalsize
+\[
+\begin{gathered}
+ S_{3,\mathrm{OptA}}\in\\
+B(10.45234847108890216860085651838875393044983358511004,
+   5.69\cdot10^{-51}),
+\end{gathered}
+\]
+}
+and the matched change is
+{\normalsize
+\[
+\begin{gathered}
+ \Delta D_{\mathrm{OptA}}\in\\
+B(-0.0110499568842910017666362322996150028835154631047,
+   9.53\cdot10^{-50}).
+\end{gathered}\tag{A.6}
+\]
+}
+Equation (A.6) is a comparison value only.
+The signed sum uses the three absolute endpoints.
+
+\subsection{S2: one four-row endpoint}
+
+Let $P_-$, $J_+$ and $C_-$ be directed endpoints.
+They bound the prefix below, PF above and the BV corner below.
+On $\Delta=\{u\le r_3<r_2<r_1\le\beta\}$, set
+\[
+ V_{\rm full}=V
+ =\int_\Delta\frac{dr_1\,dr_2\,dr_3}{r_1r_2r_3^2}
+ =\frac{\log^2(\beta/u)-2\log(\beta/u)+2}{2u}-\frac1\beta.
+\]
+An outward evaluation gives
+{\small
+\[
+\begin{aligned}
+ V_{\rm full}\in[&
+3122.423962424988515509469383070552351626538598751986375091552742,\\
+&3122.423962424988515509469383070552351626538598751986375091552743].
+\end{aligned}
+\]
+}
+The endpoints in (A.7) are
+\[
+\begin{aligned}
+P_-&=3513.1687300568893335013223065223679611140065161989243,\\
+J_+&=0.359440819140453278302418897934329259372468992946659201284,\\
+C_-&=-0.0574908755554524530180814901226778275854309897822443970870.
+\end{aligned}
+\]
+Use four times the printed interval for $1/(2e^\gamma)$ below to bound
+$2/e^\gamma$. Define $d_{T8}$ by
+\[
+ d_{T8}=\frac{P_--(2/e^\gamma)V_{\rm full}
+                    -(2/e^\gamma)J_++C_-}{4}
+              -\frac1{20000}.                         \tag{A.7}
+\]
+The directed assembly gives
+\[
+ d_{T8}>
+ 1.61958135698908352559133404332105729220076714081650.    \tag{A.8}
+\]
+Let $k_-,k_+$ be the printed endpoints for $k=1/(2e^\gamma)$ below,
+and let $V_-,V_+$ be the endpoints above. Exact rational interval
+arithmetic in (A.7) gives
+\[
+\begin{aligned}
+ d_{T8}\in\bigl[&P_-/4-k_+(V_++J_+)+C_-/4-1/20000,\\
+                 &P_-/4-k_-(V_-+J_+)+C_-/4-1/20000\bigr].
+\end{aligned}
+\]
+This is the selected joint lower value in D units.
+It covers S2-0 through S2-3(K/PF)
+and includes the tail $1/20000$ once.
+The term $275009680\tau$ is separate,
+and so are AA37 and the other finite-$N$ errors.
+The grid is the global one, $\tau_g=\tau=\sigma^9$.
+The selector and PR costs satisfy
+\[
+\begin{aligned}
+ &(275009680+7.160+62500+145664566.4567)\tau\\
+ &=420736753.6167\tau\le4.207367536167\cdot10^{-82}.
+\end{aligned}
+\]
+The BV corner is $c_\gamma V_B-\mathrm{IBV}$ from (5.18). IBV is
+the R1 kernel (5.17) at $\kappa=10^{-6}$ in \S~5.3. The independent
+nested Arb source is \path{s2-joint/code/corner.py}, with SHA-256
+\path{7cbc5d276b54b52d657fc52622db1a3542c5079d72a39e3be3d12eec1ddb21f2}.
+Its line 11 sets $\kappa=10^{-6}$. It gives
+\[
+ c_\gamma V_B-\mathrm{IBV}\in
+ B(-0.057257305790446009369486009082468758,4.67\cdot10^{-37}).
+\]
+The output is \path{s2-joint/outputs/corner.json}, with SHA-256
+\path{360841b6008cb08be571d23177887df14be286ebde7ba3f3fe2c7571f31be9d8}.
+This value exceeds $C_-$ by more than $2.3356\cdot10^{-4}$, so $C_-$
+is a lower endpoint at $\kappa=10^{-6}$. Increasing $\kappa$
+decreases $1/2-\kappa-r_1-r_2-r_3$ and lowers the corner, so its
+$\kappa=0$ value is larger.
+For the R1 level increment, the S2 corner uses $\kappa=10^{-6}$,
+so $d_{T8}$ includes this increment.
+Section~\ref{sec:proof-theorem-1} keeps an additional conservative R1 allowance.
+
+\paragraph{Corner increment bound.} R1 is the tetrahedron
+$\{r_3\le r_2\le r_1\le\beta,\ r_1+2r_2+4r_3\ge H\}$. Its vertices are
+$(\beta,\beta,\beta)$, $(H/7,H/7,H/7)$, $(\beta,x,x)$, and
+$(\beta,\beta,y)$, where $x=(H-\beta)/6$ and
+$y=(H-3\beta)/4=13147/103000$. On R1, $r_i\ge y$ and
+$a_0:=1/2-r_1-r_2-r_3\ge3/206$. In D units,
+\[
+\begin{aligned}
+ J_{R1}(\kappa)-J_{R1}(0)&=\int_{R1}\frac{\kappa\,dr}{r_1r_2r_3\,a_0(a_0-\kappa)}\\
+&\le\frac{\mathrm{vol}(R1)\,\kappa}{y^3\,\tfrac3{206}(\tfrac3{206}-\kappa)}\\
+ &=5.74468\ldots\cdot10^{-6}<5.745\cdot10^{-6}
+\end{aligned}
+\]
+For $\kappa=10^{-6}$,
+$\mathrm{vol}(R1)=2.53345\ldots\cdot10^{-6}$. Its exact rational value
+is the absolute determinant of three edge vectors at a vertex divided by $6$.
+This bounds the actual R1 increment, which is already included in $d_{T8}$.
+The extra allowance $g_{R1}=5.71\cdot10^{-6}$ in Section~6 is a separate
+conservative subtraction; it is not used as a bound for this increment.
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\emph{Exact outward enclosures} \\
+\midrule
+\textbf{Prefix, n=600} \\
+$P\in\CertificateInterval{3513.1687300568893335013223065223679611140065161989243}{3513.1687300568893335013223065223679611140065161989248}$ \\
+\emph{Source code SHA-256}: \path{s2-selected/sources/numeric/split_prefix_exact.py}: \path{492ef149b0460f59732102ddeb252fa8fb30fce03df2fd953376ad4fb5417ada} \\
+\emph{Output SHA-256}: \path{s2-selected/sources/numeric/prefix-u-n600-corrected.json}: \path{01c72d03c23ff51eb903e299ecb63a90496485c0e6549e05c3818077f2e88e08} \\
+\midrule
+\textbf{PF outer, n=1536} \\*
+$J\in\CertificateInterval{0.352576588183432872639904522863463727436871987468524955851}{0.359440819140453278302418897934329259372468992946659201284}$ \\
+\emph{Source code SHA-256}: \path{s2-selected/sources/numeric/exact_outer_s2.py}: \path{1cf453f317366d9c0b191aac5457b518fae48b54d7321da80bf577d1aa5f69f0}; \path{s2-selected/sources/numeric/arb_pf_replay.py}: \path{e99d81397544d0814b49c8263d61a4a9389dc6688488f4ee0359cc1fc76bfcb2} \\
+\emph{Output SHA-256}: \path{s2-selected/sources/numeric/outer-n1536-truepsi.json}: \path{431d567fe714e412da6ba528b02cab0e251cbb616aa1fd8d9c8a11efca67d323} \\
+\midrule
+\textbf{BV corner, n=2800} \\
+$C\in\CertificateInterval{-0.0574908755554524530180814901226778275854309897822443970870}{-0.0570237847462003399142149129742403275854309897822443970868}$ \\
+\emph{Source code SHA-256}: \path{s2-selected/sources/numeric/corner_arb.py}: \path{7d5586c43d7951cecd86fdb85fca277efc91e7cf9b85fbd75ada5fb01726d861} \\
+\emph{Output SHA-256}: \path{s2-selected/sources/numeric/corner-arb.json}: \path{2bc56db0d72a56afbd88aac7111afc2f2eaa06aa65a4c509a96107765415afc3} \\
+\midrule
+\textbf{Tail above 12, in D} \\
+$[0,0.000047391848857364673265889344422276912]$ \\
+\emph{Source code SHA-256}: \path{s2-selected/certify_tail_seed.py}: \path{42565c0188066a45c1f166a49a8fb64c95d6bd43874047bade6af9f856428fef} \\
+\emph{Output SHA-256}: \path{s2-selected/TAIL-SEED.json}: \path{0363a93ec43884b70ca0b54e06e71ea8a64210c64910e4e4a3bc3a366df04c53} \\
+\midrule
+\textbf{Rowwise prefix-repair allowance, in D} \\
+$[0,1.154\cdot10^{-54}]$ \\
+\emph{Justification}: \\
+The preceding tail majorant, within the single $1/20000$ allowance \\
+\midrule
+\textbf{Joint lower-value assembly} \\
+\emph{Outward enclosure assembled from the printed inputs in (A.7)}: \\
+$\CertificateInterval{1.6195813569890835255913340433210572922007671408165057072212979}{1.6195813569890835255913340433210572922007671408165057072212983}$ \\
+\emph{Full-precision assembler source SHA-256}: \path{s2-selected/verify_interface.py}: \path{fae4b0cb684502ed7d1d75537cb5456868ba83094eb9157f14e30cf58574de71} \\
+\emph{Output SHA-256}: \path{s2-selected/INTERFACE-VERIFICATION.json}: \path{839dbd7f3d75d39f52aca3920325d63dd33dcc4346479f0871720d93194fc469} \\
+This output uses the retained full-precision prefix endpoint, not the shortened $P_-$ in (A.7); the printed-input enclosure above is evaluated directly from (A.7). \\
+\bottomrule
+\end{longtable}
+}
+
+\paragraph{Independent quadrature.} The calculation recorded in
+\path{s2-joint/outputs/ASSEMBLY.json},
+SHA-256
+\path{21083883403f3903fff3ce781e086a26f931dd809e445578cfcba546295e9e5d},
+independently evaluates the PF and corner integrals in the \S~3 functional and gives
+\[
+\begin{aligned}
+ \frac{T_8}{4}&\in
+ [1.62063469556829,1.62071322785677]\quad\text{D units},\\
+ 1.62063469556829-d_{T8}&>0.001053338579.
+\end{aligned}\tag{A.8a}
+\]
+Interval (A.8a) covers the continuous functional and the infinite tail.
+The selected $d_{T8}$ uses coarser adverse quadrature endpoints
+and also includes the $1/20000$ allowance.
+The three improvements are
+\[
+\begin{aligned}
+ \frac{2e^{-\gamma}}4(J_{+,\rm old}-J_{+,\rm new})
+   &\simeq0.000944946137955914,\\
+ \frac{C_{-,\rm new}-C_{-,\rm old}}4
+   &\simeq0.000058392441251611,\\
+ \text{tail allowance}&=0.000050000000000000.
+\end{aligned}
+\]
+Here $J_{+,\rm old}$ and $J_{+,\rm new}$ are the printed upper PF
+endpoints. Similarly, $C_{-,\rm old}$ and $C_{-,\rm new}$ are the
+printed lower corner endpoints. For the new ball we take its outward lower
+endpoint. Because of endpoint display rounding, the sum differs from
+$1.62063469556829-d_{T8}$ by less than $2\cdot10^{-15}$.
+The difference exceeds $0.001053338579$,
+so the continuous lower endpoint exceeds $d_{T8}+1/20000$.
+The independent prefix-only assembly gives $P_{\rm def}<1.1\cdot10^{-51}$.
+The coarser joint prefix-and-tail bound is $10^{-49}$.
+The rowwise repair allowance $1.154\cdot10^{-54}$ in (A.7) covers its
+own tail-majorant correction and is already inside the single $1/20000$
+allowance used in $d_{T8}$. These independent deficits are not added again.
+Section~\ref{sec:proof-theorem-1} bounds the finite-$N$ corrections,
+including the selector and AA37 terms.
+The selected value is (A.8).
+
+The component sources are:
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\textbf{True F/f, 320-bit Arb Taylor models} \\
+\emph{Source code SHA-256}: \path{s2-joint/code/ff_models.py}: \path{7a6b137417573ba0e717ffa4444e7fb6671cb1b325ff826cac26630591bd4624} \\
+\emph{Output SHA-256/result}: \path{s2-joint/outputs/ff_report.json}: \path{cfb7d637cb623590478e3069b14a2fa2b85aeab1eb296985523b1ccf60f56f01}; $E(s)\le1.302\cdot10^{-55}$ for all $s\ge33$ \\
+\midrule
+\textbf{PF directed quadrature, 24,000,005 leaves} \\
+\emph{Source code SHA-256}: \path{s2-joint/code/jpf.c}: \path{e5a4680d2a6ab4bed93bf8628dae78acabc79bd66bbfcbc6a526ca03cf564973} \\
+\emph{Output SHA-256/result}: $J_{PF}\in[0.355795040748992,0.356074784134854]$; four shard output hashes below \\
+\midrule
+\textbf{BV corner, rigorous nested Arb integration} \\
+\emph{Source code SHA-256}: \path{s2-joint/code/corner.py}: \path{7cbc5d276b54b52d657fc52622db1a3542c5079d72a39e3be3d12eec1ddb21f2} \\
+\emph{Output SHA-256/result}: \path{s2-joint/outputs/corner.json}: \path{360841b6008cb08be571d23177887df14be286ebde7ba3f3fe2c7571f31be9d8} \\
+\midrule
+\textbf{Joint directed assembly, including prefix deficit and full tail} \\
+\emph{Source code SHA-256}: \path{s2-joint/code/assemble.py}: \path{4b521ae19ef7742e3bcbb4eb28a0f48c2a161195c5ab0e9b4f8456ba6ddf5c45} \\
+\emph{Output SHA-256/result}: \path{s2-joint/outputs/ASSEMBLY.json}: \path{21083883403f3903fff3ce781e086a26f931dd809e445578cfcba546295e9e5d}; (A.8a) \\
+\bottomrule
+\end{longtable}
+}
+
+All paths in this table are relative to the supplement root.
+The hashes for \path{s2-joint/outputs/jpf_shard0.json} through \path{s2-joint/outputs/jpf_shard3.json} are,
+in that order,
+\path{14b67605807cfcef9ec96b134fe50b9c8e4b4319c3f33a5ebf99a8eab0cf3c67},
+\path{d163c9c8d8d90dbfa5603b49f379867df0912a87e088f0e71924300500bf0fee},
+\path{e6f4077dcc2c05317eb2a1b26e4bba519dc7b98cb1960038a2a4885a8bb1f1de},
+and
+\path{623eebd522d2b99122cf4395cfe760b0d10cc89ec31ac5ca8a70009e8c729b6d}.
+The bundle manifest SHA-256 is
+\path{d26488e736e5798544e758338acb299d417b74a309568f5ce20f738e399cf96d},
+and the manifest contains 16 entries.
+
+The independent assembly gives $P_{\rm def}<1.1\cdot10^{-51}$.
+It also bounds the
+no-growth tail after $s=33$, and checks the classical A=1 tail argument.
+Its PF and corner enclosures are independent of the primary quadrature;
+the prefix term $P$ and full volume $V$ are shared inputs.
+That section proves the source comparison and the Class-II bounds.
+It also bounds the selector, the AA37/G2 terms and the other errors.
+The joint four-row endpoint enters once.
+
+\subsection{G1: signed allocation and radial multiplier}
+
+For the exact allocation in \S~4,
+\[
+ K_G=\frac{2I_{11}+I_{12}+I_{13}}{2e^\gamma},\qquad
+ P_r:=-K_GT_r,\qquad \sum_{r=0}^3T_r=\overline G.
+                                                               \tag{A.9}
+\]
+Here $P_r$ is a pure profile target. The corresponding arithmetic
+contribution is $Q_{G1-r,0}(N)$; its lower comparison, including the
+fixed and vanishing errors, is (4.85). The allocation identity (A.9)
+does not assert equality with that arithmetic contribution.
+The multiplicities $(2,1,1)$ enter $K_G$ once. The source code is
+\path{g1-endpoints/certify_signed_endpoints.py},
+with SHA-256 \path{e0eb449e97eedc1ea5aa8ab40de847a1baec1e8316271bf873ead904d845a864}.
+Its output \path{g1-endpoints/outputs/result.json}
+has SHA-256
+\path{0a940b64e5f762fbfc1439709a3092de9749ecfdf448ef467ff52248e1794c69}.
+A separate exact rational calculation verifies the retained source intervals.
+Its output is
+\path{g1-rational/exact-rational-check.json}, with SHA-256
+\path{7d7048c800af14d06963bd8fcf4f17ff45517e41fa9fd682bc583ddfb88dd4b6}.
+The outward decimal enlargements of these intervals and their product are displayed below.
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\emph{Exact rational outward intervals} \\
+\midrule
+\textbf{$I_{11}$, including four-prime correction} \\
+$\CertificateInterval{0.2208790666923091612026153538231208031879235648368125703408}{0.2208790666923091612026153538231208031879235648368125703424}$ \\
+\midrule
+\textbf{$I_{12}$} \\
+$\CertificateInterval{0.5740619734452483407647685136781950850886922314288474504985}{0.5740619734452483407647685136781950850886922314288474504987}$ \\
+\midrule
+\textbf{$I_{13}$} \\
+$\CertificateInterval{0.4052907329856379464660009714315655397835085202678768274511}{0.4052907329856379464660009714315655397835085202678768274513}$ \\
+\midrule
+\textbf{$K_G$} \\
+$\CertificateInterval{0.3989480791070578466390443009830933753748442947478110112211}{0.3989480791070578466390443009830933753748442947478110112223}$ \\
+\midrule
+\textbf{$\overline G$} \\
+$\CertificateInterval{6.0884403625974206828946573628908904359431953974002641181857}{6.0884403625974206828946573628908904359431953974002641181858}$ \\
+\midrule
+\textbf{Joint $-K_G\overline G$, in D} \\
+$\CertificateInterval{-2.4289715874161197464056136533483979571384269074906618794340}{-2.4289715874161197464056136533483979571384269074906618794266}$ \\
+\bottomrule
+\end{longtable}
+}
+
+These intervals certify G1-0 through G1-3.
+All four targets are in D units.
+The exact row endpoints below use the narrower exported dyadic $K_G$
+and $T_r$ intervals from the retained source.
+
+{
+\normalsize
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\textbf{G1-0}\quad K endpoint for lower bound: upper \\
+\emph{Exact lower endpoint}: $\frac{-19564356883289720593180343123839226092697830325553783422353}{98079714615416886934934209737619787751599303819750539264}$ \\
+\emph{Exact upper endpoint}: $\frac{-626059420265271058981770979962855234966330570417721069513945}{3138550867693340381917894711603833208051177722232017256448}$ \\
+\midrule
+\textbf{G1-1}\quad K endpoint for lower bound: lower \\
+\emph{Exact lower endpoint}: $\frac{179266388678009569180357614458786189164679660590048624716243}{196159429230833773869868419475239575503198607639501078528}$ \\
+\emph{Exact upper endpoint}: $\frac{717065554712038276721430457835144756658718642360194498866525}{784637716923335095479473677900958302012794430558004314112}$ \\
+\midrule
+\textbf{G1-2}\quad K endpoint for lower bound: upper \\
+\emph{Exact lower endpoint}: $\frac{-821300653301490295585240971954986923239672986567876292003797}{392318858461667547739736838950479151006397215279002157056}$ \\
+\emph{Exact upper endpoint}: $\frac{-821300653301490295585240971954986923239672986567876292002013}{392318858461667547739736838950479151006397215279002157056}$ \\
+\midrule
+\textbf{G1-3}\quad K endpoint for lower bound: lower \\
+\emph{Exact lower endpoint}: $\frac{270036186059109561485627059871971764166199228966336131972949}{196159429230833773869868419475239575503198607639501078528}$ \\
+\emph{Exact upper endpoint}: $\frac{135018093029554780742813529935985882083099614483168065986769}{98079714615416886934934209737619787751599303819750539264}$ \\
+\bottomrule
+\end{longtable}
+}
+
+The exact joint reference value is given below.
+{\normalsize
+\[
+ L_{G1}=-\frac{243950428265194656254206921939947762868871361874409552095097}
+ {100433627766186892221372630771322662657637687111424552206336}.
+                                                               \tag{A.10}
+\]
+}
+Let $R_{G1}$ be the sum of the four exact row lower endpoints in the
+table. The exact difference is
+{\normalsize
+\[
+\begin{gathered}
+ L_{G1}-R_{G1}\\
+ =\frac{500103}
+ {100433627766186892221372630771322662657637687111424552206336}\\
+ <4.98\cdot10^{-54}.
+\end{gathered}
+\]
+}
+Put
+\[
+ \delta_{G1}=4.98\cdot10^{-54},\qquad
+ E_{G1}=L_{G1}-\delta_{G1}.
+\]
+The printed decimal intervals are rounded outward separately from the
+narrower source intervals used for the exact row certificates.
+For an exact check of the endpoint arithmetic, enclose $1/(2e^\gamma)$ by
+{\small
+\[
+\CertificateInterval{0.2807297417834425849120716073954403933828551934625765840770795380225439}{0.2807297417834425849120716073954403933828551934625765840770795380225440}.
+\]
+}
+This rational enclosure comes from the Arb constant evaluation of
+the retained source, at 256-bit precision.
+We multiply its lower endpoint by $2I_{11,\rm lo}+I_{12,\rm lo}+I_{13,\rm lo}$,
+and its upper endpoint by $2I_{11,\rm hi}+I_{12,\rm hi}+I_{13,\rm hi}$.
+Exact rational multiplication and outward rounding to $10^{-58}$ then give
+the displayed $K_G$ interval.
+Its upper endpoint exceeds the upper product by less than
+$9.17\cdot10^{-59}$.
+The joint interval also contains the displayed interval product.
+Put $K_{\rm up}=K_{\rm hi}$ from \eqref{eq:g1-khi}.
+Exact multiplication gives
+\[
+ 0<L_{G1}+K_{\rm up}\overline G_{\rm hi}
+ <9.36\cdot10^{-58}<\delta_{G1}.
+\]
+Thus $E_{G1}<-K_{\rm up}\overline G_{\rm hi}$. The exact difference
+also gives $E_{G1}<R_{G1}$.
+The rational row endpoints keep their independent, sharper certificates.
+The selected endpoint is the joint one, $E_{G1}$.
+Section~\ref{sec:proof-theorem-1} includes $L_{G1}$ once,
+and its error sum includes $\delta_{G1}$ once.
+The four row values certify this comparison.
+The final sum uses this joint lower endpoint.
+The primitive (A.10c) is an earlier alternative.
+No completed validated complex quadrature check of its analytic
+neighborhoods and branches is used for the selected endpoint.
+
+A separate implementation computes the four-prime correction in two ways
+and checks the same $K$ directions. Its source \path{endpoint-recert/code/g1_K.py}
+has SHA-256
+\path{fd749f9a795f6876c9852c516789a9bbf937ec667c76a06f5662fed480aab52e};
+its output \path{endpoint-recert/out/g1_K.json} has SHA-256
+\path{e3ea5971a526c195ea33e7eb6b7b0c756d77fa1e0560d3b83eedf1785536cb07}.
+The output confirms both $K$ directions. Its residual source \path{endpoint-recert/code/g1_J.py}
+has SHA-256
+\path{e7e6f75367c3af5d2e97a0c653d866328df962caef8791305203a6ee18be5715};
+the output \path{endpoint-recert/out/j_final.json} has SHA-256
+\path{7ad65327cda9adf324a5325b664ce3788d6119ea40f31c0c007eb2416f42069c}.
+It proves the exact-rational residual enclosure, rounded outward:
+\[
+ J\in[0.964498,0.967120],\qquad J<0.968435989360.                                \tag{A.10a}
+\]
+The residual-profile $\tau$-effect is at most
+$5\cdot10^4\tau\le5\cdot10^{-86}$. The selected residual slack absorbs it.
+The comparisons give all four T allocations and lower targets,
+with signs $(-,+,-,+)$.
+The $K$ directions are
+$(\mathrm{upper},\mathrm{lower},\mathrm{upper},\mathrm{lower})$,
+with the weights $(2,1,1)$ entering once. Section~4 proves the source application for
+$C_b=334$ and its error bounds.
+
+\paragraph{The 4096-cell upper-corner calculation.}
+This paragraph gives the 4096-cell trapezoidal calculation of $\overline G$ used in (4.79).
+The residual enclosure (A.10a) comes from the separate Taylor-model source and output identified above.
+The true delay functions are
+
+\[
+ F(s)={2e^\gamma\over s}\ (1\le s\le3),\quad
+ f(s)=0\ (s\le2),\quad
+ f(s)={2e^\gamma\log(s-1)\over s}\ (2\le s\le3),
+\]
+
+and thereafter $(sF)'=f(s-1)$, $(sf)'=F(s-1)$.
+On open integer intervals, their second derivatives are bounded by 12.
+The quadrature uses trapezoidal panels of width $2^{-16}$ aligned at integers,
+with integral remainder at most $h^3$.
+Arb carries all propagated radii, and outward rational rounding uses the
+$2^{-128}$ lattice.
+Monotonicity encloses $\Phi(a)=\int_1^a(1-f(s))\,ds$. Beyond 30, its tail is bounded by
+$(a-30)(1-f(30))$; no constant table extrapolation is used.
+
+For fixed rational $t_1,t_2$, the $t_3$ range is split at each kink,
+activation switch and pairwise affine crossing in (4.70).
+On each segment $a_3=c/t_3+k$, and
+
+\[
+ \int_p^q{1-f(c/t+k)\over t^2}\,dt
+     ={\Phi(c/p+k)-\Phi(c/q+k)\over c}\quad(c\ne0).
+ \tag{A.10b}\label{eq:g1-phi-primitive}
+\]
+
+The constant-argument case is direct. Each segment integral lies
+between 0 and $1/p-1/q$. The residual
+$\Theta_*-t_1-t_2-t_3$ is nonincreasing in $t_1,t_2$.
+Its affine derivatives are negative, and the $\psi$ active sets are down-sets.
+Hence the inner integral is nondecreasing in both outer variables.
+The outer integration uses $t=ue^x$, outward-enclosed logarithmic cells, and upper
+and lower corner sums. Diagonal triangles have half the squared cell width.
+On a grid of 4096 cells, the outward-rounded sums are accumulated as exact
+integers. This proves the directed enclosure (4.79).
+
+For an independent evaluation of the four-prime correction, put
+$z=v/(1-t)$. A primitive of
+$\log((1-2z)/z)/(z(1-z))$ is
+
+\[
+\begin{aligned}
+ P(z)={}&-\operatorname{Li}_2(2z)-\tfrac12\log^2z
+ -\tfrac12\log^2(1-z)-\log2\log(1-z)\\
+ &-\operatorname{Li}_2(1/[2(1-z)])
+       +\log z\log(1-z)+\operatorname{Li}_2(z).
+\end{aligned}
+ \tag{A.10c}\label{eq:g1-dilog-primitive}
+\]
+
+The formula is checked by differentiation. The analytic neighborhoods
+and the real branches would require a validated complex-quadrature check
+before this primitive could serve as an endpoint certificate.
+Nested integration of the original double integral gives an
+independent enclosure. At 200-bit precision, the signed enclosures are:
+
+{
+\normalsize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\textbf{$I_{11}$} \\
+\emph{Abbreviated centre}: $0.22087906669230916120261535382312080318$ \\
+\emph{Width less than}: $1.476\cdot10^{-57}$ \\
+\midrule
+\textbf{$I_{12}$} \\
+\emph{Abbreviated centre}: $0.57406197344524834076476851367819508508$ \\
+\emph{Width less than}: $6.348\cdot10^{-59}$ \\
+\midrule
+\textbf{$I_{13}$} \\
+\emph{Abbreviated centre}: $0.40529073298563794646600097143156553978$ \\
+\emph{Width less than}: $3.672\cdot10^{-59}$ \\
+\midrule
+\textbf{$K_G$} \\
+\emph{Abbreviated centre}: $0.39894807910705784663904430098309337537$ \\
+\emph{Width less than}: $8.588\cdot10^{-58}$ \\
+
+\bottomrule
+\end{longtable}
+}
+
+
+These centres are not directed endpoints. The source-derived widths above
+refer to the narrower retained intervals. For the printed decimal
+integral intervals, the exact outward upper endpoint is
+
+\[
+ K_{\rm hi}=
+ 0.3989480791070578466390443009830933753748442947478110112223.
+ \tag{A.10d}\label{eq:g1-khi}
+\]
+
+
+{
+\normalsize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{\textwidth}@{}}
+\toprule
+\textbf{G1-0} \\
+\emph{Abbreviated centre}: $-199.47403966257515881115583710023774090$ \\
+\emph{$K_G$ direction}: upper \\
+\midrule
+\textbf{G1-1} \\
+\emph{Abbreviated centre}: $+913.88106797076246277430172018777105602$ \\
+\emph{$K_G$ direction}: lower \\
+\midrule
+\textbf{G1-2} \\
+\emph{Abbreviated centre}: $-2093.45188381184444127509736016826295322$ \\
+\emph{$K_G$ direction}: upper \\
+\midrule
+\textbf{G1-3} \\
+\emph{Abbreviated centre}: $+1376.61588391624101756554586342738124014$ \\
+\emph{$K_G$ direction}: lower \\
+
+\bottomrule
+\end{longtable}
+}
+
+
+
+The narrower source-derived two-sided joint width is below $5.248\cdot10^{-57}$.
+The exact gap is the fraction displayed after (A.10).
+
+\subsection{Switched mass, BV endpoints and finite threshold}
+
+Write $H_L:=I_{HL}$ as in (5.32), equivalently (1.12), with the parameters
+and cell weight (5.30)--(5.31). The measure is the coordinate measure $dt_1\cdots dt_{k-1}$,
+where $t_k=1-\sum_{i<k}t_i$.
+It carries no factorial or Euclidean surface-measure factor.
+Then
+
+\[
+ 0\le H_L<0.0778506,\qquad -2H_L>-0.1557012.            \tag{A.11}
+\]
+Both implementations cover every positive-weight stratum $5\le k\le11$,
+and the coverage is exact rational.
+Their upper endpoints lie in
+\[
+ [0.0778505820459738841964296666351,
+   0.0778505820459738841964296666353].                   \tag{A.12}
+\]
+The selected source is
+\path{switched-mass/original/scripts/refine.py}, with SHA-256
+\path{83ff0a33baf95be8400a69c466965baae130b3cd788acd2d83b83fd2cc45398b}.
+The separate calculation encloses the same switched mass.
+The independent source
+\path{switched-mass/independent/independent_replay.py}
+has SHA-256
+\path{c275b1904b506cf82315d4e27f44f1949487e67044923501fd0628738a7744ad}.
+Their common compact output
+\path{switched-mass/replay_summary.json}
+has SHA-256
+\path{f0dac63f31707d0ecfe9ffd08fdfe21d4e5b2718b19a83af713ba518d2077e06}.
+Exact rational coverage and overlap identities give the scalar input for
+the switched term of \S~5.
+
+For the S6 BV row, put
+\[
+ J(\kappa)=\int_{\tau_S}^{1/3}\frac{dt}{t(1/2-\kappa-t)}.
+\]
+Exact logarithms and independent Arb arithmetic give the enclosures.
+{\normalsize
+\[
+\begin{gathered}
+ J(0)\in\\\CertificateInterval{1.3148581959157321533513247276782285310758770468886237619584}{1.3148581959157321533513247276782285310758770468886237619585},\\
+ J(10^{-6})\in\\\CertificateInterval{1.3148646802099601102520747017315401230927649569798117109688}{1.3148646802099601102520747017315401230927649569798117109689},\\
+ -[J(10^{-6})-J(0)]\in\\
+ \CertificateInterval{-6.48429422795690074997405331159202\cdot10^{-6}}{
+ -6.48429422795690074997405331159201\cdot10^{-6}}.
+ \end{gathered}\tag{A.13}
+\]
+}
+Here $S_6=4J$, so the nominal D contribution is $-J(0)$.
+The increment in (A.13) enters once at level $1/2-10^{-6}$ of
+\S~5. The source
+\path{row-enclosures/cert_s4_s7.py}
+has SHA-256
+\path{d98866b45f1ddb8f3f93411bfe09cb11c62569cc80fa775a77a3eab1ad4384aa};
+its \path{row-enclosures/result.json} has SHA-256
+\path{0eb5fa52ed180a071633e50f0d099f5c4e1f9bb001add71765fe1c2f033b8f7a}.
+The independent 256-bit calculation is
+\path{bv-increment/checks/charge_check.py},
+with SHA-256
+\path{1a7be201efe55e801c2ea7c2dc0807ac543d323838165f259b982a064e460ac6},
+and its output \path{bv-increment/checks/charge_check.out}
+has SHA-256
+\path{e99ef910bb85c1bd2119314c37a0deddcf1bc11f43c1d4fe50e8aaf956748015}.
+It verifies the exact-log enclosures in (A.13).
+
+\paragraph{S5 BV-top normalization.} The moved-cell value is
+enclosed by
+\[
+ B(0.03658166423843258896399704402764682632822246022922592990,
+   8.84\cdot10^{-57}).                                 \tag{A.14}
+\]
+This raw row is $4J_5(0)$, with master coefficient $-1$ by
+(5.15)--(5.20a). Its D contribution is $-J_5(0)$, with exact interval
+{\normalsize
+\[
+\begin{gathered}
+ -J_5(0)\in\\
+-\frac14 B\left(\begin{gathered}0.03658166423843258896399704402764682632822246022922592990,\\
+             8.84\cdot10^{-57}\end{gathered}\right),
+\end{gathered}\tag{A.14a}
+\]
+}
+which is about $-0.00914541605960815$ D. Section~5 proves the
+normalization. S5-low uses its direct-cell endpoint, and S5 BV-top uses
+the moved-cell exact-log value (A.14).
+Their supports are disjoint at $t_*$,
+and each contribution enters once.
+
+For comparison, if S5-top used $\kappa=10^{-6}$, its negative coefficient
+would require an upper bound for $J_5(\kappa)$. Since $t\ge t_*$ and
+$1/2-t\ge1/2-\tau_S$,
+\[
+\begin{aligned}
+ 0\le J_5(\kappa)-J_5(0)
+ &=\int_{t_*}^{\tau_S}
+   \frac{\kappa\,dt}{t(1/2-t)(1/2-t-\kappa)}\\
+ &\le\frac{(\tau_S-t_*)\kappa}
+ {t_*(1/2-\tau_S)(1/2-\tau_S-\kappa)}\\
+ &=\frac{25088}{672019919285}<3.734\cdot10^{-8}<4\cdot10^{-8}.
+\end{aligned}
+\]
+Thus $-J_5(\kappa)\ge-J_5(0)-E_{5,\kappa}$,
+with $E_{5,\kappa}=4\cdot10^{-8}$ in D units.
+Section~\ref{sec:proof-theorem-1} subtracts this error once.
+The separate conservative BV allowance is
+$g_{\rm BV}=5.75\cdot10^{-6}=E_{5,\kappa}+g_{R1}
+=4\cdot10^{-8}+5.71\cdot10^{-6}$.
+The R1 increment itself is already inside the selected S2 endpoint.
+Equations (A.14)--(A.14a) give the nominal $\kappa=0$ value.
+
+For an independent exact-rational S5-top certificate, the logarithmic
+ratio in (5.20) is
+$R=392787/390995$, so $z=(R-1)/(R+1)=896/391891$. Define
+\[
+ P_5=16\sum_{k=0}^{15}\frac{z^{2k+1}}{2k+1},\qquad
+ R_5=\frac{16z^{33}}{33(1-z^2)}.
+\]
+Then $P_5<4J_5(0)<P_5+R_5$ by the positive atanh series.
+Exact rational comparisons give $R_5<3.447\cdot10^{-88}$ and
+{\normalsize
+\[
+\begin{gathered}
+ [P_5,P_5+R_5]\subset\\
+B(0.03658166423843258896399704402764682632822246022922592990,
+   8.84\cdot10^{-57}).
+\end{gathered}
+\]
+}
+This proves the directed $-1/4$ normalization. The printed rational
+series is the certificate. Section~6.3 proves its source application
+and arithmetic error bounds.
+
+The finite-epsilon target is
+\[
+\begin{aligned}
+ T&=8\log\frac{50009}{39991},\\
+ 1.78838848345960807361670991332&<T
+ <1.78838848345960807361670991333.
+\end{aligned}\tag{A.15}
+\]
+It is proved by exact rational arithmetic. For
+$z=5009/45000$, set
+\[
+ P=16\sum_{k=0}^{23}\frac{z^{2k+1}}{2k+1},\qquad
+ R=\frac{16z^{49}}{49(1-z^2)}.
+\]
+Then $P<T<P+R$, and exact rational comparisons give (A.15).
+This series and its tail bound certify (A.15),
+and its upper endpoint enters the final strict comparison.
+
+\subsection{Selected numerical endpoints}
+
+The table below lists the selected values.
+The full endpoints and proofs are in A.2--A.6.
+\begin{longtable}{@{}p{9em}p{\dimexpr\textwidth-9em-4\tabcolsep\relax}@{}}
+\toprule
+Contribution & Selected value and direction \\
+\midrule
+S1 & Joint lower endpoint (A.4), with multiplier $3/4$ \\
+S2 & Joint lower value (A.8), including the $1/20000$ tail \\
+S3/S8/S9 & Absolute Option-A endpoints; signs $-,+,+$ \\
+S4/S5-low/S7 & Direct-row upper endpoints; multiplier $-1/4$ \\
+S10-Ret & Retained-row lower endpoint; multiplier $1/4$ \\
+G1 & $E_{G1}=L_{G1}-\delta_{G1}$, once \\
+S5-top & Raw-to-D factor $-1/4$; separate error $E_{5,\kappa}$ \\
+S6 & Nominal value $-J(0)$ and increment (A.13) \\
+Switched term & $-2H_L>-0.1557012$ by (A.11) \\
+Threshold & Upper endpoint (A.15) \\
+\bottomrule
+\end{longtable}
+Sections~2--5 prove the source applications,
+and Section~6.3 combines the terms with the signs of (6.1).
+}

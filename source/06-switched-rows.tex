@@ -1,0 +1,1390 @@
+\section{The switched rows $S_{11},S_{12},S_{13}$}
+
+This section proves a joint lower bound for the switched rows.
+
+\subsection{The source and its finite signs}
+
+This subsection describes the source and proves the finite-source sign lemma.
+Fix the parameters
+\[
+ \alpha={100\over1149},\quad\beta={50\over309},\quad
+ \lambda={93\over400},\quad\mu={25\over128},\quad u={1\over500},
+ \qquad \varepsilon_A=\eta_L=10^{-4}.
+ \tag{4.1}
+\]
+Let $0<\sigma\le10^{-10}$, and put
+\[
+ \tau_g=\tau=\sigma^9,\quad \rho=1+\tau,\quad L=\log N,\quad
+ U_C={C(N)N\over L^2},\qquad \mathcal W=4(1-\varepsilon_A)U_C.
+ \tag{4.2}
+\]
+The D-unit denominator is $\mathcal W$.
+All sieve primes belong to $\mathcal P(N)=\{p>2:p\nmid N\}$.
+Source primes dividing $N$ enter the final error table,
+as do repeated source primes in squarefree identities.
+Write
+\[
+ \mathcal A_{\varepsilon_A}
+ =\{e=N-p:p\text{ prime},\ p<(1-\varepsilon_A)N\}.
+ \tag{4.3}
+\]
+Let $t_i=\log_Np_i$.
+The source forms, each with $\varepsilon_A N<e<N$, are as follows.
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}@{}}
+\toprule
+Form & Exact representation and constraints \\
+\midrule
+$D_{11,3}$ & $e=p_1p_2p_3$, $N^\lambda\le p_1<N^{1/3}$, $p_1<p_2$, $p_1p_2^2<N$, $p_3\ge p_2$ \\
+$D_{11,4}$ & $e=p_1p_2p_3p_4$, the same outer conditions, $p_2\le p_3\le p_4$ \\
+$D_{12}$ & $e=p_1p_2p_3$, $N^\alpha\le p_1<N^{1/3}\le p_2$, $p_1p_2^2<N$, $p_3\ge p_2$ \\
+$D_{13}$ & $e=p_1p_2p_3$, $N^\beta\le p_1<N^\lambda\le p_2$, $p_1p_2^2<N$, $p_1p_2p_3^2\ge N$ \\
+\bottomrule
+\end{longtable}
+\endgroup
+On $D_{13}$, the two endpoint orders give distinct representations.
+The condition $p_3\ge p_2$ is omitted there.
+Let $R_{11}=R_{11,3}+R_{11,4}$, $R_{12}$ and $R_{13}$ count representations, and put
+\[
+ A_G(e)=(2R_{11}(e)+R_{12}(e)+R_{13}(e))
+                  \mathbf1_{\varepsilon_A N<e<N}.
+ \tag{4.4}
+\]
+These forms exhaust the sources.
+For $D_{11}$, $5\lambda>1$ allows at most two cofactor primes,
+and $\varepsilon_A N>N^{2/3}$ excludes cofactor 1.
+A composite $D_{12}$ cofactor gives $e\ge N^{\alpha+1}>N$.
+Two $D_{13}$ cofactor factors give $e\ge N$, because each factor is at least $\sqrt{N/(p_1p_2)}$.
+The linked source parameters are:
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Form & Weight & HB patterns/factors & Cofactor cutoff \\
+\midrule
+$D_{11,3}$ & $2$ & $27$ / $6\cdot3$ & $p_2$ \\
+$D_{11,4}$ & $2$ & $81$ / $24$ & $p_2$ \\
+$D_{12}$ & $1$ & $27$ / $6\cdot3$ & $p_2$ \\
+$D_{13}$ & $1$ & $27$ / $6\cdot3$ & $\sqrt{N/(p_1p_2)}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+All four forms use rows G1-0 through G1-3.
+Their faces are listed in (4.36) and the boundary-family table.
+Their multiplicities satisfy (4.6) and the sharper peel bound below.
+Every source coordinate is at least $N^\alpha$.
+On $D_{11,3}$ and $D_{11,4}$, each remaining factor is at least
+$p_2>p_1\ge N^\lambda$.
+On $D_{12}$, $p_3\ge p_2\ge N^{1/3}$.
+Only on $D_{13}$ do we use its square-root cutoff. There
+$t_2<(1-t_1)/2$ and $t_1<\lambda<1/3$, so
+\[
+ t_3\ge {1-t_1-t_2\over2}>{1-t_1\over4}>
+ {1\over6}>\alpha.
+ \tag{4.5}
+\]
+For absolute estimates,
+\[
+ A_G(e)\le2(3!+4!)+3!+3!=72<100.
+ \tag{4.6}
+\]
+For the peel, $A_G\le3$.
+Ordering gives $R_{11},R_{12}\le1$.
+If $R_{11}>0$, all factors are at least $N^\lambda$, so $R_{13}=0$.
+Otherwise $D_{13}$ chooses one low-band and one high-band factor,
+with at most $lh\le2$ choices, where $l+h=3$ and $l,h\ge1$.
+Thus $2R_{11}+R_{12}+R_{13}\le3$, before any union.
+
+Let $I_j(e)$ count the admissible divisor tuples,
+retaining $P^-(e/d)\ge z$ and every original coprimality condition.
+The identity is
+\[
+ W_{13}=3I_1+I_2-2I_3-I_4-I_5-I_6-I_7
+                 +I_8+I_9+I_{10}-2I_{11}-I_{12}-I_{13}.
+ \tag{4.7}
+\]
+With $\tau_S=57/224$, put
+\[
+ B(r)=
+ \begin{cases}
+ \beta,&\beta\le r<\mu,\\
+ \min\{\beta,\max\{\alpha,57/64-u-(5/2)r-(11/5)\alpha\}\},
+             &\mu\le r<\lambda.
+ \end{cases}
+ \tag{4.8}
+\]
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.51\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}@{}}
+\toprule
+Row & Weight & Divisor variables and range & Cofactor cutoff \\
+\midrule
+$S_1$ & $3$ & $d=1$ & $N^\alpha$ \\
+$S_2$ & $1$ & $d=1$ & $N^\beta$ \\
+$S_3$ & $-2$ & $d=q$, $\alpha\le\log_Nq<\mu$ & $N^\alpha$ \\
+$S_4$ & $-1$ & $d=q$, $\mu\le\log_Nq<1/4$ & $N^\alpha$ \\
+$S_5$ & $-1$ & $d=q$, $1/4\le\log_Nq<\tau_S$ & $N^\alpha$ \\
+$S_6$ & $-1$ & $d=q$, $\tau_S\le\log_Nq<1/3$ & $N^\alpha$ \\
+$S_7$ & $-1$ & $d=q$, $\mu\le\log_Nq<\lambda$ & $N^\alpha$ \\
+$S_8$ & $1$ & $d=q_1q_2$, $\alpha\le\log_Nq_2<\log_Nq_1<\beta$ & $N^\alpha$ \\
+$S_9$ & $1$ & $d=q_1q_2$, $\alpha\le\log_Nq_2<\beta\le\log_Nq_1<\mu$ & $N^\alpha$ \\
+$S_{10}$ & $1$ & $d=q_1q_2$, $\mu\le r=\log_Nq_1<\lambda$, $\alpha\le\log_Nq_2<B(r)$ & $N^\alpha$ \\
+$S_{11}$ & $-2$ & $p_1,p_2$ in the $D_{11}$ outer domain & $p_2$ \\
+$S_{12}$ & $-1$ & $p_1,p_2$ in the $D_{12}$ outer domain & $p_2$ \\
+$S_{13}$ & $-1$ & $p_1,p_2$ in the $D_{13}$ outer domain & $\sqrt{N/(p_1p_2)}$ \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\begin{lemma}[Finite-source signs]
+Let $N$ be sufficiently large.
+Suppose $e\in(\varepsilon_A N,N)$ is squarefree and coprime to $N$.
+If $P^-(e)\ge N^\alpha$ and $\Omega(e)\in\{3,4\}$, then
+\[
+ W_{13}(e)\le0.
+ \tag{4.9}
+\]
+\end{lemma}
+\begin{proof}
+The exact sum $\sum t_i$ is kept.
+Let $k_i$ count primes in
+$[\alpha,\beta)$, $[\beta,\lambda)$, $[\lambda,1/3)$ and $[1/3,1)$.
+For a second-band exponent $v$, let $m_B(v)$ count first-band primes below $B(v)$.
+The first ten rows give
+\[
+ B_0=3+\mathbf1_{k_1=0}-2k_1-2k_2-k_3+
+                    {k_1\choose2}+\sum_{j=1}^{k_2}m_B(v_j),
+ \qquad0\le m_B(v_j)\le k_1,
+ \tag{4.10}
+\]
+and hence $W_{13}=B_0-2R_{11}-R_{12}-R_{13}$.
+The cases $k_1=2$ and $k_1=1$ give
+$B_0\le-k_3$ and $B_0\le1-k_2-k_3$, respectively.
+The latter is positive only at $(1,0,0,2)$, of degree 3, where $R_{12}=1$.
+Three fourth-band factors with a first-band factor exceed $N$.
+For $k_1\ge3$, the lower slab leaves only $(3,0,0,1)$, where $B_0=0$.
+It suffices that
+\[
+ \varepsilon_A N^{\,2/3-3\beta}>1:
+ \tag{4.11}
+\]
+Three first-band factors and a fourth below $1/3$ have exponent
+less than $3\beta+1/3<1$.
+Four first-band factors have a smaller upper bound.
+
+If $k_1=0,k_2\ge2$, then $B_0\le0$.
+If $k_1=0,k_2=1$, then $B_0=2-k_3$.
+At degree 3, take the second-band prime as $p_1$ and order the remaining primes as $p_2\le p_3$.
+Then $p_1p_2^2\le e<N$, and
+\[
+ p_1p_2p_3^2=ep_3\ge\varepsilon_A N^{1+\lambda}\ge N
+              \quad\text{if }\varepsilon_A N^\lambda\ge1.
+ \tag{4.12}
+\]
+This is a $D_{13}$ representation.
+When $k_3=0$, there is also one $D_{12}$ representation, and these cover $k_3=0,1,2$.
+At degree 4, $k_3\ge2$, since $\beta+\lambda+2/3>1$.
+Finally suppose $k_1=k_2=0$.
+Degree 3 gives $k_3\ge1$ and one $D_{11}$ representation.
+For $k_3=1$, there is also one $D_{12}$ representation, and they cancel $4-k_3$.
+At degree 4, all primes lie in the third band, where $3\lambda+1/3>1$ and $B_0=0$.
+\end{proof}
+
+Conditions (4.11)--(4.12) and $\varepsilon_A N>N^{2/3}$ hold eventually,
+and the finite radial range is $1+\log\varepsilon_A/L<\sum t_i<1$.
+Section~5 gives (5.31)--(5.32) and positive excess at degrees 5 through 11.
+Extra $D_{13}$ representations lower $W_{13}$.
+
+Define the weighted sequences
+\[
+ \mathcal B_j=\{N-e:e\in\mathcal E_j\},\qquad
+ \mathcal E_j=\{e:R_j(e)>0,\ \varepsilon_A N<e<N\}.
+ \tag{4.13}
+\]
+Each occurrence has weight $R_j(e)$.
+Then
+\[
+S_j\le\sum_eR_j(e)\mathbf1_{N-e\ {\rm prime}}\le S(\mathcal B_j;\mathcal P(N),N^{1/2})+O(N^{1/2+o(1)}).
+\tag{4.14}
+\]
+Removing source conditions, including $(m,Nd)=1$, enlarges these positive counts.
+Their negative coefficients preserve the required lower bound.
+The sieve counts primes $N-e\ge N^{1/2}$ with weight $R_j(e)$,
+and by (4.6) smaller primes and endpoints cost $O(N^{1/2+o(1)})$.
+A source coordinate $q\mid N$ may leave a composite $N-e=qm$, and this excess is $E_{\rm src,exc}$.
+Restricting to $p_i\nmid N$ gives equality up to the same error,
+so (4.14) has a vanishing D-unit error.
+
+The lower slab is exact:
+\[
+ p<(1-\varepsilon_A)N
+       \ \Longleftrightarrow\ e=N-p>\varepsilon_A N.
+ \tag{4.15}
+\]
+Its complement contributes zero.
+The source factors are eventually odd, so $e\ne N$, and the shifted-prime source has $e\le N-3$.
+For the fixed target, set
+\[
+\begin{gathered}
+ A=3,\quad C_b=334,\quad N_{\rm cut}=N(1-L^{-333}),\\
+ \Sigma_G=(\varepsilon_A N,N_{\rm cut}],\quad
+ A_G^{\rm cut}=A_G\mathbf1_{e\le N_{\rm cut}}.
+\end{gathered}
+ \tag{4.16}
+\]
+The cut is applied before Buchstab and AA37.
+Restoring it once costs
+\[
+ R0:G1\le100(NL^{-333}+1),\qquad
+ E^D_{\rm cut}\le{100(NL^{-333}+1)\over\mathcal W}
+                  =O(L^{-331})+O(L^2/N).
+ \tag{4.17}
+\]
+Discrepancies, membership and boundary faces use (4.16).
+\subsection{The four sieve rows and their coefficients}
+
+This subsection sets up the four sieve rows and their signed remainder coefficients.
+Put $\mathcal B_G^{\rm cut}=2\mathcal B_{11}^{\rm cut}
++\mathcal B_{12}^{\rm cut}+\mathcal B_{13}^{\rm cut}$, in which the source weights occur once.
+Three Buchstab steps give
+\[
+\begin{aligned}
+ S(\mathcal B_G^{\rm cut},N^\mu)
+ ={}&S(\mathcal B_G^{\rm cut},N^u)
+ -\sum_{N^u\le a_1<N^\mu}S((\mathcal B_G^{\rm cut})_{a_1},N^u)\\
+ &+\sum_{N^u\le a_2<a_1<N^\mu}
+                   S((\mathcal B_G^{\rm cut})_{a_1a_2},N^u)\\
+ &-\sum_{N^u\le a_3<a_2<a_1<N^\mu}
+                   S((\mathcal B_G^{\rm cut})_{a_1a_2a_3},a_3).
+\end{aligned}
+ \tag{4.18}
+\]
+Here $a_i\in\mathcal P(N)$, and the cutoffs exclude their endpoints.
+Also $S(\mathcal B_G^{\rm cut},N^{1/2})\le S(\mathcal B_G^{\rm cut},N^\mu)$.
+The cells are endpoint-clipped parent intervals $[N^{t_i},N^{\rho t_i})$ with inherited lower labels.
+For the full anatomy infimum $\Theta_c$, put
+\[
+ \ell_c=\Theta_c-\eta_L-\sum_{i=1}^rt_i,\qquad
+ D_c=N^{\ell_c},\qquad u_c=D_c^{\sigma^2}.
+ \tag{4.19}
+\]
+AA37 is applied at $D_c$, with relative tail labels.
+The smooth divisor satisfies $d<D_c^\sigma$, $d\mid P(u_c;N)$.
+All source forms use the following four rows.
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}llllp{0.40\textwidth}@{}}
+\toprule
+Row & Prefix & AA37 & $2A_R$ & Base cutoff and retained cells \\
+\midrule
+G1-0 & $1$ & upper $F$ & $-1$ & $N^u$; all \\
+G1-1 & $a_1$ & lower $f$ & $+1$ & $N^u$; all \\
+G1-2 & $a_1>a_2$ & upper $F$ & $-1$ & $N^u$; all \\
+G1-3 & $a_1>a_2>a_3$ & lower $f$ & $+1$ & $E=N^{t_3}$ after PR; $\Theta_c-\eta_L-t_1-t_2-(3+2\tau)t_3\ge0$ \\
+\bottomrule
+\end{longtable}
+\endgroup
+The first three residuals are at least
+\[
+ {19101\over32000}-\eta_L,\quad
+ {19101\over32000}-\eta_L-\rho\mu,\quad
+ {19101\over32000}-\eta_L-2\rho\mu.
+ \tag{4.20}
+\]
+For G1-0--G1-2, the smallest completion coordinate satisfies
+$x_3\le u$, so the active $w$ branch is at least $19101/32000$.
+If its guard closes, or the parent crosses $\mu$, the $v_1(x_1)$
+branch gives the same lower bound. Hence
+$\Theta_c\ge19101/32000$.
+Dividing by $u$ gives values above 30.
+For the fourth row, put
+$A_{\rm floor}=53/256-\eta_L-(3/2)\mu\tau$.
+The largest anatomy coordinate is $x_1\in[t_1,\rho t_1]$, and the full anatomy contains
+$v_1(x)=\min\left\{{1+x\over2},{32-34x\over39},
+                         {57\over64}-{3x\over2}\right\},$
+also across $\mu$.
+The middle branch exceeds the first for $x\le25/107$ and the third for $x\ge175/1568$.
+Since $175/1568<25/107$, it is redundant.
+Hence
+$\Theta_c\ge\min\left\{{1+t_1\over2},
+                    {57\over64}-{3\over2}\rho t_1\right\}.$
+The increasing branch is evaluated on the left and the decreasing branch on the right.
+For $t_2\le t_1\le\mu$, both residual branches decrease.
+Thus
+\[
+ \begin{aligned}
+ \Theta_c-t_1-t_2
+ &\ge\min\left\{{1\over2}-{3\over2}\mu,
+                {57\over64}-\left(1+{3\over2}\rho\right)\mu-\mu\right\}\\
+ &=\min\left\{{53\over256},
+              {53\over256}-{3\over2}\mu\tau\right\}
+ ={53\over256}-{3\over2}\mu\tau.
+ \end{aligned}
+\]
+Subtracting $\eta_L+t_3$ and using the retained-cell condition gives $\ell_c\ge A_{\rm floor}-t_3$ and $\ell_c\ge2t_3$, whence
+$\ell_c\ge{2A_{\rm floor}\over3}>{1379\over10000}>\ell_0,
+ \qquad \ell_0={53\over412}-{1\over20000}.$
+The exact condition is $\ell_c\ge2\rho t_3$.
+It gives the lower-sieve range on the whole cell, including equality.
+The linked level and orbit data are:
+\begin{center}
+\begin{tabular}{@{}lllp{0.24\textwidth}@{}}
+\toprule
+Row & Lower floor for $\ell_c$ & Orbit $M_c$ & Ratio and outside error \\
+\midrule
+G1-0 & $19101/32000-\eta_L$ & $1$ & $s>30$; AA37 \\
+G1-1 & $19101/32000-\eta_L-\rho\mu$ & $1$ & $s>30$; AA37 \\
+G1-2 & $19101/32000-\eta_L-2\rho\mu$ & $1$ or $2$ & $s>30$; AA37 \\
+G1-3 & $\max(A_{\rm floor}-t_3,2t_3)$ & $1$, $2$ or $6$ & $s\ge2$; AA37 and (4.57) \\
+\bottomrule
+\end{tabular}
+\end{center}
+All rows use all four source forms and level (4.19),
+with exact signed remainder coefficient (4.26).
+The common remaining errors are in the final table.
+
+
+For the cut source, define
+\[
+\begin{aligned}
+ C(q;N)&=\sum_eA_G^{\rm cut}(e)\mathbf1_{q\mid N-e},&
+ X_G&=\sum_eA_G^{\rm cut}(e),\\
+ Y_G(q)&=\sum_{(e,q)=1}A_G^{\rm cut}(e),&
+ \Delta_0(q)&=C(q;N)-X_G/\varphi(q),\\
+ \Delta_P(q)&=C(q;N)-Y_G(q)/\varphi(q).&&
+\end{aligned}
+ \tag{4.21}
+\]
+For allowed odd $p\nmid Nb$, take $\omega_b(p^k)=p/(p-1)$ for $k\ge1$,
+so that $\omega_b(p^k)/p^k=1/\varphi(p^k)$.
+Prefix primes lie above the cutoff and original tail primes lie below it.
+Thus $r_{\rm std}((\mathcal B_G)_b,c')=\Delta_0(bc')$, including $c'=1$ and repeated tail primes.
+Mertens and $\sum_p(p-1)^{-2}<\infty$ verify the density hypotheses uniformly.
+
+Fix a cell and tail labels, and let $O(q),C_c(q)$ be the ordered masked and unrestricted labelled coefficients.
+Put $M_c=\prod_h|G_h|!$.
+With the actual masks $K_T,K_P$,
+\[
+ \Xi_U(q)={1\over M_c}\sum\lambda_d(1-K_TK_P)
+                  \mathbf1_{q=d\prod p_j},\qquad
+ O(q)={C_c(q)\over M_c}-\Xi_U(q).
+ \tag{4.22}
+\]
+Equal-bin permutations preserve the clipped prime sets, products, labels and summands.
+Unequal bins enforce order.
+For G1-3, the $a_3$-cutoff difference is removed first, leaving base $E=N^{t_3}$.
+The factor $1/M_c$ and the prefix-diagonal correction are kept.
+
+Put $\Phi=M_c^{-1}\sum C_c\Delta_P$,
+$NC_{\rm sf}=\sum_{q\ {\rm sf}}O(q)(\Delta_0-\Delta_P)(q)$,
+and $\Xi_A(q)=O(q)\mathbf1_{q\ {\rm not\ sf}}$.
+Adding and subtracting $\Delta_P$ gives
+\[
+\begin{gathered}
+ R_{AA}=\Phi+NC_{\rm sf}-\sum_q\Xi_U(q)\Delta_P(q)
+                   +\sum_q\Xi_A(q)(\Delta_0-\Delta_P)(q),\\
+ \Delta_0-\Delta_P=-{X_G-Y_G(q)\over\varphi(q)}.
+\end{gathered}
+ \tag{4.23}
+\]
+Allowed repeats are kept with these masks.
+Composite sources may retain the comparator difference.
+Theorem~\ref{thm:repeated-primes} bounds both squareful terms.
+The tested congruence is exactly
+\[
+ |(\mathcal B_G^{\rm cut})_q|
+ =\sum_eA_G^{\rm cut}(e)\mathbf1_{q\mid N-e}
+ =\sum_eA_G^{\rm cut}(e)\mathbf1_{e\equiv N\pmod q}.
+ \tag{4.24}
+\]
+Every actual modulus satisfies $(q,2N)=1$ and
+\[
+ q<N^{e_G},\qquad e_G:=\frac{153}{256}(1+\tau+\sigma)<0.598.
+\]
+By (4.28), $X>cN$, where $c=\varepsilon_A2^{-24}>0$.
+Eventually $N^{e_G}<(cN)^{3/5}<X^{3/5}$.
+This verifies the full support condition of Theorem~\ref{thm:distribution-input};
+see \cite[Theorem~3.2, (H3)]{Z1}.
+
+Primes below $u_c$ determine $d$ uniquely, and rough positions are at least $u_c$.
+Their multiplicities $e_p$ allow at most $m!/\prod_pe_p!$ assignments, and masks remove assignments.
+Consequently
+\[
+ \ell_0={53\over412}-{1\over20000}>0,\qquad
+ M_\sigma=\left\lceil{3\over5\ell_0\sigma^2}\right\rceil,\qquad
+ |\gamma_q|\le M_\sigma! =: C_\sigma,
+ \tag{4.25}
+\]
+which covers original, unrestricted and grouped coefficients.
+Fixed row conventions are included in $C_\sigma$,
+and $N_{\rm lab}(\sigma)$ enters aggregate bounds once.
+For 1-bounded slot sequences we extract $C_{\rm slot}=\prod_s|J_s|!$.
+The D-unit formulas are
+\[
+ {(2A_R)\nu_c\over M_c\mathcal W}\sum_qC_c(q)\Delta_B(q),
+ \qquad
+ {(2A_R)\nu_c C_{\rm slot}\over M_c\mathcal W}
+                  \sum_q{C_c(q)\over C_{\rm slot}}\Delta_B(q).
+ \tag{4.26}
+\]
+Here $\nu_c=+1$ for upper AA37 and $-1$ for lower AA37.
+We form $C_c$ before this sign.
+The slot factorial and source weights enter once, and $K_G$ is omitted from the remainder.
+
+\subsection{Preparation of the product source}
+
+This subsection splits the product source into boxes and checks the hypotheses of the distribution input.
+Order-3 Heath--Brown \cite{ref6} is applied pointwise to every source coordinate.
+Then
+\[
+ n(\mathbf v)=\prod_{i=1}^sv_i=e,\qquad s\le6k\le24.
+ \tag{4.27}
+\]
+There are $27+81+27+27=162$ patterns per row, giving
+648 row/form/pattern instances.\phantomsection\label{p2:g1-external-count}
+All source indicators are kept.
+Put $\delta=L^{-334}$.
+We split each dyadic shell $[2^b,2^{b+1})$, $b\ge1$, into
+$J=\lceil\log2/\log(1+\delta)\rceil$ intervals
+$[2^b2^{j/J},2^b2^{(j+1)/J})$, $0\le j<J$.
+Their common relative width is $\Delta=2^{1/J}-1$.
+For $\delta\le1/300$, $\delta/3\le\Delta\le\delta$.
+The point 1 is kept as a singleton.
+A boundary box crosses a source, window, ordering, cap or cut face.
+An interior box has constant source indicators.
+Per variable there are $O(L)$ shells and $O(L^{334})$ intervals,
+so there are $O(L^{335})$ choices per variable.
+The 24-variable fine count is $O(L^{8040})$; two further shells give $K_0=8042$.
+The three internal slot-shell sums are counted in $A_{\rm work}-A'=4$.
+
+Choose a nonunit cell, and put
+$T:=T_{\rm II}:=N_{II}:=V_{\rm sel},\qquad q:=1+\Delta,\qquad
+ C_{\rm sel}=[T,qT),\qquad h_N:=\Delta T.$
+Thus $\delta T/3\le h_N\le\delta T$.
+The exact interval counts are
+\[
+ \begin{aligned}
+ I_N&:=(T,qT]\subset(T,2T],\\
+ H_N&:=\#(C_{\rm sel}\cap\mathbb Z)
+      =\lceil qT\rceil-\lceil T\rceil,\\
+ N_I&:=\#(I_N\cap\mathbb Z)=\lfloor qT\rfloor-\lfloor T\rfloor.
+ \end{aligned}
+\]
+Both differ from $h_N$ by less than 1.
+The ambient count is $N_I$, and roughness stays in its coefficient.
+For an integer endpoint $w=2^{b+j/J}$, $w^J=2^{bJ+j}$ gives $J\mid j$, so only $2^b,2^{b+1}$ are integer endpoints.
+The factor $\mathbf1_{P^-(n)\ge z_0(N)}$, with $z_0(N)>2$, kills these endpoints.
+Hence
+$a_{\rm sel}(n)\mathbf1_{C_{\rm sel}}(n)
+ =a_{\rm sel}(n)\mathbf1_{I_N}(n)
+ \qquad(n\in\mathbb Z).$
+
+\begin{lemma}[Common product boxes]\label{lem:g1-f}
+Let $B$ be a retained interior box.
+For its lower endpoints $V_i$, put $X=\prod_iV_i$.
+Then
+\[
+ n(\mathbf v)\in\Sigma_G\quad(\mathbf v\in B),\qquad
+ \varepsilon_A2^{-24}N<X\le N.
+ \tag{4.28}
+\]
+The largest eligible HB scale in
+$[N^{60\sigma},N^{1/3+14\sigma}]$ is chosen, with the first index in a tie.
+Write $N_{II}$ for this lower scale and $M$ for the complementary product.
+Every box is Class II, and eventually
+\[
+ MN_{II}\asymp N,\quad
+ X^{60\sigma}\le N_{II}\le X^{1/3+15\sigma},\quad
+ N\le X^{1+\sigma/20}.
+ \tag{4.29}
+\]
+On its doubled complementary majorant support,
+\[
+ N-mn\ge NL^{-334}\ge X(\log X)^{-334}>0.
+ \tag{4.30}
+\]
+The thresholds (4.32)--(4.32a) below imply LEN on every box.
+\end{lemma}
+\begin{proof}
+Buchstab, AA37, (4.23) and the G1-3 base $E$ preserve the measure.
+Prime-power replacement and logarithm freezing preserve the indicators.
+Equation (4.27) gives the support, and the bounds $V_i\le v_i<2V_i$ and $s\le24$ give the scale.
+
+Choose a coordinate with exponent in $[\alpha,1/3]$.
+One of its six or fewer factors is at least $N^{\alpha/6}$.
+Its lower endpoint lies between half this size and $N^{1/3}$.
+Since $\alpha/6>60\sigma$, an eligible choice exists, and the prescribed choice is constant on each box.
+Fubini gives
+\[
+ \sum_{\mathbf v\in B}\prod_ia_i(v_i)H(\prod_iv_i)
+       =\sum_{m,n}\beta(m)\alpha_{II}(n)H(mn).
+ \tag{4.31}
+\]
+The selected coefficient is rough Möbius, rough 1, or normalized rough logarithm.
+The complementary convolution has at most 23 factors and bound $\tau_{23}$.
+Each logarithm stays on its original factor.
+Endpoint subtraction is used in the interval and auxiliary-coprimality lemmas of Theorem~\ref{thm:distribution-input}.
+Narrow intervals, the relative-norm alternative and both cross-copy masks are kept.
+These inputs include more than scalar divisor moments.
+
+Put $\omega=\log_N(N/X)$, and impose
+\[
+ L\ge\max\{2611/\sigma,300000\}
+ \tag{4.32}
+\]
+\[
+ \sigma L\ge2^{130}(\log L+1).
+ \tag{4.32a}
+\]
+For fixed $\sigma>0$ the latter holds eventually, and uniformity as $\sigma\to0$ is unnecessary.
+Since $T\ge N^{60\sigma}$,
+$60\sigma L\ge60\cdot2^{130}(\log L+1)
+              >334\log L+\log6,$
+so $h_N\ge T/(3L^{334})>2$.
+Thus $T/(6L^{334})\le N_I$ and $N_I\le2\delta T$.
+Also
+$T^{2^{-126}}\ge\exp(60\sigma L/2^{126})\ge12L^{334},$
+since $60\sigma L/2^{126}\ge960(\log L+1)>334\log L+\log12$.
+Consequently
+$N_I\ge\frac{T}{6L^{334}}
+       \ge2T^{1-2^{-126}}\ge(2T)^{1-2^{-126}}.$
+With $Y=\lfloor T\rfloor$ and $H=N_I$, the integer intervals coincide.
+Then $(2Y)^{1-2^{-126}}\le H\le Y$, using $T\ge2$ and $\delta\le1/300$.
+This gives the short-interval input for $k=2^{126}$.
+Threshold (4.32) gives
+\[
+ \omega<{\log(2^{24}/\varepsilon_A)\over L}\le{\sigma\over101},
+ \quad {1/3+14\sigma\over1-\omega}\le1/3+15\sigma,\quad
+ {2\omega\over1-\omega}<0.02\sigma.
+ \tag{4.33}
+\]
+Also $(1-\omega)(1+\sigma/20)\ge1$, and these prove (4.29) and the packing scale conversion.
+The frequency stays $a=N$.
+
+Put $x=L^{-334}$; for $x\le1/300$, $(1+x)^{24}-1\le25x$.
+Let $1\le r\le23$ count nonunit complementary cells, with endpoints $V_i,W_i=V_i(1+\Delta)$.
+Put $M=\prod V_i$ and $M_+=\prod W_i$.
+Unit factors stay singletons.
+There is a nonunit complementary factor.
+At least three source coordinates have product at least $N^\alpha$.
+Only one HB factor was selected.
+Thus $1+x/3\le M_+/M\le(1+x)^{23}\le1+25x$.
+The ambient length is $M_I=M_+-M$, with $xM/3\le M_I\le25xM$.
+The fixed majorant $\psi_I(m)=\phi_0((m-m_0)/M_I)$ in condition C3
+of Theorem~\ref{thm:distribution-input} doubles this interval about its midpoint.
+Its upper extension is $M_I/2\le12.5xM$.
+Since $nM_+\le N_{\rm cut}$ on an interior box,
+$mn\le N_{\rm cut}+12.5xN\le N_{\rm cut}+25xN$ on the doubled support.
+Hence $N-mn\ge(L-25)NL^{-334}\ge NL^{-334}$ for $L\ge26$.
+The function $t/(\log t)^{334}$ increases for $\log t>334$, and as $X\le N$ this proves (4.30).
+Threshold (4.32) also gives $NL^{-334}>1$ and $\log X>334$.
+
+Write $X=N^S$, $V_{\rm sel}=N^{e_{\rm sel}}$ and $M=X/V_{\rm sel}$.
+The geometry gives
+\[
+ M_I\ge\tfrac13L^{-334}M,
+ \qquad
+ S/2-e_{\rm sel}\ge1/6-(15+1/202)\sigma>0
+\]
+where $S\ge1-\omega$ and $e_{\rm sel}\le1/3+14\sigma$.
+Thus $M_I/X^{1/2}\ge\tfrac13L^{-334}N^{1/6-(15+1/202)\sigma}\to\infty$,
+and in particular $M_I\ge X^{1/2}$ eventually.
+Also $M_I/X^{1/2}\ge\tfrac13L^{-334}N^{0.15}>1$ eventually.
+By (4.33),
+$(1-\omega)^{-334}
+ \le\exp(334\omega/(1-\omega))\le1+4\cdot10^{-10}.$
+Since $\log X=(1-\omega)L$,
+$L^{-334}\le(\log X)^{-334}\le(1+4\cdot10^{-10})L^{-334}$.
+Therefore
+\[
+\begin{aligned}
+ \tfrac17T(\log X)^{-334}&\le N_I\le2T(\log X)^{-334},\\
+ \tfrac14M(\log X)^{-334}&\le M_I\le25M(\log X)^{-334}.
+\end{aligned}
+\]
+As $M_+=Mq^r$ and $q^r\to1$ uniformly,
+$m_0=M(1+q^r)/2\le2M=2X/T$ eventually.
+On $[M,Mq^r]$, $\phi_0((m-m_0)/M_I)=1$, and both Cauchy--Schwarz copies remain in the doubled rectangle after coloring.
+Equation (4.30) excludes exact resonance; see \cite[(3.10)]{Z1}.
+
+By the internal Lemma~\ref{thm:packing-input},
+\[
+\begin{gathered}
+ Q\le TN^{-(1+7271/256)\sigma}\le TX^{-(1+7271/256)\sigma},\\
+ {7271\over256}-{1\over3}={21557\over768}=28+{53\over768}>28.
+\end{gathered}
+\]
+Thus $QX^{\sigma/3}<TX^{-28\sigma}$.
+Threshold (4.32a) gives $14\sigma L>334\log L+\log6$.
+Since $\log X\ge L/2$,
+$QX^{\sigma/3}<TX^{-28\sigma}
+ \le T/(6L^{334})\le N_I.$
+The same threshold gives $334\log L+\log3<\sigma L/100$.
+Hence
+$\log_NM_I\ge{2\over3}
+ -\left(14+{1\over101}+{1\over100}\right)\sigma
+ >{2\over3}-14.02\sigma.$
+Packing also gives $\log_N(QRS)\le153/256+\sigma$.
+Since $104.02\sigma<53/768=2/3-153/256$ and $X^{-89\sigma}\ge N^{-89\sigma}$,
+$QRS<M_IX^{-89\sigma}$.
+Finally, eventual monotonicity gives $\zeta=z_0(N)\ge z_0(X)$.
+\end{proof}
+
+Put $L_N=\log N$, $z=z_0(N)$.
+The replacement $\mathbf1_{\mathbb P}(x)\mapsto\Lambda_z(x)/\log x$ costs (4.58)--(4.61).
+Order-three rough Heath--Brown \cite{ref6} is used on each coordinate shell,
+with the inverse Dirichlet series truncated at its upper endpoint.
+The pointwise factors are 1 or $z$-rough.
+The product inequalities are retained; they are constant on interiors.
+Boundary pieces are estimated below.
+
+For a form with $k\in\{3,4\}$ coordinates, let $H_B(\mathbf v)$
+denote the HB numerator, including its source-form weight but excluding
+the $k$ inverse coordinate logarithms. Then
+$|H_B(\mathbf v)|\le2\cdot3^kL_N^k\le162L_N^4$.
+Each of these $k$ HB logarithms is normalized by $L_N$, and the frozen coordinate logarithm satisfies $\lambda_{B,j}\ge\alpha L_N-1$.
+For $L_N\ge2/\alpha$, the resulting exterior coefficient is at most
+$2\cdot3^k(2/\alpha)^k\le162(2/\alpha)^4$ uniformly.
+For a selected logarithm,
+$\frac{\log n}{L_N}=\frac{\log X}{L_N}\frac{\log n}{\log X},
+ \qquad \frac{\log X}{L_N}\le1.$
+The selected coefficient is 1-bounded and the complement has bound $\tau_{23}$.
+With (4.66) and fixed source-label/slot constants, this gives H7, $K_0=8042$.
+
+The internal Lemma~\ref{thm:packing-input} is applied at $\Theta_c$.
+The $d$ of AA37 is placed in slot 1, also when $J_1=\varnothing$.
+Empty prime-label slots 2 and 3 carry unit atoms, and those two slots are rough.
+The four surplus margins are
+\[
+ \left({7271\over256},52,{95221\over1280},{22407\over256}\right)\sigma;
+ \tag{4.34}
+\]
+passing to $X\le N$ preserves the first margin.
+After subtracting $1/3$ it is $28+53/768>28$, and the other margins exceed the losses in (4.33).
+The box discrepancy is
+\[
+ \Delta_B(q;N)=\sum_{\mathbf v\in B}w(\mathbf v)
+ \left[\mathbf1_{\prod v_i\equiv N\ (q)}
+       -{\mathbf1_{(\prod v_i,q)=1}\over\varphi(q)}\right].
+ \tag{4.35}
+\]
+For every source form and row, the preparation data are:
+\begin{center}
+\begin{tabular}{@{}lp{0.68\textwidth}@{}}
+\toprule
+Object & Common prepared value \\
+\midrule
+Selected factor & Largest eligible lower scale, first index in a tie; $T$ in (4.29) \\
+Selected interval & $I_N=(T,qT]$, $N_I=\lfloor qT\rfloor-\lfloor T\rfloor$ \\
+Complement & $\tau_{23}$; $M_I=M(q^r-1)$, $1\le r\le23$ \\
+Majorant & $\phi_0((m-m_0)/M_I)$, $m_0\le2M$; doubled support (4.30) \\
+External multiplicity & $648$ fixed instances; $O(L^{8042})$ boxes, (4.66) \\
+\bottomrule
+\end{tabular}
+\end{center}
+The hypothesis checks are collected below.
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Hypothesis & Verification \\
+\midrule
+H1, H2 & (4.22)--(4.26), with repeated-prime multiplicities \\
+H3, LEN & Full support after (4.24), Lemma~\ref{lem:g1-f}, (4.34)--(4.35) \\
+H4 & $a=N$, $K_{\rm scale}=31$, $(q,N)=1$ \\
+H5 & The two windows of Lemma~\ref{lem:g1-f} \\
+H6, H7 & (4.43), (4.63), (4.66) \\
+\bottomrule
+\end{tabular}
+\end{center}
+For H4, eventually $0<N\le X\log^{31}N\le X^{1+\sigma/20}$,
+so Theorem~\ref{thm:distribution-input} applies to the plain cut product measure.
+The local estimate is \cite[Theorem~3.2, (3.13)]{Z1}.
+The spectral frequency is $a_T=\operatorname{sgn}(y)N$.
+If $u_1,v_1$ invert $zb$ modulo $p_0c,c$, then $u_1-v_1\equiv0\pmod c$.
+Hence $\operatorname{sgn}(y)N|y|(u_1-v_1)/c$ is integral, also for $p_0\mid c$, without any condition $(p_0,c)=1$.
+
+\subsection{Source errors and the Class-II sum}
+
+This subsection bounds the boundary, proper-power, logarithm and comparator errors and the interior Class-II sum.
+A source face is
+\[
+g(\mathbf v)=\sum_ia_i\log v_i=\xi,\qquad
+ |a_i|\le2,\quad\sum_i|a_i|\le48.
+ \tag{4.36}
+\]
+Every defining-face coefficient has absolute value at most 2 after
+expansion into the HB variables. Since $s\le24$, its coefficient sum
+is at most 48.
+The face families are:
+\begin{center}
+\begin{tabular}{@{}p{0.68\textwidth}l@{}}
+\toprule
+Family & Number \\
+\midrule
+Two $\Sigma_G$ faces, source windows/orderings, fixed coordinate transports & $\le16$ fixed \\
+Coordinate dyadic edges & $\le4$ lattices \\
+M\"obius caps $v_i=2X_m^{1/3}$ & $\le12$ lattices \\
+Identity caps $n_m=(2X_m^{1/3})^3$ & $\le4$ lattices \\
+Product dyadic edge and three slack families & $\le4$ lattices \\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus there are at most 24 lattice families, of gap $\gamma=(\log2)/3$.
+HB partition edges are refined exactly, and prefix and tail labels are modulus-side conditions.
+The Class-II choice is constant on each box.
+
+\begin{lemma}[Lattice thin shells]
+Let $N\ge2$, $L=\log N$, $s\ge2$, and $a\in\mathbb Z^s\setminus\{0\}$.
+Fix a nonempty $J_0\subseteq\{i:a_i\ne0\}$, and assume $|a_j|\in\{1,2\}$ for $j\in J_0$.
+Let $1\le Y_0\le N$ and $0<\eta\le1/4$, and let $\Lambda\subset\mathbb R$ have pairwise distances at least $\gamma>0$.
+Put $\kappa=(1-e^{-\gamma/2})^{-1}$.
+Then
+\[
+\begin{aligned}
+ &\#\{\mathbf v:\prod v_i\le N,\
+ \operatorname{dist}(\sum a_i\log v_i,\Lambda)\le\eta,\
+                         \max_{j\in J_0}v_j\ge Y_0\}\\
+ &\quad\le s\left[4\eta\kappa N(1+L)^{s-1}
+       +(2L/\gamma+2){N\over Y_0}(1+L)^{s-2}\right].
+\end{aligned}
+ \tag{4.37}
+\]
+For empty $\Lambda$, the count is zero.
+For a singleton one may take $\kappa=1$ and interval-count factor 1.
+\end{lemma}
+\begin{proof}
+Assign each tuple to the least $j\in J_0$ with $v_j\ge Y_0$, and apply \cite[Lemma~B.2, (B.14)]{Z1} on that fibre.
+Only $|a_j|\in\{1,2\}$ matters there; the other coefficients enter $c=\sum_{i\ne j}a_i\log v_i$.
+Put $Z=N/P$, where $P$ is the complementary product.
+After clipping to $[Y_0,Z]$ and merging touching or overlapping intervals, the union has at most $2L/\gamma+2$ components.
+Its fibre count is at most $4\eta\kappa Z+2L/\gamma+2$, the count before relaxation in (B.14).
+Summing uses
+\[
+ \sum_{n\le y}\tau_k(n)\le y(1+\log y)^{k-1},\qquad
+ \sum_{n\le y}{\tau_k(n)\over n}\le(1+\log y)^k,
+ \tag{4.38}
+\]
+with $k-1$ factors fixed and the product constraint dropped in the harmonic sum.
+These give (4.37).
+The component count concerns the clipped union, and no restriction relates $\eta$ and $\gamma$.
+\end{proof}
+
+The boundary distance is at most $\eta=48L^{-334}$.
+For each defining face, take $J_0=\{i:a_i\ne0\}$.
+Six or fewer factors of a coordinate at least $N^\alpha$ give $Y_0=N^{\alpha/6}$.
+A M\"obius-cap variable is at least $N^{\alpha/3}e^{-\eta}\ge Y_0$.
+The same 16 fixed and 24 lattice families suffice.
+The worst lattice has $\kappa=(1-2^{-1/6})^{-1}<9.2$, and $2L/\gamma+2\le10L$ for $L\ge2$.
+Thus the boundary union $U$ for one form and pattern satisfies
+\[
+\begin{aligned}
+ \#U\le{}&1091174.4\,NL^{-334}(1+L)^{23}\\
+ &+24(16+240L)N^{1-\alpha/6}(1+L)^{22}\\
+ \le{}&1091175\,NL^{-334}(1+L)^{23}\qquad(L\ge300000).
+\end{aligned}
+ \tag{4.39}
+\]
+The leading constant is $24\cdot192(16+24\cdot9.2)=1091174.4$.
+The second-line ratio is bounded by
+\[
+ R(L)=5760e^{-(100/6894)L}L^{334}<3/5\quad(L\ge300000).
+ \tag{4.40}
+\]
+Its logarithmic derivative is negative there.
+At 300000, $e>8/3$, $(8/3)^{13}>300000$ and $(8/3)^9>5760$ give $\log R<9-(100/6894)300000+334\cdot13<-3/5$.
+Since $e^{3/5}>5/3$, (4.40) follows.
+This justifies the rounding at width exponent 334.
+
+Boundary estimates keep the unnormalized HB logarithms.
+The full weight $w(\mathbf v)=H_B(\mathbf v)\prod_{j=1}^k(\log p_j)^{-1}$
+uses the actual coordinate logarithms; since $\log p_j\ge\alpha L\ge1$,
+the numerator bound above gives the deliberately coarser bound below.
+Thus for one pattern, including its source-form weight,
+\[
+ |w(\mathbf v)|\le162L^4,\qquad
+ \sum_{q\le N^{3/5}}|\gamma_q|
+  \left(\mathbf1_{q\mid N-e}+{1\over\varphi(q)}\right)
+ \le C_\sigma\{\tau(N-e)+2(1+L)\}.
+ \tag{4.41}
+\]
+Here $N-e\ge1$.
+The reciprocal-totient constant is below 2, since
+$q/\varphi(q)=\sum_{d\mid q}\mu^2(d)/\varphi(d)$ and
+$\prod_p(1+1/(p(p-1)))<2$.
+Put $F_*(e)=\tau(N-e)+2(1+L)$.
+The composition bound is $\tau_a\tau_b\le\tau_{ab}$:
+one maps the two compositions to a fixed matrix with those margins.
+Cauchy--Schwarz and (4.38) give
+\[
+\begin{aligned}
+ \sum_{e<N}\tau_{24}(e)\tau(N-e)^2
+ &\le\left(\sum\tau_{576}\right)^{1/2}
+       \left(\sum\tau_{16}\right)^{1/2}
+ \le N(1+L)^{295},\\
+ \sum_{e<N}\tau_{24}(e)F_*(e)^2&\le3N(1+L)^{295}
+                              \quad(N\text{ sufficiently large}).
+\end{aligned}
+ \tag{4.42}
+\]
+Another Cauchy--Schwarz application on $U$ gives
+\[
+\begin{aligned}
+ |E_{\rm bdry}|&\le162\sqrt{3\cdot1091176}\,C_\sigma\\
+ &\qquad\cdot N(1+L)^{163}L^{-167}\\
+ &<293108\,C_\sigma\\
+ &\qquad\cdot N(1+L)^{163}L^{-167}.
+\end{aligned}
+ \tag{4.43}
+\]
+We include 648 instances and the multiplier $1/u=500$, since $u=1/500$;
+we also include $N_{\rm lab}(\sigma)$ and $\mathcal W^{-1}$.
+Since $C(N)\ge0.66016$,
+\[
+\begin{aligned}
+ E^D_{\rm HB:G1}&\le3.6\cdot10^{10}C_\sigma N_{\rm lab}(\sigma)
+                     (1+L)^{163}L^{-165}\\
+ &\le3.6\cdot10^{10}C_\sigma N_{\rm lab}(\sigma)
+                         e^{163/L}L^{-2}=o_\sigma(1).
+\end{aligned}
+ \tag{4.44}
+\]
+This covers cut faces, windows/orderings, dyadic families and caps.
+The four parts count row/form/pattern/box occurrences once, including box and dyadic factors.
+Hence H6 has $c_R=163$, with D rate $O_\sigma(L^{165-C_b/2})$.
+Every fixed $C_b>330$ suffices; $C_b=334$ gives $O_\sigma(L^{-2})$.
+
+The proper-power event concerns one source coordinate,
+while other coordinates may contribute further prime factors.
+For $n\ge N^\alpha$,
+\[
+ \mathbf1_{\mathbb P}(n)-{\Lambda(n)\over\log n}
+       =-{1\over a}\mathbf1_{\substack{n=p^a\\a\ge2}}.
+ \tag{4.58}
+\]
+Roughness below $N^\alpha$ preserves primes and removes powers.
+The same absolute bound is used, telescoping over four or fewer coordinates.
+For $Y=N^\alpha$,
+\[
+ \sum_{\substack{Y\le p^a\le N\\a\ge2}}p^{-a}
+ \le2Y^{-1/2}+2(\log_2N)Y^{-2/3}\le3Y^{-1/2}
+ \tag{4.59}
+\]
+Squares are bounded by an integer tail, and for $a\ge3$ we use $O(Y^{-(a-1)/a})$.
+Fixing one coordinate at $t$ leaves at most
+\[
+ {N\over t}(1+\log N)^{\max(r-2,0)}\qquad(1\le r\le4)
+\]
+completions.
+For $r=1$ the sole completion is bounded by $N/t$.
+For $r=2$ we count directly, and for $r\ge3$ we use (4.38).
+Thus $T_{PP}\le12N^{1-\alpha/2}(1+L)^2$.
+By (4.25), the full modulus sum is
+$O_\sigma(\tau(N-e)+2(1+L))$ per tuple.
+Since $1\le N-e<N$, we use $\tau(N-e)\ll_\delta N^\delta$.
+Then
+\[
+ |E_{PP}|\ll_{\sigma,\delta}N^{1-\alpha/2+\delta}(1+L)^3.
+ \tag{4.60}
+\]
+We take $\delta=\alpha/8$ and absorb logarithms in the spare power.
+Dividing by $\mathcal W$ gives
+\[
+ E^D_{PP:G1}\ll_\sigma N^{-\alpha/4}L^5
+      =N^{-25/1149}O_\sigma(L^5)=o_\sigma(1).
+ \tag{4.61}
+\]
+This step precedes HB boxes.
+The event $p^2\mid q$ has its separate modulus bound.
+
+For logarithm freezing, each coordinate has at most six HB factors.
+If $\lambda_{B,m}$ is its lower logarithm,
+\[
+ \left|{1\over\log p_m}-{1\over\lambda_{B,m}}\right|
+ \le {6L^{-334}\over(\alpha L-1)^2}.
+ \tag{4.62}
+\]
+Up to four inverse logarithms change by at most $c_\alpha L^{-336}$.
+This is multiplied by the unnormalized numerator bound $162L^4$ above.
+The frozen inverse logarithms contribute to (4.62),
+while the normalized interior coefficient $162(2/\alpha)^4$ excludes them.
+Summing exact differences over disjoint boxes,
+with $\sum\tau_{24}\le N(1+L)^{23}$, (4.42) and Cauchy--Schwarz, gives
+\[
+ |E_{LOG}|\ll_\sigma N(1+L)^{161}L^{-334},\qquad
+ E^D_{LOG}\ll_\sigma L^{-171}\ll_\sigma L^{166-C_b}=L^{-168}.
+ \tag{4.63}
+\]
+Hence H6 holds with $C_{\rm box}=C_b=334$ and $c_{\log}=164$.
+
+For the comparator error, source primes are at least $N^\alpha$ before HB.
+Thus
+\[
+ X_G-Y_G(q)
+ \le100\sum_{\substack{p\mid q\\p\ge N^\alpha}}{N\over p}
+ \le100\omega(q)N^{1-\alpha}.
+ \tag{4.64}
+\]
+Also $\sum_q|O(q)|\omega(q)/\varphi(q)\ll_\sigma L^3$, by (4.25) and reciprocal-totient summation.
+Equations (4.23)--(4.24) give
+\[
+ E^D_{NC:G1}\ll_\sigma N^{-\alpha}L^5=o_\sigma(1).
+ \tag{4.65}
+\]
+The two squareful terms in (4.23) contribute
+$O_\sigma(N^{-\ell_0\sigma^2}L^4)$ once, by Theorem~\ref{thm:repeated-primes}.
+Class II includes GR cross-copy restoration.
+
+The external precisions are
+\[
+\begin{gathered}
+ A_{\rm raw}=3,\quad K_0=24C_b+26=8042,\\
+ A'=A_{\rm raw}+K_0+2=8047,\quad
+ A_{\rm work}=A'+4=8051.
+\end{gathered}
+ \tag{4.66}
+\]
+These use the \hyperref[p2:g1-external-count]{box count above}.
+Three internal slot-shell sums use three of the four extra logarithms.
+Choose
+\[
+\begin{aligned}
+ A_E&\ge16770+c_*,\qquad C_1=A_E+2c_*+3,\\
+ C_M&=5C_1+A_E+334+c_*+3,\qquad A_3=A_E+336,\\
+ A''&=A_{BFI}+(334+A_3+1)/2.
+\end{aligned}
+ \tag{4.67}
+\]
+Here $16770=2A_{\rm work}+2C_b$.
+Fix $c_*\ge\max\{c_{\rm pre}+2,c_1,c_{\rm diag},c_1(B_0),0\}$
+and above all remaining preceding logarithmic losses, with
+$c_{\rm pre},c_1,c_{\rm diag}$ as in (1.29).
+Then (4.67) implies every lower bound in (1.29), in particular
+$A_E\ge16772+c_{\rm pre}$.
+Precisions are fixed before the threshold.
+Theorem~\ref{thm:distribution-input} gives
+\[
+ |S_B|\ll X(\log X)^{-8047}
+      +X^{1-c_\sigma}(\log X)^C,\qquad
+ c_\sigma={\ell_0\sigma^2\over4}>0.
+ \tag{4.68}
+\]
+This includes local restoration and GR at precision $A_{\rm work}$.
+The prime-source condition $C_{\rm box}\ge\lceil2A+32\rceil$ uses
+the global target $A$ of \cite[Theorem~1.2]{Z1}.
+The local target $A'$ does not enter this box-width requirement.
+The product-source H6 exponents are those above.
+Lemma~\ref{lem:external-classii-sum} applies with $C_{\mathscr F}=C$:
+by (4.2) and (3.1), $\mathcal W=W_N$, and (4.28) gives $X\ge N/L^{31}$ eventually.
+Set $C_{\rm pow}=C+31c_\sigma$, which is a fixed finite exponent.
+Hence
+\[
+ E^D_{II:G1}\ll_\sigma L^{-3}
+ +N^{-c_\sigma}L^{8042+C_{\rm pow}+2}=o_\sigma(1).
+ \tag{4.69}
+\]
+Scale conversion preserves $c_\sigma$, with no $N^{-\sigma}$ saving.
+The stronger (4.28) is not needed here.
+Boundary, comparator, proper-power and logarithm sums have no $L^{8042}$ factor.
+The raw boundary rate is $O_\sigma(NL^{-4})$, with D rate $O_\sigma(L^{-2})$.
+All these errors vanish at the fixed target.
+
+\subsection{The dynamic-cutoff peel}
+
+This subsection bounds the error of the dynamic-cutoff peel.
+For a retained G1-3 cell, put $b=a_1a_2a_3$ and $E=N^{t_3}$.
+The finite union bound is
+\[
+ S((\mathcal B_G)_b,a_3)\ge S((\mathcal B_G)_b,E)
+       -\sum_{\substack{E\le r<a_3\\r\ {\rm prime}}}
+                             S((\mathcal B_G)_{br},E).
+ \tag{4.45}
+\]
+Here $a_1>a_2>a_3$, $r<a_3$, $r\nmid N$ and $(br,N)=1$.
+The last two follow from $\mathcal P(N)$ and the coordinate conditions.
+The negative upper-chain sign permits enlargement of this nonnegative difference.
+Only the $E$-base enters HB.
+
+\begin{lemma}[Uniform peel bound]
+Let $0<\tau<8\cdot10^{-6}$ and $\rho=1+\tau$.
+Suppose $(m,N)=1$ and $P^-(m)\ge z$, with
+\[
+ \log_Nm\le153/256+2\tau,\quad
+ N^{u/\rho^3}\le z\le N^{\rho\mu},\quad w=\min(z,N^\alpha).
+ \tag{4.46}
+\]
+Eventually, uniformly in $m$,
+\[
+ S((\mathcal B_G)_m,z)\le3\cdot502002\,{U_0\over m},
+ \qquad U_0=2U_C.
+ \tag{4.47}
+\]
+\end{lemma}
+\begin{proof}
+Write $N-e=mk$.
+By the representation bound above, $A_G^{\rm cut}\le3$.
+Put $\mathcal E_h=\{e:A_G^{\rm cut}(e)\ge h\}$ for $h=1,2,3$.
+Then $A_G^{\rm cut}=\sum_{h=1}^3\mathbf1_{\mathcal E_h}$.
+Each layer has the same roughness and two-form bound.
+The layers are summed once, including coefficient 2 on both $R_{11}$ forms.
+
+Enlarge the range to $1\le k\le\lfloor(N-1)/m\rfloor$, of length $K\le N/m$;
+both $k$ and $N-mk$ are $w$-rough.
+If $p<w$, $p\mid N$ and $p\mid k$, then $p\mid e$, which source roughness excludes.
+Thus the all-primes two-form majorant applies.
+For squarefree $d\mid P(w)$, CRT gives
+\[
+\begin{gathered}
+ \nu_N(p)=1\ (p\mid N),\quad \nu_N(p)=2\ (p\nmid N),
+ \quad \nu_N(2)=1,\\
+ A_d=K{\nu_N(d)\over d}+R_d,\quad |R_d|\le\nu_N(d).
+\end{gathered}
+ \tag{4.48}
+\]
+For $p<w$, $p\nmid m$ follows from $P^-(m)\ge z\ge w$.
+For $p\ge w$, the same rules are extended only in the Euler product.
+A prime endpoint costs $g(w)=O(1/w)$ in the auxiliary sum.
+Selberg least common multiples stay on $P(w)$.
+Put $f(p)=\nu_N(p)/p$ and $g(p)=f(p)/(1-f(p))$.
+They are extended squarefree multiplicatively, and we put
+$G_N(w)=\sum_{d\le w,d\mid P(w)}g(d)$.
+Finite-poset diagonalization gives
+\[
+ \sum_{d,e}\lambda_d\lambda_ef([d,e])
+ =\sum_r{y_r^2\over g(r)},\quad
+ y_r=\sum_{r\mid d}\lambda_df(d),\quad
+ 1=\lambda_1=\sum_r\mu(r)y_r.
+ \tag{4.49}
+\]
+Cauchy--Schwarz gives minimum $1/G_N(w)$ at $y_r=\mu(r)g(r)/G_N(w)$.
+Finite inversion gives
+\[
+ \lambda_d=\mu(d)\prod_{p\mid d}(1-f(p))^{-1}
+     {\sum_{r\le w/d,(r,d)=1}g(r)\over G_N(w)},\\
+ |\lambda_d|\le\prod_{p\mid d}(1-f(p))^{-1}
+              \ll(d/\varphi(d))^2.
+ \tag{4.50}
+\]
+The Dirichlet series factors as $\zeta(1+s)^2H_N(s)$,
+where $H_N(s)=\sum h_N(r)r^{-s}$.
+Its nonconstant local coefficients are
+$g(p)-2/p$, $p^{-2}-2g(p)/p$ and $g(p)/p^2$.
+For $p\nmid2N$, absolute logarithmic moments through order 2 converge.
+For $p\mid N$, the absolute local mass is $O(1/p)$.
+We split at $Y=\log(3N)$.
+Mertens gives $\sum_{p\mid N,p\le Y}1/p\ll\log\log Y+1$.
+Above $Y$ we use $\sum_{p\mid N}\log p\le\log N$.
+The $j$-th logarithmic moment is $O((\log Y)^{j-1})$, for $j=1,2$.
+Expanding absolute local products gives a fixed $B$ with
+\[
+ \sum_r|h_N(r)|(1+\log r)^2\ll(\log\log(3N))^B,\qquad
+ H_N(0)={1\over2C(N)}.
+ \tag{4.51}
+\]
+At zero, 2 contributes $1/2$.
+A generic odd prime contributes $(1-1/(p-1)^2)^{-1}$.
+For $p\mid N$, this is multiplied by $(p-2)/(p-1)$.
+Convolution with $\sum_{n\le y}\tau(n)/n=\frac12\log^2y+O(\log(2y))$
+and the second logarithmic moment for the tail $r>w$ give, uniformly,
+\[
+ G_N(w)={\log^2w\over4C(N)}
+       \left(1+O\left({(\log\log(3N))^B\over\log w}\right)\right).
+ \tag{4.52}
+\]
+Thus the dimension-two convention is
+$G_N(w)\prod_{p<w}(1-\nu_N(p)/p)=e^{-2\gamma}/2+o(1)$.
+Equations (4.48), (4.50) give
+\[
+ S([1,K],w)\le {K\over G_N(w)}+O(w^2\log^5w);
+ \tag{4.53}
+\]
+the remainder is at most
+$(\sum_{d\le w}|\lambda_d|\nu_N(d))^2
+\ll w^2\log^2w(\log\log(3w))^4$.
+Uniformly in (4.46),
+\[
+ \log_Nw\ge2/1001,\qquad
+ w^2m\le N^{253/256+(153/64)\tau}<N^{1-0.0116}.
+ \tag{4.54}
+\]
+These use $(1+8\cdot10^{-6})^3<1001/1000$, $u/\rho^3\ge2/1001$ and $\alpha>2/1001$,
+together with $w\le z\le N^{\rho\mu}$ for the uniform upper saving.
+For one layer, the main coefficient in $U_0/m$ units is eventually at most
+$2.001/(2/1001)^2=501251.00025<502002$.
+The strict slack absorbs the remainder in (4.53).
+This proves (4.47) on the $N$-scale, including short $K$.
+\end{proof}
+
+For $m=br$ in (4.45), the retained-cell condition gives
+\[
+ \begin{aligned}
+ \log_Nm&\le\rho(t_1+t_2+2t_3)\\
+ &\le\rho[\Theta_c-\eta_L-(2\rho-1)t_3]\\
+ &\le\rho(153/256-\eta_L)<153/256+2\tau.
+ \end{aligned}
+ \tag{4.55}
+\]
+On G1-1, G1-2 and G1-3, $\Theta_c\le\overline H=153/256$.
+The two-branch peak is $(1+\mu)/2=153/256$.
+Masked branches are zero or below it, and extra $w$-branches are zero or at most $(153-96c)/256\le153/256$.
+The inherited label has $N^{t_3}\le a_3<N^{\rho t_3}$,
+even for a clipped parent interval.
+Since $N^u\le a_3<N^\mu$,
+$t_3>u/\rho\ge u/\rho^3$ and $t_3<\mu\le\rho\mu$.
+Hence $E\in[N^{u/\rho^3},N^{\rho\mu}]$.
+All prime factors of $m$ are at least $E$, and $(m,N)=1$.
+We apply (4.47) with $z=E$; $w$ may be smaller.
+For fixed positive $\tau$, Mertens gives eventually
+\[
+ M_h=\sum_{p\ {\rm in\ parent\ bin}\ h}{1\over p}\le2\tau,
+ \qquad\sum_hM_h\le4.59,
+ \tag{4.56}
+\]
+Here $\log(\mu\rho/u)<4.59$.
+The pair $a_3,r$ belongs to one parent bin. Thus
+\[
+\sum(a_1a_2a_3r)^{-1}\le4.59^2\sum_hM_h^2
+\le2\cdot4.59^3\tau.
+\]
+The raw difference is below $3\cdot97100000\tau U_0$.
+Its adverse D bound is
+\[
+ E^D_{\rm PR:peel}\le {3\cdot97100000\over2(1-\varepsilon_A)}\tau
+ ={485500000000\over3333}\tau<145664566.4567\tau.
+ \tag{4.57}
+\]
+The source multiplier enters once, without 500, label counts or tail factorials.
+The slack includes the Selberg remainder.
+
+\subsection{Canonical profiles and the joint lower bound}
+
+This subsection compares the rows with canonical profiles and proves the joint lower bound for the four rows.
+Put
+$v(s)=v_1(s)-u,\qquad \psi(a,b)=a\mathbf1_{a\ge b},$
+with the \hyperlink{p2:def:six-branch-saved}{six-branch definition}
+of Section~\ref{p2:sec:2.1}, where $v_1$ is the unbuffered function of \eqref{p2:eq:row-level-function}.
+Thus
+\[
+ \Theta_*(t_1,t_2,t_3)=\Theta_3^{\rm saved}(t_1,t_2,t_3).
+ \tag{4.70}
+\]
+For $u\le t_3\le t_2\le t_1\le\mu$, put
+\[
+\begin{aligned}
+v_1(s)&=\min\left\{\frac{1+s}{2},\frac{32-34s}{39},
+                     \frac{57}{64}-\frac32s\right\},\\
+v(s)&=v_1(s)-u,\qquad \psi(x,y)=x\mathbf1_{x\ge y}.
+\end{aligned}
+\]
+The six branches are
+\[
+\begin{aligned}
+\Theta_*(a,b,c)=\max\{&v(a),v(b),v(a+b),v(a+b+c),\\
+ &\psi(v(a+c),a+2b+c),\psi(v(b+c),2a+b+c)\}.
+\end{aligned}
+\]
+The $u$ subtraction precedes each $\psi$ guard.
+For the actual coordinates, set
+\[
+ a_3={\Theta_*-t_1-t_2-t_3\over t_3},\qquad
+ J=\int_u^\mu{dt_1\over t_1}\int_u^{t_1}{dt_2\over t_2}
+                  \int_u^{t_2}{1-f(a_3)\over t_3^2}\,dt_3.
+ \tag{4.71}
+\]
+Here $f$ is extended by zero below 2.
+Above every finite table endpoint its true values are used.
+
+The function $v_1$ is $3/2$-Lipschitz, and each exponent changes by at most $\mu\tau$ in a parent cell.
+An active $\psi$-branch has unshifted gap $u-(9/2)\mu\tau-4\mu\tau>0$ throughout.
+After $\eta_L$, its source margin is
+\[
+ g=(u-\eta_L)-(9/2)\mu\tau>0.001899>2\mu\tau.
+ \tag{4.72}
+\]
+The other branches and maxima preserve this comparison across switches, and so do the two full-anatomy branches.
+If a parent crosses $\mu$, then $t_1\le\mu\le\rho t_1$, so $|x_1-\mu|\le\mu\tau$ for its largest actual exponent.
+Since $v_1(\mu)=153/256$,
+$v_1(x_1)-\eta_L\ge153/256-(3/2)\mu\tau-\eta_L$.
+Every canonical branch is at most $153/256-u$, so the margin is at least $u-\eta_L-(3/2)\mu\tau\ge g>0$.
+Parents below $\mu$ use the activation argument above, and clipping shrinks the infimum domain.
+
+If $f(a_3)>0$, the numerator exceeds $2t_3$,
+and (4.72), for actual exponents then inherited labels, gives $\ell_c\ge2\rho t_3$.
+Thus positive canonical lower terms lie in retained whole cells, and elsewhere their contribution is zero.
+On retained cells we use Mertens and the monotonicity of $sf(s)$, keeping the numerator fixed.
+The $E$-base dominates the actual-cutoff lower main term, so canonical restriction loses zero.
+The arithmetic difference (4.57) remains, with possibly nonzero mass.
+
+Let $H_{\log}=\log(\mu/u)$.
+By (4.20), the first three residuals satisfy
+\[
+ 0\le R\le500(F(30)-1)+500H_{\log}(1-f(30))
+                         +250H_{\log}^2(F(30)-1)=:R_{\rm up}.
+ \tag{4.73}
+\]
+Three elementary integrations give
+\[
+ 500(1-H_{\log}+H_{\log}^2/2)
+ -\int_u^\mu{dt_1\over t_1}\int_u^{t_1}{dt_2\over t_2}
+                            \int_u^{t_2}{dt_3\over t_3^2}
+ ={1\over\mu}
+ \tag{4.74}
+\]
+which cancels the constant-one parts of $+F,-f,+F,-f$.
+The actual upper main chain is therefore at most
+\[
+ G_1={1\over\mu}+R+J,\qquad0\le R\le R_{\rm up},
+ \tag{4.75}
+\]
+with the preceding errors.
+
+Let $X_j=\sum_eR_j(e)\mathbf1_{\varepsilon_A N<e<N}$,
+and $X_j^{\rm cut}=\sum_eR_j(e)\mathbf1_{\varepsilon_A N<e\le N_{\rm cut}}$.
+Then $X_G=2X_{11}^{\rm cut}+X_{12}^{\rm cut}+X_{13}^{\rm cut}$, and (4.17) bounds the mass difference.
+PNT and partial summation give
+\[
+ X_j=\big((1-\varepsilon_A)I_j+o(1)\big){N\over L},
+ \tag{4.76}
+\]
+where
+\[
+\begin{aligned}
+ I_{11}={}&\int_\lambda^{1/3}
+       {\log((1-2t)/t)\over t(1-t)}\,dt\\
+ &+\int_\lambda^{1/4}{dt\over t}
+       \int_t^{(1-t)/3}{\log((1-t-2v)/v)\over v(1-t-v)}\,dv,\\
+ I_{12}={}&\int_\alpha^{1/3}{\log(2-3t)\over t(1-t)}\,dt,\\
+ I_{13}={}&\int_\beta^\lambda
+       {\log((1-t-\lambda)/\lambda)\over t(1-t)}\,dt.
+\end{aligned}
+ \tag{4.77}
+\]
+The last-prime density on the radial face is $1/(1-t-v)$.
+Integrating the companion variable gives $I_{12},I_{13}$.
+For $I_{11}$ the Buchstab argument is at most $214/93$, and its value is $v/(1-t-v)$ plus
+$v\log((1-t-2v)/v)/(1-t-v)$ for $v\le(1-t)/3$.
+This gives both integrals and the positive correction.
+Set $e=yN$, $\varepsilon_A<y<1$.
+On compact exponent boxes, the last logarithm has radial-face error
+$O_{\varepsilon_A}(1/L)$, and $\int_{\varepsilon_A}^1dy=1-\varepsilon_A$.
+PNT is applied first and fixed partitions are then refined,
+and the positive exponent lower bound gives domination.
+Monomial-face strips, including $D_{13}$'s endpoint-swap strip, have vanishing main mass.
+Representation conditions are retained before the limit.
+The upper cut costs (4.17).
+This proves (4.76) at finite $\varepsilon_A$.
+
+With $V_N(z)=(1+o(1))2e^{-\gamma}C(N)/\log z$, (4.75)--(4.76) give
+\[
+ {2S_{11}+S_{12}+S_{13}\over4(1-\varepsilon_A)U_C}
+ \le K_GG_1+E^D_{G1},\qquad
+ K_G={2I_{11}+I_{12}+I_{13}\over2e^\gamma}.
+ \tag{4.78}
+\]
+The factor $1-\varepsilon_A$ cancels once here.
+It remains in (4.57) and in the finite target of Section~1.
+At $a=9/5$, that target is $8\log(50009/39991)$, with zero-epsilon limit $8\log(5/4)$.
+
+The directed bounds are
+\[
+\begin{gathered}
+ R_{\rm up}<4.4\cdot10^{-6},\qquad G_1\le\overline G,\\
+ \overline G=6.0884403625974206828946573628908904\ldots<6.088440363.
+\end{gathered}
+ \tag{4.79}
+\]
+Appendix~A.5 gives the delay-function, quadrature and mass enclosures.
+Its endpoint $K_{\rm hi}$ is \eqref{eq:g1-khi}.
+Here $\overline G$ is the 4096-cell outward upper-corner sum in Appendix~A.5.
+It is a conservative bound, not the continuous integral value.
+Let $r_0,r_1,r_2,J_{\rm hi}$ denote the directed upper parts of $\overline G$.
+Put
+\[
+\begin{aligned}
+ T_0&=500+r_0,&T_1&=-500H_{\log}+r_1,\\
+ T_2&=250H_{\log}^2+r_2,&
+ T_3&=-(500-500H_{\log}+250H_{\log}^2-1/\mu)+J_{\rm hi}.
+\end{aligned}
+ \tag{4.83}
+\]
+Exactly, $\sum T_r=1/\mu+r_0+r_1+r_2+J_{\rm hi}=\overline G$.
+Their signs are $+,-,+,-$, so $-K_GT_r$ has signs $-,+,-,+$.
+We therefore use upper $K_G$ for rows 0,2 and lower $K_G$ for rows 1,3.
+The four directed row enclosures are in Appendix~A.5,
+and the four terms are cancelled before rounding.
+The joint reference value is
+\[
+\begin{aligned}
+ L_{G1}&=
+ -{243950428265194656254206921939947762868871361874409552095097
+ \over100433627766186892221372630771322662657637687111424552206336}\\
+ &=-2.42897158741611974640561365334839795714\ldots .
+\end{aligned}
+ \tag{4.84}
+\]
+Put
+$\delta_{G1}=4.98\cdot10^{-54},\qquad
+ E_{G1}=L_{G1}-\delta_{G1},$
+and let $R_{G1}$ sum the exact four row lower endpoints.
+Appendix~A.5 proves $L_{G1}-R_{G1}<\delta_{G1}$, so $E_{G1}$ is used.
+The main base contains the reference value $L_{G1}$ once,
+and the adverse sum contains $\delta_{G1}$ once.
+The row enclosures include $K_G$.
+The cap for $G_1-2$ is $4.088440363$, which gives the weaker value $-K_{\rm hi}(2+4.088440363)=-K_{\rm hi}6.088440363$,
+with about $1.61\cdot10^{-10}$ D loss.
+Equations (4.13)--(4.78) transfer these enclosures to the arithmetic rows.
+
+Successive differences are taken in the order
+\[
+ \begin{gathered}
+ \text{source restoration, source conditions, PR-M, AA37,}\\
+ \text{squareful/NC, proper powers, LOG, boundary, interior Class II}.
+\end{gathered}
+\]
+AA37 includes fixed-parameter and asymptotic terms.
+Only the $E$-base enters G1-3 Heath--Brown \cite{ref6}.
+After monotonicity the exact first-contribution partition is retained,
+and the favourable fixed-cutoff and G1 cutoff differences are discarded.
+Each difference or part occurs once below.
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.68\textwidth}@{}}
+\toprule
+Contribution & Adverse D bound at fixed $\sigma,\tau$ \\
+\midrule
+Upper source restoration & (4.17) \\
+Lower slab & zero: outside the source by (4.15) \\
+G1 source-tag exceptions & $O_\sigma(N^{-\alpha/2+o(1)})$; the DIRECT $O_\sigma(L^3/N)$ term is separate, as in (1.23) \\
+G1-3 peel & $145664566.4567\tau$, once \\
+Matched canonical restriction loss & zero, by (4.72) \\
+AA37 & its common $C_E\sigma$ share once, plus $o_\sigma(1)$ \\
+Squareful terms & Theorem~\ref{thm:repeated-primes}: $O_\sigma(N^{-\ell_0\sigma^2}L^4)$ \\
+NC & (4.65) \\
+Tested proper powers & (4.61) \\
+LOG & (4.63) \\
+HB boundary & (4.44), one term with four parts \\
+Interior Class II, including GR & (4.69) \\
+Prime mass/PNT and Mertens & $o_\sigma(1)$, from (4.76)--(4.78) \\
+\bottomrule
+\end{longtable}
+\endgroup
+For $p\mid N$, there are $O((N/p)L^C)$ complementary products.
+There are $O(L)$ such source primes, all at least $N^\alpha$.
+A positive fraction of $\alpha$ absorbs divisor/logarithmic losses.
+Labels and HB boxes preserve these sums.
+
+Theorem~\ref{thm:distribution-input} and Theorem~\ref{thm:repeated-primes} in Appendix~B.1,
+together with the directed endpoints above, give
+\[
+ \sum_{r=0}^3 Q_{G1-r,0}(N)
+ \ge L_{G1}-\delta_{G1}-145664566.4567\tau-E^D_{AA:G1}(\sigma)
+                    -E^D_{{\rm remaining}:G1}(N;\sigma),
+ \tag{4.85}
+\]
+where the last term sums the vanishing errors in the table.
+The AA37 term $C_E\sigma$ and the PR term $O(\tau)$ stay fixed.
+Analytic constants and the residual margin are fixed first.
+Then $\sigma$ is chosen, followed by $\tau=\sigma^9$, labels, widths and precisions.
+Finally $N_0$ is chosen for all length and spectral conditions.
+These include BFI/SW, Poisson and the W-prime bound at width 334.
+The threshold depends on fixed $\sigma>0$.
+Thus (4.85) holds for all four arithmetic rows, with $E_{G1}=L_{G1}-\delta_{G1}$.

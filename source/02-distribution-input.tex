@@ -1,0 +1,482 @@
+\subsection{Distribution inputs}
+
+This subsection states the distribution estimates used by the rows.
+Row S1-0 uses \hyperref[sec:z1-input]{the complete coefficient \textup{(W)}} with
+\[
+\begin{gathered}
+ u=1/500,\quad \Theta(u)=19101/32000,\quad\theta=19101/32000-10^{-4},\\
+ B=30,\quad\varepsilon=10^{-4},\quad a=N,\quad K_{\rm scale}=31.
+\end{gathered}
+\]
+Here $0<\sigma\le10^{-10}$ satisfies both restrictions, and
+$\tau=\sigma^9$, $Y=N^{\theta\sigma^2}<N^{u/2}$.
+We take $C_{\rm box}\ge\lceil2A+32\rceil$ and keep the grid, distinctness masks and smooth-divisor term.
+Since $(q,2N)=1$, the shift $a=N$ is admissible.
+Then \cite[Theorems~1.1--1.2, Corollary~1.3]{Z1} applies to the complete sum,
+and the corollary gives the same Li comparator.
+The remaining rows use the following local input.
+
+\begingroup
+\renewcommand{\thetheorem}{A}
+\begin{theorem}[Local dispersion estimate]\label{thm:distribution-input}
+Let $0<\sigma\le10^{-10}$ and let $N$ be large and even.
+Put
+\[
+\begin{gathered}
+ \tau=\sigma^9,\quad\delta=30\sigma,\quad\vartheta_{\rm sp}=7/32,
+ \quad\eta_L=10^{-4},\\
+ \ell_0={53\over412}-{\eta_L\over2}={264897\over2060000},
+ \quad c_\sigma={\ell_0\sigma^2\over4},\\
+ N/(\log N)^{31}\le X\le N,\quad L=\log X,\quad
+ a=N,\quad z_0=X^{1/(\log\log X)^3},\quad u_0=N^{\ell_0\sigma^2}.
+\end{gathered}
+\]
+For an interior Class-II Heath--Brown box $B$, define
+\[
+\begin{gathered}
+ \mathcal S_t(q;a)=1_{t\equiv a\ (q)}-{1_{(t,q)=1}\over\varphi(q)},\quad
+ \Delta_B(q;a)=\sum_{\mathbf v\in B}w(\mathbf v)\mathcal S_{\prod v_i}(q;a),\\
+ S_B^{\rm PSDT}=\sum_qC_b(q)\Delta_B(q;N).
+\end{gathered}
+\]
+Assume the local conditions below.
+Then \cite[Theorem~3.2, (3.13)]{Z1} gives, for fixed $A'>0$,
+\begin{equation}\label{eq:distribution-input}
+ |S_B^{\rm PSDT}|\ll_{\sigma,31,C_{\rm box},A',\mathcal C_{\rm src}}
+ XL^{-A'}+X^{1-c_\sigma}L^C.
+\end{equation}
+Here $C=C(\sigma,C_{\rm box},A',31,\mathcal C_{\rm src})$ is fixed,
+and the constants in $\mathcal C_{\rm src}$ include $C_{\rm ctr},C_{\rm slot}$.
+The bound is uniform in boxes, even $N$ and the shift $a=N$.
+The constant and threshold may be ineffective.
+First $\sigma>0$ is fixed, and then $N\to\infty$.
+\end{theorem}
+\endgroup
+
+\paragraph{Application checklist.}
+Each application uses literal prime sets and the row's own source.
+The correspondence with \cite[\S3]{Z1} is
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Condition & Data checked below \\
+\midrule
+H1 & C1: exact unrestricted coefficient, repeats, $(q,2a)=1$ \\
+H2 & C2: labelled factors, last two $u_0$-rough \\
+H3 & C2--C3: packing, HB coefficients, majorant, doubled support, LEN \\
+H4 & C4: positive shift and its uniform size \\
+H5 & C5: selected window \\
+H6 & Full-source logarithmic and boundary estimates \\
+H7 & Full-family outer coefficient sum \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{C1.} For fixed row, prefix cell, AA37 sign and tail vector $b$ we require
+\[
+\begin{gathered}
+ C_b(q)=\sum_{d,\mathbf p}\lambda_d1_{q=d\prod_{j\in J}p_j},\quad |\lambda_d|\le1,\quad p_j\ge u_L\ge u_0,\\
+ u_L=L_{\rm rel}^{\sigma^2},\quad q\le X^{0.6},\quad(q,2N)=1.
+\end{gathered}
+\]
+Here $L_{\rm rel}=L_c,L_b,D_c$ for DIRECT, S2, G1.
+The labelled primes vary independently over fixed literal sets.
+The divisor $d\mid P(u_L;N)$ is squarefree, with the AA37 cap, where
+$P(y;N)=\prod_{p<y,\,p\nmid2N}p$.
+Selectors are constant on blocks.
+The equal-tail, prefix-diagonal, NC, cut and selector-transfer corrections are separated exactly,
+and each is estimated separately.
+
+\textbf{C2.} Let $J=J_1\sqcup J_2\sqcup J_3$ be a partition, with $d$ attached to slot 1.
+We require, including repeated-prime multiplicities,
+\[
+ C_b=C_{\rm slot}(\gamma_1*\gamma_2*\gamma_3),\quad
+ C_{\rm slot}=\prod_{i=1}^3|J_i|!=O_\sigma(1),\quad |\gamma_i|\le1.
+\]
+Slots 2 and 3 are $u_0$-rough.
+An empty rough slot is $1_{m=1}$.
+If $J_1=\varnothing$, put $\gamma_1(m)=\sum_d\lambda_d1_{m=d}$.
+The dyadic scales $(Q,R,S)$ belong to slots $(1,3,2)$.
+For the test scale $T=T_{\rm II}$ we require
+\[
+\begin{gathered}
+ Q<TX^{-29\sigma},\quad QRS<M_I X^{-89\sigma},\quad
+ N_I\ge QX^{\sigma/3},\quad M_I\ge X^{1/2},\\
+ Q<TX^{-\sigma},\quad T^2R^2S<X^{1-8\sigma},\quad A_0=X^{1+\sigma/20},\\
+ A_0^{\vartheta_{\rm sp}}TQR^2S^5<X^{2-15\sigma},\quad
+ (TR/S)^{2\vartheta_{\rm sp}}TQR^2S^5<X^{2-15\sigma}.
+\end{gathered}
+\]
+The labelled-tuple map proves the convolution identity.
+
+\textbf{C3.} The source is either
+\[
+ 1_{\mathbb P}(p)1_{N/(\log N)^{30}<p<(1-\varepsilon_A)N},\quad
+ \varepsilon_A=10^{-4},
+\]
+or the plain product measure
+\[
+ A_G^{\rm cut}(e)=\sum_{r=3}^4\sum_{\mathbf p\in\mathcal D_r}
+ w_r(\mathbf p)1_{e=p_1\cdots p_r}
+ 1_{\varepsilon_A N<e\le N\{1-(\log N)^{1-C_{\rm box}}\}}.
+\]
+The ordered $\mathcal D_r$ and bounded $w_r$ are fixed.
+Each coordinate is at least $N^{100/1149}$.
+All representation multiplicities are retained.
+The plain measure is used with its full source predicates.
+We apply Heath--Brown's finite identity \cite{ref6} with disjoint boxes of relative width $L^{-C_{\rm box}}$
+and bound boundary boxes separately.
+The selected $n$ is the eligible variable with largest lower-endpoint exponent.
+Ties are broken by variable index, and $m$ is the complement.
+For $\zeta\ge z_0$ we require
+\[
+\begin{gathered}
+ \alpha_n\in\left\{\mu(n),1,{\log n\over L}\right\}
+ 1_{P^-(n)\ge\zeta}1_{I_N}(n),\quad |\alpha_n|\le1,
+ \quad|\beta_m|\ll\tau_{23}(m),\\
+ I_N\subset(T,2T],\quad N_I\asymp TL^{-C_{\rm box}},\\
+ \psi_I(m)=\phi_0((m-m_0)/M_I),\quad M_I\asymp(X/T)L^{-C_{\rm box}},\\
+ |m_0|\le C_{\rm ctr}X/T,\qquad 1\le|mn-N|\le X^3.
+\end{gathered}
+\]
+Fixed HB coefficients and tags may be exterior scalars.
+The function $\phi_0\in C_c^\infty([-1,1])$ is fixed independently of all parameters,
+so its derivative seminorms are fixed and finite.
+We require $0\le\phi_0\le1$ and $\phi_0=1$ on $[-1/2,1/2]$.
+The complementary interval is majorized by $\psi_I$ on its doubled support.
+The shift gap holds throughout the doubled support.
+The same integer interval is used, with
+\[
+ \textbf{LEN:}\qquad N_I\ge(2T)^{1-2^{-126}}.
+\]
+Tagged comparisons and removed faces have separate estimates.
+
+\textbf{C4--C5.} Every original modulus is coprime to $a=N$, and
+\[
+ 0<a\le X(\log N)^{31}\le A_0,\qquad
+ N^{60\sigma}\le T\le N^{1/3+14\sigma},\qquad
+ X^{60\sigma}\le T\le X^{1/3+15\sigma}.
+\]
+For G1, C1--C5 and LEN are checked on the plain $A_G^{\rm cut}$.
+This is \textbf{G1-LOCAL}.
+Source faces are removed before interior boxes are selected.
+The check covers exact HB coefficients, ambient intervals and the fixed majorant.
+Lemma~\ref{lem:s2-preparation} gives the direct-source verification,
+and Section~4 gives the product-source verification.
+
+\paragraph{Local mechanism.}\label{p2:dispersion-proof}
+The argument is \cite[(3.26)--(3.90)]{Z1}.
+A first dispersion separates the diagonal and off-diagonal terms.
+A second square and Poisson summation give moving-frequency Kloosterman sums.
+The spectral estimate and C2 give \eqref{eq:distribution-input}.
+The Kloosterman and spectral inputs follow the Deshouillers--Iwaniec
+framework and Drappeau's dispersion estimate \cite{ref1,ref3};
+the spectral-gap input is Kim--Sarnak \cite{ref7}.
+The BFI and Siegel--Walfisz inputs in [Z1] are cited at their sources
+\cite{ref2,Siegel1935,Walfisz1936,ref11}.
+For S2 the local Mellin data are kept:
+\[
+\begin{gathered}
+ q\asymp Q,\quad r_i\asymp R,\quad s_i\asymp S,\quad n_1,n_2\asymp T,\\
+ f=(n_1-n_2)/q\ne0,\quad\eta=\sigma/1000,\quad H_*=40QR^2S^2X^\eta/M_I.
+\end{gathered}
+\]
+On $H_0<|h|\le\min(2H_0,H_*)$, put
+$\varsigma_h=\operatorname{sgn}(h)$ and $v=|h|S/(H_0s_1)$.
+Let $w$ be smooth, supported in $(1/4,4)$ and equal to 1 on $[1/2,2]$.
+Then
+\begin{equation}\label{p2:eq:dispersion-mellin}
+\begin{gathered}
+ W_Y(v)=w(v)\widehat\phi_0(Y_2v)e(Y_1v),\quad
+ Y_1={\varsigma_hH_0(a/n_1-m_0)\over Sqr_1r_2s_2},\quad
+ Y_2={\varsigma_hH_0M_I\over Sqr_1r_2s_2},\\
+ |Y_1|+|Y_2|\ll L^{C_{\rm box}+31}X^\eta=:L_{\rm osc},\qquad
+ \int_{\mathbb R}\sup_Y|\widetilde W_Y(it)|\,dt\ll L_{\rm osc}.
+\end{gathered}
+\end{equation}
+Both nonmodular phases remain in $W_Y$.
+Put $m(t)=\sup_Y|\widetilde W_Y(it)|$.
+We normalize by $m(t)>0$ and restore it before integration;
+for $m(t)=0$ the integrand vanishes.
+The details are in \cite[(3.56)--(3.65)]{Z1} and \S\ref{sec:s2-3}.
+
+Type I uses \cite[Lemmas~3.3--3.5, \S3.11]{Z1} only after preparation.
+Lemma~\ref{lem:s2-preparation} verifies its source and scale hypotheses.
+The product source has only Class-II interior boxes (Section~4).
+The respective choices are
+\[
+ D_f=X^{1/20},\quad V\ge qX^{1/10};\qquad D_f=X^{7.5\sigma/2}.
+\]
+At these prepared scales \cite[(3.102)--(3.115)]{Z1} applies.
+
+\paragraph{Global conditions.}
+The two global conditions bound the outer coefficients and the logarithmic and boundary errors.
+For H7 we sum every outer coefficient:
+{\scriptsize
+\[
+ \begin{gathered}
+ \sum_j|c_j|\ll_{\sigma,C_{\rm box},\mathcal C_{\rm src}}
+ (\log N)^{K_0},\\
+ K_0\le24C_{\rm box}+26,\qquad A'=A+24C_{\rm box}+31.
+ \end{gathered}
+\]
+}
+Then \cite[(3.92)]{Z1} gives
+\[
+ E_{\rm II}\ll NL^{K_0-A'}+N^{1-c_\sigma}L^{K_0+C}.
+\]
+Since $K_0-A'\le-A-5$, the first term is $\ll NL^{-A-5}$.
+For fixed $\sigma>0$, the second is also $O(NL^{-A-5})$.
+The numerical application uses the per-box precision in (1.28).
+For H6 we sum all labels, shells, boxes and representation multiplicities.
+We require fixed $c_{\log},c_R$ with
+\[
+\begin{gathered}
+ E_{\rm log}\ll N(\log N)^{c_{\log}-C_{\rm box}},\quad
+ E_{\rm bdry}\ll N(\log N)^{c_R-C_{\rm box}/2},\\
+ C_{\rm box}\ge\max\{A+c_{\log},2(A+c_R)\}.
+\end{gathered}
+\]
+For the prime source, $(c_{\log},c_R)=(18,16)$
+\cite[\S3 and Appendix~B]{Z1}.
+Section~4 verifies the product-source values separately.
+Together these give the aggregate $O(N(\log N)^{-A})$ error.
+
+The next lemma checks packing on these rows.
+
+\begin{lemma}[Packing on the actual row domains]\label{thm:packing-input}
+Consider a row in the table below, including the three empty prefixes.
+Let $c$ be its retained cell, at $\Theta_c=\inf_c\widetilde H$,
+with its literal source domain and block selector.
+For a nonempty prefix, let $t_1\ge\cdots\ge t_r$, $1\le r\le3$.
+For either AA37 sign $\nu$, let
+$\mathbf D\in\mathcal D^\nu(L_c)$ be any finite tail of length $k\ge0$.
+Put
+\[
+\begin{gathered}
+ \ell_c=\Theta_c-\eta_L-\sum_{i\le r}t_i\ge\ell_0,\quad L_c=N^{\ell_c},
+ \quad z\le L_c\ (\text{upper}),\quad z^2\le L_c\ (\text{lower}),\\
+ \rho=1+\sigma^9,\quad \delta=30\sigma,\quad\vartheta_{\rm sp}=7/32,
+ \quad n\in[60\sigma,1/3+14\sigma],\\
+ T=N_{\rm II}=N^n,\quad h=\rho(\Theta_c-\eta_L)+2\delta,
+ \quad g=n-\delta,\quad A_{\max}=X^{1+\sigma/20}.
+\end{gathered}
+\]
+Sort the endpoint exponents as $e_1\ge\cdots\ge e_m$, $m=r+k$.
+Repeats are kept as distinct labelled atoms, and the list is padded with zeros.
+Assume the DIRECT or plain G1 intervals satisfy
+\[
+ N_I\gg T(\log X)^{-C_{\rm box}},\qquad
+ \log_NM_I\ge2/3-14.02\sigma,\qquad M_I\ge X^{1/2}.
+\tag{P6}
+\]
+These bounds are uniform in row labels and boxes.
+Then a deterministic labelled partition satisfies C2 at the same $\Theta_c$.
+It attaches $d_{AA}$ to slot 1 and allows unit slots.
+After dyadic and base transfer, the four spectral surpluses are at least
+\[
+ \left({7271\over256},\ 52-{1\over100},\
+ {95221\over1280}-{1\over50},\ {22407\over256}-{1\over50}\right)\sigma
+ >(28,51,74,87)\sigma.
+\]
+All four lower-scale conditions hold, with $\Delta D_{\rm PACK}=0$.
+For G1-3 the cutoff is $z=N^{t_3}$ after the PR peel.
+\end{lemma}
+
+\begin{proof}
+Put
+\[
+\begin{gathered}
+ u=1/500,\quad\alpha=100/1149,\quad\beta=50/309,\quad\mu=25/128,\quad\lambda=93/400,\\
+ t_*=7109/28000,\quad t_{\rm dd}=25/[32(1+3\rho)],\quad\overline H=153/256,\quad T_0=509/1000-\eta_L.
+\end{gathered}
+\]
+Here $v,w,H,\widetilde H$ are as in \eqref{p2:eq:row-level-function}.
+Each interval $[N^{t_i},N^{\rho t_i})$ is clipped to its row domain and keeps its label.
+Missing coordinates lie in $[0,w_z]$, where $z=N^{w_z}$.
+For $f_1\ge\cdots\ge f_m\ge0$, write
+\[
+ \mathrm{WF}(y):\quad\sum_{i<j}f_i+2f_j\le y\quad(1\le j\le m).
+\tag{P1}
+\]
+The proof follows \cite[Theorem~4.1, (4.1)--(4.5)]{Z1},
+with auxiliary identities \cite[Lemmas~4.2--4.4]{Z1}
+and two-bin step \cite[Lemma~4.5]{Z1}.
+The two-bin rule retains labels, repeats and zero padding.
+Put $d_*=h-2\delta$ and $\Sigma_s=\sum_{i\in J_s}e_i$.
+We verify the hypotheses of that theorem on these actual rows.
+
+By \cite[Lemma~4.2]{Z1}, $v$ is concave and $\widetilde H\le\overline H$.
+For $x_1\in[1/10,\rho t_*]$,
+\[
+ v(x_1)\ge\min\{v(1/10),v(127/500)\}>509/1000.
+\]
+For $x_1<1/10$, the active $w$ branch gives
+\[
+ \min\{(132-68x_3)/214,(153-96x_3)/256,1-2x_2\}
+ \ge717/1280\ge11/20\ge(1+x_1)/2.
+\]
+Hence
+\[
+ 509/1000\le\Theta_c\le\overline H,\qquad
+ \Theta_c\ge m(t_1):=\min\{(1+t_1)/2,57/64-3\rho t_1/2\}.
+\tag{P5}
+\]
+The first branch is smaller for $t_1\le t_{\rm dd}$.
+At rank 1, $2t_1<2t_*=7109/14000<T_0$.
+The remaining prefix checks are
+\[
+ \sum_{i<j}t_i+2t_j<\Theta_c-\eta_L\quad(1\le j\le r).
+\tag{P4}
+\]
+For S1, S2, G1 the cutoff is $z=N^u$ at $r\le2$.
+At $r=3$ it is $z=N^{t_3}$, after PR for G1.
+The other rows use $z=N^\alpha$.
+
+\begin{longtable}{@{}p{0.29\textwidth}p{0.66\textwidth}@{}}
+\toprule
+Rows and literal domains & Prefix checks and selectors \\
+\midrule\endhead
+S1-1, S1-2, S1-3; $[u,\alpha)$
+& $(j+1)t_1\le4\alpha=400/1149<T_0$. \\[3pt]
+S2-1, S2-2, S2-3; $[u,\beta)$
+& Rank 2: $t_1+2t_2\le3\beta=150/309<T_0$.
+Rank 3: $t_1<\beta<t_{\rm dd}$ and the whole-$K$ selector
+$t_1+2t_2+(4+2\tau)t_3\le249/250+2\tau\beta$.
+Thus $t_1+2t_2+4t_3<1-2\eta_L$;
+$1-2\eta_L-249/250=19/5000>2\tau\beta$. \\[3pt]
+G1-1, G1-2, G1-3; $[u,\mu)$
+& Rank 2: $t_1+2t_2\le3t_1$,
+$\mu<(1-2\eta_L)/5$, and
+$3/256-\eta_L-(3/2)\tau\mu>0$.
+Rank 3 requires $\Theta_c-\eta_L-t_1-t_2-(3+2\tau)t_3\ge0$.
+Then $t_1+t_2+2t_3\le\Theta_c-\eta_L-(1+2\tau)t_3$,
+$t_3\ge u/\rho>0$. \\[3pt]
+S3-A: $[\alpha,\mu)$;
+S4: $[\mu,1/4)$;
+S5-low: $[1/4,t_*)$;
+S7: $[\mu,\lambda)$
+& One prefix each; $2t_1<2t_*<T_0$. \\[3pt]
+S8-A: $\alpha\le t_2<t_1<\beta$
+& $t_1+2t_2\le3\beta=150/309<T_0$. \\[3pt]
+S9-A: $\beta\le t_1<\mu$, $\alpha\le t_2<\beta$
+& $t_1<1-4\beta-2\eta_L$ for the first branch;
+$3886931/49440000-(3/2)\tau\mu>0$ for the second. \\[3pt]
+S10-Ret (the retained S10 row): $\mu\le t_1<\lambda$, $\alpha\le t_2<\beta$
+& $t_2\le\operatorname{sel}(t_1)$,
+$C_0=57/64-u-(11/5)\alpha$,
+$\operatorname{sel}(t)\le B_\tau(t)\le\max\{\alpha,C_0-(5/2+3\tau/2)t\}$.
+For $\Theta_c-u-t_1-t_2\ge(11/5)\alpha$,
+the second branch in (P5) is active, since $t_1\ge\mu\ge t_{\rm dd}$.
+Its affine alternative gives equality;
+the $\alpha$ alternative gives $265391/9192000-(3/2)\tau\lambda>0$.
+Thus $t_1+2t_2\le\Theta_c-u-(11/5)\alpha+t_2<\Theta_c-\eta_L$,
+with binding prefix-mask gap
+$u+(11/5)\alpha-\eta_L-\beta=12449531/394490000>0.03155$. \\[3pt]
+S1-0, S2-0, G1-0; empty prefix
+& $\Theta=H(u,u,u)=19101/32000$; tail endpoints $\le u$.
+The active $w$ branch gives
+$\widetilde H(\bar e_1,\bar e_2,\bar e_3)\ge
+\min\{(132-68u)/214,(153-96u)/256,1-2u\}=19101/32000$. \\
+\bottomrule
+\end{longtable}
+
+A prefix endpoint lies in $[t_i,\rho t_i]$.
+A tail endpoint satisfies $\epsilon'_j\le\min\{\rho s_j,w_z\}$,
+from $[N^{s_j},\min\{N^{\rho s_j},z\})$.
+Every prefix prime is at least $z$.
+The AA37 masks give
+\[
+ \sum_{j\le2l}s_j+3s_{2l+1}<\ell_c\ (\nu=+),\quad
+ \sum_{j\le2l-1}s_j+3s_{2l}<\ell_c\ (\nu=-),\quad 2s_1<\ell_c.
+\]
+We drop one copy at cubic ranks and use $s_{j-1}\ge s_j$ between them.
+Then $\sum_{i<j}s_i+2s_j<\ell_c$ at every tail rank.
+The prefix sum is then added at these ranks.
+If $s_1,\ldots,s_q$ precede $t_i$, then $t_i\le s_q$ and
+\[
+ \sum_{a<i}t_a+\sum_{b\le q}s_b+2t_i
+ \le\sum_{a\le i}t_a+\left(\sum_{b<q}s_b+2s_q\right)
+ <\Theta_c-\eta_L.
+\]
+Endpoint inflation by $\rho$ gives $\mathrm{WF}(d_*)$.
+The first $r$ sorted endpoints lie in $[t_j,\rho t_j]$.
+The rest are tails or zero pads in $[0,w_z]$.
+Their first three entries therefore lie in the closed parent box.
+Hence
+\[
+\begin{gathered}
+ \Theta_c\le\widetilde H(\bar e_1,\bar e_2,\bar e_3),\quad
+ \Theta_c-h=\eta_L-\tau(\Theta_c-\eta_L)-60\sigma>0.97\eta_L,\\
+ 1/2<h\le\overline H,\quad 0<\delta\le3\cdot10^{-9},\quad
+ g=n-\delta\in[\delta,1/3-\delta/2].
+\end{gathered}
+\]
+These verify \cite[Theorem~4.1, (4.2)]{Z1} for every finite tail.
+The mixed-prefix checks above verify \cite[Theorem~4.1]{Z1} directly.
+The pure-tail result \cite[Lemma~4.7]{Z1} is not used.
+For the empty prefixes, the table gives the same hypotheses.
+
+We attach $d_{AA}<L_c^\sigma=N^{\sigma\ell_c}$ to slot 1.
+Then
+\[
+\begin{gathered}
+ \log_NQ\le\Sigma_1+\sigma\overline H,\quad\log_NS\le\Sigma_2,\quad\log_NR\le\Sigma_3,\\
+ n=g+\delta,\quad\log_NA_{\max}\le1+\sigma/20.
+\end{gathered}
+\]
+By \cite[(4.3)]{Z1}, the four excess exponents are
+\[
+\begin{aligned}
+ -(30-\overline H)\sigma&=-(1+7271/256)\sigma,\qquad -2\delta=-60\sigma,\\
+ -3\delta+(\vartheta_{\rm sp}/20+\overline H)\sigma
+ &=-(15+95221/1280)\sigma,\\
+ -(3+2\vartheta_{\rm sp})\delta+\overline H\sigma
+ &=-(15+22407/256)\sigma.
+\end{aligned}
+\]
+Dyadic representatives within a factor two cost $24\log2/\log N<\sigma/1000$.
+For $k_X=\log_XN=1/(1-\omega)$, $\omega=\log_N(N/X)$,
+$0\le k_X-1<0.01\sigma$.
+The first exponent improves.
+The second costs at most $0.01\sigma$, and the last two cost at most $0.02\sigma$.
+These give the stated spectral margins.
+
+The factorization follows \cite[Lemma~4.8, (4.12)--(4.13)]{Z1}.
+The small-prime divisor is unique in slot 1.
+Each labelled slot has at most $|J_s|!$ multiset orderings.
+Thus its finite-sum identity holds for these literal sets, including repeats.
+Normalization gives $|\gamma_s|\le1$; C2 covers empty slots.
+Lemma~4.8 bounds tail-collision support only; source corrections remain separate.
+Also,
+\[
+ L_c^{\sigma^2}\ge u_0,\quad p_{\rm prefix}\ge N^u,\quad
+ s_j\ge\sigma^2\ell_c,\quad\sum_js_j<\ell_c,\quad
+ k<\sigma^{-2},\quad C_{\rm slot}=O_\sigma(1).
+\]
+Hence slots 2 and 3 are $u_0$-rough.
+
+Condition (P6) is verified separately for DIRECT and plain G1.
+The first margin gives $Q<TX^{-29\sigma}$, so
+\[
+ {N_I\over QX^{\sigma/3}}\gg
+ (\log X)^{-C_{\rm box}}X^{(29-1/3)\sigma}\longrightarrow\infty.
+\]
+The last WF mask gives $\sum_s\Sigma_s\le d_*<\overline H$.
+Thus
+\[
+\begin{gathered}
+ \log_N(QRS)\le153/256+\sigma,\\
+ \log_NM_I-\log_N(QRS)\ge
+ 2/3-153/256-15.02\sigma=53/768-15.02\sigma>89\sigma.
+\end{gathered}
+\]
+Since $\sigma\le10^{-10}$, $QRS<M_I X^{-89\sigma}$.
+Condition (P6) also gives $M_I\ge X^{1/2}$.
+The same rule covers zero pads and unit slots.
+For G1-3, the comparison $N^{\rho t_3}\to N^{t_3}$ is proved separately.
+Packing uses the latter cutoff at the original $\Theta_c$,
+so its level loss is zero.
+\end{proof}
+
+Sections~2--3 verify direct-row source conditions; Section~4 verifies plain G1.
+Each source comparison and removed boundary term has its separate estimate.

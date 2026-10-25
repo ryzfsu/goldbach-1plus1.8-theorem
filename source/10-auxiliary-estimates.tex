@@ -1,0 +1,479 @@
+\section{Auxiliary estimates}
+
+\subsection{Repeated-prime terms}
+
+This subsection shows that terms with a repeated large prime are negligible.
+Fix $0<\sigma\le10^{-10}$ and put
+\[
+ \tau=\sigma^9,\qquad
+ \ell_0=53/412-\eta_L/2=264897/2060000,\qquad
+ L_N=\log N,\quad u_0=N^{\ell_0\sigma^2}.
+\]
+Only the normalization $\mathcal W=4(1-\varepsilon_A)U_C$ of (4.2) is used.
+The signed sum is that of Theorem~\ref{thm:signed-assembly} and Section~6.3.
+
+\subsubsection*{Blocks, masks and signs}
+
+A block $c$ fixes a row, a literal parent prefix cell
+and, if present, its whole-cell selector.
+It also fixes an AA37 sign $\nu$,
+and finally $R_1^\nu$ or $\mathbf D\in\mathcal D^\nu(L_c)$.
+The labelled prefix intervals are clipped sets $[N^{t_i},N^{\rho t_i})$.
+Put $L_c=N^{\ell_c}$, where $\ell_c\ge\ell_0$, and $u_c=L_c^{\sigma^2}$.
+Let $m_c$ count all labelled rough positions, prefix and tail together.
+Put $M_c=\prod_h|G_h|!$ and write $C_c(q)$ for the unrestricted coefficient.
+The nineteen rows and their coefficients are
+\[
+\begin{array}{c|c|c}
+ \text{rows}&c_r&T^{(r)}\\ \hline
+ \mathrm{S1\hbox{-}0\hbox{--}3}&3,-3,3,-3&A_D\\
+ \mathrm{S2\hbox{-}0\hbox{--}3}&\pm1&A_D\\
+ \mathrm{S3\hbox{-}A}&-2&A_D\\
+ \mathrm{S4,S5\hbox{-}low,S7}&-1&A_D\\
+ \mathrm{S8\hbox{-}A,S9\hbox{-}A,S10\hbox{-}Ret}&+1&A_D\\
+ \mathrm{G1\hbox{-}0\hbox{--}3}&2A_R=\pm1&A_G^{\rm cut}
+\end{array}
+\]
+There are fifteen DIRECT rows and four G1 rows (\S\S~2--3, \S~4.2).
+On DIRECT rows, $c_r$ includes the O1 coefficient and the Buchstab sign.
+The G1 weights $2,1,1$ are part of $A_G^{\rm cut}$ in (4.16).
+
+The masks are those of C1 on DIRECT rows and (4.22)--(4.23) on G1.
+Define
+\begingroup\small
+\[
+\begin{aligned}
+ \Xi_{U,c}(q)&=\frac1{M_c}\sum_{\rm full}\lambda_d(1-K_TK_P)
+              \mathbf1_{q=d\prod_jp_j},\\
+ \Xi_{A,c}(q)&=\frac1{M_c}\sum_{\rm full}\lambda_dK_TK_P
+              \mathbf1_{q=d\prod_jp_j}\mathbf1_{q\ \rm not\ sf}.
+\end{aligned}
+ \tag{B.1}
+\]
+\endgroup
+The full sum runs over $d$ and every labelled prime tuple.
+Call $c$ active if some realization has $\lambda_d\ne0$.
+Otherwise both coefficients vanish, including for empty intervals.
+On DIRECT rows, $\Xi_{U,c}=\Xi_T/M_c+\Xi_P$, because
+$1-K_TK_P=(1-K_T)+K_T(1-K_P)$ is a disjoint decomposition.
+For S1-2, S1-3, S2-2, S2-3, S8-A, G1-2 and G1-3,
+orbit invariance gives $O_c=C_c/M_c-\Xi_{U,c}$.
+For the other rows the same identity holds, since $M_c=1$.
+Thus $O_c\mathbf1_{q\ \rm not\ sf}=\Xi_{A,c}$ in every row.
+
+Define $\Delta_0^{(r)},\Delta_P^{(r)}$ by (4.21).
+By C1 and (4.23), (4.26),
+\[
+ \mathcal E_{\rm SQ}
+ =\frac1{\mathcal W}\sum_c c_{r(c)}\nu_c
+  \Big[-\sum_q\Xi_{U,c}(q)\Delta_P^{(r)}(q)
+       +\sum_q\Xi_{A,c}(q)(\Delta_0^{(r)}-\Delta_P^{(r)})(q)\Big].
+ \tag{B.2}
+\]
+Here $\nu_c=\pm1$ is the AA37 remainder sign.
+Both terms use the original tested measure, before HB expansion.
+The first contains the forbidden-tail and forbidden-prefix parts,
+the second the allowed repeats.
+Only the C1 $\gamma$-term (Class II) uses HB expansion,
+dyadic shells, short boxes and $K_0$ of (4.66).
+The terms $NC_{\rm sf}$ and $\sum W_c(\Delta_0-\Delta_P)$ are treated separately in (4.65).
+Both vanish on DIRECT rows.
+
+\subsubsection*{Coefficient and test bounds}
+
+The first lemma records the support, roughness and finiteness facts used below.
+
+\textbf{Lemma B.1.} For sufficiently large $N$, depending on $\sigma$:
+\begin{enumerate}
+\item Every nonzero-weight full realization has $q<Q:=N^{3/5}$ and $(q,2N)=1$.
+\item $u_c\ge u_0\ge2$, and every labelled rough coordinate is at least $u_c$.
+\item On active blocks,
+$m_c\le M_\sigma:=\lceil3/(5\ell_0\sigma^2)\rceil$.
+Hence $m_c!/M_c\le M_\sigma!=C_\sigma$, the constant of (4.25).
+\item Each row has finitely many blocks $N_{{\rm lab},r}(\sigma)$, independently of $N$.
+\end{enumerate}
+
+\emph{Proof.} The final cubic constraint and decreasing labels give $\prod_iD_i<L_c$.
+For a single coordinate, use $D_1<L_c^{1/2}$; the empty product is $1$.
+Let $T_c$ be the sum of prefix lower exponents.
+The literal intervals and $d<L_c^\sigma$ give
+\[
+ q<N^{\rho T_c}L_c^{\rho+\sigma}
+ \le N^{(\rho+\sigma)(T_c+\ell_c)}
+ \le N^{(153/256)(1+\tau+\sigma)}<N^{3/5}.
+\]
+Here $T_c+\ell_c=\Theta_c-\eta_L\le153/256$; use (4.20) for G1.
+This covers $R_1^\nu$ before both masks, with empty tail.
+All primes lie in $\mathcal P(N)=\{p>2:p\nmid N\}$,
+and $d\mid P(u_c;N)$, so $(q,2N)=1$.
+
+Next, $u_c=N^{\ell_c\sigma^2}\ge N^{\ell_0\sigma^2}=u_0$.
+Tail intervals start at $D_i\ge L_c^{\sigma^2}$.
+Prefix coordinates satisfy $p\ge N^{u/\rho}>u_c$ by \S~2 and (4.20).
+For any active block, choose a nonzero-weight realization.
+Then $u_0^{m_c}\le q<N^{3/5}$, so $m_c\ell_0\sigma^2<3/5$.
+The argument does not use $C_c\ne0$.
+
+Each prefix coordinate has at most
+$G_\sigma:=1+\lceil\log(\rho/u)/\log\rho\rceil$ grid labels on $[u/\rho,1]$.
+The endpoints
+$u,\alpha,\beta,\mu,\lambda,1/4,t_*,\tau_S,1/3,t_{\rm dd},v_\beta$
+split any such grid interval into at most twelve literal pieces.
+Clipping can only reduce this count. Set $B_\sigma:=12G_\sigma$.
+There are at most three coordinates and two signs.
+Tail vectors number $<e^{8\sigma^{-3}}$, besides $R_1$.
+Thus one explicit bound is
+\[
+ N_{{\rm lab},r}(\sigma)\le2P_\sigma T_\sigma,\quad
+ P_\sigma=1+B_\sigma+B_\sigma^2+B_\sigma^3,\quad
+ T_\sigma=1+\lceil e^{8\sigma^{-3}}\rceil,
+\]
+with $B_\sigma=12G_\sigma$ allowed in this upper bound. $\square$
+
+Put $\mathcal H_0=\{q<Q:p^2\mid q\text{ for some prime }p\ge u_0\}$.
+Set $B_c=m_c!/M_c$ on active blocks, and $B_c=0$ otherwise.
+The next lemma shows that both coefficients are supported on integers
+divisible by the square of a large prime.
+
+\textbf{Lemma B.2.} For every block and integer $q$,
+\[
+ |\Xi_{U,c}(q)|+|\Xi_{A,c}(q)|
+ \le B_c\mathbf1_{\mathcal H_0}(q)
+ \le C_\sigma\mathbf1_{\mathcal H_0}(q).
+ \tag{B.3}
+\]
+
+\emph{Proof.} Inactive blocks contribute nothing. Write $q=q_<q_\ge$ at the cutoff $u_c$.
+The support $d\mid P(u_c;N)$ and roughness force $d=q_<$ uniquely.
+The multiset $q_\ge=\prod_pp^{e_p}$ fills the $m_c$ positions in at most
+$m_c!/\prod_pe_p!\le m_c!$ ways.
+The two masks in (B.1) are disjoint indicators,
+so $|\lambda_d|\le1$ gives
+\[
+ M_c(|\Xi_{U,c}(q)|+|\Xi_{A,c}(q)|)
+ \le\#\{\text{full tuples}:q=d\textstyle\prod_jp_j\}\le m_c!.
+\]
+A forbidden tuple has $p_i=p_j\ge u_c$.
+For an allowed nonsquarefree tuple, $d$ is squarefree and coprime to $q_\ge$.
+Thus in either case $p^2\mid q$ for some $p\ge u_0$.
+Each multiplicity enters once, through $e_p!$, and no graph factor occurs. $\square$
+
+The tail argument is \cite[Lemma~4.8]{Z1},
+with prime-source cost \cite[Appendix~B, (B.5)--(B.6)]{Z1}.
+Lemma B.2 also covers arbitrary Goldbach prefixes and G1 masks.
+The next bounds use their actual tested measures;
+for the test functions a trivial bound suffices.
+
+\textbf{Lemma B.3.} Put $A_{\max}=100$.
+For every row and $q<Q$,
+\[
+ |\Delta_P^{(r)}(q)|,\ |(\Delta_0^{(r)}-\Delta_P^{(r)})(q)|
+ \le A_{\max}\Big(\frac Nq+1+\frac N{\varphi(q)}\Big)
+ \le A_{\max}\Big(\frac{N(2+L_N)}q+1\Big).
+ \tag{B.4}
+\]
+The second discrepancy vanishes on DIRECT rows.
+
+\emph{Proof.} The tested measures are supported in $[1,N]$,
+since $v<N$ on DIRECT rows and $e\le N_{\rm cut}<N$ on G1.
+For G1, the tested variable is the product $e$; the condition
+$e\equiv N\pmod q$ forces $(e,q)=1$, while $Y_G(q)$ retains that
+coprimality restriction.
+By (4.6), $A_D\le1$ and $A_G^{\rm cut}\le A_G\le72<100$.
+Thus $C(q)\le A_{\max}(N/q+1)$ and $0\le Y(q)\le X\le A_{\max}N$.
+Use $|\Delta_P|\le C+Y/\varphi(q)$ and
+$|\Delta_0-\Delta_P|=(X-Y(q))/\varphi(q)$.
+For the distinct primes $p_1<\cdots<p_k$ of $q$,
+\[
+ \frac q{\varphi(q)}\le\prod_i\frac{i+1}i=k+1
+ \le1+\log_2q\le1+\frac{(3/5)L_N}{\log2}\le1+L_N.
+\]
+On DIRECT rows, $v>N/L_N^{30}>N^{3/5}>q$ is prime,
+hence $Y_A(q)=X_A$. $\square$
+
+The exceptional set of integers with a repeated large prime is sparse.
+
+\textbf{Lemma B.4.} For $u_0\ge2$,
+\[
+ \sum_{q\in\mathcal H_0}\frac1q\le\frac{2(1+L_N)}{u_0},\qquad
+ \#\mathcal H_0\le\frac{2Q}{u_0}.
+ \tag{B.5}
+\]
+
+\emph{Proof.} Write $q=np^2$ and overcount over $p\ge u_0$.
+The harmonic sum is then at most $(1+\log Q)\sum_{k\ge\lceil u_0\rceil}k^{-2}$.
+The count is at most $Q\sum_{k\ge\lceil u_0\rceil}k^{-2}$.
+For $K=\lceil u_0\rceil$, this last sum is
+$\le1/(K-1)\le1/(u_0-1)\le2/u_0$. $\square$
+
+For either test function, (B.4)--(B.5) give
+\[
+ \sum_{q\in\mathcal H_0}|T^{(r)}\text{-test}(q)|
+ \le A_{\max}\frac{2N(2+L_N)(1+L_N)+2Q}{u_0}
+ \le\frac{6A_{\max}N(1+L_N)^2}{u_0}.
+ \tag{B.6}
+\]
+Here $Q\le N$ and $2(2+L)(1+L)+2\le6(1+L)^2$,
+equivalently $4L^2+6L\ge0$.
+These lemmas combine into the main estimate of this subsection.
+
+\begin{theorem}[Repeated-prime estimate]\label{thm:repeated-primes}
+Fix $0<\sigma\le10^{-10}$ and put
+$\Lambda_\sigma=\sum_r|c_r|N_{{\rm lab},r}(\sigma)$ over the nineteen rows.
+For sufficiently large even $N$,
+\begingroup\small
+\[
+\begin{aligned}
+ \frac1{\mathcal W}\sum_c|c_{r(c)}|\sum_q\Big(&|\Xi_{U,c}(q)\Delta_P^{(r)}(q)|\\
+ &+|\Xi_{A,c}(q)(\Delta_0^{(r)}-\Delta_P^{(r)})(q)|\Big)\\
+ &\le232\Lambda_\sigma C_\sigma N^{-\ell_0\sigma^2}(1+L_N)^4.
+\end{aligned}
+ \tag{B.7}
+\]
+\endgroup
+This bounds $|\mathcal E_{\rm SQ}|$,
+separately and jointly for the three parts in (B.2).
+Their size is $O_\sigma(N^{-\ell_0\sigma^2}L_N^4)$,
+and also $O_\sigma(N^{-\ell_0\sigma^2}L_N^{K_{\rm SQ}+4})$ for fixed $K_{\rm SQ}\ge0$.
+The allowed-repeat part vanishes on DIRECT rows.
+\end{theorem}
+
+\emph{Proof.} Disjointness in (B.3) bounds the combined integrand by
+$C_\sigma\mathbf1_{\mathcal H_0}(q)A_{\max}\allowbreak(N(2+L_N)/q+1)$.
+By (B.6), each block contributes at most $6A_{\max}C_\sigma N(1+L_N)^2/u_0$.
+Also
+\[
+ \mathcal W=4(1-\varepsilon_A)C(N)N/L_N^2
+ \ge4(1-\varepsilon_A)C_2N/L_N^2\ge2.59N/L_N^2.
+\]
+Here $C(N)\ge C_2>13/20$, since
+\[
+ C_2\ge\prod_{\substack{3\le p\le2000\\p\ {\rm prime}}}
+ \left(1-\frac1{(p-1)^2}\right)
+ \left(1-\frac1{2000}\right)>\frac{13}{20}.
+\]
+The finite product is compared in rational arithmetic.
+For the tail, $\prod(1-a_j)\ge1-\sum a_j$ and
+$\sum_{m\ge2001}m^{-2}\le\sum_{m\ge2001}(m(m-1))^{-1}=1/2000$.
+The weighted block count is $\Lambda_\sigma$.
+Finally use $600/2.59<232$ and $L_N^2\le(1+L_N)^2$. $\square$
+
+Fix $\sigma$, hence $\Lambda_\sigma,C_\sigma$, and take $N$ last
+(\S~\ref{p2:sec:fixed-parameters}).
+Then $\mathcal E_{\rm SQ}=o_\sigma(1)$.
+Above $N_0(\sigma)$ the saving is $\ell_0\sigma^2/2$, and the proof gives $K_{\rm SQ}=0$.
+Prefix multiplicities enter Lemma B.2, while row counts enter only $\Lambda_\sigma$.
+
+\subsection{Sieve remainder mass}
+
+This subsection proves (1.26), with the normalization (1.27).
+The AA37 input is \cite[Theorem~2.6, (2.30)--(2.33b)]{Z1},
+taken from \cite[Theorem~4]{ref5} with $R=1$.
+For a finite nonnegative sequence, write
+$|\mathcal A_d|=X\omega(d)/d+r(\mathcal A,d)$, with $X>0$.
+The density is multiplicative and nonnegative on prime powers.
+We require $0<\omega(p)<p$, $K\ge2$ and $L_\omega>1$.
+The product and prime-power hypotheses are \cite[(2.24), (2.27)]{Z1}, for $z>w\ge2$.
+Substitute
+\[
+ \begin{gathered}
+ D=L_c,\quad\epsilon_s=\sigma<1/3,\quad\delta_s=\sigma^9=\tau,\quad s=\frac{\log D}{\log z},\\
+ \mathcal G(D)=\{D^{\sigma^2(1+\tau)^j}:j\ge0\}.
+ \end{gathered}
+\]
+The supports in \cite[(2.32)--(2.33)]{Z1}, including $R_1^\nu$, are
+\[
+ d<D^\sigma,\quad d\mid P(D^{\sigma^2}),\quad
+ P(y)=\prod_{p<y,\,p\in\mathcal P}p,\quad
+ D_i\le p_i<\min(D_i^{1+\tau},z).
+\]
+Positions with equal labels are distinct,
+and the nonincreasing labels obey \cite[(2.29)]{Z1}.
+Thus $D_1<D^{1/2}$ and $|\mathcal D^\nu(D)|<e^{8\sigma^{-3}}$.
+Also $|\phi_d^\nu|,|\lambda_d^\nu(\mathbf D)|\le1$, independently of $\mathcal A,X,\omega$.
+The upper and lower ranges are $2\le z\le D$ and $2\le z\le D^{1/2}$.
+By \cite[(2.31)]{Z1},
+\[
+ E_s\le C_E\sigma+C_E\sigma^{-8}e^{K+L_\omega}(\log L_c)^{-1/3},
+\]
+with absolute $C_E$.
+
+For a source block $\mathcal A_b$, take $X_{r,b}=X_r/\varphi(b)$ and
+$\omega(p^k)/p^k=1/\varphi(p^k)$ on permitted primes (\S~4.3, after (4.21)).
+The prime-power sum is $\sum_{w\le p<z,\,p\in\mathcal P}(p-1)^{-2}$.
+Mertens gives the product bound after the primes dividing $Nb$ are omitted.
+The source checks give the density identity, the prefix exclusion and the cutoffs.
+Here $X_r=X_A=\sum_vA_D(v)$ on DIRECT rows,
+and $X_r=X_G=\sum_eA_G^{\rm cut}(e)$ on G1.
+Each error is $X_{r,b}V(z_{r,b})E_s$,
+with no factor $F$ or $f$.
+Hence
+\[
+\begin{aligned}
+ E^D_{\rm AA}&\le\frac{C_E\sigma}4W_{\rm AA}(N)
+ +\frac{C_E\sigma^{-8}e^{K+L_\omega}}{4(\ell_0L_N)^{1/3}}W_{\rm AA}(N),\\
+ W_{\rm AA}(N)&:=
+ \frac{\sum_r|c_r|\sum_bX_{r,b}V(z_{r,b})}{(1-\varepsilon_A)U_C}.
+\end{aligned}
+ \tag{B.8}
+\]
+The sum runs over the nineteen rows and their actual prefixes $b$.
+Each prefix lies in one parent cell, and the empty prefix is $b=1$.
+The labels $\mathbf D$, $R_1/R^\nu$, $e^{8\sigma^{-3}}$, $M_\sigma!$,
+HB patterns and boxes occur only in the remainder,
+so they add no factor to $W_{\rm AA}$.
+For DIRECT rows, $\sum|c_r|=24$: eleven rows in \S~2 give 20, and S2 gives 4.
+The subsequent estimate uses the convenient coarser ceiling $45$.
+The four G1 coefficients have absolute value 1.
+The ceiling $45$ is a harmless enlargement of the exact DIRECT coefficient sum $24$.
+The BV pieces S5-top, S6 and BV-R1 are treated in \S~5.
+
+\subsubsection*{Three uniform bounds}
+
+Three uniform estimates bound this mass. Put $h=1/1000$.
+
+\textbf{Lemma B.8 (exponent floor).} Every Buchstab prefix prime and AA37 cutoff is at least $N^h$.
+Every G1 source prime is at least $N^\alpha>N^h$.
+
+\emph{Proof.} The smallest fixed cutoff is $N^u$, with $u=1/500$.
+The others are E3 on S1-3, $E=N^{t_3}$ on G1-3,
+and PF/K on S2-3; all are at least $N^{u/\rho^3}$, and $u/(1+\tau)^3>h$.
+Other prefix ranges start at $N^\alpha$ or higher; see (4.4)--(4.5).
+AA37 tail primes are not covered by this prefix assertion. $\square$
+
+\textbf{Lemma B.9 (density product).} Uniformly in $N$, rows, cells and $\sigma$,
+for $z\ge N^h$ and an absolute threshold $N\ge N_0$,
+\[
+ V(z)=\prod_{\substack{2<p<z\\p\nmid N}}\left(1-\frac1{p-1}\right)
+ \le\frac{4C(N)}{\log z}\le\frac{4000C(N)}{L_N}.
+ \tag{B.9}
+\]
+
+\emph{Proof.} Prefix primes are $\ge z$,
+so $\mathcal P(Nb)$ and $\mathcal P(N)$ agree below $z$.
+Since $2\mid N$ and $1-1/(p-1)=(1-1/p)(1-1/(p-1)^2)$,
+\[
+ V(z)=2\prod_{p<z}\left(1-\frac1p\right)c_2(z)
+ \prod_{\substack{2<p<z\\p\mid N}}\frac{p-1}{p-2},\qquad
+ c_2(z)=\prod_{2<p<z}\left(1-\frac1{(p-1)^2}\right).
+\]
+By (1.2), the last product is at most $C(N)/C_2$.
+Also $c_2(z)/C_2\to1$ and Mertens gives
+$\prod_{p<z}(1-1/p)\sim e^{-\gamma}/\log z$.
+Use $2e^{-\gamma}<1.13<4$ and $\log z\ge hL_N$. $\square$
+
+\textbf{Lemma B.10 (source masses).} For an absolute threshold $N\ge N_0$, at every legal cut,
+\[
+ X_A\le\frac{2N}{L_N},\qquad X_G\le\frac{2560000N}{L_N}.
+ \tag{B.10}
+\]
+
+\emph{Proof.} Rosser--Schoenfeld \cite{RosserSchoenfeld1962} gives
+$X_A\le\pi(N)<1.25506N/\log N$.
+For $k=3,4$, count ordered prime $k$-tuples, with repetitions,
+whose entries are $\ge N^h$ and whose product is $\le N$.
+Fix the first $k-1$ entries, with product $Q'$.
+If a last entry exists, then $N/Q'\ge N^h$,
+and its choices number at most
+$\pi(N/Q')\le2(N/Q')/\log(N/Q')\le2N/(hQ'L_N)$.
+Dropping the other constraints gives
+\[
+ T_k(N)\le\frac2h H_N^{k-1}\frac N{L_N},\qquad
+ H_N:=\sum_{N^h\le p\le N}\frac1{p-1}\le8.
+\]
+Also $\sum_{N^h\le p\le N}1/p\to\log(1/h)=\log1000<7$
+and $\sum_{m\ge N^h}1/(m(m-1))\to0$.
+The tuple lengths in $R_{11,3},R_{11,4},R_{12},R_{13}$ are $3,4,3,3$.
+By Lemma B.8, their entries are $\ge N^\alpha$ and $e<N$.
+Using the weights $2,2,1,1$ of (4.4),
+\[
+ X_G\le\sum_eA_G(e)\le4T_3+2T_4
+ \le(4\cdot2000\cdot8^2+2\cdot2000\cdot8^3)N/L_N
+ =2560000N/L_N.
+\]
+The bound uses no representation ceiling and no factorial. $\square$
+
+\textbf{Lemma B.11 (prefix harmonic sum).} For each fixed row,
+the prefix depth may vary from $0$ to $3$ across its cells. Hence
+\[
+ \sum_b\frac1{\varphi(b)}\le\sum_{j=0}^3H_N^j
+ \le1+8+64+512=585,
+ \tag{B.11}
+\]
+where the sum covers all actual prefixes in all cells.
+
+\emph{Proof.} For a prefix of exact depth $j$,
+use $\varphi(b)\ge\prod_i(p_i-1)$ and drop order, distinctness,
+selectors and ranges. Its total is at most $H_N^j\le8^j$.
+Sum the four possible depths, including $j=0$.
+The parent cells partition the prefixes into disjoint half-open pieces,
+including A/B children, Option-A pieces and retained whole cells.
+Thus a prefix is counted once and no cell-count factor occurs. $\square$
+
+The three lemmas combine into the uniform mass bound.
+
+\begin{theorem}[Sieve remainder mass]\label{thm:sieve-mass}
+There is $N_0$, depending only on $h$ and the fixed source conventions,
+such that for every $0<\sigma\le10^{-10}$ and even $N\ge N_0$,
+the bound (1.26) holds, independently of the tail labels and cells.
+\end{theorem}
+
+\emph{Proof.} By (B.9)--(B.11),
+\[
+\begin{aligned}
+ \sum_r|c_r|\sum_bX_{r,b}V(z_{r,b})
+ &\le\frac{4000C(N)}{L_N}\,585
+ \left(45\frac{2N}{L_N}+4\frac{2560000N}{L_N}\right)\\
+ &=4000\cdot585\cdot10240090\frac{C(N)N}{L_N^2}.
+\end{aligned}
+\]
+Dividing by $(1-\varepsilon_A)U_C=(1-\varepsilon_A)C(N)N/L_N^2$ gives
+\[
+ W_{\rm AA}(N)\le\frac{4000\cdot585\cdot10240090}{1-1/10000}
+ =\frac{239618106000000000}{9999}<10^{14}=W_*.
+\]
+The last comparison is
+$239618106000000000<9999\cdot10^{14}=999900000000000000$. $\square$
+
+\textbf{Corollary (persistent and vanishing AA37 errors).}
+Fix $C_E$ first.
+For $C_E>0$, choose rational $\sigma$ satisfying (1.27):
+\[
+ \sigma\le\frac{4g_{\rm AA}}{C_EW_*},\qquad
+ g_{\rm AA}=0.00002853328.
+\]
+Then $C_E\sigma W_{\rm AA}/4\le C_E\sigma W_*/4\le g_{\rm AA}$.
+This bounds the actual AA37 perturbation on all nineteen rows by one
+$g_{\rm AA}$ charge. Any further subtraction of the same numerical
+allowance in the final error total is an additional conservative reserve.
+For $C_E=0$ the condition is empty.
+The selector and cutoff errors retain their stated $\tau$ bounds.
+The second term of (B.8) is at most
+\[
+ \frac{W_*C_E\sigma^{-8}e^{K+L_\omega}}{4(\ell_0L_N)^{1/3}}
+ =o_\sigma(1).
+\]
+Here $K,L_\omega$ are absolute constants for the formal density,
+and $\log L_c\ge\ell_0L_N$.
+The bound (1.26) is applied before $\sigma$ is chosen in (1.27).
+Pointwise finiteness alone would allow unbounded $\sigma W(\sigma)$;
+the uniform bound removes that dependence.
+
+\subsection{Source and interval references}
+
+The source identity is Lemma~\ref{lem:source-replacement},
+with its prefix and sifting data kept fixed.
+Section~6 bounds both difference weights,
+including the G1 representation multiplicities.
+
+Hypothesis (5.23) follows from the Prime interval coefficients lemma in Section~5.
+Its endpoint power-log Siegel--Walfisz input is \cite[(2.21)]{Z1}.
+Endpoint subtraction requires
+\[
+ J\subset[Y/2,Y],\qquad |J|\asymp YL^{-H},\qquad
+ N^c\le Y\le N^C,
+\]
+with fixed $H,c,C$ and $c,C>0$.
+Then $\#\{n\in J:n\equiv l\pmod k\}\le|J|/k+1$.
+The O1 and G4 supports have $H=2$ and $H=H_g$ (\S\S~5.5--5.6).
+Thus the interval hypothesis holds, also with the auxiliary divisor $d$ of (5.23).

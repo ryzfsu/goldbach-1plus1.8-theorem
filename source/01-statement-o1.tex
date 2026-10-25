@@ -1,0 +1,469 @@
+\subsection{Statement and sources}
+
+\begin{theorem}[Goldbach representation $(\GoldbachTitlePhrase)$]\label{thm:goldbach}
+In the Proposition $(1+a)$ convention, $a=1.8=9/5$, so $a-1=0.8=4/5$.
+Every sufficiently large even integer $N$ has a representation
+\[
+ N=p+rq,\qquad p,q\in\mathbb P,\qquad r\in\{1\}\cup\mathbb P,
+ \qquad r\le q^{a-1}=q^{4/5}=q^{0.8}.                    \tag{1.1}
+\]
+\end{theorem}
+
+\subsection{Normalization and fixed source}
+
+Put $L=\log N$. The singular series has no leading factor of two:
+\[
+ C(N)=C_2\prod_{\substack{\ell\mid N\\\ell>2}}
+          \frac{\ell-1}{\ell-2},\qquad
+ C_2=\prod_{\ell>2}\left(1-\frac1{(\ell-1)^2}\right)>0,
+ \qquad U_C(N)=\frac{C(N)N}{L^2}.                            \tag{1.2}
+\]
+Here $\ell,p,q$ denote primes.
+Uniformly over even $N$, $C(N)\ge C_2$ and $U_C(N)\to\infty$.
+Fix
+\[
+ \varepsilon_A=\eta_L=\frac1{10000},\qquad a=1.8=\frac95,
+ \qquad b=\frac{a-1}{a}-\varepsilon_A
+          =\frac{39991}{90000}>\frac13.                    \tag{1.3}
+\]
+The cutoff $b$ separates the balanced semiprimes, and $\eta_L$ is the row buffer.
+Here $T$ is the fixed exclusion threshold and $\tau$ is the mesh width.
+In Sections~2--4, $D$ denotes a sieve level; $D_{\rm lower}$ is the
+normalized endpoint. The local cutoff $H$, switched integral $H_L$,
+source majorant $g(e)$, and Li--Liu threshold $g_3$ are distinct quantities.
+The source is
+\[
+ \mathcal A_{\varepsilon_A}
+   =\{N-p:p\in\mathbb P,\ p<(1-\varepsilon_A)N\}.
+                                                               \tag{1.4}
+\]
+Thus $\varepsilon_A N<n<N$ on the source.
+Exponents are measured against $N$, and a local shell has scale $X$.
+
+The weight O1 uses the rational parameters
+\[
+ \alpha=\frac{100}{1149},\quad \beta=\frac{50}{309},\quad
+ \mu=\frac{25}{128},\quad\lambda=\frac{93}{400},\quad
+ \tau_S=\frac{57}{224},\quad u=\frac1{500},\quad s_{\rm O1}=\frac{11}{5}.
+                                                               \tag{1.5}
+\]
+For $r\in[\beta,\lambda)$, put
+\[
+ B(r)=\begin{cases}
+ \beta,&\beta\le r<\mu,\\
+ \min\{\beta,\max\{\alpha,C_0-5r/2\}\},&\mu\le r<\lambda,
+ \end{cases}
+ \qquad C_0=\frac{57}{64}-\frac1{500}-s_{\rm O1}\alpha.
+                                                               \tag{1.6}
+\]
+Since $2(C_0-\alpha)/5>\lambda$, the lower truncation is inactive.
+The S10 proof writes $B_0$ for this same clipped function on $[\mu,\lambda)$.
+The other breakpoint is
+\[
+ v_\beta=2(C_0-\beta)/5=506848823/2366940000\in(\mu,\lambda).
+\]
+Hence $B$ is continuous, non-increasing, and piecewise affine.
+
+\subsection{The weight and its elementary counting inequality}
+
+For squarefree $d$ with $(d,N)=1$, define the cofactor count
+\[
+ S(d;z)=\#\{n=dm\in\mathcal A_{\varepsilon_A}:
+             P^-(m)\ge z,\ (m,Nd)=1\}.                    \tag{1.7}
+\]
+Set $P^-(1)=+\infty$ and $t_i=\log p_i/L$.
+Each row $S_i$ of the table is a sum of (1.7),
+with each admissible divisor counted separately.
+For $S_1,S_2$, take $d=1$.
+
+\begin{center}
+\small\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lc p{.51\textwidth}l@{}}
+\toprule
+Row & Coefficient $c_i$ & Divisor and domain & Cofactor cutoff \\
+\midrule
+$S_1$ & $3$ & $d=1$ & $N^\alpha$ \\
+$S_2$ & $1$ & $d=1$ & $N^\beta$ \\
+$S_3$ & $-2$ & $d=p_1,\ \alpha\le t_1<\mu$ & $N^\alpha$ \\
+$S_4$ & $-1$ & $d=p_1,\ \mu\le t_1<1/4$ & $N^\alpha$ \\
+$S_5$ & $-1$ & $d=p_1,\ 1/4\le t_1<\tau_S$ & $N^\alpha$ \\
+$S_6$ & $-1$ & $d=p_1,\ \tau_S\le t_1<1/3$ & $N^\alpha$ \\
+$S_7$ & $-1$ & $d=p_1,\ \mu\le t_1<\lambda$ & $N^\alpha$ \\
+$S_8$ & $1$ & $d=p_1p_2,\ \alpha\le t_2<t_1<\beta$ & $N^\alpha$ \\
+$S_9$ & $1$ & $d=p_1p_2,\ \alpha\le t_2<\beta\le t_1<\mu$ & $N^\alpha$ \\
+$S_{10}$ & $1$ & $d=p_1p_2,\ \mu\le t_1<\lambda,\ \alpha\le t_2<B(t_1)$ & $N^\alpha$ \\
+$S_{11}$ & $-2$ & $d=p_1p_2,\ \lambda\le t_1<1/3,\ t_1<t_2<(1-t_1)/2$ & $p_2$ \\
+$S_{12}$ & $-1$ & $d=p_1p_2,\ \alpha\le t_1<1/3\le t_2<(1-t_1)/2$ & $p_2$ \\
+$S_{13}$ & $-1$ & $d=p_1p_2,\ \beta\le t_1<\lambda\le t_2<(1-t_1)/2$ & $(N/(p_1p_2))^{1/2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Let $R_i(n)$ count the contributions of $n$ to row $i$. Set
+\[
+ W_{13}(n)=\sum_{i=1}^{13}c_iR_i(n),\qquad
+ W(n)=W_{13}(n)-\mathbf1_{\Omega(n)\ge3}\max\{W_{13}(n),0\}.
+                                                               \tag{1.8}
+\]
+All these weights vanish unless $P^-(n)\ge N^\alpha$. The switched excess is
+\[
+ S_{\rm sw}(N)=\sum_{\substack{n\in\mathcal A_{\varepsilon_A}\\
+                  P^-(n)\ge N^\alpha,\ \Omega(n)\ge3}}
+                         \max\{W_{13}(n),0\},
+ \qquad \Sigma_W=\sum_{i=1}^{13}c_iS_i-S_{\rm sw}.           \tag{1.9}
+\]
+The row dictionary consists of $S_1,\ldots,S_{13}$; $S_{14},S_{15}$ are absent.
+The next lemma turns the weighted sum into a lower bound for the prime count.
+
+\begin{lemma}[Pointwise count]\label{lem:pointwise-count}
+For all sufficiently large $N$,
+\[
+ \#\{p<(1-\varepsilon_A)N:p\in\mathbb P,\ \Omega(N-p)\le2\}
+ \ge \frac{\Sigma_W}{4}-O(N^{1-\alpha}L).                 \tag{1.10}
+\]
+\end{lemma}
+\begin{proof}
+First take squarefree $n$ with $(n,N)=1$.
+If $\Omega(n)\ge3$, then $W(n)\le0$ by (1.8).
+For $\Omega(n)\le2$, the bound $n>\varepsilon_A N$ excludes $n=1$.
+A prime $n$ exceeds $N^{1/3}$ for large $N$,
+so only $S_1,S_2$ contribute and $W(n)=4$.
+
+Let $n=rq$ with primes $r<q$.
+Then $q>(\varepsilon_A N)^{1/2}>N^{1/3}$.
+Put $t=\log r/L$. The first ten rows give
+\[
+ \begin{array}{c|cccc}
+ t&[\alpha,\beta)&[\beta,\lambda)&[\lambda,1/3)&[1/3,1/2)\\ \hline
+ \text{weight}&1&2&3&4.
+ \end{array}                                                \tag{1.11}
+\]
+The positive pair rows cannot use $q$,
+and the single-prime rows supply the subtractions in this display.
+The last three rows contribute zero when $n=rq$, hence $W(n)\le4$.
+
+Since $12\alpha>1$, every retained $n<N$ has $\Omega(n)\le11$.
+So there are at most $11$ single primes and $\binom{11}{2}=55$ pairs, and
+\[
+ |W_{13}(n)|\le3+1+2\cdot11+4\cdot11
+                     +3\cdot55+2\cdot55+55+55=455,
+ \qquad |W(n)|\le455.
+\]
+The terms group as $S_1,S_2$; $S_3$; $S_4$--$S_7$;
+$S_8$--$S_{10}$; and $S_{11},S_{12},S_{13}$, respectively.
+The non-squarefree exceptions number at most
+\[
+ \sum_{j\ge N^\alpha}N/j^2=O(N^{1-\alpha}).
+\]
+Integers with a prime factor in common with $N$ number at most
+$\omega(N)N^{1-\alpha}=O(N^{1-\alpha}L)$,
+and their weighted sum has the same order.
+On the remaining integers,
+$W(n)\le4\mathbf1_{\Omega(n)\le2}$.
+Summing and dividing by four proves the lemma.
+\end{proof}
+
+The switched main term is $8(1-\varepsilon_A)I_{\rm HL}U_C$, where
+\[
+ I_{\rm HL}=\sum_{k=5}^{11}
+   \int_{\substack{\alpha\le t_1<\cdots<t_k\\t_1+\cdots+t_k=1}}
+   \frac{\max\{W_{13}(\mathbf t),0\}}{t_1\cdots t_k}
+                         \,dt_1\cdots dt_{k-1}.             \tag{1.12}
+\]
+Here $t_k=1-\sum_{i<k}t_i$, and the integral uses the coordinate measure shown.
+For the prime factors of an actual source integer $n$,
+$\sum t_i=\log n/L$, and this radial coordinate need not equal $1$.
+Section~5.5 proves the cell decomposition, the restriction $k\ge5$
+and the prime-product estimate.
+For $k=3,4$, it uses a one-sided comparison at $\sum t_i=\log n/L<1$,
+where the slice dictionary need not be an identity.
+After normalization, (1.12) contributes $-2I_{\rm HL}$ to $D$.
+
+\subsection{Balanced semiprimes}
+This subsection removes the semiprimes whose smaller factor is too large.
+Let $P_{2,\varepsilon_A}(N)$ denote the count in (1.10).
+Let $G_a(N)$ count primes $p<(1-\varepsilon_A)N$ admitting a representation as in (1.1), with $r\le q^{a-1}$.
+For a prime remainder, take $r=1$.
+For $n=rq$, $r\le q$, the bound $r<N^b$ gives
+\[
+ q>\varepsilon_A N^{1-b},\qquad
+ q^{a-1}>\varepsilon_A^{a-1}N^{b+a\varepsilon_A}>N^b>r       \tag{1.13}
+\]
+provided
+\[
+ N>\varepsilon_A^{-(a-1)/(a\varepsilon_A)}.                \tag{1.14}
+\]
+Here $(1-b)(a-1)-b=a\varepsilon_A$.
+For (1.3), $\log N\ge44445$ suffices, since
+$(a-1)/(a\varepsilon_A)=40000/9$ and $\log10000<10$.
+
+For the remaining semiprimes put
+\[
+ g(e)=\#\{(r,q)\in\mathbb P^2:
+       N^b\le r\le N^{1/2},\quad
+       \varepsilon_A N<rq<N,\quad rq=e\}.                  \tag{1.15}
+\]
+The majorant allows $q<r$ and counts both choices of $r$.
+Thus $0\le g(e)\le2$, and every remaining bad semiprime is counted.
+Consequently
+\[
+ G_a(N)\ge P_{2,\varepsilon_A}(N)
+                 -\sum_e g(e)\mathbf1_{\mathbb P}(N-e).     \tag{1.16}
+\]
+Prime squares remain in (1.15);
+discarding them would cost $O(N^{1/2})$.
+For $a<2$, they fail $r=q\le q^{a-1}$.
+
+Section~5.6 proves the following untruncated estimate for the majorant.
+For each fixed $A>0$ there is a fixed $B$ such that, with $Q=N^{1/2}L^{-B}$,
+\[
+ \sum_{d\le Q}\max_{(h,d)=1}
+ \left|\sum_{e\equiv h\ (d)}g(e)
+       -\frac1{\varphi(d)}\sum_{(e,d)=1}g(e)\right|
+       \ll_{A,\varepsilon_A} NL^{-A}.                       \tag{1.17}
+\]
+Lemma~\ref{lem:complete-support-bv} gives (5.24).
+Section~5.6 applies it at the scales and precisions specified after (5.47).
+The partition (5.45)--(5.46) and the error (5.47) then give (5.48).
+Take $b_{\rm G4}=b=39991/90000>1/3$ and $\varepsilon=\varepsilon_A$.
+The multiplicity in (5.44) includes the endpoint $e=\varepsilon_AN$,
+where $|g-g_N|\le2$.
+So each discrepancy changes by at most $2+2/\varphi(d)$,
+and the total change is $O(Q)=O(N^{1/2})$.
+
+Put $X_g=\sum_e g(e)$. Section~5.6 also proves
+\[
+ \begin{aligned}
+ X_g
+ &=\sum_{\substack{N^b\le r\le N^{1/2}\\r\in\mathbb P}}
+       \{\pi(N/r)-\pi(\varepsilon_A N/r)\}\\
+ &=\frac{(1-\varepsilon_A)N}{L}
+       \int_b^{1/2}\frac{dt}{t(1-t)}+O_{\varepsilon_A}(N/L^2)\\
+ &=\frac{(1-\varepsilon_A)N}{L}
+       \log\frac{1-b}{b}+O_{\varepsilon_A}(N/L^2).
+ \end{aligned}                                               \tag{1.18}
+\]
+Uniform PNT gives the inner count with relative error $O_{\varepsilon_A}(L^{-1})$,
+and partial summation in $r$ gives the integral.
+Strict prime endpoints are absorbed in the error term.
+Let $P_N(z)=\prod_{2<\ell<z,\ \ell\nmid N}\ell$ and $z=Q^{1/2}$.
+The sequence takes each $N-e$ with multiplicity $g(e)$; call it $\mathcal B$.
+For squarefree $d\mid P_N(z)$,
+\[
+ |\mathcal B_d|=\frac{X_g}{\varphi(d)}+r_d,\qquad
+ r_d=\Delta_g(d,N)-\frac1{\varphi(d)}
+                                      \sum_{(e,d)>1}g(e).    \tag{1.19}
+\]
+Eventually every prime factor of $e$ is at least
+$\min(N^b,\varepsilon_A N^{1/2})>N^{1/4}>z$,
+so the correction vanishes.
+Section~5.6 applies the upper sieve with
+\[
+ \begin{gathered}
+ V_N(z)=\frac{2e^{-\gamma}C(N)}{\log z}(1+o(1)),\quad s=2,\quad F(2)=e^\gamma,\\
+ V_N(z)F(2)=\frac{8C(N)}L(1+o(1)).
+ \end{gathered}
+\]
+The bound includes the small-prime term $2z$ and the sieve error
+$O((\log Q)^{-1/3})$. Hence
+\[
+ \sum_e g(e)\mathbf1_{\mathbb P}(N-e)
+ \le\left[8(1-\varepsilon_A)\log\frac{1-b}{b}
+                   +r_3(N)\right]U_C,\qquad r_3(N)\to0.     \tag{1.20}
+\]
+This is the constant-eight estimate.
+The same upper-sieve normalization bounds the switched excess in Section~5.5.
+With singular series $2C(N)$ the multiplier becomes four,
+and the absolute bound is unchanged.
+
+\subsection{The coefficient criterion}
+An auxiliary choice is \emph{admissible} if it is independent of $N$,
+satisfies (1.27)--(1.29), and meets the row hypotheses in Sections~2--5.
+The rational parameters are (1.3)--(1.6),
+and the separate S2 argument is $s_0=19037/64$.
+The next criterion reduces the theorem to one numerical inequality.
+
+\begin{theorem}[Coefficient reduction criterion]
+Fix an admissible choice. Suppose
+\[
+ \Sigma_W\ge[4(1-\varepsilon_A)D_{\rm cert}-r_\Sigma(N)]U_C,
+ \qquad r_\Sigma(N)\to0,                                   \tag{1.21}
+\]
+where $D_{\rm cert}$ is fixed, and suppose (1.20).
+If
+\[
+ D_{\rm cert}>T,\qquad
+ T=8\log\frac{1-b}{b}=8\log\frac{50009}{39991},              \tag{1.22}
+\]
+then (1.1) holds for every sufficiently large even $N$.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:pointwise-count}, (1.16), and (1.20)--(1.21),
+\[
+ G_{9/5}(N)\ge
+   [(1-\varepsilon_A)(D_{\rm cert}-T)-R(N)]U_C,
+ \qquad R(N)\to0,                                         \tag{1.23}
+\]
+where $R$ is a sum of absolute remainders.
+These include $|r_\Sigma|/4$, $|r_3|$, and the rough non-coprime error
+$O(N^{-\alpha}L^3)$ from (5.40). Exceptional direct factors and switched
+source tags contribute separately
+$O_\sigma(L^3/N+N^{-\alpha/2+o(1)})$ after normalization, as in the
+error account. The square exceptions also contribute $o(1)$.
+Put $M=(1-\varepsilon_A)(D_{\rm cert}-T)>0$.
+Choose $N_0$ so that $R(N)\le M/2$ for all even $N\ge N_0$.
+Enlarge $N_0$ so that (1.14) holds and
+\[
+ (M/2)C_2N/L^2\ge1.
+\]
+Then $G_{9/5}(N)\ge1$, and this is an integer count of primes $p$.
+A prime remainder gives $r=1$;
+otherwise (1.13) bounds the smaller prime factor.
+Thus the positive normalized weight yields an actual representation.
+\end{proof}
+
+The threshold has the directed enclosure
+\begingroup\footnotesize
+\[
+ \begin{gathered}
+ 1.78838848345960807361670991332947582426562068913553428811089076453<T\\[-2pt]
+ T<1.78838848345960807361670991332947582426562068913553428811089076454.
+ \end{gathered}                                             \tag{1.24}
+\]
+\endgroup
+For $x=5009/45000=(50009-39991)/(50009+39991)$,
+\[
+ T=16\sum_{j\ge0}\frac{x^{2j+1}}{2j+1}.
+\]
+Truncating at $j=39$, bounding the tail by
+$16x^{81}/[81(1-x^2)]$ and comparing rationals gives (1.24).
+The raw coefficient
+$(1-\varepsilon_A)T=1.7882096446112621128\ldots$
+is compared with $(1-\varepsilon_A)D_{\rm cert}$.
+The limiting threshold is
+$8\log(5/4)=1.7851484105136780461\ldots$.
+A value such as $D=1.786$ exceeds that limit but fails (1.22).
+Thus the rounded $1.785148$ cannot replace the exact threshold.
+
+The threshold algebra extends to $3/2<a<2$ and
+$b=(a-1)/a-\varepsilon_A>1/3$.
+Writing $t=\exp(-D_{\rm cert}/8)$, it gives
+\[
+ a>\frac{1+t}{1-\varepsilon_A(1+t)},                        \tag{1.25}
+\]
+when the denominator is positive.
+Smaller fixed cutoffs would require a uniform coefficient bound.
+The construction here fixes $\varepsilon_A=10^{-4}$ and proves $a=9/5$ only.
+
+\subsection{Fixed parameters}\label{p2:sec:fixed-parameters}
+This subsection fixes the auxiliary parameters in the order the error terms require.
+The constants and the final threshold may be ineffective.
+Theorem~\ref{thm:sieve-mass} in Appendix~B.2 proves
+\[
+ W_{\rm AA}\le
+ \frac{4000\cdot585\cdot10240090}{1-1/10000}<10^{14}=W_* .    \tag{1.26}
+\]
+The bound is uniform in the fixed mesh parameter and uses \cite[\S~2.4, (2.28)--(2.30)]{Z1}.
+The row applications are in Section~6.2.
+First fix (1.3)--(1.6), all row domains and the classical input constants,
+including the finite AA37 constant $C_E$.
+Put $g_{\rm AA}=0.00002853328$.
+Choose a fixed $\sigma>0$ within the source, depth, HB and packing limits, with
+\[
+ \sigma\le10^{-10},\qquad
+ \sigma\le\frac{4g_{\rm AA}}{C_EW_*}\quad\text{if }C_E>0.  \tag{1.27}
+\]
+The bounds $\sigma\le\eta_L/2500$ and $\sigma<3^{-R}$ are automatic:
+$\eta_L/2500=4\cdot10^{-8}$ and the AA37 depth is $R=1$
+\cite[Theorem~2.6]{Z1}. If $C_E=0$, only $\sigma\le10^{-10}$ is needed.
+Set $\tau=\tau_{\rm mesh}=\sigma^9$, $\rho=1+\tau$, and $\delta=30\sigma$.
+The cost $C_E\sigma$ enters $g_{\rm AA}$ once;
+the AA37 term $o_\sigma(1)$ vanishes separately.
+
+Next fix the HB degrees and moment exponents.
+Take
+\[
+ \begin{gathered}
+ c_{\rm bdry}=163,\quad c_{\rm LOG}=164,\quad A_{\rm raw}=3,\\
+ C_b=334\ge\max(A_{\rm raw}+c_{\rm LOG}+2,6)=169.
+ \end{gathered}
+\]
+With $C_{\rm box}=C_b=334$, the generic aggregate input introduced above
+is restricted to $0<A\le151$ by $C_{\rm box}\ge\lceil2A+32\rceil$.
+The external count and local savings are
+\begingroup\small
+\[
+ K_0=24C_b+26=8042,\qquad
+ A'=A_{\rm raw}+24C_b+28=8047,\qquad
+ A_{\rm work}=A'+4=8051.                                    \tag{1.28}
+\]
+\endgroup
+Each local theorem includes all three slot-modulus dyadic splits.
+The $O((\log X)^3)$ slot-shell triples use $A_{\rm work}$,
+and their sum gives $A'$ with one spare logarithm.
+The count $K_0$ includes two redundant slot-shell factors.
+An external slot-1 convention would give
+$K_{\rm II}=24C_b+27=8043$ instead.
+Only the $K_0$ convention is used, and $K_0+2-A'=-3$.
+Here $A_{\rm raw}=3$ specifies the normalized target saving.
+Summing the arbitrary-precision local estimate of
+\cite[Theorem~3.2, (3.13)]{Z1}, as in the first inequality of
+\cite[(3.92)]{Z1}, gives a raw logarithmic error bounded by
+\[
+ N L^{K_0-A'}=N L^{8042-8047}=N L^{-5}.
+\]
+Division by $W_{\rm norm}=4(1-\varepsilon_A)U_C\gg N/L^2$
+gives $L^{-3}$ in (1.30).
+The local precision $A'=8047$ gives this bound.
+The aggregate theorem in \cite{Z1} has its own calibration
+$A'=A+24C_{\rm box}+31$.
+Fix the actual Type-I count $K_{\rm I}$, then take $A_1,A_2\ge K_{\rm I}+4$.
+Let $c_{\rm pre}$ be the coefficient loss preceding the exceptional cutoff.
+Choose, in order,
+\[
+ \begin{gathered}
+ A_E\ge2A_{\rm work}+2C_b+c_{\rm pre}+2,\quad C_1\ge A_E+c_1+3,\\
+ C_M\ge\max\{5C_1+A_E+C_b+3,
+                   3C_1+C_b+A_E+c_{\rm diag}+1\},\\
+ A_3\ge A_E+C_b+2,
+ \end{gathered}                                              \tag{1.29}
+\]
+Here $c_1$ is the moment exponent in \cite[(3.20)]{Z1}.
+The symbol $c_{\rm diag}$ denotes a fixed exponent that dominates
+the preliminary logarithmic loss in \cite[(3.41)]{Z1}.
+It is chosen before $A_E,C_1,C_M$, as in \cite[\S3.10]{Z1}.
+One may use $c_1=2^{125}+2^{126}+2$.
+Then fix the BFI savings, the logarithmic powers of the moduli,
+the SW exponents and the derivative bounds.
+The later GR loss $C_{\rm GR}$ may depend on $C_1$;
+it differs from $c_{\rm pre}$ in (1.29).
+
+At these fixed parameters, Section~6 proves
+the Class-II estimate below, where $C_{\rm pow}$ is the fixed logarithmic
+exponent after the conversion $X\ge N/L^{31}$.
+\[
+ \begin{gathered}
+ E_{\rm II}^D(N)\ll
+ L^{K_0+2-A'}
+ +N^{-c_\sigma}L^{K_0+C_{\rm pow}+2},\\
+ c_\sigma=\frac{\ell_0\sigma^2}{4},\qquad
+ \ell_0=\frac{264897}{2060000}>0.
+ \end{gathered}                                             \tag{1.30}
+\]
+The first term is $L^{-3}$.
+The second allows $X\ge N/L^{31}$.
+The resulting fixed factor $L^{31c_\sigma}$ is absorbed in $C_{\rm pow}$.
+Both terms tend to zero.
+Section~6.5 gives the fixed-parameter closure and all eventual thresholds.
+The endpoint enclosures of Appendix~A and the persistent losses of Section~6.4 hold uniformly for
+$0<\sigma\le10^{-10}$, $0\le\tau\le10^{-90}$.
+The effect of $\tau$ on the residual profile after (A.10a) is at most $5\cdot10^{-86}$.
+The selected residual slack absorbs it.
+The separate G1-3 PR peel is counted in (4.57) and (6.6).
+Thus the numerical $D_{\rm cert}$ is fixed before $\sigma$,
+and the choice (1.27) uses only $C_E<\infty$.
+
+Every fixed cost is normalized by $4(1-\varepsilon_A)U_C$.
+A raw error $(1-\varepsilon_A)eU_C$ contributes $e/4$ to $D$,
+and each normalized error enters once.
+The separate balanced-semiprime bound gives (1.22).

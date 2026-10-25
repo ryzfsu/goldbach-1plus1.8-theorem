@@ -1,0 +1,633 @@
+\section{Proof of Theorem~\ref{thm:goldbach}}\label{sec:proof-theorem-1}
+
+\subsection{One signed assembly}
+
+Put $L=\log N$, $\rho=1+\tau$ and
+$W_{\rm norm}=4(1-\varepsilon_A)U_C$.
+This scalar differs from the pointwise weight.
+The signed source is
+\[
+\begin{split}
+W_{\rm norm}D_{\rm src}(N)={}&3S_1+S_2-2S_3-S_4-S_5-S_6-S_7\\
+&+S_8+S_9+S_{10}-2S_{11}-S_{12}-S_{13}-S_{\rm sw}.
+\end{split}\tag{6.1}
+\]
+
+\begin{theorem}[Signed assembly]\label{thm:signed-assembly}
+Fix one actual construction with
+$u=1/500$, $\alpha=100/1149$, $\beta=50/309$,
+$0<\sigma\le10^{-10}$, $\tau=\sigma^9$ and
+$\ell_0=53/412-1/20000>0$.
+Assume four conditions.
+\begin{enumerate}
+\item The nineteen row chains and outer chains cover (6.1).
+They retain exact source maps, multiplicities, half-open domains,
+selectors and restrictions.
+\item The source, AA37, comparator, detection, boundary, Class-I,
+Class-II, measure and profile estimates below hold.
+They retain actual domains, signed modulus sums and norms.
+Uniformity holds after the displayed family count.
+\item Directed endpoints bound their specified profiles.
+S1, S2-T8/4 and G1 enter jointly, once each.
+The S1-3 prefactor comparison is separate from its dynamic cutoff.
+\item Each fixed loss enters once under the paired tail convention.
+The AA37 perturbation fits $g_{\rm AA}$.
+The explicit selector, cutoff and peel bounds remain.
+Parameters follow the order below.
+\end{enumerate}
+There are finite signed terms $a_j(N)$ and slacks $s_k(N)\ge0$ with
+\[
+\begin{gathered}
+D_{\rm src}(N)=B_{\rm main}+\sum_j a_j(N)+\sum_k s_k(N),\\
+D_{\rm src}(N)\ge B_{\rm main}-F_{\rm pers}-E_{\rm van}(N),
+\qquad E_{\rm van}(N)\longrightarrow0.
+\end{gathered}\tag{6.2}
+\]
+Hence the fixed-$\epsilon_A$ threshold holds eventually when
+\[
+D_{\rm lower}\le B_{\rm main}-F_{\rm pers},\qquad
+D_{\rm lower}>T.\tag{6.3}
+\]
+\end{theorem}
+
+\begin{proof}
+The signed row coefficient is included in $Q_{r,k}$.
+All quantities below are in D units.
+\begin{longtable}{@{}p{0.13\textwidth}p{0.82\textwidth}@{}}
+\toprule
+Stage & Quantity \\\midrule
+$Q_{r,0}$ & Actual signed master source. \\
+$Q_{r,1}$ & Declared row source after its exact identity. \\
+$Q_{r,2}$ & Low/upper cuts, source tags, squarefree/coprime restoration. \\
+$Q_{r,3}$ & Exact selector, dynamic-cutoff and peel partition, with main-comparison error terms. \\
+$Q_{r,4}$ & Actual-level AA37 main term, fixed/asymptotic perturbations and remainder. \\
+$Q_{r,5}$ & Exact comparator decomposition. \\
+$Q_{r,6}$ & $\Lambda/\log$ detection, proper powers and LOG freezing. \\
+$Q_{r,7}$ & Boundary, II, I-1 and I-2 partition. \\
+$Q_{r,8}$ & Continuum mass after prime-measure/Euler conversion. \\
+$Q_{r,9}$ & Sign-correct specified profile after domination. \\
+$Q_{r,10}$ & Directed endpoint with the paired tail convention. \\
+\bottomrule
+\end{longtable}
+Finite telescoping yields
+\[
+Q_{r,0}=Q_{r,10}+\sum_{k=1}^{10}(Q_{r,k-1}-Q_{r,k}).\tag{6.4}
+\]
+For S2 we use (3.3)--(3.4):
+\[
+\begin{gathered}
+\mathcal F=\Delta\cap\{h\le K\},\quad
+\mathcal B=\Delta\cap\{h>K\},\quad R1=\Delta\cap\{g>249/250\},\\
+\Delta=PF\ \dot\cup\ (\mathcal F\cap R1)\ \dot\cup\ \mathcal B.
+\end{gathered}
+\]
+Here $h$ is evaluated at inherited labels, and $K$ differs from $K_0$.
+S10 Ret/Drop, S5 low/top and S4/S7 A/B retain their half-open endpoints.
+The modulus masks are $1-K_T$, $K_T(1-K_P)$ and
+$K_TK_P\mathbf1_{\rm rough\ square}$.
+They give, before the signed row coefficient,
+\[
+R_{\rm AA}=S_{\rm slot}+NC_{\rm sf}
+-\sum\Xi_{\rm union}\Delta_P
++\sum\Xi_{\rm allowed}(\Delta_0-\Delta_P).\tag{6.4a}
+\]
+The first two masks split $\Xi_{\rm union}$ disjointly,
+and the third gives $\Xi_{\rm allowed}$.
+NC uses the remaining squarefree moduli.
+A failure of both conditions belongs to the tail.
+
+For $O\in\{\mathrm{S1},\mathrm{S2\text{-}T8/4},\mathrm{G1}\}$,
+put $Q_{O,9}=\sum_{r\in O}Q_{r,9}$ and $Q_{O,10}=E_O$.
+Then
+\[
+\begin{split}
+\sum_{r\in O}Q_{r,0}={}&Q_{O,10}+(Q_{O,9}-Q_{O,10})\\
+&+\sum_{r\in O}\sum_{k=1}^{9}(Q_{r,k-1}-Q_{r,k}),
+\qquad Q_{O,9}-Q_{O,10}\ge0.
+\end{split}\tag{6.4d}
+\]
+Signed differences are kept and favourable slacks are discarded.
+Each tuple is assigned to its first failed condition.
+The low direct primes, the upper G1 cut, the excluded factors and the squarefree/coprime restoration are removed.
+The source is then retained.
+The unique D1 Lemma~\ref{lem:source-replacement} and the G1
+cut-measure comparison prove these changes.
+
+A box meeting a source face is a boundary box.
+Otherwise the largest eligible lower-endpoint exponent is chosen for II.
+Ties are broken by the fixed variable index, and then I-1 and I-2 are used.
+The DIRECT preparation lemmas verify (SH1)--(SH5)
+\cite[\S3.11, (3.98)--(3.101)]{Z1}.
+Every G1 coordinate exceeds $N^\alpha$,
+and its two Class-I families are empty by the product-source proof.
+The tables bound every adverse difference,
+and the fixed-parameter argument gives $E_{\rm van}\to0$.
+This proves (6.2).
+\end{proof}
+
+\subsection{Sources, local inputs and directed endpoints}
+
+The map fixes each sign and domain.
+Positive terms use lower endpoints, and negative terms use upper endpoints.
+\begin{longtable}{@{}p{0.24\textwidth}p{0.71\textwidth}@{}}
+\toprule
+Contribution & Source and endpoint direction \\\midrule
+$3S_1$ & (2.19): coefficients $(3,-3,3,-3)$, orbits $1,2,6$; one joint $\tfrac34\mathcal S_1$ from (A.4). \\
+$S_2$ & Four terms; $PF$, $\mathcal F\cap R1$, $\mathcal B$ in (3.4). Whole-$K$ uses II; strict complement uses BV-R1. One lower $d_{T8}$ from (A.7). \\
+$-2S_3,S_8,S_9$ & Absolute single-prefix profiles with level reduced by $u=1/500$. \\
+$-S_4,-S_7$ & A/B partitions within each row; upper endpoints. \\
+$-S_5$ & S5-low on $[1/4,t_*)$ and disjoint BV-top; upper endpoints. \\
+$-S_6$ & Separate BV-S6 upper estimate. \\
+$S_{10}$ & Ret $\dot\cup$ Drop, with its directed lower estimate. \\
+$-2S_{11}-S_{12}-S_{13}$ & G1 chain (4.18), separate cutoff peel; source weights $(2,1,1)$ occur inside $A_G^{\rm cut}$. Child signs $(-,+,-,+)$ give upper/lower/upper/lower profiles; one joint $E_{\rm G1}$. \\
+$-S_{\rm sw}$ & O1 (1.9), (1.12), upper $2H_{L,\rm upper}$. \\
+\bottomrule
+\end{longtable}
+The master coefficients are
+$(3,1,-2,-1,-1,-1,-1,1,1,1,-2,-1,-1,-1)$.
+
+D1/G1 replace the sources before Buchstab/HB, with their signed corrections.
+DIRECT uses Lemmas~\ref{lem:direct-preparation} and~\ref{lem:source-replacement}.
+G1 uses (4.14), the monotonicity $N^{1/2}\to N^\mu$ and its cut-measure comparison.
+Sections~2--4 verify the actual source and local hypotheses of
+\cite[Theorem~3.2, (3.13)]{Z1} and the packing of \cite[Theorem~4.1]{Z1}.
+The complete-weight prime-source theorem has a different coefficient family.
+For AA37 we apply \cite[Theorem~2.6, (2.30)--(2.33b)]{Z1} with
+\[
+D=L_c,\quad z=z_k,\quad R=1,\quad
+\epsilon_s=\sigma,\quad\delta_s=\tau=\sigma^9.
+\]
+Section~1 supplies the density and sieve mass.
+Sections~2--4 supply the levels and cutoffs.
+The three terms of this theorem are $c_kX_kV_N(z_k)M_k(s_k)$,
+$-|c_k|X_kV_N(z_k)E_{s,k}$ and $a_kR_{{\rm AA},k}$.
+Outer contributions and adverse source differences complete (6.1).
+
+The nineteen applications are indexed by $k=(r,b,\mathcal C)$,
+that is, by row, parent-prefix cell and signed remainder.
+The remainder $R_{AA,k}$ is taken before the exterior coefficient $a_k$.
+It includes the source coefficient and the AA37 sign once,
+and it excludes the orbit $M_k$.
+For G1, $a_k=(2A_R)\nu_k$, with $\nu_k=+1$ for upper remainders
+and $-1$ for lower remainders.
+The quantities $C_k,NC_{{\rm sf},k},\Xi_{U,k},\Xi_{A,k}$ are formed before this sign.
+Put $\gamma_k=C_k/C_{{\rm slot},k}$.
+By \cite[(2.32)--(2.33)]{Z1}, (3.8) and (4.22)--(4.26),
+\[
+\begin{split}
+\frac1{W_{\rm norm}}\sum_k a_kR_{AA,k}
+={}&\frac1{W_{\rm norm}}\sum_k\frac{a_kC_{{\rm slot},k}}{M_k}
+                  \sum_q\gamma_k(q)\Delta_{P,k}(q)\\
+&+\frac1{W_{\rm norm}}\sum_k a_kNC_{{\rm sf},k}
+-\frac1{W_{\rm norm}}\sum_{k,q}a_k\Xi_{U,k}(q)\Delta_{P,k}(q)\\
+&+\frac1{W_{\rm norm}}\sum_{k,q}a_k\Xi_{A,k}(q)
+                    (\Delta_{0,k}-\Delta_{P,k})(q).
+\end{split}\tag{6.4b}
+\]
+This identity is finite at fixed $N$.
+Here $r(\mathcal A_k^{\rm pl},d)=\Delta_0(b_kd)$ by (2.17c) and (4.21),
+with the AA37 remainder convention of \cite[(2.32)--(2.33)]{Z1}.
+For S2 we use the per-block terms underlying (3.8).
+The DIRECT comparator differences vanish, while G1 keeps their bounds.
+HB is applied to the first term. Its Class-II factor is
+\[
+\frac{a_kh_{k,B}}{M_kW_{\rm norm}}S^{\rm PSDT}_{k,B}.\tag{6.4c}
+\]
+Here $h_{k,B}$ comes from the HB/log/box expansion of the same source.
+Division by $C_{\rm slot}$ leaves this factor once.
+The other terms enter the boundary, proper-power, LOG, I-1 or I-2 classes.
+Each block keeps its tested measure, grid, coefficients, cutoff and normalization.
+
+The hypotheses are checked as follows.
+\begin{longtable}{@{}p{0.20\textwidth}p{0.75\textwidth}@{}}
+\toprule
+Input & Actual-source check \\\midrule
+C1--C5, LEN & H1--H5 of \cite[Theorem~3.2]{Z1}; Sections~2--4 check coefficients, packing, shift, norms and scales. $a=N$, $N/L^{31}\le X\le N$, $q\le X^{0.6}$, $C_{\rm box}=C_b=334$, $K_{\rm scale}=31$. Direct preparation gives tested measure and integer intervals; G1-LOCAL uses the plain cut measure, fixed majorant and doubled support. \\
+H6 & Source-wide freezing and boundary bounds, separately; Section~4.4 includes proper powers. \\
+H7 & Both direct families have exponent $2012$; G1 has envelope $K_0=8042$. The finite sum preserves it, including representation multiplicities \cite[(3.91)]{Z1}. \\
+Sources and masks & Sections~2.1--2.5, 3.1--3.2, 4.1--4.2; D1/G1 replacement; (6.4a)--(6.4b). \\
+Profiles and cutoffs & Sections~3.5, 4.6; (2.22), (2.38)--(2.40), (3.21), (4.45)--(4.57). Squarefree/II: (4.64)--(4.65), (4.68)--(4.69). BV: Sections~3.5, 5.2--5.5. \\
+Joint endpoints & Appendix A and the next two comparisons; signs from (6.1). \\
+Fixed losses & (1.26)--(1.29), (6.6), parameter order below. \\
+\bottomrule
+\end{longtable}
+The repeated-prime bound is
+$232\Lambda_\sigma C_\sigma N^{-\ell_0\sigma^2}(1+L)^4$,
+proved in (B.1)--(B.7).
+Thus the four assembly hypotheses hold for these families.
+
+For G1 set
+\[
+\begin{gathered}
+E_{\rm G1}=L_{\rm G1}-\delta_{\rm G1},\qquad
+\delta_{\rm G1}=4.98\cdot10^{-54},\\
+L_{\rm G1}-R_{\rm G1}
+=\frac{500103}{\scriptstyle100433627766186892221372630771322662657637687111424552206336},\\
+L_{\rm G1}-R_{\rm G1}<4.98\cdot10^{-54},\qquad E_{\rm G1}<R_{\rm G1}.
+\end{gathered}
+\]
+Here $R_{\rm G1}$ sums the four exact row lower endpoints.
+We insert $L_{\rm G1}$ from (4.84) in $B_{\rm main}$ and
+$\delta_{\rm G1}$ in $F_{\rm pers}$, once each.
+Their difference is $E_{\rm G1}=L_{\rm G1}-\delta_{\rm G1}$ in (4.85).
+The signed allocation underlying the row endpoints is (A.9).
+The row bounds prove (6.4d).
+S1 and S2 enter only through their joint endpoints.
+Sections~3.1--3.5 assign all four S2 terms, the three pieces, the selector and the tail.
+
+The S1-3 coefficient is $-3$ in (2.19).
+Its single $p_3\to E_3$ replacement is (2.20).
+The single comparison with $\Phi$ is (2.21)--(2.22).
+Thus $E_{1,\rm pref}$ occurs once, at $Q_{\rm S1\text{-}3,9}$, with adverse value $0$.
+Its cutoff cost lies inside $62500\tau$, and S2-3 has its own $E_3$.
+The correction $E_{1,fF}$ changes S1-1 from $f$ to $F$ instead.
+
+\subsection{The complete error sum}
+
+Every entry below is a nonnegative bound in D units or a proved zero.
+The finite logarithmic exponents $C$ are chosen after the earlier constants.
+They may differ by row.
+\begingroup\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}p{0.17\textwidth}p{0.4\textwidth}p{0.34\textwidth}@{}}
+contribution & Scope and exact error term & Bound \\ \hline
+\endfirsthead
+contribution & Scope and exact error term & Bound \\ \hline
+\endhead
+Source identities & The 19 signed identities, (6.4b) & $0$ \\
+Source restoration & Squarefree and $(n,N)=1$ restoration on 15 direct sources, before AA37 & $O_u(N^{-u/(1+\tau)}L_N^3)$ \\
+Direct lower cut & Original $p\le N/L^{30}$ tail, counted before boxes & $O_u(L^{-28})$ \\
+Switched upper cut & Actual $e>N(1-L^{1-C_b})$ strip & $O_\sigma(L^{3-C_b}+L^2/N)$ \\
+Source endpoint & The original $p<(1-\epsilon_A)N$ source face & $0$; straddling boxes belong to boundary \\
+Exceptional source factors & Direct $p\mid N$ or switched tagged factor dividing $N$, at first removal & $O_\sigma(L^3/N+N^{-\alpha/2+o(1)})$ \\
+S2 selector & Extra selected cells and dynamic comparison & $275009680\tau$ \\
+S10 selector & Dropped whole cells & $7.160\tau$ \\
+S1 dynamic cutoff & S1-3 cutoff and dynamic comparisons; prefactor excluded & $62500\tau$ \\
+G1 cutoff peel & G1-3 four-prefix peel, never HB-expanded & $145664566.4567\tau$ \\
+G1 profile boundary & Matched-profile modulus-label strips; peel separate & $0$ adverse \\
+$g_{\rm BV}$ & S5-top $E_{5,\kappa}=4\cdot10^{-8}$ plus an extra allowance $g_{R1}=5.71\cdot10^{-6}$; this allowance is not the corner bound: $d_{T8}$ already includes the R1 corner at $\kappa=10^{-6}$ & $0.00000575$, once \\
+$\delta_{\rm G1}$ & Joint-versus-row G1 comparison above & $4.98\cdot10^{-54}$, once \\
+$g_\tau$ & Replaces the four selector/cutoff/peel bounds above & $2\cdot10^{-24}$, once \\
+Fixed sieve perturbation & Integrated absolute AA37 error on all rows & $g_{\rm AA}=0.00002853328$, once \\
+Asymptotic sieve perturbation & Remaining AA37 perturbation & $o_\sigma(1)$; rate unspecified \\
+Squareful tail, repeated prefix, allowed rough repetition & Disjoint masks of (6.4a): first forbidden tail equality; first prefix repetition after allowed tail; retained rough repetition. Tests: $\Delta_P$, $\Delta_P$, $\Delta_0-\Delta_P$. & Theorem~\ref{thm:repeated-primes}: $O_\sigma(N^{-\ell_0\sigma^2}L^4)$ separately and together. Third term $0$ on DIRECT. \\
+Squarefree normalization & Retained squarefree full moduli only & Direct $0$ on the operative tested-prime source; G1 $O_\sigma(N^{-\alpha}L^5)$ \\
+Comparator density & $\omega_b(p^k)=p/(p-1)$ for every $k$; discrepancy in the preceding two rows & $0$ additional \\
+Direct prime powers & Tested-side proper prime powers & $O_\sigma(N^{-1/2+o(1)})$ \\
+Switched prime powers & At most four tested coordinates, each at least $N^\alpha$ & $O_\sigma(N^{-25/1149+o(1)}L^5)$ \\
+Logarithm freezing & Exact $\log^{-1}$-freezing difference over all disjoint boxes & G1 $O_\sigma(L^{166-C_b})$; direct $O_\sigma(L^{20-C_b})$ \\
+Logarithmic identity & Freezing is selected; Laplace truncation is unused & $0$ \\
+Switched boundary & All four switched rows, one grouped contribution & $3.6\times10^{10}C_\sigma N_{\rm lab}(\sigma)(1+L)^{163}L^{2-C_b/2}$ \\
+Direct boundary & All 15 direct rows, one grouped contribution & $3.94\times10^6C_\sigma N_{\rm lab}(\sigma)(1+L)^{16}L^{2-C_b/2}$ \\
+Class I-1, Class I-2 & First-failure direct classes; count $K_I$ before choosing $A_i$ & $O_\sigma(L^{K_I+2-A_i})$ \\
+Class II & All actual blocks with absolute exterior coefficients & Both terms of (6.5), once \\
+Prime-measure and Euler-product conversion & PNT, Li, radial/product prime measure, sieve product and large $p\mid N$ factors & $o_\sigma(1)$ each; \S{}3.5, \S{}4.6 (4.76)--(4.78), direct-BV terms in \S{}5. O1 (5.33)--(5.43) enters $E_{\rm Ssw}$. \\
+Profile comparison & Signed domination of the specified profile at the actual level & $0$ adverse by the row comparisons in \S\S{} 2--4; favourable slack discarded \\
+$E_{1,\rm pref}$ & S1-3 prefactor, (2.20)--(2.21), at $Q_{\rm S1-3,9}$; dynamic cutoff excluded & $0$ adverse, once \\
+$E_{1,fF}$ & S1-1 correction; the S2 correction is already inside its joint endpoint & One error $10^{-390}$ \\
+S2 infinite tail & Joint S2 A=1 tail beyond the finite prefix & One error $1/20000$, already included when $d_{T8}$ is used \\
+Directed enclosure & Directed numerical enclosure of the specified profile & $0$ additional \\
+R1 BV remainder, S5 BV remainder, S6 BV remainder & Three actual BV/sieve bridge errors & $o(1)$, including $O(L^{-1/3})$, $O_A(L^{2-A})$ and the recorded $O(\log L/L)$ measure conversion \\
+S6 level increment & Selected S6 $\kappa=10^{-6}$ increment over the nominal S6 baseline & One error $0.000006484294227956901$ \\
+Switched-excess error & Full O1 (5.33)--(5.43): source exceptions, outer boxes, prime/radial mass, noncoprime correction, small primes, sieve error, level/Euler conversion and product BV & $E_{\rm Ssw}=o(1)$, once; product BV costs $O(L^{-5/2})$. \\
+\end{longtable}
+\endgroup
+
+We take $H_L=I_{HL}$, the coordinate measure and $t_k$ of (5.30)--(5.32).
+Set $W=W_{\rm norm}$ and put
+\[
+E_{\rm Ssw}(N)=\max\{0,S_{\rm sw}(N)/W-2I_{HL}\}.
+\]
+Then $-S_{\rm sw}/W\ge-2I_{HL}-E_{\rm Ssw}$, and
+$I_{HL}\le H_{L,\rm upper}$ gives the sole main term $-2H_{L,\rm upper}$.
+For fixed geometry and BV exponents, (5.43) gives
+\[
+\begin{split}
+E_{\rm Ssw}\ll_{\varepsilon_A}{}&
+L^{-1/3}+\frac{\log L}{L}+L^{-1}+L^{-2}
++\eta_P(N)+\eta_E(N)\\
+&+L^{-5/2}+N^{-3/4}L^2+N^{-\alpha}L^3=o(1).
+\end{split}
+\]
+Here $\eta_P,\eta_E\to0$ are the prime-box PNT/Euler errors of Section~5.5.
+The radial and outer-box masses contribute $L^{-1},L^{-2}$.
+By (5.40),
+\[
+R_{\rm nc}\le22X^+N^{-\alpha}\sum_{r<D}\frac{\mu^2(r)}{\varphi(r)}
+\ll X^+N^{-\alpha}L.
+\]
+Since $X^+\ll N$ and $U_C\gg N/L^2$, its contribution is $O(N^{-\alpha}L^3)=o(1)$.
+It enters $E_{\rm Ssw}$ once.
+The $N^{-\alpha}L^3$ envelope covers (5.33) and (5.40), including source exceptions,
+and $N^{-3/4}L^2$ covers the $36z$ endpoint.
+The direct-BV conversions and the outer errors below are kept separate.
+
+For Class II put $c_\sigma=\ell_0\sigma^2/4>0$ and
+$C=C(\sigma,C_b,A',31,\mathcal C_{\rm src})$.
+By \cite[Theorem~3.2, (3.13)]{Z1},
+\[
+|S_B|\ll_{\sigma,31,C_b,A',\mathcal C_{\rm src}}
+XL^{-A'}+X^{1-c_\sigma}L^C.
+\]
+We sum the exterior coefficients $\le L^{K_0}$, use $X\ge N/L^{31}$ and divide by $W_{\rm norm}$:
+\[
+E_{\rm II}(N)\ll_\sigma L^{K_0+2-A'}
++N^{-c_\sigma}L^{K_0+C_{\rm pow}+2}.\tag{6.5}
+\]
+Here $C_{\rm pow}=C+31c_\sigma$ absorbs the fixed factor from
+$X\ge N/L^{31}$.
+Both terms are kept.
+The cited proof contains GR, colouring, cross-copy coprimality, CRT,
+zero mode, moments, Poisson, W-prime norm, Theorem T and endpoints
+\cite[Theorem~3.2, \S\S3.5--3.9]{Z1}.
+The actual-source H7 sum includes them once
+\cite[\S3.10, (3.91)--(3.92)]{Z1}.
+The outer errors are $O(N^{-\alpha}L^3)$ for rough exceptions,
+$O(N^{-1/2}L^2)$ for squares/source factors dividing $N$,
+and $o(1)$ for G4.
+They enter (6.9) once, separately from O1.
+
+\subsection{Selected endpoints and persistent costs}
+
+We use the adverse endpoints of Appendix A.2--A.6. Terminating decimals are rational.
+\begingroup\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}p{0.22\textwidth}p{0.30\textwidth}p{0.40\textwidth}@{}}
+Input & Certified value or enclosure & Use \\ \hline
+\endfirsthead
+Input & Certified value or enclosure & Use \\ \hline
+\endhead
+\multicolumn{3}{@{}p{\textwidth}@{}}{S7 at $\lambda=93/400$: canonical raw value $2.299260427561925683718\ldots$ in $[2.299209653294856,2.299402520476652]$; use the upper endpoint.} \\
+\multicolumn{3}{@{}p{\textwidth}@{}}{S1 in D units: $3S_1/4\ge\underline D_1$, the lower endpoint of the S1 ball in Appendix A.2.} \\
+\multicolumn{3}{@{}p{\textwidth}@{}}{Selected S2 endpoint: $d_{T8}>\underline d_2$.} \\
+\multicolumn{3}{@{}p{\textwidth}@{}}{Independent S2 enclosure: $T8/4\in[1.62063469556829,1.62071322785677]$.} \\
+\multicolumn{3}{@{}p{\textwidth}@{}}{S2 refinement: PF $0.000944946137955914$, corner $0.000058392441251611$, tail $0.00005$. The sum differs from the endpoint improvement by less than $2\cdot10^{-15}$.} \\
+Switched integral & $H_{L,\rm upper}=0.0778506$ & $-2H_{L,\rm upper}=-0.1557012$. \\
+Signed reference sum & $B_{\rm main}$ & $=1.83403742109459478063$. \\
+Persistent errors & $F_{\rm pers}$ & $<0.000040767574227956903$; decomposition (6.6). \\
+\end{longtable}
+\endgroup
+
+The two lower endpoints used above are
+{\small
+\[
+\begin{aligned}
+\underline D_1&=9.6765387489412441290823874931869409094969802156943270964
+                 -6.00\cdot10^{-56},\\
+\underline d_2&=1.61958135698908352559133404332105729220076714081650.
+\end{aligned}
+\]
+}
+
+The printed reference sum is the following thirteen-term sum of the
+adverse endpoints in Appendix~A:
+\[
+\begin{aligned}
+B_{\rm print}={}&\underline D_1+\underline d_2-\frac{U_{3,A}}2-\frac{U_4}4
+-\frac{U_{5,\rm low}}4-\frac{U_7}4\\
+&+\frac{L_{8,A}}4+\frac{L_{9,A}}4+\frac{L_{10}}4+L_{G1}
+-\overline J_5-\overline J_6-2H_{L,\rm upper}.
+\end{aligned}
+\]
+Here $\underline D_1$ is the lower endpoint of the S1 ball in Appendix~A.2,
+and $\underline d_2$ is the selected S2 lower endpoint printed above.
+The four $U$ endpoints and four $L$ endpoints are the adverse directed
+rational endpoints printed in (A.7), (A.10), and Appendices~A.2--A.6.
+The upper endpoints for the two remaining integrals are
+{\small
+\[
+\begin{aligned}
+\overline J_5&=\frac{0.03658166423843258896399704402764682632822246022922592990
+                    +8.84\cdot10^{-57}}4,\\
+\overline J_6&=1.3148581959157321533513247276782285310758770468886237619585.
+\end{aligned}
+\]
+}
+They come from (A.14) and (A.13), respectively.
+The switched-integral endpoint is $H_{L,\rm upper}=0.0778506$.
+Every summand is a printed rational endpoint; the sum uses no unrounded
+analytic integral value.
+Exact rational addition gives
+$B_{\rm print}>1.83403742109641331345957914542194044932304169727869681073064$.
+We take the smaller rational $B_{\rm main}=1.83403742109459478063$.
+Thus $B_{\rm main}$ is obtained from the printed endpoint data.
+
+We use the net-tail value $d_{T8}$ of (A.7).
+Put $\delta_{T8}=1/20000$; this tail is already inside $d_{T8}$.
+The persistent sum is
+\[
+\begin{split}
+F_{\rm net}={}&0.000006484294227956901+0.00000575+0.00002853328\\
+&+4.98\cdot10^{-54}+2\cdot10^{-24}+10^{-390}
+<0.000040767574227956903.
+\end{split}\tag{6.6}
+\]
+The order is the S6 increment, $g_{\rm BV}$, $g_{\rm AA}$,
+the G1 reconciliation, $g_\tau$, $E_{1,fF}$.
+By (1.27), $C_E\sigma W_{\rm AA}/4\le g_{\rm AA}$.
+The exact BV decomposition is
+\[
+g_{\rm BV}=0.00000575
+=\underbrace{0.00000004}_{E_{5,\kappa}}
++\underbrace{0.00000571}_{g_{R1}}.
+\]
+Here $E_{5,\kappa}=4\cdot10^{-8}$ is optional and conservative.
+For comparison, Appendix~A.6 bounds the hypothetical S5-top increment
+at $\kappa=10^{-6}$; the selected S5-top uses zero shift.
+The selected S2 corner already uses $\kappa=10^{-6}$ and its increment
+by (3.19) and (3.22).
+The extra $g_{R1}\ge0$ is conservative. Both terms enter (6.6) once.
+
+The four selector/cutoff/peel bounds sum to
+\[
+\begin{split}
+\bigl(275009680+7.160+62500\\
+\qquad+145664566.4567\bigr)\tau
+&=420736753.6167\tau\\
+&\le4.207367536167\times10^{-82}<2\times10^{-24}.
+\end{split}
+\]
+The deliberately looser bound $4.201\times10^{12}\tau$ also covers this sum.
+The allowance $2\times10^{-24}$ enters (6.6) once.
+The independent S2 enclosure includes every tail:
+\[
+T8/4>d_{T8}.\tag{6.6a}
+\]
+Its lower bound improves $d_{T8}$ by about $0.001053338579$.
+The input table gives the three improvements and the rounding error.
+Sections~3.1--3.5 and~6.2 prove the actual-source arithmetic,
+non-II, cutoff, AA37 and joint comparisons.
+
+The equivalent pre-tail convention transfers only $\delta_{T8}$:
+\[
+\begin{aligned}
+S2_{\rm pre}&=S2_{\rm net}+\delta_{T8},\\
+B_{\rm pre}&=B_{\rm net}+\delta_{T8},\\
+F_{\rm pre}&=F_{\rm net}+\delta_{T8}<0.000090767574227956903.
+\end{aligned}\tag{6.6b}
+\]
+Thus $B_{\rm pre}-F_{\rm pre}=B_{\rm net}-F_{\rm net}$ exactly.
+Here
+\[
+S2_{\rm pre}>1.61963135698908352559133404332105729220076714081650.
+\]
+The net value is smaller by $0.00005$,
+and all other endpoints and error terms agree.
+We use the net pair and subtract each error term once.
+Then
+\[
+\begin{aligned}
+B_{\rm main}-F_{\rm pers}&=B_{\rm net}-F_{\rm net}\\
+&>1.83403742109459478063-0.000040767574227956903\\
+&=1.833996653520366823727\\
+&>1.83399665352036682372\\
+&>1.78838848345960807361670991333>T.
+\end{aligned}
+\]
+The strong outward margin exceeds $0.04560817006075875010$ D.
+We retain the smaller safety margin
+$D_{\rm lower}-T-g_{\rm AA}>0.04557963678075875010$.
+This spends an extra $g_{\rm AA}=0.00002853328$ in the final vanishing-error
+threshold; it is a reserve and is not charged a second time in (6.6).
+The computation uses the full-precision (A.7), $H_{L,\rm upper}$ and the single G1 correction.
+The displayed endpoint sum is $1.83403742109641\ldots$;
+its excess over the conservative base is $1.82\cdot10^{-12}$.
+Shorter intervals are outward summaries.
+By (6.2) and (6.4b),
+\[
+\begin{gathered}
+D_{\rm lower}=1.83399665352036682372,\qquad
+D_{\rm src}(N)\ge D_{\rm lower}-E_{\rm van}(N),\\
+E_{\rm van}(N)\longrightarrow0.
+\end{gathered}\tag{6.3a}
+\]
+
+\subsection{Fixed parameters, then the limit}
+
+First fix the source geometry and the classical constants.
+Theorem~\ref{thm:sieve-mass} gives $W_{\rm AA}\le W_*=10^{14}$,
+uniformly in tail-label counts.
+The constant $C_E$ is absolute \cite[Theorem~2.6, (2.31)]{Z1}.
+Choose
+\[
+0<\sigma\le10^{-10},\qquad
+\sigma\le\frac{4g_{\rm AA}}{C_EW_*}\quad\text{if }C_E>0.
+\]
+Since $\eta_L/2500=4\cdot10^{-8}$ and AA37 has depth $R=1$
+\cite[Theorem~2.6]{Z1}, the omitted restrictions
+$\sigma\le\eta_L/2500$ and $\sigma<3^{-R}$ are automatic.
+When $C_E=0$, only $0<\sigma\le10^{-10}$ is required.
+Then $\tau=\sigma^9$ fixes the labels, factorial bounds and positive power savings.
+Appendix A holds for $0<\sigma\le10^{-10}$ and $0\le\tau\le10^{-90}$.
+
+By (4.20), with $A_0=53/256-\eta_L-\frac32\mu\tau$,
+\[
+\ell_c\ge\max(A_0-t_3,2t_3)\ge2A_0/3>1379/10000>\ell_0.
+\]
+Fix $A_{\rm raw}=3$, $C_b=334$ and then
+\[
+K_0=24C_b+26=8042,\quad A'=A_{\rm raw}+K_0+2=8047,\quad
+A_{\rm work}=A'+4=8051.\tag{6.7}
+\]
+The G1 boundary exponent is $165-C_b/2$.
+The condition $C_b>330$ gives decay, and the choice $334$ gives $O_\sigma(L^{-2})$.
+The three slot-shell sums cost at most three logarithms, which leaves $A'$.
+After counting the full Class-I family, we take $A_i\ge K_I+4$.
+Choose the exceptional-cutoff and moment precisions by (4.67), including
+$c_*\ge c_{\rm pre}+2$, so that all bounds in (1.29) hold.
+The SW/BFI precisions are chosen next.
+The width $334$ makes the source-wide boundary and freezing errors vanish.
+The selected local precision gives the Class-II logarithmic term
+$O_\sigma(L^{-3})$.
+The resulting rates are
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+Error & G1 & DIRECT \\\hline
+Boundary & $O_\sigma(e^{163/L}L^{-2})$ & $O_\sigma(L^{-149})$ \\
+Logarithm & $O_\sigma(L^{-168})$ & $O_\sigma(L^{-314})$
+\end{tabular}
+\end{center}
+The upper G1 cut is $O_\sigma(L^{-331}+L^2/N)$;
+Class I is $O_\sigma(L^{-2})$; the logarithmic term of (6.5) is $O_\sigma(L^{-3})$.
+For fixed $v>0$ and finite $B$,
+\[
+\log(N^{-v}L^B)=-v\log N+B\log\log N\longrightarrow-\infty.
+\]
+Theorems~\ref{thm:repeated-primes} and~\ref{thm:sieve-mass}, with (6.5), give vanishing row errors.
+The PNT/Mertens, BV/sieve and asymptotic AA37 errors are $o_\sigma(1)$.
+The finite identities and the complete error table cover the sum.
+Finally choose $N_0$. The choice includes all local theorem thresholds and requires $X\ge N/L^{31}$ and $\log X\ge L/2$. The endpoint slack conditions are
+\[
+\begin{aligned}
+202(31\log L+1)&\le\sigma L,
+&202\log(2^{24}/\varepsilon_A)&\le\sigma L,\\
+202\cdot30\log2&\le\sigma L,
+&\sigma L&\ge2^{130}(\log L+1).
+\end{aligned}
+\]
+The last is the short-interval threshold (4.32a).
+We also impose the GR roughness condition
+$1/(\log\log X)^3\le\ell_0\sigma^2$ and all fixed short-interval moment and Brun--Bonferroni thresholds. The choice also includes (1.14) and the final slack in (1.23).
+These are eventual conditions at fixed positive $\sigma$. For fixed $\kappa>0$, $C>0$, $d>0$ and real $B$, the quantity $CN^{-\kappa}L^B$ is at most $d$ when
+\[
+ L\ge\max\{1,(2\max(B,0)/\kappa)^2,
+                         (2/\kappa)\log^+(C/d)\}.
+\]
+This follows from $\log L\le\sqrt L$. It shows directly that the
+power errors in (1.30) are bounded by the last threshold choice.
+
+For $N\ge N_0$ we also require
+\[
+E_{\rm van}(N)<\tfrac12(0.04557963678075875010).
+\]
+The weaker allowance is $D_{\rm lower}-T>0.04557963678075875010$.
+The last threshold choice may be ineffective.
+
+\subsection{From positive weight to a representation}
+
+The results of Sections~3--5 hold for each fixed $0<\epsilon_A\le10^{-4}$.
+Choose $\epsilon_A=10^{-4}$, $a=9/5$ and
+\[
+b=\frac{a-1}{a}-\epsilon_A=\frac{39991}{90000},\qquad
+\frac{1-b}{b}=\frac{50009}{39991}.
+\]
+The exact threshold satisfies
+\[
+\begin{gathered}
+1.78838848345960807361670991332<T=8\log(50009/39991),\\
+T<1.78838848345960807361670991333,\\
+D_{\rm lower}-T>0.04557963678075875010.
+\end{gathered}
+\]
+We fix $\sigma$ before the limit.
+By the definition of $\Sigma_W$ in (1.9), (6.1) gives
+$\Sigma_W=W_{\rm norm}D_{\rm src}(N)$.
+Theorem~\ref{thm:signed-assembly}, (6.2) and (6.3a) give
+\[
+\Sigma_W\ge
+[4(1-\epsilon_A)D_{\rm lower}-o(1)]U_C.\tag{6.8}
+\]
+The pointwise sieve inequality subtracts the rough exceptional-set error.
+Then the count is at least $[(1-\epsilon_A)D_{\rm lower}-o(1)]U_C$.
+The fixed-$\epsilon_A$ G4 bound costs
+$[8(1-\epsilon_A)\log((1-b)/b)+o(1)]U_C$.
+Since $1-\epsilon_A>0$, $D_{\rm lower}>T$, and $U_C\to\infty$,
+the integer count is eventually positive.
+
+For a surviving semiprime $n=rq>\epsilon_A N$, with distinct primes
+$r<q$ and $r<N^b$, one has $q>\epsilon_A N^{1-b}$ and
+\[
+(1-b)(a-1)-b=a\epsilon_A>0.
+\]
+Thus $r<q^{a-1}=q^{4/5}$ for
+$N>\epsilon_A^{-(a-1)/(a\epsilon_A)}$.
+For a prime survivor, $r=1$.
+The positive integer count gives (1.1) in the quantitative form
+\[
+\operatorname{Good}(N)\ge
+\big[(1-\epsilon_A)(D_{\rm lower}-T)-o(1)\big]U_C,
+\qquad T=8\log(50009/39991).\tag{6.9}
+\]
+This proves Theorem~\ref{thm:goldbach}. $\square$
