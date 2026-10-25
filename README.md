@@ -2,6 +2,8 @@
 
 Ruiyi Zhang
 
+DOI: [10.5281/zenodo.23649264](https://doi.org/10.5281/zenodo.23649264)
+
 Every sufficiently large even integer `N` has a representation
 
     N = p + r q,    p, q prime,    r = 1 or r prime,    r <= q^(4/5).
@@ -37,3 +39,19 @@ The archive README gives verification and reproduction commands.
     pdflatex main.tex
     pdflatex main.tex
     pdflatex main.tex
+
+## Citation
+
+Ruiyi Zhang, *Theorem (1 + 1.8) on the Goldbach conjecture*, preprint, Zenodo, 2026. https://doi.org/10.5281/zenodo.23649264
+
+```bibtex
+@misc{zhang2026goldbach18,
+  author    = {Zhang, Ruiyi},
+  title     = {Theorem (1 + 1.8) on the Goldbach conjecture},
+  year      = {2026},
+  publisher = {Zenodo},
+  note      = {Preprint},
+  doi       = {10.5281/zenodo.23649264},
+  url       = {https://doi.org/10.5281/zenodo.23649264}
+}
+```
